@@ -69,15 +69,17 @@ export default function Hero() {
               size="lg" 
               className="bg-white hover:bg-gray-200 text-black 
               text-lg px-8 py-6 shadow-lg transition-all duration-300 hover:scale-105"
+              onClick={() => window.location.href = '/project-inquiry'}
             >
-              Contact Us
+              Get Started <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button 
               size="lg" 
               className="bg-transparent hover:bg-white/10 text-white border-2 border-white/20
               text-lg px-8 py-6 transition-all duration-300 hover:scale-105 hover:border-white/30"
+              onClick={() => window.location.href = '/contact'}
             >
-              Portfolio
+              Contact Us
             </Button>
           </motion.div>
 

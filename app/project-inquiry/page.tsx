@@ -16,8 +16,6 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-
-
 const steps = [
   { id: 1, title: "About You", description: "Your contact details" },
   { id: 2, title: "Project Basics", description: "Type and budget" },

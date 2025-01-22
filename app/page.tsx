@@ -42,24 +42,23 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100">
-      {/* Hero Section */}
-      <Hero />
+    <div className="bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+      {/* Grid pattern overlay */}
+      <div 
+        className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] 
+        opacity-10" 
+      />
 
-      {/* Services Section */}
-      <section className="bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.015]" />
-        {/* Gradient orbs */}
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-purple-100/50 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-blue-100/50 rounded-full blur-[120px]" />
+      {/* Gradient orbs */}
+      <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" />
+
+      <div className="relative z-10">
+        <Hero />
         <Services />
-      </section>
-
-      {/* Portfolio Section */}
-      <Portfolio />
-
-      {/* Testimonials Section */}
-      <Testimonials />
+        <Portfolio />
+        <Testimonials />
+      </div>
 
       {/* FAQ Section */}
       <section className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
@@ -150,7 +149,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 

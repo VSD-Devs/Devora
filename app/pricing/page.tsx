@@ -1,20 +1,49 @@
+"use client"
+
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white pt-32 pb-20">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-black text-white pt-32 pb-20 relative overflow-hidden">
+      {/* Background gradients */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/40 z-0" />
+      
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-40 z-10" />
+
+      {/* Animated glow orbs */}
+      <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl z-5 animate-pulse" />
+      <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl z-5 animate-pulse" />
+
+      <div className="container mx-auto px-4 relative z-20">
         {/* Header Section */}
-        <div className="text-center mb-20 relative z-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 text-transparent bg-clip-text drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]">
-            Startup-Friendly Pricing
-          </h1>
-          <p className="text-xl text-white max-w-2xl mx-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="text-center mb-20 relative"
+        >
+          <div className="relative mb-8">
+            <motion.h1 
+              className="text-5xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-b 
+              from-white via-white to-gray-200 leading-[1.4] tracking-tight py-2 drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]"
+            >
+              Startup-Friendly Pricing
+            </motion.h1>
+            <div className="absolute -inset-x-20 -inset-y-10 bg-gradient-to-r from-black/80 to-black/60 blur-3xl -z-10" />
+          </div>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+          >
             We believe great web development shouldn't break the bank. Our flexible packages are designed to grow with your startup.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
