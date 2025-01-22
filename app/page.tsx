@@ -7,7 +7,9 @@ import { motion } from "framer-motion";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
+import Testimonials from "@/components/Testimonials";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -57,51 +59,7 @@ export default function Home() {
       <Portfolio />
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.015]" />
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
-            What Our Clients Say
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="bg-white border border-gray-100 hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex flex-col gap-4">
-                      <div className="flex items-center gap-2 text-yellow-400">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} size={16} fill="currentColor" />
-                        ))}
-                      </div>
-                      <p className="text-gray-600">{testimonial.content}</p>
-                      <div className="flex items-center gap-3 mt-4">
-                        <img
-                          src={testimonial.avatar}
-                          alt={testimonial.name}
-                          className="w-12 h-12 rounded-full"
-                        />
-                        <div>
-                          <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                          <div className="text-sm text-gray-500">
-                            {testimonial.position}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Testimonials />
 
       {/* FAQ Section */}
       <section className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
@@ -113,10 +71,10 @@ export default function Home() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
               Frequently Asked Questions
             </h2>
-            <p className="text-gray-200 text-lg">
+            <p className="text-base md:text-lg text-gray-200">
               Everything you need to know about our services and process
             </p>
           </div>
@@ -133,9 +91,9 @@ export default function Home() {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 bg-white/10 hover:bg-white/20 rounded-lg transition-colors duration-200 border border-white/10"
+                  className="w-full flex items-center justify-between p-4 md:p-6 bg-white/10 hover:bg-white/20 rounded-lg transition-colors duration-200 border border-white/10"
                 >
-                  <span className="text-lg font-semibold text-left text-white">{faq.question}</span>
+                  <span className="text-base md:text-lg font-semibold text-left text-white">{faq.question}</span>
                   <Plus
                     className={`w-5 h-5 text-white transition-transform duration-200 ${
                       openFaq === index ? "rotate-45" : ""
@@ -151,7 +109,7 @@ export default function Home() {
                       height: { duration: 0.15, ease: "easeOut" },
                       opacity: { duration: 0.1, ease: "linear" }
                     }}
-                    className="p-6 bg-white/10 rounded-b-lg text-gray-100 border-x border-b border-white/10"
+                    className="p-4 md:p-6 bg-white/10 rounded-b-lg text-gray-100 border-x border-b border-white/10"
                   >
                     {faq.answer}
                   </motion.div>
@@ -163,7 +121,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.015]" />
         {/* Gradient orbs */}
         <div className="absolute inset-0 bg-gradient-to-r from-purple-100/30 via-transparent to-blue-100/30" />
@@ -175,18 +133,20 @@ export default function Home() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
               Ready to Transform Your Digital Presence?
             </h2>
-            <p className="text-xl mb-8 text-gray-600">
+            <p className="text-base md:text-xl mb-8 text-gray-600">
               Let's work together to create something extraordinary.
             </p>
-            <Button
-              size="lg"
-              className="bg-gray-900 text-white hover:bg-gray-800 transition-colors duration-200"
-            >
-              Get Started Today <ArrowRight className="ml-2" />
-            </Button>
+            <Link href="/project-inquiry">
+              <Button
+                size="lg"
+                className="bg-gray-900 text-white hover:bg-gray-800 transition-colors duration-200 px-8 py-6 text-lg"
+              >
+                Start Your Project <ArrowRight className="ml-2" />
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>

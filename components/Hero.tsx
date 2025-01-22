@@ -15,23 +15,23 @@ export default function Hero() {
           alt="Modern startup workspace"
           fill
           priority
-          className="object-cover object-center opacity-40"
+          className="object-cover object-center opacity-60"
           quality={100}
         />
       </div>
 
       {/* Background gradients */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/25 to-black/50 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/40 z-0" />
       
       {/* Grid pattern overlay with enhanced mask */}
       <div 
         className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] 
-        opacity-30 z-10" 
+        opacity-40 z-10" 
       />
 
       {/* Animated glow orb */}
-      <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl z-5" />
-      <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl z-5" />
+      <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl z-5 animate-pulse" />
+      <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl z-5 animate-pulse" />
 
       <div className="container mx-auto px-4 pt-32 md:pt-40 relative z-20">
         <div className="max-w-4xl mx-auto text-center">
@@ -43,7 +43,7 @@ export default function Hero() {
           >
             <motion.h1 
               className="text-5xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-b 
-              from-white to-gray-400 leading-[1.4] tracking-tight py-2"
+              from-white via-white to-gray-200 leading-[1.4] tracking-tight py-2 drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]"
             >
               Design. Build. Scale.
             </motion.h1>
@@ -54,7 +54,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-400 mb-12 leading-relaxed max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-gray-200 mb-12 leading-relaxed max-w-3xl mx-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
           >
             Startup-focused web development at prices you'll love
           </motion.p>
@@ -88,7 +88,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.6 }}
             className="mt-20 flex justify-center items-center gap-8 flex-wrap"
           >
-            <div className="text-gray-500 text-sm font-light tracking-wide">
+            <div className="text-gray-400 text-sm font-light tracking-wide">
               Fast delivery • Startup-friendly pricing • Expert team
             </div>
           </motion.div>
@@ -98,13 +98,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="pt-12 border-t border-white/10"
+            className="pt-12 border-t border-white/20"
           >
-            <p className="text-sm text-gray-400 mb-8">TRUSTED BY INNOVATIVE COMPANIES</p>
+            <p className="text-sm text-gray-300 mb-8">TRUSTED BY INNOVATIVE COMPANIES</p>
             <div className="relative">
               {/* Gradient overlays for infinite scroll effect */}
-              <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-black to-transparent z-10" />
-              <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-black to-transparent z-10" />
               
               {/* Logo grid with hover effects */}
               <div className="flex justify-center items-center gap-24">

@@ -19,113 +19,125 @@ export default function PricingPage() {
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {/* Starter Package */}
-          <div className="flex flex-col">
-            <div className="relative bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-800 hover:border-white/50 transition-all duration-300 group flex-grow">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
-              <h3 className="text-2xl font-bold mb-4">Starter Package</h3>
-              <div className="text-3xl font-bold mb-6">£500 - £750</div>
-              <div className="text-gray-400 mb-8">Perfect for MVPs and landing pages</div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>3-5 Pages Website</span>
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>Mobile Responsive Design</span>
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>Basic SEO Setup</span>
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>2-3 Weeks Delivery</span>
-                </li>
-              </ul>
+          <div className="flex flex-col h-full">
+            <div className="relative bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-800 hover:border-white/50 transition-all duration-300 group h-full flex flex-col">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none"></div>
+              <div className="flex-grow">
+                <h3 className="text-2xl font-bold mb-4">Starter Package</h3>
+                <div className="text-3xl font-bold mb-6">£500 - £750</div>
+                <div className="text-gray-400 mb-8">Perfect for MVPs and landing pages</div>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>3-5 Pages Website</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>Mobile Responsive Design</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>Basic SEO Setup</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>2-3 Weeks Delivery</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-auto">
+                <Link href="/project-inquiry" className="block w-full">
+                  <Button className="w-full bg-white hover:bg-gray-100 text-black font-semibold">
+                    Get Started
+                  </Button>
+                </Link>
+              </div>
             </div>
-            <Link href="/project-inquiry">
-              <Button className="w-full bg-white hover:bg-gray-100 text-black font-semibold mt-4">
-                Get Started
-              </Button>
-            </Link>
           </div>
 
           {/* Growth Package */}
-          <div className="flex flex-col">
-            <div className="relative bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl p-8 border border-white hover:border-white/75 transition-all duration-300 group transform hover:scale-105 flex-grow">
+          <div className="flex flex-col h-full">
+            <div className="relative bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl p-8 border border-white hover:border-white/75 transition-all duration-300 group transform hover:scale-105 h-full flex flex-col">
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white text-black px-4 py-1 rounded-full text-sm font-medium">
                 Most Popular
               </div>
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
-              <h3 className="text-2xl font-bold mb-4">Growth Package</h3>
-              <div className="text-3xl font-bold mb-6">£1,000 - £2,000</div>
-              <div className="text-gray-400 mb-8">For growing startups</div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>5-10 Pages Website</span>
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>Advanced Design Features</span>
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>CMS Integration</span>
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>3-5 Weeks Delivery</span>
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>Advanced SEO Package</span>
-                </li>
-              </ul>
+              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none"></div>
+              <div className="flex-grow">
+                <h3 className="text-2xl font-bold mb-4">Growth Package</h3>
+                <div className="text-3xl font-bold mb-6">£1,000 - £2,000</div>
+                <div className="text-gray-400 mb-8">For growing startups</div>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>5-10 Pages Website</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>Advanced Design Features</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>CMS Integration</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>3-5 Weeks Delivery</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>Advanced SEO Package</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-auto">
+                <Link href="/project-inquiry" className="block w-full">
+                  <Button className="w-full bg-white hover:bg-gray-100 text-black font-semibold">
+                    Get Started
+                  </Button>
+                </Link>
+              </div>
             </div>
-            <Link href="/project-inquiry">
-              <Button className="w-full bg-white hover:bg-gray-100 text-black font-semibold mt-4">
-                Get Started
-              </Button>
-            </Link>
           </div>
 
           {/* Scale Package */}
-          <div className="flex flex-col">
-            <div className="relative bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-800 hover:border-white/50 transition-all duration-300 group flex-grow">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
-              <h3 className="text-2xl font-bold mb-4">Scale Package</h3>
-              <div className="text-3xl font-bold mb-6">£2,500+</div>
-              <div className="text-gray-400 mb-8">Complex custom solutions</div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>Custom Web Applications</span>
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>E-commerce Solutions</span>
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>Custom Integrations</span>
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>6-12 Weeks Delivery</span>
-                </li>
-                <li className="flex items-center">
-                  <Check className="text-white mr-2" size={20} />
-                  <span>Premium Support</span>
-                </li>
-              </ul>
+          <div className="flex flex-col h-full">
+            <div className="relative bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-800 hover:border-white/50 transition-all duration-300 group h-full flex flex-col">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none"></div>
+              <div className="flex-grow">
+                <h3 className="text-2xl font-bold mb-4">Scale Package</h3>
+                <div className="text-3xl font-bold mb-6">£2,500+</div>
+                <div className="text-gray-400 mb-8">Complex custom solutions</div>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>Custom Web Applications</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>E-commerce Solutions</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>Custom Integrations</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>6-12 Weeks Delivery</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="text-white mr-2" size={20} />
+                    <span>Premium Support</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-auto">
+                <Link href="/project-inquiry" className="block w-full">
+                  <Button className="w-full bg-white hover:bg-gray-100 text-black font-semibold">
+                    Get Started
+                  </Button>
+                </Link>
+              </div>
             </div>
-            <Link href="/project-inquiry">
-              <Button className="w-full bg-white hover:bg-gray-100 text-black font-semibold mt-4">
-                Get Started
-              </Button>
-            </Link>
           </div>
         </div>
 
