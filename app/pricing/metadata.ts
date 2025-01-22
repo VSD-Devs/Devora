@@ -1,7 +1,37 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Affordable Web Development Packages for Startups | Devora",
-  description: "Transform your startup with our budget-friendly web development packages. Transparent pricing from £500-£2500+. Flexible payment plans available for startups. Get enterprise-quality websites at startup-friendly prices.",
-  keywords: "affordable web development, startup web design, budget-friendly websites, small business web development, startup-friendly pricing, flexible payment plans, professional web design packages",
+  title: "Affordable Web Development Pricing | Startup-Friendly Packages",
+  description: "Transparent, affordable web development pricing designed for startups. Flexible payment plans, no hidden fees, and packages starting from £500. Get enterprise-quality development within your budget.",
+  keywords: [
+    "affordable web development",
+    "startup web pricing",
+    "web development costs",
+    "budget-friendly development",
+    "flexible payment plans",
+    "transparent pricing",
+    "startup packages",
+    "web development rates",
+    "cost-effective solutions",
+    "small business web pricing"
+  ],
+  openGraph: {
+    title: "Affordable Web Development Pricing | Startup-Friendly Packages",
+    description: "Transparent, affordable web development pricing designed for startups. Flexible payment plans, no hidden fees, and packages starting from £500. Get enterprise-quality development within your budget.",
+    type: "website",
+    images: [
+      {
+        url: "/pricing-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Devora Web Development Pricing Plans",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Affordable Web Development Pricing | Startup-Friendly Packages",
+    description: "Transparent, affordable web development pricing designed for startups. Flexible payment plans, no hidden fees, and packages starting from £500. Get enterprise-quality development within your budget.",
+    images: ["/pricing-og.jpg"],
+  },
 } 
