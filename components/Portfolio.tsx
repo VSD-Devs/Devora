@@ -39,12 +39,6 @@ const projects = [
   }
 ]
 
-const stats = [
-  { value: "156%", label: "Average Growth", description: "in client revenue after launch" },
-  { value: "3 Weeks", label: "Delivery Time", description: "from concept to launch" },
-  { value: "98%", label: "Client Satisfaction", description: "across all projects" },
-  { value: "24/7", label: "Support", description: "dedicated assistance" }
-]
 
 export default function Portfolio() {
   return (
@@ -69,9 +63,10 @@ export default function Portfolio() {
             </span>
             <span>Our Success Stories</span>
           </div>
-          <h2 className="text-5xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-400">
+          <h2 className="text-5xl md:text-5xl font-bold mb-8 text-white leading-[1.4] tracking-tight py-2 
+          drop-shadow-[0_2px_5px_rgba(0,0,0,0.3)]">
             Transforming Ideas into
-            Digital Success Stories
+            Products
           </h2>
           <p className="text-gray-300 text-xl leading-relaxed">
             We turn startup visions into powerful digital experiences. Explore how we've helped businesses achieve remarkable growth through innovative web solutions.
@@ -86,20 +81,8 @@ export default function Portfolio() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto mb-20"
         >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-colors duration-300"
-            >
-              <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
-              <div className="text-lg font-semibold text-white/80 mb-1">{stat.label}</div>
-              <div className="text-sm text-gray-400">{stat.description}</div>
-            </motion.div>
-          ))}
+          
+  
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">

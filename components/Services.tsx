@@ -16,7 +16,7 @@ const services = [
       "Growth Planning",
       "KPI Definition"
     ],
-    color: "blue"
+    colorClass: "bg-blue-500"
   },
   {
     icon: <Layout className="w-6 h-6" />,
@@ -28,7 +28,7 @@ const services = [
       "Brand Integration",
       "User Testing"
     ],
-    color: "gray"
+    colorClass: "bg-red-500"
   },
   {
     icon: <Code2 className="w-6 h-6" />,
@@ -40,7 +40,7 @@ const services = [
       "Cloud Deployment",
       "Performance Optimization"
     ],
-    color: "emerald"
+    colorClass: "bg-orange-500"
   },
   {
     icon: <LineChart className="w-6 h-6" />,
@@ -52,7 +52,7 @@ const services = [
       "Analytics & Tracking",
       "Conversion Optimization"
     ],
-    color: "amber"
+    colorClass: "bg-yellow-500"
   }
 ]
 
@@ -80,8 +80,6 @@ const processSteps = [
 ]
 
 export default function Services() {
-  const [hoveredService, setHoveredService] = useState<number | null>(null)
-
   return (
     <section className="bg-gradient-to-b from-black to-gray-900 text-white relative overflow-hidden">
       {/* Grid pattern overlay */}
@@ -121,41 +119,24 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative group"
-              onMouseEnter={() => setHoveredService(index)}
-              onMouseLeave={() => setHoveredService(null)}
             >
-              <div className={`h-full p-8 rounded-2xl bg-white/5 border border-${service.color}-500/10 hover:bg-white/10 transition-all duration-300`}>
-                <div className={`w-14 h-14 rounded-xl bg-${service.color}-500/10 flex items-center justify-center mb-6`}>
+              <div className="h-full p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className={`w-14 h-14 rounded-xl ${service.colorClass}/10 flex items-center justify-center mb-6`}>
                   {service.icon}
                 </div>
                 <h3 className="text-2xl font-semibold mb-4">{service.title}</h3>
                 <p className="text-gray-200 text-base mb-6 leading-relaxed">{service.description}</p>
-                <motion.ul 
-                  className="space-y-3"
-                  initial="hidden"
-                  animate={hoveredService === index ? "visible" : "hidden"}
-                  variants={{
-                    visible: {
-                      transition: {
-                        staggerChildren: 0.1
-                      }
-                    }
-                  }}
-                >
-                  {service.features.map((feature, i) => (
-                    <motion.li
+                <ul className="space-y-3">
+                  {service.features.map((feature) => (
+                    <li
                       key={feature}
-                      variants={{
-                        hidden: { opacity: 0, x: -20 },
-                        visible: { opacity: 1, x: 0 }
-                      }}
                       className="flex items-center gap-3 text-base text-gray-200"
                     >
-                      <div className={`w-2 h-2 rounded-full bg-${service.color}-500`} />
+                      <div className={`w-2 h-2 rounded-full ${service.colorClass}`} />
                       {feature}
-                    </motion.li>
+                    </li>
                   ))}
-                </motion.ul>
+                </ul>
               </div>
             </motion.div>
           ))}

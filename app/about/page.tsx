@@ -12,14 +12,14 @@ export default function AboutPage() {
       {/* Grid pattern overlay */}
       <div 
         className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] 
-        opacity-10" 
+        opacity-10 z-[1]" 
       />
 
       {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse z-[1]" />
+      <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse z-[1]" />
 
-      <div className="container mx-auto px-4 relative z-10 py-32">
+      <div className="container mx-auto px-4 relative z-[30] py-32">
         {/* Header Section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export default function AboutPage() {
           transition={{ duration: 0.7 }}
           className="text-center mb-20"
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-400">
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 text-white drop-shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
             Crafting Digital Success Stories Together
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">

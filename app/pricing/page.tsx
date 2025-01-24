@@ -52,16 +52,16 @@ export default function PricingPage() {
       />
       <div className="min-h-screen bg-black text-white pt-32 pb-20 relative overflow-hidden">
         {/* Background gradients */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/40 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-black/30 z-[1]" />
         
         {/* Grid pattern overlay */}
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-40 z-10" />
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-40 z-[2]" />
 
         {/* Animated glow orbs */}
-        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl z-5 animate-pulse" />
-        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl z-5 animate-pulse" />
+        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl z-[1] animate-pulse" />
+        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl z-[1] animate-pulse" />
 
-        <div className="container mx-auto px-4 relative z-20">
+        <div className="container mx-auto px-4 relative z-[30]">
           {/* Header Section */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -71,10 +71,9 @@ export default function PricingPage() {
           >
             <div className="relative mb-8">
               <motion.h1 
-                className="text-5xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-b 
-                from-white via-white to-gray-200 leading-[1.4] tracking-tight py-2 drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]"
-              >
-                Startup-Friendly Pricing
+          className="text-6xl md:text-7xl font-bold mb-8 leading-tight text-white">
+
+                Start-up Friendly Pricing
               </motion.h1>
               <div className="absolute -inset-x-20 -inset-y-10 bg-gradient-to-r from-black/80 to-black/60 blur-3xl -z-10" />
             </div>

@@ -87,28 +87,7 @@ export default function Testimonials() {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.6 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-gray-400 text-lg mb-8">
-            Join 100+ startups who've accelerated their growth with our web development expertise
-          </p>
-          <div className="flex gap-4 items-center justify-center flex-wrap">
-            <div className="py-2 px-4 bg-white/5 rounded-full text-gray-300 text-sm font-medium border border-white/10">
-              ⚡️ 3 Week Average Delivery
-            </div>
-            <div className="py-2 px-4 bg-white/5 rounded-full text-gray-300 text-sm font-medium border border-white/10">
-              📈 85% Conversion Rate Improvement
-            </div>
-            <div className="py-2 px-4 bg-white/5 rounded-full text-gray-300 text-sm font-medium border border-white/10">
-              🏆 98% Client Satisfaction
-            </div>
-          </div>
-        </motion.div>
+    
       </div>
     </section>
   )

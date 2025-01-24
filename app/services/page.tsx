@@ -81,16 +81,16 @@ export default function ServicesPage() {
         {/* Grid pattern overlay */}
         <div 
           className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] 
-          opacity-10" 
+          opacity-10 z-[1]" 
         />
 
         {/* Gradient orbs */}
-        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse z-[1]" />
+        <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse z-[1]" />
 
         {/* Hero Section */}
         <section className="pt-32 pb-20 relative">
-          <div className="container mx-auto px-4 relative z-10">
+          <div className="container mx-auto px-4 relative z-[30]">
             <div className="max-w-4xl mx-auto">
               <div className="inline-flex items-center gap-2 bg-white/10 text-white/80 px-4 py-2 rounded-full mb-8 backdrop-blur-sm">
                 <span className="relative flex h-2 w-2">
@@ -99,7 +99,7 @@ export default function ServicesPage() {
                 </span>
                 <span>Premium Web Solutions at Startup-Friendly Prices</span>
               </div>
-              <h1 className="text-6xl md:text-7xl font-bold mb-8 leading-tight bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-300">
+              <h1 className="text-6xl md:text-7xl font-bold mb-8 leading-tight text-white drop-shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
                 Turn Your Vision Into
                 <span className="text-white"> Digital Reality</span>
               </h1>
