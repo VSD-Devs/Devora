@@ -100,8 +100,7 @@ export default function ServicesPage() {
                 transition={{ duration: 0.7, delay: 0.1 }}
                 className="text-6xl md:text-7xl font-bold mb-8 leading-tight text-white drop-shadow-[0_4px_15px_rgba(0,0,0,0.5)]"
               >
-                Turn Your Vision Into
-                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-200"> Digital Reality</span>
+                Turn Your Vision Into Reality
               </motion.h1>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
