@@ -99,20 +99,15 @@ export default function Home() {
                     }`}
                   />
                 </button>
-                {openFaq === index && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ 
-                      height: { duration: 0.15, ease: "easeOut" },
-                      opacity: { duration: 0.1, ease: "linear" }
-                    }}
-                    className="p-4 md:p-6 bg-white/95 rounded-b-lg text-gray-600 border-x border-b border-gray-200"
-                  >
+                <div
+                  className={`transform-gpu overflow-hidden transition-all duration-200 ease-out ${
+                    openFaq === index ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <div className="p-4 md:p-6 bg-white/95 rounded-b-lg text-gray-600 border-x border-b border-gray-200">
                     {faq.answer}
-                  </motion.div>
-                )}
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
