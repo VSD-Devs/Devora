@@ -95,7 +95,7 @@ export default function ContactPage() {
         <section className="relative mb-20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center mb-8">
-              <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-[1.2] bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
+              <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-[1.2] bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
                 Let's Discuss Further
               </h1>
               <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
@@ -128,6 +128,11 @@ export default function ContactPage() {
                       <p className="text-gray-600">hello@devora.com</p>
                     </div>
                   </div>
+
+                  <div className="flex items-start gap-4">
+
+                  </div>
+
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-pink-500/20 to-pink-500/10 flex items-center justify-center border border-pink-500/20">
                       <MessageSquare className="w-5 h-5 md:w-6 md:h-6 text-pink-600" />
