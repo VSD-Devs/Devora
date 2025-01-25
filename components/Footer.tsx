@@ -44,11 +44,6 @@ const Footer = () => {
                   E-commerce Solutions
                 </Link>
               </li>
-              <li>
-                <Link href="/services" className="text-sm hover:text-white transition-colors">
-                  Mobile Development
-                </Link>
-              </li>
             </ul>
           </div>
 

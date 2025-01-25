@@ -28,7 +28,7 @@ export default function AboutPage() {
           className="text-center mb-20"
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-8 text-white drop-shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
-            Crafting Digital Success Stories Together
+            Meet Devora
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
             A collective of experienced developers dedicated to empowering startups with affordable, high-impact web solutions.

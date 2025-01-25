@@ -1,24 +1,93 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { ArrowRight, Mail, MessageSquare, Phone } from "lucide-react"
+import toast, { Toaster } from 'react-hot-toast'
 
 export default function ContactPage() {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    phone: "",
+    message: ""
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
+    setIsLoading(true)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong')
+      }
+
+      toast.success("Message sent! We'll get back to you soon.", {
+        duration: 5000,
+        position: 'top-center',
+      })
+
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        phone: "",
+        message: ""
+      })
+    } catch (error) {
+      console.error('Form submission error:', error);
+      
+      // More specific error message
+      let errorMessage = 'Failed to send message';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (typeof error === 'string') {
+        errorMessage = error;
+      }
+      
+      toast.error(errorMessage, {
+        duration: 5000,
+        position: 'top-center',
+      })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-black">
+      <Toaster />
       {/* Hero Section */}
-      <section className="pt-24 md:pt-32 pb-16 md:pb-20 relative overflow-hidden">
+      <section className="pt-28 md:pt-36 pb-20 md:pb-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10" />
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+          <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -103,6 +172,9 @@ export default function ContactPage() {
                     <label className="text-sm font-medium text-gray-300">First Name</label>
                     <Input
                       type="text"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
                       placeholder="John"
                       className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500"
                       required
@@ -112,6 +184,9 @@ export default function ContactPage() {
                     <label className="text-sm font-medium text-gray-300">Last Name</label>
                     <Input
                       type="text"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
                       placeholder="Doe"
                       className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500"
                       required
@@ -123,6 +198,9 @@ export default function ContactPage() {
                   <label className="text-sm font-medium text-gray-300">Email</label>
                   <Input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="john@company.com"
                     className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500"
                     required
@@ -133,7 +211,22 @@ export default function ContactPage() {
                   <label className="text-sm font-medium text-gray-300">Company</label>
                   <Input
                     type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
                     placeholder="Your Company Name"
+                    className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">Phone (optional)</label>
+                  <Input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="+1 (123) 456-7890"
                     className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500"
                   />
                 </div>
@@ -141,6 +234,9 @@ export default function ContactPage() {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-300">Message</label>
                   <Textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="Tell us about your project..."
                     className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500 min-h-[120px] md:min-h-[150px]"
                     required
@@ -150,9 +246,16 @@ export default function ContactPage() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-white hover:bg-gray-200 text-black text-base md:text-lg transition-all duration-300 hover:scale-105"
+                  disabled={isLoading}
+                  className="w-full bg-white hover:bg-gray-200 text-black text-base md:text-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
+                  {isLoading ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      Send Message <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
+                    </>
+                  )}
                 </Button>
               </form>
             </motion.div>
