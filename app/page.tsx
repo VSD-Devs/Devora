@@ -1,132 +1,79 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Briefcase, Code, Globe, Layout, LineChart, MessageSquare, Rocket, Star, Users, Plus } from "lucide-react";
-import { motion } from "framer-motion";
-import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import Portfolio from "@/components/Portfolio";
-import Testimonials from "@/components/Testimonials";
-import { useState } from "react";
+import { 
+  ArrowRight, 
+  Globe, 
+  Code, 
+  Layout, 
+  LineChart, 
+  MessageSquare, 
+  Rocket, 
+  Star, 
+  Users, 
+  Plus,
+  Briefcase 
+} from "lucide-react";
 import Link from "next/link";
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+// Simple loading component
+const Loading = () => (
+  <div className="min-h-[400px] flex items-center justify-center">
+    <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full"></div>
+  </div>
+);
+
+// Optimized dynamic imports with reduced loading states
+const DynamicHero = dynamic(() => import('@/components/Hero'), {
+  loading: () => <Loading />,
+  ssr: false // Disable SSR for faster initial load
+});
+
+const DynamicServices = dynamic(() => import('@/components/Services'), {
+  loading: () => <Loading />,
+  ssr: false
+});
+
+const DynamicPortfolio = dynamic(() => import('@/components/Portfolio'), {
+  loading: () => <Loading />,
+  ssr: false
+});
+
+const DynamicTestimonials = dynamic(() => import('@/components/Testimonials'), {
+  loading: () => <Loading />,
+  ssr: false
+});
+
+const DynamicFAQ = dynamic(() => import('../components/FAQ'), {
+  loading: () => <Loading />,
+  ssr: false
+});
 
 export default function Home() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  const faqs = [
-    {
-      question: "How much does a typical project cost?",
-      answer: "Our projects start from £500, with pricing dependent on project scope and requirements. We believe in transparent pricing and offer flexible payment plans tailored for startups. Whether you need a simple landing page or a complex web application, we'll provide a clear, detailed quote with no hidden fees."
-    },
-    {
-      question: "What is your development process?",
-      answer: "We follow a collaborative, agile approach with 4 key phases: Discovery (understanding your goals and requirements), Design (creating user-friendly interfaces), Development (building with cutting-edge tech), and Deployment (thorough testing and launch). You'll receive regular updates and have full visibility throughout the process."
-    },
-    {
-      question: "How long does it take to complete a project?",
-      answer: "Project timelines vary based on complexity. Simple websites can be completed in 1-2 weeks, while more complex applications might take 4-8 weeks. We'll provide a detailed timeline during our initial consultation and keep you updated on progress throughout the project."
-    },
-    {
-      question: "Do you provide ongoing support?",
-      answer: "Yes! We understand that your digital presence needs continuous attention. We offer flexible maintenance packages that include updates, security monitoring, performance optimization, and technical support. Our goal is to be your long-term technology partner."
-    },
-    {
-      question: "What technologies do you use?",
-      answer: "We specialize in modern web technologies including React, Next.js, TypeScript, and Node.js. Our tech stack is carefully chosen to ensure your project is fast, secure, and scalable. We stay up-to-date with the latest developments to provide you with the best solutions."
-    },
-    {
-      question: "Do you help with marketing and SEO?",
-      answer: "Absolutely! Every website we build includes essential SEO optimization. We also offer comprehensive digital marketing services including keyword research, content strategy, analytics setup, and performance tracking. We'll help you attract and convert your target audience."
-    }
-  ];
-
   return (
     <div className="bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
-      {/* Grid pattern overlay */}
-      <div 
-        className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] 
-        opacity-10" 
-      />
+      {/* Static grid pattern */}
+      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10" />
 
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" />
+      {/* Static gradient orbs */}
+      <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px]" />
+      <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px]" />
 
       <div className="relative z-10">
-        <Hero />
-        <Services />
-        <Portfolio />
-        <Testimonials />
+        <DynamicHero />
+        <DynamicServices />
+        <DynamicPortfolio />
+        <DynamicTestimonials />
+        <DynamicFAQ />
       </div>
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-gray-100 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5" />
-        
-        {/* Gradient orbs */}
-        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-base md:text-lg text-gray-600">
-              Everything you need to know about our services and process
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="mb-4"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-4 md:p-6 bg-white/95 hover:bg-white rounded-lg transition-colors duration-200 border border-gray-200 hover:border-gray-300 hover:shadow-lg text-gray-900"
-                >
-                  <span className="text-base md:text-lg font-semibold text-left">{faq.question}</span>
-                  <Plus
-                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
-                      openFaq === index ? "rotate-45" : ""
-                    }`}
-                  />
-                </button>
-                <div
-                  className={`transform-gpu overflow-hidden transition-all duration-200 ease-out ${
-                    openFaq === index ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <div className="p-4 md:p-6 bg-white/95 rounded-b-lg text-gray-600 border-x border-b border-gray-200">
-                    {faq.answer}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
+      {/* Static CTA Section */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.015]" />
-        {/* Gradient orbs */}
         <div className="absolute inset-0 bg-gradient-to-r from-purple-100/30 via-transparent to-blue-100/30" />
         
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
-          >
+          <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
               Ready to Transform Your Digital Presence?
             </h2>
@@ -136,12 +83,12 @@ export default function Home() {
             <Link href="/project-inquiry">
               <Button
                 size="lg"
-                className="bg-gray-900 text-white hover:bg-gray-800 transition-colors duration-200 px-8 py-6 text-lg"
+                className="bg-gray-900 text-white px-8 py-6 text-lg"
               >
                 Start Your Project <ArrowRight className="ml-2" />
               </Button>
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

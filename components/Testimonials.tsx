@@ -1,7 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
-
 const testimonials = [
   {
     quote: "Devora transformed our startup's online presence. Their team delivered a beautiful, high-converting website in just 3 weeks, and our lead generation increased by 156% in the first month.",
@@ -35,30 +33,20 @@ export default function Testimonials() {
       <div className="absolute -right-40 bottom-40 w-80 h-80 rounded-full bg-purple-500/10 blur-[100px]" />
 
       <div className="container mx-auto px-4 relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="max-w-3xl mx-auto text-center mb-20"
-        >
+        <div className="max-w-3xl mx-auto text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             Trusted by Innovative Startups
           </h2>
           <p className="text-gray-400 text-lg">
             Join the growing community of startups who've transformed their digital presence with our expertise
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
+          {testimonials.map((testimonial) => (
+            <div
               key={testimonial.author}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: index * 0.2 }}
-              className="relative bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl p-8 backdrop-blur-sm border border-gray-800 hover:border-gray-700 transition-all duration-300"
+              className="relative bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl p-8 backdrop-blur-sm border border-gray-800"
             >
               <div className="flex items-center mb-6">
                 {[...Array(testimonial.rating)].map((_, i) => (
@@ -83,11 +71,9 @@ export default function Testimonials() {
                   <div className="text-gray-400 text-sm">{testimonial.role}</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
-
-    
       </div>
     </section>
   )

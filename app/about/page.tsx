@@ -8,9 +8,10 @@ import { ArrowRight, Code, Rocket, Users, Star, Shield, Sparkles } from "lucide-
 
 export default function AboutPage() {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900 relative overflow-hidden">
+    <section className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-80 text-gray-800 relative overflow-hidden">
       {/* Dark overlay for nav */}
-      <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-900/80 to-transparent z-[5]" />
+      <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-900/60 via-gray-900/1 to-transparent z-[10]" />\
+    
       
       {/* Background gradients */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/10 to-white/30 z-[1]" />

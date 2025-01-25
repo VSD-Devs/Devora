@@ -1,9 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { Button } from "./ui/button"
 import { ArrowRight, Code2, Paintbrush2, Rocket, LineChart, Users, Globe, Layout } from "lucide-react"
-import { useState } from "react"
 
 const services = [
   {
@@ -82,57 +80,32 @@ const processSteps = [
 export default function Services() {
   return (
     <section className="bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900 relative overflow-hidden">
-      {/* Dark overlay for nav */}
-      <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-900/80 to-transparent z-[3]" />
-      
-      {/* Background gradients */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/10 to-white/30 z-[1]" />
+      {/* Background gradients - Static */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-white/30 z-[1]" />
 
-      {/* Grid pattern overlay */}
-      <div 
-        className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] 
-        opacity-5 z-[2]" 
-      />
-
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse z-[1]" />
-      <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse z-[1]" />
+      {/* Grid pattern overlay - Static */}
+      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5 z-[2]" />
 
       <div className="container mx-auto px-4 relative z-[30] py-20">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center max-w-3xl mx-auto mb-20"
-        >
+        <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
             Transform Your Startup with Innovative Web Solutions
           </h2>
           <p className="text-gray-600 text-xl leading-relaxed">
             Affordable, high-impact web development and digital services tailored for ambitious startups. Launch faster, grow smarter, spend less.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Services Grid */}
+        {/* Services Grid - Static */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {services.map((service, index) => (
-            <motion.div
+          {services.map((service) => (
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative group"
             >
-              <div className="h-full p-8 rounded-2xl bg-white/95 backdrop-blur-md 
-              border border-gray-200 shadow-sm
-              hover:shadow-xl transition-all duration-300 
-              bg-gradient-to-br from-white via-white to-gray-50
-              hover:border-gray-300">
-                <div className={`w-14 h-14 rounded-xl ${service.colorClass}/15 flex items-center justify-center mb-6 
-                border border-gray-100`}>
+              <div className="h-full p-8 rounded-2xl bg-white/95 border border-gray-200 shadow-sm bg-gradient-to-br from-white to-gray-50">
+                <div className={`w-14 h-14 rounded-xl ${service.colorClass}/15 flex items-center justify-center mb-6 border border-gray-100`}>
                   <div className={`${service.colorClass.replace('bg-', 'text-')}`}>
                     {service.icon}
                   </div>
@@ -151,36 +124,23 @@ export default function Services() {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        {/* Process Section */}
+        {/* Process Section - Simplified */}
         <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h3 className="text-4xl font-bold mb-4 text-gray-900">How We Work</h3>
             <p className="text-gray-600 text-xl">
               A proven approach that turns your vision into reality, without breaking the bank
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-4 gap-6">
             {processSteps.map((step, index) => (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative"
-              >
-                <div className="p-8 rounded-2xl bg-white border border-gray-100 hover:shadow-lg transition-all duration-300 h-full">
+              <div key={step.number} className="relative">
+                <div className="p-8 rounded-2xl bg-white border border-gray-100 h-full">
                   <div className="text-4xl font-bold text-gray-300 mb-4">{step.number}</div>
                   <h4 className="text-xl font-semibold mb-3 text-gray-900">{step.title}</h4>
                   <p className="text-base text-gray-600 leading-relaxed">{step.description}</p>
@@ -190,27 +150,21 @@ export default function Services() {
                     <ArrowRight className="w-6 h-6 text-gray-400" />
                   </div>
                 )}
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mt-12"
-        >
+        {/* CTA Section - Simplified */}
+        <div className="text-center mt-12">
           <Button
             size="lg"
-            className="bg-black text-white hover:bg-gray-900 text-lg px-8"
+            className="bg-black text-white text-lg px-8"
           >
             Get Your Free Consultation
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

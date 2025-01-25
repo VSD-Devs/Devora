@@ -13,6 +13,8 @@ export function Logo() {
         height={40}
         className="h-10 w-auto"
         priority
+        quality={90}
+        loading="eager"
       />
       <span className="text-white font-bold text-xl tracking-tight group-hover:text-white/90 transition-colors">
         Devora

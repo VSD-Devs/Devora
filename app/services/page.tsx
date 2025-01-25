@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Code2, Paintbrush2, LineChart, Check, ArrowUpRight } from "lucide-react"
 import Image from "next/image"
 import Script from 'next/script'
-import { motion } from "framer-motion"
 
 export default function ServicesPage() {
   return (
@@ -67,279 +66,191 @@ export default function ServicesPage() {
           })
         }}
       />
-      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900 pt-32 pb-20 relative overflow-hidden">
-        {/* Dark overlay for nav */}
-        <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-900/80 to-transparent z-[3]" />
+      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900 pt-32 pb-20 relative">
+        {/* Dark overlay for nav - Adjusted z-index */}
+        <div className="fixed inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-900/60 via-gray-900/1 to-transparent z-[1]" />
         
-        {/* Background gradients */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/10 to-white/30 z-[1]" />
-        
-        {/* Grid pattern overlay */}
+        {/* Background elements - Adjusted z-indices and moved to fixed positioning */}
+        <div className="fixed inset-0 bg-gradient-to-b from-white/50 via-white/10 to-white/30 pointer-events-none" />
         <div 
-          className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] 
-          opacity-5 z-[2]" 
+          className="fixed inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] 
+          opacity-5 pointer-events-none" 
         />
 
-        {/* Animated glow orbs */}
-        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse z-[1]" />
-        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse z-[1]" />
-
-        {/* Hero Section */}
-        <section className="relative">
-          <div className="container mx-auto px-4 relative z-[30]">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="max-w-4xl mx-auto"
-            >
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-blue-400/10 text-white/90 px-4 py-2 rounded-full mb-8 backdrop-blur-sm border border-white/10">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                </span>
-                <span> Website Solutions</span>
-              </div>
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                className="text-6xl md:text-7xl font-bold mb-8 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600"
-              >
-                Turn Your Vision Into Reality
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="text-xl text-gray-600 mb-10 max-w-2xl leading-relaxed"
-              >
-                We specialize in crafting high-performance websites and applications that help startups scale. Get enterprise-grade development at prices that make sense for your business.
-              </motion.p>
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                className="flex flex-wrap gap-4"
-              >
-                <Button 
-                  size="lg" 
-                  className="bg-black hover:bg-gray-900 text-white text-lg px-8 py-6 shadow-lg transition-all duration-300 hover:scale-105 border-0"
-                >
-                  Get Free Consultation <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button 
-                  size="lg" 
-                  className="bg-white/90 hover:bg-white text-black border border-gray-200 hover:border-gray-300 text-lg px-8 py-6 
-                  transition-all duration-300 hover:scale-105 backdrop-blur-sm"
-                >
-                  View Success Stories <ArrowUpRight className="ml-2 w-5 h-5" />
-                </Button>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Services Grid */}
-        <section className="py-20 relative z-10">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Design Card */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="group relative"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-300/5 rounded-3xl blur-xl group-hover:from-blue-500/10 group-hover:to-blue-300/10 transition-all duration-300" />
-                <div className="relative bg-white/80 p-8 rounded-3xl border border-gray-200 hover:border-gray-300 transition-all duration-300 backdrop-blur-sm">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                    <Paintbrush2 className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900">UI/UX Design</h3>
-                  <p className="text-gray-600 mb-6">Transform visitors into customers with stunning, user-centric interfaces that deliver exceptional experiences across all devices.</p>
-                  <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3 text-sm text-gray-700">
-                      <Check className="w-5 h-5 text-blue-600" />
-                      <span>Custom Interface Design & Branding</span>
-                    </li>
-                    <li className="flex items-center gap-3 text-sm text-gray-700">
-                      <Check className="w-5 h-5 text-blue-600" />
-                      <span>Mobile-First Responsive Design</span>
-                    </li>
-                    <li className="flex items-center gap-3 text-sm text-gray-700">
-                      <Check className="w-5 h-5 text-blue-600" />
-                      <span>User Testing & Optimisation</span>
-                    </li>
-                  </ul>
-                </div>
-              </motion.div>
-
-              {/* Development Card */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="group relative"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-300/5 rounded-3xl blur-xl group-hover:from-blue-500/10 group-hover:to-blue-300/10 transition-all duration-300" />
-                <div className="relative bg-white/80 p-8 rounded-3xl border border-gray-200 hover:border-gray-300 transition-all duration-300 backdrop-blur-sm">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                    <Code2 className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900">Modern Web Development</h3>
-                  <p className="text-gray-600 mb-6">Build scalable, lightning-fast web applications using cutting-edge technologies like React, Next.js, and Node.js.</p>
-                  <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3 text-sm text-gray-700">
-                      <Check className="w-5 h-5 text-blue-600" />
-                      <span>Custom Web Applications</span>
-                    </li>
-                    <li className="flex items-center gap-3 text-sm text-gray-700">
-                      <Check className="w-5 h-5 text-blue-600" />
-                      <span>E-commerce Solutions</span>
-                    </li>
-                    <li className="flex items-center gap-3 text-sm text-gray-700">
-                      <Check className="w-5 h-5 text-blue-600" />
-                      <span>API Development & Integration</span>
-                    </li>
-                  </ul>
-                </div>
-              </motion.div>
-
-              {/* Marketing Card */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="group relative"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-300/5 rounded-3xl blur-xl group-hover:from-blue-500/10 group-hover:to-blue-300/10 transition-all duration-300" />
-                <div className="relative bg-white/80 p-8 rounded-3xl border border-gray-200 hover:border-gray-300 transition-all duration-300 backdrop-blur-sm">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                    <LineChart className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900">Growth Marketing</h3>
-                  <p className="text-gray-600 mb-6">Accelerate your startup's growth with data-driven digital marketing strategies that deliver measurable results.</p>
-                  <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3 text-sm text-gray-700">
-                      <Check className="w-5 h-5 text-blue-600" />
-                      <span>Technical SEO Optimisation</span>
-                    </li>
-                    <li className="flex items-center gap-3 text-sm text-gray-700">
-                      <Check className="w-5 h-5 text-blue-600" />
-                      <span>Conversion Rate Optimization</span>
-                    </li>
-                    <li className="flex items-center gap-3 text-sm text-gray-700">
-                      <Check className="w-5 h-5 text-blue-600" />
-                      <span>Analytics & Performance Tracking</span>
-                    </li>
-                  </ul>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Process Section */}
-        <section className="py-20 relative z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-100/80 to-transparent" />
-          <div className="container mx-auto px-4 relative">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="max-w-4xl mx-auto text-center mb-16"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">Our Proven Development Process</h2>
-              <p className="text-gray-600">We follow a battle-tested methodology that ensures your project is delivered on time, within budget, and exceeds expectations.</p>
-            </motion.div>
-            <div className="grid md:grid-cols-4 gap-8">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="relative"
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                  <span className="text-xl font-bold text-gray-900">1</span>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900">Strategic Planning</h3>
-                <p className="text-gray-600">Deep dive into your goals, market, and technical requirements.</p>
-              </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="relative"
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                  <span className="text-xl font-bold text-gray-900">2</span>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900">UX Architecture</h3>
-                <p className="text-gray-600">Design intuitive user flows and compelling interfaces.</p>
-              </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative"
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                  <span className="text-xl font-bold text-gray-900">3</span>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900">Agile Development</h3>
-                <p className="text-gray-600">Build with modern tech stack and continuous feedback.</p>
-              </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="relative"
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                  <span className="text-xl font-bold text-gray-900">4</span>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900">Growth Launch</h3>
-                <p className="text-gray-600">Deploy with optimization for maximum market impact.</p>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 relative z-10">
-          <div className="container mx-auto px-4">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="relative overflow-hidden bg-white/80 backdrop-blur-xl rounded-3xl p-12 border border-gray-200 shadow-lg"
-            >
-              <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
-              <div className="relative max-w-3xl mx-auto text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">Enquire Today For A Free Consultation</h2>
-                <p className="text-gray-600 text-lg mb-8">
-                  Get a free consultation and custom quote for your project. Our expert team is ready to help transform your vision into reality.
+        {/* Content wrapper - Added to ensure content stays above background */}
+        <div className="relative z-[2]">
+          {/* Hero Section */}
+          <section className="relative mb-20 pt-20">
+            <div className="container mx-auto px-4 relative z-[30]">
+              <div className="max-w-4xl mx-auto text-center">
+                <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-[1.2] bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 py-1">
+                  Turn Your Vision Into Reality
+                </h1>
+                <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                  We specialize in crafting high-performance websites and applications that help startups scale. Get enterprise-grade development at prices that make sense for your business.
                 </p>
-                <Button 
-                  size="lg" 
-                  className="bg-black hover:bg-gray-900 text-white text-lg px-8 py-6 shadow-lg transition-all duration-300 hover:scale-105 border-0"
-                >
-                  Schedule Free Strategy Call <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
+                <div className="flex flex-wrap gap-4 justify-center">
+                  <Button 
+                    size="lg" 
+                    className="bg-black hover:bg-gray-900 text-white text-lg px-8 py-6 shadow-lg transition-all duration-300 hover:scale-105 border-0"
+                  >
+                    Get Free Consultation <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                  <Button 
+                    size="lg" 
+                    className="bg-white/90 hover:bg-white text-black border border-gray-200 hover:border-gray-300 text-lg px-8 py-6 
+                    transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+                  >
+                    View Success Stories <ArrowUpRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </div>
               </div>
-            </motion.div>
-          </div>
-        </section>
+            </div>
+          </section>
+
+          {/* Services Grid */}
+          <section className="py-20 relative">
+            <div className="container mx-auto px-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Design Card */}
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-300/5 rounded-3xl blur-xl group-hover:from-blue-500/10 group-hover:to-blue-300/10 transition-all duration-300" />
+                  <div className="relative bg-white/80 p-8 rounded-3xl border border-gray-200 hover:border-gray-300 transition-all duration-300 backdrop-blur-sm">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
+                      <Paintbrush2 className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900">UI/UX Design</h3>
+                    <p className="text-gray-600 mb-6">Transform visitors into customers with stunning, user-centric interfaces that deliver exceptional experiences across all devices.</p>
+                    <ul className="space-y-3 mb-8">
+                      <li className="flex items-center gap-3 text-sm text-gray-700">
+                        <Check className="w-5 h-5 text-blue-600" />
+                        <span>Custom Interface Design & Branding</span>
+                      </li>
+                      <li className="flex items-center gap-3 text-sm text-gray-700">
+                        <Check className="w-5 h-5 text-blue-600" />
+                        <span>Mobile-First Responsive Design</span>
+                      </li>
+                      <li className="flex items-center gap-3 text-sm text-gray-700">
+                        <Check className="w-5 h-5 text-blue-600" />
+                        <span>User Testing & Optimisation</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Development Card */}
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-300/5 rounded-3xl blur-xl group-hover:from-blue-500/10 group-hover:to-blue-300/10 transition-all duration-300" />
+                  <div className="relative bg-white/80 p-8 rounded-3xl border border-gray-200 hover:border-gray-300 transition-all duration-300 backdrop-blur-sm">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
+                      <Code2 className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900">Modern Web Development</h3>
+                    <p className="text-gray-600 mb-6">Build scalable, lightning-fast web applications using cutting-edge technologies like React, Next.js, and Node.js.</p>
+                    <ul className="space-y-3 mb-8">
+                      <li className="flex items-center gap-3 text-sm text-gray-700">
+                        <Check className="w-5 h-5 text-blue-600" />
+                        <span>Custom Web Applications</span>
+                      </li>
+                      <li className="flex items-center gap-3 text-sm text-gray-700">
+                        <Check className="w-5 h-5 text-blue-600" />
+                        <span>API Development & Integration</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Marketing Card */}
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-300/5 rounded-3xl blur-xl group-hover:from-blue-500/10 group-hover:to-blue-300/10 transition-all duration-300" />
+                  <div className="relative bg-white/80 p-8 rounded-3xl border border-gray-200 hover:border-gray-300 transition-all duration-300 backdrop-blur-sm">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
+                      <LineChart className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900">Growth Marketing</h3>
+                    <p className="text-gray-600 mb-6">Accelerate your startup's growth with data-driven digital marketing strategies that deliver measurable results.</p>
+                    <ul className="space-y-3 mb-8">
+                      <li className="flex items-center gap-3 text-sm text-gray-700">
+                        <Check className="w-5 h-5 text-blue-600" />
+                        <span>Technical SEO Optimisation</span>
+                      </li>
+                      <li className="flex items-center gap-3 text-sm text-gray-700">
+                        <Check className="w-5 h-5 text-blue-600" />
+                        <span>Conversion Rate Optimisation</span>
+                      </li>
+                      <li className="flex items-center gap-3 text-sm text-gray-700">
+                        <Check className="w-5 h-5 text-blue-600" />
+                        <span>Analytics & Performance Tracking</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Process Section */}
+          <section className="py-20 relative">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-100/80 to-transparent pointer-events-none" />
+            <div className="container mx-auto px-4 relative">
+              <div className="max-w-4xl mx-auto text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">Our Proven Development Process</h2>
+                <p className="text-gray-600">We follow a battle-tested methodology that ensures your project is delivered on time, within budget, and exceeds expectations.</p>
+              </div>
+              <div className="grid md:grid-cols-4 gap-8">
+                <div className="relative">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
+                    <span className="text-xl font-bold text-gray-900">1</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">Strategic Planning</h3>
+                  <p className="text-gray-600">Deep dive into your goals, market, and technical requirements.</p>
+                </div>
+                <div className="relative">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
+                    <span className="text-xl font-bold text-gray-900">2</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">UX Architecture</h3>
+                  <p className="text-gray-600">Design intuitive user flows and compelling interfaces.</p>
+                </div>
+                <div className="relative">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
+                    <span className="text-xl font-bold text-gray-900">3</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">Agile Development</h3>
+                  <p className="text-gray-600">Build with modern tech stack and continuous feedback.</p>
+                </div>
+                <div className="relative">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
+                    <span className="text-xl font-bold text-gray-900">4</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">Growth Launch</h3>
+                  <p className="text-gray-600">Deploy with optimisation for maximum market impact.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="py-20 relative">
+            <div className="container mx-auto px-4">
+              <div className="relative overflow-hidden bg-white/90 backdrop-blur-xl rounded-3xl p-12 border border-gray-200 shadow-lg">
+                <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5 pointer-events-none" />
+                <div className="relative max-w-3xl mx-auto text-center">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">Enquire Today For A Free Consultation</h2>
+                  <p className="text-gray-600 text-lg mb-8">
+                    Get a free consultation and custom quote for your project. Our expert team is ready to help transform your vision into reality.
+                  </p>
+                  <Button 
+                    size="lg" 
+                    className="bg-black hover:bg-gray-900 text-white text-lg px-8 py-6 shadow-lg transition-all duration-300 hover:scale-105 border-0"
+                  >
+                    Schedule Free Strategy Call <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
       </main>
     </>
   )

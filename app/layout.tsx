@@ -4,8 +4,14 @@ import { Inter } from 'next/font/google';
 import { MainNav } from '@/components/MainNav';
 import Footer from '@/components/Footer';
 import Script from 'next/script';
+import { CookieConsent } from '@/components/CookieConsent';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  adjustFontFallback: true
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://devora.dev'),
@@ -23,6 +29,23 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Devora',
+  },
+  applicationName: 'Devora',
+  manifest: '/manifest.json',
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -44,6 +67,8 @@ export const metadata: Metadata = {
     title: "Devora | Affordable Web Development for Startups",
     description: "Transform your startup with professional, affordable web development services. Expert React & Next.js development, UI/UX design, and SEO optimization.",
     images: ["/og-image.jpg"],
+    creator: "@devora",
+    site: "@devora",
   },
   robots: {
     index: true,
@@ -58,7 +83,11 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "your-google-verification-code",
+    other: {
+      me: ["yandex-verification-code", "bing-verification-code"]
+    }
   },
+  category: 'technology',
 };
 
 export default function RootLayout({
@@ -71,9 +100,35 @@ export default function RootLayout({
       <head>
         <link rel="canonical" href="https://devora.dev" />
         <meta name="theme-color" content="#000000" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        
+        {/* Preload critical assets */}
+        <link rel="preload" as="image" href="/grid.svg" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        
+        {/* Performance optimization meta tags */}
+        <meta httpEquiv="x-dns-prefetch-control" content="on" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta httpEquiv="Cache-Control" content="public, max-age=31536000, immutable" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="color-scheme" content="dark light" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Resource hints for third-party services */}
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        
         <Script
           id="schema-org"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
@@ -106,6 +161,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   );
