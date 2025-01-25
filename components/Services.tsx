@@ -82,17 +82,23 @@ const processSteps = [
 export default function Services() {
   return (
     <section className="bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900 relative overflow-hidden">
+      {/* Dark overlay for nav */}
+      <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-900/80 to-transparent z-[3]" />
+      
+      {/* Background gradients */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/10 to-white/30 z-[1]" />
+
       {/* Grid pattern overlay */}
       <div 
         className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] 
-        opacity-5" 
+        opacity-5 z-[2]" 
       />
 
       {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse z-[1]" />
+      <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse z-[1]" />
 
-      <div className="container mx-auto px-4 relative z-10 py-20">
+      <div className="container mx-auto px-4 relative z-[30] py-20">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

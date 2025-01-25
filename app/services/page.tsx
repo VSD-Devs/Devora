@@ -67,19 +67,25 @@ export default function ServicesPage() {
           })
         }}
       />
-      <main className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white relative overflow-hidden">
+      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900 pt-32 pb-20 relative overflow-hidden">
+        {/* Dark overlay for nav */}
+        <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-900/80 to-transparent z-[3]" />
+        
+        {/* Background gradients */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/10 to-white/30 z-[1]" />
+        
         {/* Grid pattern overlay */}
         <div 
           className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] 
-          opacity-10 z-[1]" 
+          opacity-5 z-[2]" 
         />
 
-        {/* Gradient orbs */}
-        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full blur-[120px] animate-pulse z-[1]" />
-        <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-[120px] animate-pulse z-[1]" />
+        {/* Animated glow orbs */}
+        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse z-[1]" />
+        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse z-[1]" />
 
         {/* Hero Section */}
-        <section className="pt-32 pb-20 relative">
+        <section className="relative">
           <div className="container mx-auto px-4 relative z-[30]">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -98,7 +104,7 @@ export default function ServicesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="text-6xl md:text-7xl font-bold mb-8 leading-tight text-white drop-shadow-[0_4px_15px_rgba(0,0,0,0.5)]"
+                className="text-6xl md:text-7xl font-bold mb-8 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600"
               >
                 Turn Your Vision Into Reality
               </motion.h1>
@@ -106,7 +112,7 @@ export default function ServicesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed"
+                className="text-xl text-gray-600 mb-10 max-w-2xl leading-relaxed"
               >
                 We specialize in crafting high-performance websites and applications that help startups scale. Get enterprise-grade development at prices that make sense for your business.
               </motion.p>
@@ -118,13 +124,13 @@ export default function ServicesPage() {
               >
                 <Button 
                   size="lg" 
-                  className="bg-white hover:bg-white/90 text-black text-lg px-8 py-6 shadow-lg transition-all duration-300 hover:scale-105 border-0"
+                  className="bg-black hover:bg-gray-900 text-white text-lg px-8 py-6 shadow-lg transition-all duration-300 hover:scale-105 border-0"
                 >
                   Get Free Consultation <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
                 <Button 
                   size="lg" 
-                  className="bg-black/80 hover:bg-black text-white border border-white/10 hover:border-white/20 text-lg px-8 py-6 
+                  className="bg-white/90 hover:bg-white text-black border border-gray-200 hover:border-gray-300 text-lg px-8 py-6 
                   transition-all duration-300 hover:scale-105 backdrop-blur-sm"
                 >
                   View Success Stories <ArrowUpRight className="ml-2 w-5 h-5" />
@@ -147,23 +153,23 @@ export default function ServicesPage() {
                 className="group relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-300/5 rounded-3xl blur-xl group-hover:from-blue-500/10 group-hover:to-blue-300/10 transition-all duration-300" />
-                <div className="relative bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-sm">
+                <div className="relative bg-white/80 p-8 rounded-3xl border border-gray-200 hover:border-gray-300 transition-all duration-300 backdrop-blur-sm">
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                    <Paintbrush2 className="w-6 h-6 text-blue-400" />
+                    <Paintbrush2 className="w-6 h-6 text-blue-600" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">UI/UX Design</h3>
-                  <p className="text-gray-300 mb-6">Transform visitors into customers with stunning, user-centric interfaces that deliver exceptional experiences across all devices.</p>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900">UI/UX Design</h3>
+                  <p className="text-gray-600 mb-6">Transform visitors into customers with stunning, user-centric interfaces that deliver exceptional experiences across all devices.</p>
                   <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3 text-sm text-gray-200">
-                      <Check className="w-5 h-5 text-blue-400" />
+                    <li className="flex items-center gap-3 text-sm text-gray-700">
+                      <Check className="w-5 h-5 text-blue-600" />
                       <span>Custom Interface Design & Branding</span>
                     </li>
-                    <li className="flex items-center gap-3 text-sm text-gray-200">
-                      <Check className="w-5 h-5 text-blue-400" />
+                    <li className="flex items-center gap-3 text-sm text-gray-700">
+                      <Check className="w-5 h-5 text-blue-600" />
                       <span>Mobile-First Responsive Design</span>
                     </li>
-                    <li className="flex items-center gap-3 text-sm text-gray-200">
-                      <Check className="w-5 h-5 text-blue-400" />
+                    <li className="flex items-center gap-3 text-sm text-gray-700">
+                      <Check className="w-5 h-5 text-blue-600" />
                       <span>User Testing & Optimisation</span>
                     </li>
                   </ul>
@@ -179,23 +185,23 @@ export default function ServicesPage() {
                 className="group relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-300/5 rounded-3xl blur-xl group-hover:from-blue-500/10 group-hover:to-blue-300/10 transition-all duration-300" />
-                <div className="relative bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-sm">
+                <div className="relative bg-white/80 p-8 rounded-3xl border border-gray-200 hover:border-gray-300 transition-all duration-300 backdrop-blur-sm">
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                    <Code2 className="w-6 h-6 text-blue-400" />
+                    <Code2 className="w-6 h-6 text-blue-600" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">Modern Web Development</h3>
-                  <p className="text-gray-300 mb-6">Build scalable, lightning-fast web applications using cutting-edge technologies like React, Next.js, and Node.js.</p>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900">Modern Web Development</h3>
+                  <p className="text-gray-600 mb-6">Build scalable, lightning-fast web applications using cutting-edge technologies like React, Next.js, and Node.js.</p>
                   <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3 text-sm text-gray-200">
-                      <Check className="w-5 h-5 text-blue-400" />
+                    <li className="flex items-center gap-3 text-sm text-gray-700">
+                      <Check className="w-5 h-5 text-blue-600" />
                       <span>Custom Web Applications</span>
                     </li>
-                    <li className="flex items-center gap-3 text-sm text-gray-200">
-                      <Check className="w-5 h-5 text-blue-400" />
+                    <li className="flex items-center gap-3 text-sm text-gray-700">
+                      <Check className="w-5 h-5 text-blue-600" />
                       <span>E-commerce Solutions</span>
                     </li>
-                    <li className="flex items-center gap-3 text-sm text-gray-200">
-                      <Check className="w-5 h-5 text-blue-400" />
+                    <li className="flex items-center gap-3 text-sm text-gray-700">
+                      <Check className="w-5 h-5 text-blue-600" />
                       <span>API Development & Integration</span>
                     </li>
                   </ul>
@@ -211,23 +217,23 @@ export default function ServicesPage() {
                 className="group relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-300/5 rounded-3xl blur-xl group-hover:from-blue-500/10 group-hover:to-blue-300/10 transition-all duration-300" />
-                <div className="relative bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-sm">
+                <div className="relative bg-white/80 p-8 rounded-3xl border border-gray-200 hover:border-gray-300 transition-all duration-300 backdrop-blur-sm">
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                    <LineChart className="w-6 h-6 text-blue-400" />
+                    <LineChart className="w-6 h-6 text-blue-600" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">Growth Marketing</h3>
-                  <p className="text-gray-300 mb-6">Accelerate your startup's growth with data-driven digital marketing strategies that deliver measurable results.</p>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900">Growth Marketing</h3>
+                  <p className="text-gray-600 mb-6">Accelerate your startup's growth with data-driven digital marketing strategies that deliver measurable results.</p>
                   <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3 text-sm text-gray-200">
-                      <Check className="w-5 h-5 text-blue-400" />
+                    <li className="flex items-center gap-3 text-sm text-gray-700">
+                      <Check className="w-5 h-5 text-blue-600" />
                       <span>Technical SEO Optimisation</span>
                     </li>
-                    <li className="flex items-center gap-3 text-sm text-gray-200">
-                      <Check className="w-5 h-5 text-blue-400" />
+                    <li className="flex items-center gap-3 text-sm text-gray-700">
+                      <Check className="w-5 h-5 text-blue-600" />
                       <span>Conversion Rate Optimization</span>
                     </li>
-                    <li className="flex items-center gap-3 text-sm text-gray-200">
-                      <Check className="w-5 h-5 text-blue-400" />
+                    <li className="flex items-center gap-3 text-sm text-gray-700">
+                      <Check className="w-5 h-5 text-blue-600" />
                       <span>Analytics & Performance Tracking</span>
                     </li>
                   </ul>
@@ -239,7 +245,7 @@ export default function ServicesPage() {
 
         {/* Process Section */}
         <section className="py-20 relative z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-950/10 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-100/80 to-transparent" />
           <div className="container mx-auto px-4 relative">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -248,8 +254,8 @@ export default function ServicesPage() {
               transition={{ duration: 0.7 }}
               className="max-w-4xl mx-auto text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Our Proven Development Process</h2>
-              <p className="text-gray-300">We follow a battle-tested methodology that ensures your project is delivered on time, within budget, and exceeds expectations.</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">Our Proven Development Process</h2>
+              <p className="text-gray-600">We follow a battle-tested methodology that ensures your project is delivered on time, within budget, and exceeds expectations.</p>
             </motion.div>
             <div className="grid md:grid-cols-4 gap-8">
               <motion.div 
@@ -260,10 +266,10 @@ export default function ServicesPage() {
                 className="relative"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                  <span className="text-xl font-bold text-white">1</span>
+                  <span className="text-xl font-bold text-gray-900">1</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4">Strategic Planning</h3>
-                <p className="text-gray-300">Deep dive into your goals, market, and technical requirements.</p>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">Strategic Planning</h3>
+                <p className="text-gray-600">Deep dive into your goals, market, and technical requirements.</p>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -273,10 +279,10 @@ export default function ServicesPage() {
                 className="relative"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                  <span className="text-xl font-bold text-white">2</span>
+                  <span className="text-xl font-bold text-gray-900">2</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4">UX Architecture</h3>
-                <p className="text-gray-300">Design intuitive user flows and compelling interfaces.</p>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">UX Architecture</h3>
+                <p className="text-gray-600">Design intuitive user flows and compelling interfaces.</p>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -286,10 +292,10 @@ export default function ServicesPage() {
                 className="relative"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                  <span className="text-xl font-bold text-white">3</span>
+                  <span className="text-xl font-bold text-gray-900">3</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4">Agile Development</h3>
-                <p className="text-gray-300">Build with modern tech stack and continuous feedback.</p>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">Agile Development</h3>
+                <p className="text-gray-600">Build with modern tech stack and continuous feedback.</p>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -299,10 +305,10 @@ export default function ServicesPage() {
                 className="relative"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-2xl flex items-center justify-center mb-6">
-                  <span className="text-xl font-bold text-white">4</span>
+                  <span className="text-xl font-bold text-gray-900">4</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4">Growth Launch</h3>
-                <p className="text-gray-300">Deploy with optimization for maximum market impact.</p>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">Growth Launch</h3>
+                <p className="text-gray-600">Deploy with optimization for maximum market impact.</p>
               </motion.div>
             </div>
           </div>
@@ -316,17 +322,17 @@ export default function ServicesPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="relative overflow-hidden bg-gradient-to-br from-blue-950/30 to-blue-900/30 rounded-3xl p-12 border border-white/10"
+              className="relative overflow-hidden bg-white/80 backdrop-blur-xl rounded-3xl p-12 border border-gray-200 shadow-lg"
             >
               <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
               <div className="relative max-w-3xl mx-auto text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Enquire Today For A Free Consultation</h2>
-                <p className="text-gray-300 text-lg mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">Enquire Today For A Free Consultation</h2>
+                <p className="text-gray-600 text-lg mb-8">
                   Get a free consultation and custom quote for your project. Our expert team is ready to help transform your vision into reality.
                 </p>
                 <Button 
                   size="lg" 
-                  className="bg-white hover:bg-white/90 text-black text-lg px-8 py-6 shadow-lg transition-all duration-300 hover:scale-105 border-0"
+                  className="bg-black hover:bg-gray-900 text-white text-lg px-8 py-6 shadow-lg transition-all duration-300 hover:scale-105 border-0"
                 >
                   Schedule Free Strategy Call <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
