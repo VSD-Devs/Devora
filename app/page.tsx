@@ -61,19 +61,19 @@ export default function Home() {
       </div>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-gray-100 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5" />
         
         {/* Gradient orbs */}
-        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
         <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
               Frequently Asked Questions
             </h2>
-            <p className="text-base md:text-lg text-gray-200">
+            <p className="text-base md:text-lg text-gray-600">
               Everything you need to know about our services and process
             </p>
           </div>
@@ -90,11 +90,11 @@ export default function Home() {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-4 md:p-6 bg-white/10 hover:bg-white/20 rounded-lg transition-colors duration-200 border border-white/10"
+                  className="w-full flex items-center justify-between p-4 md:p-6 bg-white/95 hover:bg-white rounded-lg transition-colors duration-200 border border-gray-200 hover:border-gray-300 hover:shadow-lg text-gray-900"
                 >
-                  <span className="text-base md:text-lg font-semibold text-left text-white">{faq.question}</span>
+                  <span className="text-base md:text-lg font-semibold text-left">{faq.question}</span>
                   <Plus
-                    className={`w-5 h-5 text-white transition-transform duration-200 ${
+                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
                       openFaq === index ? "rotate-45" : ""
                     }`}
                   />
@@ -108,7 +108,7 @@ export default function Home() {
                       height: { duration: 0.15, ease: "easeOut" },
                       opacity: { duration: 0.1, ease: "linear" }
                     }}
-                    className="p-4 md:p-6 bg-white/10 rounded-b-lg text-gray-100 border-x border-b border-white/10"
+                    className="p-4 md:p-6 bg-white/95 rounded-b-lg text-gray-600 border-x border-b border-gray-200"
                   >
                     {faq.answer}
                   </motion.div>

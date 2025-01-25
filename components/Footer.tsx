@@ -83,17 +83,11 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-white text-lg font-semibold">Contact Us</h3>
             <ul className="space-y-3">
-              <li className="flex items-center space-x-3">
-                <MapPin size={16} />
+              <li className="flex items-start space-x-2">
                 <span className="text-sm">Sheffield Science Park Cooper Buildings, Arundel St, Sheffield City Centre, Sheffield S1 2NS</span>
               </li>
-              <li className="flex items-center space-x-3">
-                <Phone size={16} />
-                <span className="text-sm">+61 XXX XXX ]XX</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Mail size={16} />
-                <span className="text-sm">hello@devora.dev</span>
+              <li className="flex items-start space-x-2">
+                <span className="text-sm">hello@devora.co.uk</span>
               </li>
             </ul>
           </div>

@@ -81,16 +81,16 @@ const processSteps = [
 
 export default function Services() {
   return (
-    <section className="bg-gradient-to-b from-black to-gray-900 text-white relative overflow-hidden">
+    <section className="bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900 relative overflow-hidden">
       {/* Grid pattern overlay */}
       <div 
         className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] 
-        opacity-10" 
+        opacity-5" 
       />
 
       {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
 
       <div className="container mx-auto px-4 relative z-10 py-20">
         {/* Section Header */}
@@ -101,10 +101,10 @@ export default function Services() {
           transition={{ duration: 0.7 }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
             Transform Your Startup with Innovative Web Solutions
           </h2>
-          <p className="text-gray-200 text-xl leading-relaxed">
+          <p className="text-gray-600 text-xl leading-relaxed">
             Affordable, high-impact web development and digital services tailored for ambitious startups. Launch faster, grow smarter, spend less.
           </p>
         </motion.div>
@@ -120,17 +120,24 @@ export default function Services() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative group"
             >
-              <div className="h-full p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                <div className={`w-14 h-14 rounded-xl ${service.colorClass}/10 flex items-center justify-center mb-6`}>
-                  {service.icon}
+              <div className="h-full p-8 rounded-2xl bg-white/95 backdrop-blur-md 
+              border border-gray-200 shadow-sm
+              hover:shadow-xl transition-all duration-300 
+              bg-gradient-to-br from-white via-white to-gray-50
+              hover:border-gray-300">
+                <div className={`w-14 h-14 rounded-xl ${service.colorClass}/15 flex items-center justify-center mb-6 
+                border border-gray-100`}>
+                  <div className={`${service.colorClass.replace('bg-', 'text-')}`}>
+                    {service.icon}
+                  </div>
                 </div>
-                <h3 className="text-2xl font-semibold mb-4">{service.title}</h3>
-                <p className="text-gray-200 text-base mb-6 leading-relaxed">{service.description}</p>
+                <h3 className="text-2xl font-semibold mb-4 text-gray-800">{service.title}</h3>
+                <p className="text-gray-700 text-base mb-6 leading-relaxed">{service.description}</p>
                 <ul className="space-y-3">
                   {service.features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-center gap-3 text-base text-gray-200"
+                      className="flex items-center gap-3 text-base text-gray-700"
                     >
                       <div className={`w-2 h-2 rounded-full ${service.colorClass}`} />
                       {feature}
@@ -151,8 +158,8 @@ export default function Services() {
             transition={{ duration: 0.7 }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl font-bold mb-4">How We Work</h3>
-            <p className="text-gray-200 text-xl">
+            <h3 className="text-4xl font-bold mb-4 text-gray-900">How We Work</h3>
+            <p className="text-gray-600 text-xl">
               A proven approach that turns your vision into reality, without breaking the bank
             </p>
           </motion.div>
@@ -167,14 +174,14 @@ export default function Services() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative"
               >
-                <div className="p-8 rounded-2xl bg-white/5 border border-white/10 h-full">
-                  <div className="text-4xl font-bold text-white/30 mb-4">{step.number}</div>
-                  <h4 className="text-xl font-semibold mb-3">{step.title}</h4>
-                  <p className="text-base text-gray-200 leading-relaxed">{step.description}</p>
+                <div className="p-8 rounded-2xl bg-white border border-gray-100 hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="text-4xl font-bold text-gray-300 mb-4">{step.number}</div>
+                  <h4 className="text-xl font-semibold mb-3 text-gray-900">{step.title}</h4>
+                  <p className="text-base text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
                 {index < processSteps.length - 1 && (
                   <div className="hidden md:block absolute top-1/2 -right-6 transform -translate-y-1/2">
-                    <ArrowRight className="w-6 h-6 text-gray-600" />
+                    <ArrowRight className="w-6 h-6 text-gray-400" />
                   </div>
                 )}
               </motion.div>
@@ -192,7 +199,7 @@ export default function Services() {
         >
           <Button
             size="lg"
-            className="bg-white text-black hover:bg-white/90 text-lg px-8"
+            className="bg-black text-white hover:bg-gray-900 text-lg px-8"
           >
             Get Your Free Consultation
             <ArrowRight className="ml-2 w-5 h-5" />
