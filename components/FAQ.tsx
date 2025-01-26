@@ -24,17 +24,18 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-gray-950 via-gray-900 to-black relative overflow-hidden">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.015]" />
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 via-transparent to-purple-50/50" />
+      <div className="absolute inset-0 bg-[url('/grid.svhb  g')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5" />
+      <div className="absolute -left-40 top-40 w-80 h-80 rounded-full bg-blue-500/10 blur-[100px]" />
+      <div className="absolute -right-40 bottom-40 w-80 h-lllllllll80 rounded-full bg-purple-500/10 blur-[100px]" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
+          <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
             Frequently Asked Questions
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-400 text-lg">
             Get answers to common questions about our services and process
           </p>
         </div>
@@ -44,7 +45,7 @@ export default function FAQ() {
             {faqs.map((faq, index) => (
               <div 
                 key={index}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200"
+                className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-lg"
               >
                 <h3 className="text-xl font-semibold mb-4 text-gray-900">
                   {faq.question}
@@ -59,7 +60,7 @@ export default function FAQ() {
           <div className="text-center mt-12">
             <Button
               size="lg"
-              className="bg-black text-white text-lg px-8 py-6 shadow-lg"
+              className="bg-white hover:bg-white/90 text-black text-lg px-8 py-6 shadow-lg"
               onClick={() => window.location.href = '/contact'}
             >
               Have More Questions? <ArrowRight className="ml-2 w-5 h-5" />

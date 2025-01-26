@@ -89,8 +89,8 @@ export default function Services() {
       <div className="container mx-auto px-4 relative z-[30] py-20">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
-            Transform Your Startup with Innovative Web Solutions
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
+          Web Development Solutions for Startups and Small Businesses
           </h2>
           <p className="text-gray-600 text-xl leading-relaxed">
             Affordable, high-impact web development and digital services tailored for ambitious startups. Launch faster, grow smarter, spend less.

@@ -52,7 +52,7 @@ export default function Hero() {
               </Button>
               <Button 
                 size="lg" 
-                className="bg-transparent text-white border-2 border-white/20 text-lg px-8 py-6 flex items-center"
+                className="bg-black text-white hover:bg-black/90 text-lg px-8 py-6 flex items-center transition-all duration-300"
                 onClick={() => window.location.href = '/contact'}
               >
                 Contact Us

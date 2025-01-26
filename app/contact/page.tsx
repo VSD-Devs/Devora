@@ -82,13 +82,13 @@ export default function ContactPage() {
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900 relative">
       <Toaster />
       
-      {/* Background elements - Fixed positioning and pointer-events-none */}
+      {/* Background elements */}
       <div className="fixed inset-0 bg-gradient-to-b from-white/50 to-white/30 pointer-events-none" />
       <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center opacity-5 pointer-events-none" />
       
       {/* Dark overlay for nav */}
       <div className="fixed inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-900/60 via-gray-900/1 to-transparent z-[1]" />
-
+      
       {/* Content wrapper */}
       <div className="relative z-[2] pt-40">
         {/* Hero Section */}
@@ -130,10 +130,6 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-
-                  </div>
-
-                  <div className="flex items-start gap-4">
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-pink-500/20 to-pink-500/10 flex items-center justify-center border border-pink-500/20">
                       <MessageSquare className="w-5 h-5 md:w-6 md:h-6 text-pink-600" />
                     </div>
@@ -145,82 +141,81 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Contact Form - Darker background */}
-              <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-gray-200 shadow-lg relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-100/80 to-white/60 rounded-2xl pointer-events-none" />
-                <form onSubmit={handleSubmit} className="space-y-6 relative">
+              {/* Contact Form */}
+              <div className="bg-gradient-to-b from-gray-950 via-gray-900 to-black backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-gray-800/50 shadow-lg">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-gray-700">First Name</label>
+                      <label className="text-sm font-medium text-white">First Name</label>
                       <Input
                         type="text"
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleChange}
                         placeholder="John"
-                        className="bg-white/80 border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500 relative z-10"
+                        className="bg-white/10 border-gray-800 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-gray-700">Last Name</label>
+                      <label className="text-sm font-medium text-white">Last Name</label>
                       <Input
                         type="text"
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleChange}
                         placeholder="Doe"
-                        className="bg-white/80 border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500 relative z-10"
+                        className="bg-white/10 border-gray-800 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
                         required
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700">Email</label>
+                    <label className="text-sm font-medium text-white">Email</label>
                     <Input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="john@company.com"
-                      className="bg-white/80 border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500 relative z-10"
+                      className="bg-white/10 border-gray-800 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
                       required
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700">Company</label>
+                    <label className="text-sm font-medium text-white">Company</label>
                     <Input
                       type="text"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
                       placeholder="Your Company Name"
-                      className="bg-white/80 border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500 relative z-10"
+                      className="bg-white/10 border-gray-800 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700">Phone (optional)</label>
+                    <label className="text-sm font-medium text-white">Phone (optional)</label>
                     <Input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+1 (123) 456-7890"
-                      className="bg-white/80 border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500 relative z-10"
+                      className="bg-white/10 border-gray-800 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700">Message</label>
+                    <label className="text-sm font-medium text-white">Message</label>
                     <Textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us about your project..."
-                      className="bg-white/80 border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500 min-h-[120px] relative z-10"
+                      className="bg-white/10 border-gray-800 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 min-h-[120px]"
                       required
                     />
                   </div>
@@ -228,7 +223,7 @@ export default function ContactPage() {
                   <Button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-black hover:bg-gray-900 text-white font-semibold transition-all duration-300 hover:scale-105 relative z-10"
+                    className="w-full bg-white hover:bg-white/90 text-black font-semibold transition-all duration-300 hover:scale-105"
                   >
                     {isLoading ? "Sending..." : "Send Message"}
                     {!isLoading && <ArrowRight className="ml-2 w-5 h-5" />}
