@@ -26,18 +26,18 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-24 relative overflow-hidden bg-gray-900" id="testimonials">
+    <section className="py-24 relative overflow-hidden bg-white" id="testimonials">
       {/* Modern geometric decorative elements */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10" />
-      <div className="absolute -left-40 top-40 w-80 h-80 rounded-full bg-blue-500/10 blur-[100px]" />
-      <div className="absolute -right-40 bottom-40 w-80 h-80 rounded-full bg-purple-500/10 blur-[100px]" />
+      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
+      <div className="absolute -left-40 top-40 w-80 h-80 rounded-full bg-blue-500/5 blur-[100px]" />
+      <div className="absolute -right-40 bottom-40 w-80 h-80 rounded-full bg-purple-500/5 blur-[100px]" />
 
       <div className="container mx-auto px-4 relative">
         <div className="max-w-3xl mx-auto text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             Trusted by Innovative Startups
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-600 text-lg">
             Join the growing community of startups who've transformed their digital presence with our expertise
           </p>
         </div>
@@ -46,7 +46,7 @@ export default function Testimonials() {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.author}
-              className="relative bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl p-8 backdrop-blur-sm border border-gray-800"
+              className="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl p-8 shadow-xl border border-gray-700"
             >
               <div className="flex items-center mb-6">
                 {[...Array(testimonial.rating)].map((_, i) => (
@@ -59,11 +59,11 @@ export default function Testimonials() {
                   </svg>
                 ))}
               </div>
-              <blockquote className="text-gray-300 text-lg leading-relaxed mb-6">
+              <blockquote className="text-gray-200 text-lg leading-relaxed mb-6">
                 "{testimonial.quote}"
               </blockquote>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white font-semibold border border-white/10">
+                <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-gray-100 font-semibold border border-gray-600">
                   {testimonial.initials}
                 </div>
                 <div>
