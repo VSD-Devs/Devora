@@ -5,6 +5,8 @@ import { MainNav } from '@/components/MainNav';
 import Footer from '@/components/Footer';
 import Script from 'next/script';
 import { CookieConsent } from '@/components/CookieConsent';
+import { headers } from 'next/headers';
+import dynamic from 'next/dynamic';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -90,11 +92,20 @@ export const metadata: Metadata = {
   category: 'technology',
 };
 
+// Client component for conditional navigation
+const NavigationWrapper = dynamic(() => import('@/components/NavigationWrapper'), {
+  ssr: false
+});
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = headers();
+  const pathname = headersList.get("x-pathname") || "";
+  const isProjectInquiry = pathname.startsWith("/project-inquiry");
+
   return (
     <html lang="en">
       <head>
@@ -156,7 +167,9 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <MainNav />
+        <NavigationWrapper>
+          <MainNav />
+        </NavigationWrapper>
         <main>
           {children}
         </main>

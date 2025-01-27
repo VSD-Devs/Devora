@@ -63,7 +63,7 @@ export default function PricingPage() {
           {/* Header Section - Simplified */}
           <div className="text-center mb-20 relative">
             <div className="relative mb-8">
-              <h1 className="text-6xl md:text-7xl font-bold mb-8 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 pb-2">
+              <h1 className="text-4xl md:text-5xl font-bold mb-8 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 pb-2">
                 Start-up Friendly Pricing
               </h1>
             </div>
