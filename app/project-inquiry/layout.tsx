@@ -12,7 +12,7 @@ export default function ProjectInquiryLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+    <div className="min-h-[100dvh] bg-gradient-to-b from-gray-100 to-gray-200 overflow-hidden">
       {children}
     </div>
   )
