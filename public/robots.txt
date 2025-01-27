@@ -1,0 +1,54 @@
+# Global rules for all robots
+User-agent: *
+Allow: /
+Allow: /blog/
+Allow: /services/
+Allow: /about/
+Allow: /contact/
+
+# Prevent crawling of non-public areas
+Disallow: /api/
+Disallow: /_next/
+Disallow: /*/_next/
+Disallow: /static/
+Disallow: /*.json$
+Disallow: /*?*
+Disallow: /search
+
+# Block common bot spam
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# Allow Google-specific crawlers
+User-agent: Googlebot
+Allow: /
+Allow: /*.js
+Allow: /*.css
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.gif
+Allow: /*.svg
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.png
+Allow: /*.webp
+Allow: /*.svg
+
+# Sitemap declaration
+Sitemap: https://devora.co.uk/sitemap.xml
+
+# Crawl-delay for other bots
+Crawl-delay: 5 
