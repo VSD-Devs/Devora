@@ -80,9 +80,9 @@ export default function ProjectInquiryPage() {
   }
 
   return (
-    <div className="min-h-[100dvh] flex flex-col">
-      {/* Mobile-optimized header */}
-      <div className="sticky top-0 z-50 bg-gradient-to-b from-gray-100 to-transparent pb-4 pt-4 px-4">
+    <div className="min-h-[100dvh] flex flex-col bg-gradient-to-b from-gray-50 to-gray-100">
+      {/* Mobile-optimized header - Only visible on mobile */}
+      <div className="sticky top-0 z-50 bg-gradient-to-b from-gray-100 to-transparent pb-4 pt-4 px-4 md:hidden">
         <button
           onClick={() => router.back()}
           className="inline-flex items-center text-gray-600 hover:text-gray-900 group"
@@ -92,28 +92,53 @@ export default function ProjectInquiryPage() {
         </button>
       </div>
 
+      {/* Desktop Back Button - Only visible on desktop */}
+      <div className="hidden md:block absolute top-6 left-8 z-50">
+        <button
+          onClick={() => router.back()}
+          className="inline-flex items-center text-gray-900 hover:text-gray-700 group"
+        >
+          <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
+          <span className="text-base">Back</span>
+        </button>
+      </div>
+
       {/* Main content */}
-      <div className="flex-1 flex flex-col h-[calc(100dvh-64px)] overflow-hidden">
+      <div className="flex-1 flex flex-col md:pt-20">
         {/* Form Card */}
-        <div className="relative flex-1 flex flex-col">
+        <div className="relative flex-1 flex flex-col md:container md:mx-auto md:px-4">
           {/* Glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-t-xl blur-xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-t-xl md:rounded-xl blur-xl" />
           
           {/* Card */}
-          <div className="relative bg-white rounded-t-xl border-t border-x border-gray-200 shadow-lg flex-1 flex flex-col overflow-hidden">
-            {/* Header Section */}
-            <div className="bg-gradient-to-b from-gray-50 to-white border-b border-gray-100 p-4 sm:p-6">
-              <div className="text-center">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-gray-900">
+          <div className="relative bg-white rounded-t-xl md:rounded-xl border-t md:border border-gray-200 shadow-lg flex-1 flex flex-col overflow-hidden md:max-w-3xl md:mx-auto">
+            {/* Form Header with Title */}
+            <div className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white border-b border-gray-100">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
+              
+              {/* Desktop Title */}
+              <div className="hidden md:block relative px-8 pt-8 pb-4 text-center">
+                <h1 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
+                  Start Your Project
+                </h1>
+                <p className="text-base text-gray-600 max-w-xl mx-auto">
+                  Tell us about your vision and let's create something extraordinary together
+                </p>
+              </div>
+
+              {/* Mobile Title */}
+              <div className="text-center md:hidden p-4">
+                <h1 className="text-2xl font-bold mb-2 text-gray-900">
                   Tell Us About Your Project
                 </h1>
-                <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="text-sm text-gray-600">
                   Help us understand your vision so we can bring it to life.
                 </p>
               </div>
 
-              {/* Progress Steps - Mobile Optimized */}
-              <div className="mt-4 sm:mt-6">
+              {/* Progress Steps */}
+              <div className="px-4 sm:px-6 pb-4">
                 {/* Mobile Progress Bar */}
                 <div className="block sm:hidden">
                   <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
@@ -128,7 +153,7 @@ export default function ProjectInquiryPage() {
                 </div>
 
                 {/* Desktop Progress Steps */}
-                <div className="hidden sm:flex justify-between items-center relative">
+                <div className="hidden sm:flex justify-between items-center relative mt-6">
                   <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-gray-200 -z-10" />
                   {steps.map((step) => (
                     <div
@@ -138,7 +163,7 @@ export default function ProjectInquiryPage() {
                       }`}
                     >
                       <div
-                        className={`w-8 h-8 rounded-full flex items-center justify-center mb-2 transition-colors shadow-sm ${
+                        className={`w-7 h-7 rounded-full flex items-center justify-center mb-1.5 transition-colors shadow-sm ${
                           currentStep >= step.id
                             ? "bg-blue-600 text-white ring-1 ring-blue-100"
                             : "bg-white border border-gray-200"
@@ -147,17 +172,17 @@ export default function ProjectInquiryPage() {
                         aria-label={`Step ${step.id}: ${step.title}`}
                       >
                         {currentStep > step.id ? (
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                           </svg>
                         ) : (
-                          <span className="text-sm font-semibold">{step.id}</span>
+                          <span className="text-xs font-semibold">{step.id}</span>
                         )}
                       </div>
-                      <div className="text-sm font-medium">
-                        <span className="sr-only">Step {step.id}:</span> {step.title}
+                      <div className="text-xs font-medium">
+                        {step.title}
                       </div>
-                      <div className="text-xs text-gray-500">{step.description}</div>
+                      <div className="text-[10px] text-gray-500">{step.description}</div>
                     </div>
                   ))}
                 </div>
