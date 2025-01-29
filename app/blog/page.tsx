@@ -63,6 +63,11 @@ export default function BlogPage() {
         <section className="mb-16">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
+              <div className="inline-block mb-4 sm:mb-6 p-1.5 sm:p-2 bg-white/50 backdrop-blur-sm rounded-full border border-gray-100">
+                <span className="px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-medium bg-black text-white rounded-full">
+                  Industry Insights & Tips
+                </span>
+              </div>
               <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
                 Insights & Resources
               </h1>

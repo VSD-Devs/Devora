@@ -86,11 +86,11 @@ export default function Services() {
       {/* Grid pattern overlay - Static */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5 z-[2]" />
 
-      <div className="container mx-auto px-4 relative z-[30] py-20">
+      <div className="container mx-auto px-4 relative z-[30] py-20 mt-16">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20 px-4">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
-          Web Development Solutions for Startups and Small Businesses
+            Web Development Solutions for Startups and Small Businesses
           </h2>
           <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
             Affordable, high-impact web development and digital services tailored for ambitious startups. Launch faster, grow smarter, spend less.

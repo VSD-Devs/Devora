@@ -13,7 +13,7 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowLeft } from "lucide-react"
 import { useRouter } from "next/navigation"
@@ -79,12 +79,31 @@ export default function ProjectInquiryPage() {
     e.preventDefault()
   }
 
+  const handleBack = () => {
+    router.push('/')
+  }
+
+  // Hide footer on mobile
+  useEffect(() => {
+    const footer = document.querySelector('footer')
+    if (footer) {
+      footer.classList.add('md:block', 'hidden')
+    }
+    
+    // Cleanup: remove classes when component unmounts
+    return () => {
+      if (footer) {
+        footer.classList.remove('md:block', 'hidden')
+      }
+    }
+  }, [])
+
   return (
     <div className="min-h-[100dvh] flex flex-col bg-gradient-to-b from-gray-50 to-gray-100">
       {/* Mobile-optimized header - Only visible on mobile */}
       <div className="sticky top-0 z-50 bg-gradient-to-b from-gray-100 to-transparent pb-4 pt-4 px-4 md:hidden">
         <button
-          onClick={() => router.back()}
+          onClick={handleBack}
           className="inline-flex items-center text-gray-600 hover:text-gray-900 group"
         >
           <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
@@ -95,7 +114,7 @@ export default function ProjectInquiryPage() {
       {/* Desktop Back Button - Only visible on desktop */}
       <div className="hidden md:block absolute top-6 left-8 z-50">
         <button
-          onClick={() => router.back()}
+          onClick={handleBack}
           className="inline-flex items-center text-gray-900 hover:text-gray-700 group"
         >
           <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
@@ -119,6 +138,11 @@ export default function ProjectInquiryPage() {
               
               {/* Desktop Title */}
               <div className="hidden md:block relative px-8 pt-8 pb-4 text-center">
+                <div className="inline-block mb-4 sm:mb-6 p-1.5 sm:p-2 bg-white/50 backdrop-blur-sm rounded-full border border-gray-100">
+                  <span className="px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-medium bg-black text-white rounded-full">
+                    Start Your Journey
+                  </span>
+                </div>
                 <h1 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
                   Start Your Project
                 </h1>
