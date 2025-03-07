@@ -1,7 +1,9 @@
 "use client";
 
 import { Button } from "./ui/button"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Plus, Minus } from "lucide-react"
+import { useState } from "react"
+import Link from "next/link"
 
 const faqs = [
   {
@@ -23,48 +25,79 @@ const faqs = [
 ]
 
 export default function FAQ() {
+  const [openIndex, setOpenIndex] = useState(0);
+  
+  const toggleFaq = (index: number) => {
+    setOpenIndex(openIndex === index ? -1 : index);
+  };
+  
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-950 via-gray-900 to-black relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-[url('/grid.svhb  g')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5" />
-      <div className="absolute -left-40 top-40 w-80 h-80 rounded-full bg-blue-500/10 blur-[100px]" />
-      <div className="absolute -right-40 bottom-40 w-80 h-lllllllll80 rounded-full bg-purple-500/10 blur-[100px]" />
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
-            Frequently Asked Questions
+    <section className="py-16 md:py-24 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 relative overflow-hidden">
+      {/* Subtle background elements */}
+      <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.03] z-[1]" />
+      <div className="absolute top-0 right-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-[120px] z-0" />
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-[3]">
+        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+          <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/70 backdrop-blur-sm mb-4">
+            <span className="mr-1 h-2 w-2 rounded-full bg-teal-400"></span>
+            <span>FAQ</span>
+          </div>
+          
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+            Frequently Asked <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">Questions</span>
           </h2>
-          <p className="text-gray-400 text-lg">
+          
+          <p className="text-white/70 text-lg">
             Get answers to common questions about our services and process
           </p>
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <div className="grid gap-6">
+          <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div 
                 key={index}
-                className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-lg"
+                className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden transition-all"
               >
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {faq.answer}
-                </p>
+                <button 
+                  className="w-full flex items-center justify-between p-5 text-left"
+                  onClick={() => toggleFaq(index)}
+                >
+                  <h3 className="text-lg font-medium text-white">
+                    {faq.question}
+                  </h3>
+                  <div className="flex-shrink-0 ml-4">
+                    {openIndex === index ? (
+                      <Minus className="w-5 h-5 text-teal-400" />
+                    ) : (
+                      <Plus className="w-5 h-5 text-white/70" />
+                    )}
+                  </div>
+                </button>
+                
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openIndex === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <div className="p-5 pt-0 text-white/70">
+                    {faq.answer}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <Button
-              size="lg"
-              className="bg-white hover:bg-white/90 text-black text-lg px-8 py-6 shadow-lg"
-              onClick={() => window.location.href = '/contact'}
-            >
-              Have More Questions? <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
+            <Link href="/contact">
+              <Button
+                size="lg"
+                className="bg-white text-slate-900 hover:bg-white/90 rounded-xl px-6 py-6 font-medium text-base"
+              >
+                Have More Questions? <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

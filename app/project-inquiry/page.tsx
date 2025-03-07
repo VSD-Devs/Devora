@@ -15,7 +15,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, CheckCircle2, ChevronRight, ChevronLeft, Send } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 
@@ -40,12 +40,22 @@ export default function ProjectInquiryPage() {
   const nextStep = () => {
     if (currentStep < steps.length) {
       setCurrentStep(currentStep + 1)
+      
+      // Scroll to top when moving to next step (mobile)
+      if (window.innerWidth < 768) {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
     }
   }
 
   const prevStep = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1)
+      
+      // Scroll to top when moving to previous step (mobile)
+      if (window.innerWidth < 768) {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
     }
   }
 
@@ -100,13 +110,19 @@ export default function ProjectInquiryPage() {
 
   return (
     <div className="min-h-[100dvh] flex flex-col bg-gradient-to-b from-gray-50 to-gray-100">
+      {/* Accessibility skip link */}
+      <a href="#inquiry-form" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-md">
+        Skip to form
+      </a>
+
       {/* Mobile-optimized header - Only visible on mobile */}
-      <div className="sticky top-0 z-50 bg-gradient-to-b from-gray-100 to-transparent pb-4 pt-4 px-4 md:hidden">
+      <div className="sticky top-0 z-50 bg-white pb-4 pt-4 px-4 md:hidden shadow-sm">
         <button
           onClick={handleBack}
-          className="inline-flex items-center text-gray-600 hover:text-gray-900 group"
+          className="inline-flex items-center text-gray-700 hover:text-gray-900 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md p-1"
+          aria-label="Back to homepage"
         >
-          <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
+          <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
           <span className="text-base">Back</span>
         </button>
       </div>
@@ -115,9 +131,10 @@ export default function ProjectInquiryPage() {
       <div className="hidden md:block absolute top-6 left-8 z-50">
         <button
           onClick={handleBack}
-          className="inline-flex items-center text-gray-900 hover:text-gray-700 group"
+          className="inline-flex items-center text-gray-700 hover:text-gray-900 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md p-1"
+          aria-label="Back to homepage"
         >
-          <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
+          <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
           <span className="text-base">Back</span>
         </button>
       </div>
@@ -126,20 +143,20 @@ export default function ProjectInquiryPage() {
       <div className="flex-1 flex flex-col md:pt-20">
         {/* Form Card */}
         <div className="relative flex-1 flex flex-col md:container md:mx-auto md:px-4">
-          {/* Glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-300/10 rounded-t-xl md:rounded-xl blur-xl" />
+          {/* Subtle glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-t-xl md:rounded-xl blur-xl" aria-hidden="true" />
           
           {/* Card */}
-          <div className="relative bg-white rounded-t-xl md:rounded-xl border-t md:border border-gray-200 shadow-lg flex-1 flex flex-col overflow-hidden md:max-w-3xl md:mx-auto">
+          <div id="inquiry-form" className="relative bg-white rounded-t-xl md:rounded-xl border-t md:border border-gray-200 shadow-lg flex-1 flex flex-col overflow-hidden md:max-w-3xl md:mx-auto">
             {/* Form Header with Title */}
             <div className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white border-b border-gray-100">
               {/* Background Pattern */}
-              <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
+              <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" aria-hidden="true" />
               
               {/* Desktop Title */}
               <div className="hidden md:block relative px-8 pt-8 pb-4 text-center">
                 <div className="inline-block mb-4 sm:mb-6 p-1.5 sm:p-2 bg-white/50 backdrop-blur-sm rounded-full border border-gray-100">
-                  <span className="px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-medium bg-black text-white rounded-full">
+                  <span className="px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-medium bg-blue-600 text-white rounded-full">
                     Start Your Journey
                   </span>
                 </div>
@@ -162,23 +179,24 @@ export default function ProjectInquiryPage() {
               </div>
 
               {/* Progress Steps */}
-              <div className="px-4 sm:px-6 pb-4">
+              <div className="px-4 sm:px-6 pb-4" aria-label={`Step ${currentStep} of ${steps.length}: ${steps[currentStep - 1].title}`}>
                 {/* Mobile Progress Bar */}
                 <div className="block sm:hidden">
-                  <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-blue-600 transition-all duration-300"
                       style={{ width: `${(currentStep / steps.length) * 100}%` }}
+                      aria-hidden="true"
                     />
                   </div>
                   <div className="mt-2 text-sm text-gray-600 text-center">
-                    Step {currentStep} of {steps.length}: {steps[currentStep - 1].title}
+                    Step {currentStep} of {steps.length}: <span className="font-medium">{steps[currentStep - 1].title}</span>
                   </div>
                 </div>
 
                 {/* Desktop Progress Steps */}
                 <div className="hidden sm:flex justify-between items-center relative mt-6">
-                  <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-gray-200 -z-10" />
+                  <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-gray-200 -z-10" aria-hidden="true" />
                   {steps.map((step) => (
                     <div
                       key={step.id}
@@ -187,18 +205,18 @@ export default function ProjectInquiryPage() {
                       }`}
                     >
                       <div
-                        className={`w-7 h-7 rounded-full flex items-center justify-center mb-1.5 transition-colors shadow-sm ${
-                          currentStep >= step.id
-                            ? "bg-blue-600 text-white ring-1 ring-blue-100"
+                        className={`w-8 h-8 rounded-full flex items-center justify-center mb-1.5 transition-colors shadow-sm ${
+                          currentStep > step.id
+                            ? "bg-blue-600 text-white"
+                            : currentStep === step.id
+                            ? "bg-blue-600 text-white ring-4 ring-blue-100"
                             : "bg-white border border-gray-200"
                         }`}
                         aria-current={currentStep === step.id ? "step" : undefined}
                         aria-label={`Step ${step.id}: ${step.title}`}
                       >
                         {currentStep > step.id ? (
-                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                          </svg>
+                          <CheckCircle2 className="w-5 h-5" aria-hidden="true" />
                         ) : (
                           <span className="text-xs font-semibold">{step.id}</span>
                         )}
@@ -236,7 +254,7 @@ export default function ProjectInquiryPage() {
                           </div>
                           <div className="grid gap-5">
                             <div className="space-y-2">
-                              <Label htmlFor="name" className="text-base text-gray-900 font-medium">Name *</Label>
+                              <Label htmlFor="name" className="text-base text-gray-900 font-medium">Name <span className="text-blue-600">*</span></Label>
                               <Input
                                 id="name"
                                 required
@@ -248,7 +266,7 @@ export default function ProjectInquiryPage() {
                               />
                             </div>
                             <div className="space-y-2">
-                              <Label htmlFor="email" className="text-base text-gray-900 font-medium">Email *</Label>
+                              <Label htmlFor="email" className="text-base text-gray-900 font-medium">Email <span className="text-blue-600">*</span></Label>
                               <Input
                                 id="email"
                                 type="email"
@@ -271,6 +289,7 @@ export default function ProjectInquiryPage() {
                                 onChange={(e) => updateFormData({ phone: e.target.value })}
                                 aria-required="false"
                               />
+                              <p className="text-xs text-gray-500">We'll only use this for urgent project updates</p>
                             </div>
                           </div>
                         </div>
@@ -457,41 +476,54 @@ export default function ProjectInquiryPage() {
               </div>
             </div>
 
-            {/* Fixed Bottom Navigation */}
-            <div className="sticky bottom-0 bg-white border-t border-gray-100 p-4 mt-auto">
-              <div className="flex justify-between items-center gap-4">
+            {/* Form Navigation Buttons */}
+            <div className="sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 sm:p-6 flex items-center justify-between">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={prevStep}
+                disabled={currentStep === 1 || isSubmitting}
+                className="flex items-center gap-1 border-gray-300 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                aria-label="Previous step"
+              >
+                <ChevronLeft className="w-4 h-4" aria-hidden="true" />
+                <span className="hidden sm:inline">Previous</span>
+                <span className="sm:hidden">Back</span>
+              </Button>
+              
+              {currentStep < steps.length ? (
                 <Button
                   type="button"
-                  variant="outline"
-                  onClick={prevStep}
-                  className={`${
-                    currentStep === 1 ? "opacity-0 pointer-events-none" : ""
-                  } flex-1 bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 h-12 text-base font-medium`}
-                  disabled={isSubmitting}
+                  variant="default"
+                  onClick={nextStep}
+                  className="bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-600/30 focus:ring-offset-2 text-white flex items-center gap-1"
+                  aria-label="Next step"
                 >
-                  Previous
+                  <span>Next</span>
+                  <ChevronRight className="w-4 h-4" aria-hidden="true" />
                 </Button>
-                
-                {currentStep < steps.length ? (
-                  <Button
-                    type="button"
-                    onClick={nextStep}
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white h-12 text-base font-medium shadow-sm"
-                    disabled={isSubmitting}
-                  >
-                    Continue
-                  </Button>
-                ) : (
-                  <Button
-                    type="button"
-                    onClick={submitForm}
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white h-12 text-base font-medium shadow-sm"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? 'Submitting...' : 'Submit'}
-                  </Button>
-                )}
-              </div>
+              ) : (
+                <Button
+                  type="button"
+                  variant="default"
+                  onClick={submitForm}
+                  disabled={isSubmitting}
+                  className="bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-600/30 focus:ring-offset-2 text-white flex items-center gap-1"
+                  aria-label="Submit form"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" aria-hidden="true" />
+                      <span>Submitting...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Submit</span>
+                      <Send className="w-4 h-4 ml-1" aria-hidden="true" />
+                    </>
+                  )}
+                </Button>
+              )}
             </div>
           </div>
         </div>

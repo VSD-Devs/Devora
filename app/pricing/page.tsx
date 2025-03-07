@@ -1,6 +1,6 @@
 "use client"
 
-import { Check } from "lucide-react"
+import { Check, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Script from 'next/script'
@@ -50,113 +50,115 @@ export default function PricingPage() {
           })
         }}
       />
-      <div className="min-h-[100dvh] flex flex-col bg-gradient-to-b from-gray-50 to-gray-100">
-        <div className="flex-1 flex flex-col">
-          <div className="container mx-auto px-4 relative z-[30] flex-1 flex flex-col pt-32 md:pt-32">
-            {/* Desktop Title */}
-            <div className="hidden md:block text-center mb-16">
-              <div className="inline-block mb-4 sm:mb-6 p-1.5 sm:p-2 bg-white/50 backdrop-blur-sm rounded-full border border-gray-100">
-                <span className="px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-medium bg-black text-white rounded-full">
-                  Transparent Pricing
-                </span>
+      <div className="relative overflow-hidden">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+          {/* Subtle background texture */}
+          <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
+          
+          {/* Subtle gradient orbs */}
+          <div className="absolute -top-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-[120px] z-0" />
+          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 bg-indigo-500/10 rounded-full blur-[100px] z-0" />
+          
+          <div className="container mx-auto px-4 md:px-6 relative z-[3]">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm backdrop-blur-sm mb-6">
+                <span className="mr-1 h-2 w-2 rounded-full bg-teal-400"></span>
+                <span>Transparent pricing</span>
               </div>
-              <h1 className="text-5xl font-bold mb-8 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 pb-2">
-                Start-up Friendly Pricing
+              
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">Start-up Friendly</span>
+                <span className="bg-gradient-to-r from-teal-300 to-blue-300 bg-clip-text text-transparent"> Pricing</span>
               </h1>
-              <p className="text-2xl text-gray-600 max-w-2xl mx-auto">
+              
+              <p className="text-lg text-white/80 max-w-2xl mx-auto">
                 We believe great web development shouldn't break the bank. Our flexible packages are designed to grow with your startup.
               </p>
             </div>
+          </div>
+        </section>
 
-            {/* Mobile Title */}
-            <div className="md:hidden text-center mb-8">
-              <div className="inline-block mb-4 sm:mb-6 p-1.5 sm:p-2 bg-white/50 backdrop-blur-sm rounded-full border border-gray-100">
-                <span className="px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-medium bg-black text-white rounded-full">
-                  Transparent Pricing
-                </span>
-              </div>
-              <h1 className="text-3xl font-bold mb-3 text-gray-900">
-                Our Pricing Plans
-              </h1>
-              <p className="text-base text-gray-600 px-4">
-                Flexible packages designed to grow with your startup
-              </p>
-            </div>
-
+        {/* Pricing Section */}
+        <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+          {/* Subtle background elements */}
+          <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
+          <div className="absolute top-40 -right-40 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px] z-0" />
+          <div className="absolute bottom-20 -left-40 w-80 h-80 bg-teal-500/5 rounded-full blur-[100px] z-0" />
+          
+          <div className="container mx-auto px-4 md:px-6 relative z-[3]">
             {/* Pricing Cards */}
-            <div className="grid md:grid-cols-3 gap-4 md:gap-8 max-w-7xl mx-auto w-full">
+            <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto mb-16">
               {/* Starter Package */}
-              <div className="flex flex-col">
-                <div className="relative bg-white rounded-2xl p-6 md:p-8 border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200 h-full flex flex-col">
-                  <div className="flex-grow">
-                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900">Starter Package</h3>
-                    <div className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-gray-900">£500 - £750</div>
-                    <div className="text-gray-600 mb-6 md:mb-8 text-sm md:text-base">Perfect for MVPs and landing pages</div>
-                    <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>3-5 Pages Website</span>
+              <div className="group relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col">
+                {/* Subtle gradient accent */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400/70 to-teal-400/70"></div>
+                
+                <div className="p-6 md:p-8 flex-grow">
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 text-slate-900">Starter Package</h3>
+                  <div className="text-3xl font-bold mb-4 text-slate-900">£500 - £750</div>
+                  <p className="text-slate-600 mb-6 text-sm">Perfect for MVPs and landing pages</p>
+                  
+                  <ul className="space-y-3 mb-6">
+                    {['3-5 Pages Website', 'Mobile Responsive Design', 'Basic SEO Setup', '2-3 Weeks Delivery'].map((feature, i) => (
+                      <li key={i} className="flex items-start text-sm text-slate-700">
+                        <Check className="w-4 h-4 text-teal-500 mr-2 flex-shrink-0 mt-0.5" />
+                        <span>{feature}</span>
                       </li>
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>Mobile Responsive Design</span>
-                      </li>
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>Basic SEO Setup</span>
-                      </li>
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>2-3 Weeks Delivery</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-auto">
-                    <Link href="/project-inquiry" className="block w-full">
-                      <Button className="w-full bg-black hover:bg-gray-900 text-white font-semibold">
-                        Get Started
-                      </Button>
-                    </Link>
-                  </div>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="p-6 md:p-8 pt-0 mt-auto">
+                  <Link href="/project-inquiry" className="block w-full">
+                    <Button 
+                      className="w-full bg-slate-900 hover:bg-slate-800 text-white rounded-xl px-6 py-4 font-medium"
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
                 </div>
               </div>
 
-              {/* Growth Package */}
-              <div className="flex flex-col">
-                <div className="relative bg-white rounded-2xl p-6 md:p-8 border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200 h-full flex flex-col">
-                  <div className="absolute -top-3 md:-top-6 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 md:px-6 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-medium shadow-lg">
-                    Most Popular
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900">Growth Package</h3>
-                    <div className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-gray-900">£1,000 - £2,000</div>
-                    <div className="text-gray-600 mb-6 md:mb-8 text-sm md:text-base">For growing startups</div>
-                    <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>5-10 Pages Website</span>
-                      </li>
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>Advanced Design Features</span>
-                      </li>
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>CMS Integration</span>
-                      </li>
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>3-5 Weeks Delivery</span>
-                      </li>
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>Advanced SEO Package</span>
-                      </li>
+              {/* Growth Package Container */}
+              <div className="relative">
+                {/* Popular tag - moved completely outside */}
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-500 to-teal-400 text-white px-4 py-1.5 rounded-full text-xs font-medium shadow-md z-20">
+                  Most Popular
+                </div>
+                
+                {/* Card content */}
+                <div className="group relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col">
+                  {/* Subtle gradient accent */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500/70 to-teal-500/70"></div>
+                  
+                  <div className="p-6 md:p-8 flex-grow">
+                    <h3 className="text-xl md:text-2xl font-bold mb-3 text-slate-900">Growth Package</h3>
+                    <div className="text-3xl font-bold mb-4 text-slate-900">£1,000 - £2,000</div>
+                    <p className="text-slate-600 mb-6 text-sm">For growing startups</p>
+                    
+                    <ul className="space-y-3 mb-6">
+                      {[
+                        '5-10 Pages Website', 
+                        'Advanced Design Features', 
+                        'CMS Integration', 
+                        '3-5 Weeks Delivery',
+                        'Advanced SEO Package'
+                      ].map((feature, i) => (
+                        <li key={i} className="flex items-start text-sm text-slate-700">
+                          <Check className="w-4 h-4 text-teal-500 mr-2 flex-shrink-0 mt-0.5" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
                     </ul>
                   </div>
-                  <div className="mt-auto">
+                  
+                  <div className="p-6 md:p-8 pt-0 mt-auto">
                     <Link href="/project-inquiry" className="block w-full">
-                      <Button className="w-full bg-black hover:bg-gray-900 text-white font-semibold">
+                      <Button 
+                        variant="gradient"
+                        className="w-full rounded-xl px-6 py-4 font-medium"
+                      >
                         Get Started
                       </Button>
                     </Link>
@@ -165,61 +167,107 @@ export default function PricingPage() {
               </div>
 
               {/* Scale Package */}
-              <div className="flex flex-col">
-                <div className="relative bg-white rounded-2xl p-6 md:p-8 border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200 h-full flex flex-col">
-                  <div className="flex-grow">
-                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900">Scale Package</h3>
-                    <div className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-gray-900">£2,500+</div>
-                    <div className="text-gray-600 mb-6 md:mb-8 text-sm md:text-base">Complex custom solutions</div>
-                    <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>Custom Web Applications</span>
+              <div className="group relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col">
+                {/* Subtle gradient accent */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400/70 to-teal-400/70"></div>
+                
+                <div className="p-6 md:p-8 flex-grow">
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 text-slate-900">Scale Package</h3>
+                  <div className="text-3xl font-bold mb-4 text-slate-900">£2,500+</div>
+                  <p className="text-slate-600 mb-6 text-sm">Complex custom solutions</p>
+                  
+                  <ul className="space-y-3 mb-6">
+                    {[
+                      'Custom Web Applications', 
+                      'E-commerce Solutions', 
+                      'Custom Integrations', 
+                      '6-12 Weeks Delivery',
+                      'Premium Support'
+                    ].map((feature, i) => (
+                      <li key={i} className="flex items-start text-sm text-slate-700">
+                        <Check className="w-4 h-4 text-teal-500 mr-2 flex-shrink-0 mt-0.5" />
+                        <span>{feature}</span>
                       </li>
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>E-commerce Solutions</span>
-                      </li>
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>Custom Integrations</span>
-                      </li>
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>6-12 Weeks Delivery</span>
-                      </li>
-                      <li className="flex items-center text-gray-700 text-sm md:text-base">
-                        <Check className="text-blue-500 mr-2 flex-shrink-0" size={18} />
-                        <span>Premium Support</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-auto">
-                    <Link href="/project-inquiry" className="block w-full">
-                      <Button className="w-full bg-black hover:bg-gray-900 text-white font-semibold">
-                        Get Started
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="p-6 md:p-8 pt-0 mt-auto">
+                  <Link href="/project-inquiry" className="block w-full">
+                    <Button 
+                      className="w-full bg-slate-900 hover:bg-slate-800 text-white rounded-xl px-6 py-4 font-medium"
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* FAQ Section */}
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-slate-100 hover:shadow-md transition-all">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 text-slate-900">
+                  Flexible <span className="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">Payment Plans</span>
+                </h2>
+                
+                <p className="text-slate-600 mb-8">
+                  We understand startup budgets. That's why we offer flexible payment plans to help you get started. Contact us to discuss your project and find a plan that works for you.
+                </p>
+                
+                <Link href="/contact">
+                  <Button 
+                    variant="gradient"
+                    className="rounded-xl px-6 py-4 font-medium"
+                  >
+                    Schedule a Free Consultation <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 md:py-24 bg-gradient-to-br from-blue-500 to-teal-400 relative overflow-hidden">
+          {/* Subtle background elements */}
+          <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.05] z-[1]" />
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-[100px] z-0" />
+          
+          <div className="container mx-auto px-4 md:px-6 relative z-[3]">
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20 hover:shadow-xl transition-all duration-300">
+                <div className="text-center">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+                    Need a Custom Solution?
+                  </h2>
+                  
+                  <p className="text-white/80 text-lg mb-8">
+                    Have a project that doesn't fit these packages? We'd love to hear about it and create a custom proposal tailored to your specific needs.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link href="/project-inquiry">
+                      <Button 
+                        className="bg-white text-blue-600 hover:bg-white/90 rounded-xl px-6 py-6 font-medium text-base shadow-lg hover:shadow-xl transition-all"
+                      >
+                        Start Your Project <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                    <Link href="/contact">
+                      <Button 
+                        variant="outlineWhite" 
+                        className="rounded-xl px-6 py-6 font-medium text-base backdrop-blur-sm"
+                      >
+                        Contact Us
                       </Button>
                     </Link>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* FAQ Section */}
-            <div className="mt-12 md:mt-20 text-center pb-8 md:pb-0">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-gray-900">Flexible Payment Plans</h2>
-              <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto px-4 md:px-0">
-                We understand startup budgets. That's why we offer flexible payment plans to help you get started. Contact us to discuss your project and find a plan that works for you.
-              </p>
-              <Link 
-                href="/contact" 
-                className="inline-block mt-6 md:mt-8 bg-black text-white hover:bg-gray-900 px-6 md:px-8 py-3 md:py-4 text-sm md:text-base font-semibold rounded-md cursor-pointer transition-colors"
-              >
-                Schedule a Free Consultation
-              </Link>
-            </div>
           </div>
-        </div>
+        </section>
       </div>
     </>
   )
