@@ -110,7 +110,7 @@ The tone should be knowledgeable but friendly and accessible to business owners 
     // Try to extract an excerpt from the first paragraph
     const firstParagraph = generatedContent
       .split('\n\n')
-      .find(p => p && !p.startsWith('#') && p.length > 100);
+      .find((p: string) => p && !p.startsWith('#') && p.length > 100);
     
     if (firstParagraph) {
       excerpt = firstParagraph.substring(0, 160) + (firstParagraph.length > 160 ? '...' : '');
