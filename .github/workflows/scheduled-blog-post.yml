@@ -1,0 +1,54 @@
+name: Daily Blog Post Generation
+
+on:
+  schedule:
+    # This cron job runs at 8 AM UTC every day
+    - cron: '0 8 * * *'
+  
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  generate-blog-post:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'yarn'
+      
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      
+      # For Ollama (if used, uncomment this step)
+      # - name: Setup Ollama
+      #   run: |
+      #     curl -fsSL https://ollama.com/install.sh | sh
+      #     ollama pull llama3
+      
+      - name: Generate blog post
+        run: node scripts/generate-blog-post.js
+        env:
+          # Using Hugging Face API for blog generation
+          HUGGING_FACE_API_KEY: ${{ secrets.HUGGING_FACE_API_KEY }}
+          # TOGETHER_AI_API_KEY: ${{ secrets.TOGETHER_AI_API_KEY }}
+          # ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # GOOGLE_GEMINI_API_KEY: ${{ secrets.GOOGLE_GEMINI_API_KEY }}
+          
+          # Keep your blog generation API key
+          BLOG_GENERATION_API_KEY: ${{ secrets.BLOG_GENERATION_API_KEY }}
+      
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'Automated Blog Generator'
+          git config --global user.email 'automated@devora.dev'
+          git add content/blog/
+          git diff --staged --quiet || git commit -m "Add automated blog post for $(date +%Y-%m-%d)"
+          git push 

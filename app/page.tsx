@@ -17,6 +17,7 @@ import Link from "next/link";
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Image from "next/image";
+import Script from 'next/script';
 
 // Simple loading component
 const Loading = () => (
@@ -53,179 +54,114 @@ const DynamicFAQ = dynamic(() => import('../components/FAQ'), {
 
 export default function Home() {
   return (
-    <main className="relative overflow-hidden">
-      {/* Hero Section */}
-      <DynamicHero />
+    <>
+      <Script
+        id="home-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Devora',
+            url: 'https://devora.dev',
+            description: 'Professional web development services for startups and growing businesses',
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: 'https://devora.dev/search?q={search_term_string}',
+              'query-input': 'required name=search_term_string'
+            },
+            mainEntity: {
+              '@type': 'ProfessionalService',
+              name: 'Devora',
+              image: 'https://devora.dev/DEVORA.png',
+              '@id': 'https://devora.dev',
+              url: 'https://devora.dev',
+              telephone: 'YOUR-PHONE-NUMBER',
+              address: {
+                '@type': 'PostalAddress',
+                addressCountry: 'UK'
+              },
+              priceRange: '£££',
+              openingHoursSpecification: {
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: [
+                  'Monday',
+                  'Tuesday',
+                  'Wednesday',
+                  'Thursday',
+                  'Friday'
+                ],
+                opens: '09:00',
+                closes: '17:00'
+              },
+              sameAs: [
+                'https://twitter.com/devoradev',
+                'https://linkedin.com/company/devora',
+                'https://github.com/devora'
+              ]
+            }
+          })
+        }}
+      />
       
-      {/* Services Section */}
-      <DynamicServices />
-      
-      {/* Stats Section - Fluid Design */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 relative overflow-hidden">
-        {/* Subtle background elements */}
-        <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.03] z-[1]" />
-        <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-[120px] z-0" />
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-[3]">
-          <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-            <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/70 backdrop-blur-sm mb-4">
-              <span className="mr-1 h-2 w-2 rounded-full bg-teal-400"></span>
-              <span>Our impact</span>
-            </div>
-            
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-              Delivering <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">measurable results</span>
-            </h2>
-            
-            <p className="text-white/70 text-lg">
-              We've helped startups across various industries achieve their digital goals
-            </p>
-          </div>
+      <div className="min-h-screen">
+        <div className="space-y-6 pb-8 md:pb-12 lg:pb-24 pt-10 md:pt-0 lg:pt-0">
+          {/* Hero Section */}
+          <DynamicHero />
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">{stat.value}</div>
-                <div className="text-white/70 text-sm">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      {/* Portfolio Section */}
-      <DynamicPortfolio />
-      
-      {/* Features Section - Fluid Design */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-        {/* Subtle background elements */}
-        <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-teal-500/5 rounded-full blur-[100px] z-0" />
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-[3]">
-          <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-            <div className="inline-flex items-center rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-sm text-slate-600 backdrop-blur-sm mb-4">
-              <span className="mr-1 h-2 w-2 rounded-full bg-teal-400"></span>
-              <span>Why choose us</span>
-            </div>
-            
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">
-              The <span className="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">Devora</span> difference
-            </h2>
-            
-            <p className="text-slate-600 text-lg">
-              What sets us apart from other web development agencies
-            </p>
-          </div>
+          {/* Services Section */}
+          <DynamicServices />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {detailedServices.slice(0, 4).map((service, index) => (
-              <div key={index} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-teal-500/5 rounded-2xl transform group-hover:scale-[1.03] transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
-                
-                <div className="relative bg-white rounded-2xl p-6 shadow-sm border border-slate-100 overflow-hidden group-hover:shadow-md transition-all duration-300 h-full flex flex-col">
-                  <div className="mb-4 flex items-center">
-                    <div className="mr-4 flex-shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500/10 to-teal-500/10 text-teal-600">
-                      {service.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold text-slate-900">{service.title}</h3>
-                  </div>
-                  
-                  <p className="text-slate-600 text-sm">{service.description}</p>
-                  
-                  <div className="mt-4 pt-4 border-t border-slate-100">
-                    <div className="flex items-center text-teal-600 text-sm font-medium">
-                      <div className="w-1.5 h-1.5 rounded-full bg-teal-500 mr-2"></div>
-                      {getFeatureFromTitle(service.title)}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* Portfolio Section */}
+          <DynamicPortfolio />
           
-          <div className="mt-12 text-center">
-            <Link href="/about">
-              <Button 
-                className="bg-slate-900 hover:bg-slate-800 text-white rounded-xl px-6 py-6"
-              >
-                Learn More About Us <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-      
-      {/* Testimonials Section */}
-      <DynamicTestimonials />
-      
-      {/* FAQ Section */}
-      <DynamicFAQ />
-      
-      {/* CTA Section - Fluid Design */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-500 to-teal-400 relative overflow-hidden">
-        {/* Subtle background elements */}
-        <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.05] z-[1]" />
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-[100px] z-0" />
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-[3]">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20 hover:shadow-xl transition-all duration-300">
-              <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
-                <div className="flex-1">
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-                    Ready to transform your digital presence?
+          {/* Testimonials Section */}
+          <DynamicTestimonials />
+          
+          {/* FAQ Section */}
+          <DynamicFAQ />
+          
+          {/* CTA Section */}
+          <section className="py-16 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+            <div className="container px-4 md:px-6 mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h2 className="text-3xl font-bold tracking-tight text-white mb-4">
+                    Ready to Transform Your Web Presence?
                   </h2>
-                  <p className="text-white/80 text-lg mb-6">
-                    Let's work together to create something extraordinary for your business.
+                  <p className="text-slate-300 mb-6">
+                    Let's discuss your project and create a tailored solution that helps your business grow.
                   </p>
-                  <ul className="space-y-3 mb-8">
-                    <li className="flex items-center text-white/90 group">
-                      <div className="mr-3 flex-shrink-0 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                        <CheckCircle2 className="w-3 h-3 text-white" />
-                      </div>
-                      <span>Free initial consultation</span>
-                    </li>
-                    <li className="flex items-center text-white/90 group">
-                      <div className="mr-3 flex-shrink-0 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                        <CheckCircle2 className="w-3 h-3 text-white" />
-                      </div>
-                      <span>Tailored solutions for your budget</span>
-                    </li>
-                    <li className="flex items-center text-white/90 group">
-                      <div className="mr-3 flex-shrink-0 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                        <CheckCircle2 className="w-3 h-3 text-white" />
-                      </div>
-                      <span>Ongoing support and maintenance</span>
-                    </li>
-                  </ul>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Link href="/project-inquiry">
+                      <Button className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
+                        Start Your Project
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                    <Link href="/contact">
+                      <Button variant="outline" className="w-full sm:w-auto bg-transparent border-slate-700 text-white hover:bg-slate-800">
+                        Contact Us
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
-                
-                <div className="flex-shrink-0 flex flex-col gap-4">
-                  <Link href="/project-inquiry" className="w-full">
-                    <Button 
-                      size="lg" 
-                      className="w-full bg-white text-blue-600 hover:bg-white/90 rounded-xl px-6 py-6 font-medium text-base shadow-lg hover:shadow-xl transition-all"
-                    >
-                      Start Your Project <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                  <Link href="/contact" className="w-full">
-                    <Button 
-                      size="lg" 
-                      variant="outline" 
-                      className="w-full border-white text-white hover:bg-white/10 hover:border-white/60 rounded-xl px-6 py-6 font-medium text-base transition-colors"
-                    >
-                      Contact Us
-                    </Button>
-                  </Link>
+                <div className="relative h-64 rounded-lg overflow-hidden">
+                  <Image
+                    src="/office-meeting1.jpg"
+                    alt="Team meeting discussing web development project"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                    priority={false}
+                  />
                 </div>
               </div>
             </div>
-          </div>
+          </section>
         </div>
-      </section>
-    </main>
+      </div>
+    </>
   );
 }
 

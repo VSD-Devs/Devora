@@ -21,8 +21,8 @@ export const metadata: Metadata = {
     default: "Devora | Affordable Web Development for Startups",
     template: "%s | Devora"
   },
-  description: "Transform your startup with professional, affordable web development services. Expert React & Next.js development, UI/UX design, and SEO optimization tailored for startups.",
-  keywords: ["startup web development", "affordable web design", "React development", "Next.js agency", "startup-friendly developer", "professional web services", "SEO optimization"],
+  description: "Transform your startup with professional, affordable web development services. Specialising in React & Next.js development, UI/UX design, and SEO optimization tailored for growing businesses.",
+  keywords: ["startup web development", "affordable web design", "React development", "Next.js agency", "startup-friendly developer", "professional web services", "SEO optimization", "UK web developer", "responsive website design", "ecommerce development", "mobile-friendly websites", "web performance optimization", "business website development", "custom web solutions", "professional web design"],
   authors: [{ name: "Khalil" }],
   creator: "Devora",
   publisher: "Devora",
@@ -50,10 +50,10 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_GB",
     url: "https://devora.dev",
     title: "Devora | Affordable Web Development for Startups",
-    description: "Transform your startup with professional, affordable web development services. Expert React & Next.js development, UI/UX design, and SEO optimization tailored for startups.",
+    description: "Transform your startup with professional, affordable web development services. Specialising in React & Next.js development, UI/UX design, and SEO optimization tailored for growing businesses.",
     siteName: "Devora",
     images: [
       {
@@ -67,10 +67,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Devora | Affordable Web Development for Startups",
-    description: "Transform your startup with professional, affordable web development services. Expert React & Next.js development, UI/UX design, and SEO optimization.",
+    description: "Transform your startup with professional, affordable web development services. Specialising in React & Next.js development, UI/UX design, and SEO optimization.",
     images: ["/og-image.jpg"],
-    creator: "@devora",
-    site: "@devora",
+    creator: "@devoradev",
+    site: "@devoradev",
   },
   robots: {
     index: true,
@@ -84,9 +84,9 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "ADD-YOUR-GOOGLE-VERIFICATION-CODE",
     other: {
-      me: ["yandex-verification-code", "bing-verification-code"]
+      me: ["ADD-YOUR-YANDEX-VERIFICATION-CODE", "ADD-YOUR-BING-VERIFICATION-CODE"]
     }
   },
   category: 'technology',
@@ -105,11 +105,14 @@ export default function RootLayout({
   const headersList = headers();
   const pathname = headersList.get("x-pathname") || "";
   const isProjectInquiry = pathname.startsWith("/project-inquiry");
+  
+  // Create dynamic canonical URL based on current path
+  const canonicalUrl = `https://devora.dev${pathname}`;
 
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://devora.dev" />
+        <link rel="canonical" href={canonicalUrl} />
         <meta name="theme-color" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         
@@ -147,7 +150,7 @@ export default function RootLayout({
               name: 'Devora',
               url: 'https://devora.dev',
               logo: 'https://devora.dev/logo.png',
-              description: 'Professional web development services tailored for startups',
+              description: 'Professional web development services tailored for startups and growing businesses',
               address: {
                 '@type': 'PostalAddress',
                 addressCountry: 'UK'
@@ -158,10 +161,17 @@ export default function RootLayout({
                 email: 'contact@devora.dev'
               },
               sameAs: [
-                'https://twitter.com/devora',
+                'https://twitter.com/devoradev',
                 'https://linkedin.com/company/devora',
                 'https://github.com/devora'
-              ]
+              ],
+              aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: '4.9',
+                ratingCount: '27',
+                bestRating: '5',
+                worstRating: '1'
+              }
             })
           }}
         />

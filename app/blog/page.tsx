@@ -2,163 +2,129 @@ import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
+import { getAllPosts } from "@/lib/markdown"
+import type { Metadata } from "next"
 
-// Sample blog posts data - In a real app, this would come from a CMS or API
-const blogPosts = [
-  {
-    id: 1,
-    title: "10 Essential Features Every Startup Website Needs in 2024",
-    excerpt: "Discover the must-have features that will make your startup website stand out and convert visitors into customers.",
-    image: "/blog/startup-website.jpg",
-    category: "Web Development",
-    date: "March 15, 2024",
-    readTime: "5 min read",
-    slug: "essential-startup-website-features-2024"
-  },
-  {
-    id: 2,
-    title: "Why Next.js is the Future of Web Development",
-    excerpt: "Learn how Next.js is revolutionizing web development and why it's the perfect choice for your next project.",
-    image: "/blog/nextjs-future.jpg",
-    category: "Technology",
-    date: "March 10, 2024",
-    readTime: "7 min read",
-    slug: "nextjs-future-web-development"
-  },
-  {
-    id: 3,
-    title: "Maximizing ROI with Strategic Web Design",
-    excerpt: "Explore how thoughtful web design can drive business growth and increase your return on investment.",
-    image: "/blog/web-design-roi.jpg",
-    category: "Business",
-    date: "March 5, 2024",
-    readTime: "6 min read",
-    slug: "maximizing-roi-web-design"
-  },
-  {
-    id: 4,
-    title: "The Complete Guide to Website Maintenance",
-    excerpt: "Everything you need to know about keeping your website secure, fast, and up-to-date.",
-    image: "/blog/website-maintenance.jpg",
-    category: "Maintenance",
-    date: "March 1, 2024",
-    readTime: "8 min read",
-    slug: "complete-website-maintenance-guide"
-  }
-]
+export const metadata: Metadata = {
+  title: "Blog | Devora - Web Development Insights",
+  description: "Explore the latest web development trends, tips, and strategies to help your startup grow online. Expert insights from the Devora team.",
+  keywords: ["web development blog", "startup tips", "react development", "next.js tutorials", "SEO strategies", "web design tips"],
+}
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const allPosts = getAllPosts();
+  
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900 relative">
-      {/* Background elements */}
-      <div className="fixed inset-0 bg-gradient-to-b from-white/50 to-white/30 pointer-events-none" />
-      <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center opacity-5 pointer-events-none" />
-      
-      {/* Dark overlay for nav */}
-      <div className="fixed inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-900/60 via-gray-900/1 to-transparent z-[1]" />
-
-      {/* Content wrapper */}
-      <div className="relative z-[2] pt-40">
-        {/* Hero Section */}
-        <section className="mb-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-block mb-4 sm:mb-6 p-1.5 sm:p-2 bg-white/50 backdrop-blur-sm rounded-full border border-gray-100">
-                <span className="px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-medium bg-black text-white rounded-full">
-                  Industry Insights & Tips
-                </span>
-              </div>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
-                Insights & Resources
-              </h1>
-              <p className="text-xl text-gray-600 mb-8">
-                Expert insights, industry trends, and practical tips for building successful digital products.
-              </p>
-              <div className="flex justify-center gap-4">
-                <Button className="bg-black hover:bg-gray-900 text-white">
-                  Subscribe to Newsletter <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </div>
+    <div className="relative min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      {/* Hero Section */}
+      <section className="pt-28 pb-16 md:pt-36 md:pb-24 relative overflow-hidden">
+        {/* Subtle background texture */}
+        <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
+        
+        {/* Subtle gradient orbs */}
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-[120px] z-0" />
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 bg-indigo-500/10 rounded-full blur-[100px] z-0" />
+        
+        <div className="container px-4 md:px-6 mx-auto relative z-[3]">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm backdrop-blur-sm mb-6">
+              <span className="mr-1 h-2 w-2 rounded-full bg-teal-400"></span>
+              <span className="text-white/70">Web Development Insights</span>
             </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
+              Insights & Resources for Modern Web Development
+            </h1>
+            <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-8">
+              Explore our latest articles, guides, and insights to help you build better web experiences for your business.
+            </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Blog Posts Grid */}
-        <section className="pb-32">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              {blogPosts.map((post) => (
+      {/* Blog Grid */}
+      <section className="py-16 md:py-24 relative">
+        <div className="container px-4 md:px-6 mx-auto">
+          {allPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {allPosts.map((post) => (
                 <Link 
-                  href={`/blog/${post.slug}`} 
-                  key={post.id}
-                  className="group relative"
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group block overflow-hidden"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-300/5 rounded-3xl blur-xl group-hover:from-blue-500/10 group-hover:to-blue-300/10 transition-all duration-300" />
-                  <article className="relative bg-white/80 p-6 rounded-3xl border border-gray-200 hover:border-gray-300 transition-all duration-300 backdrop-blur-sm h-full flex flex-col">
-                    <div className="relative w-full h-48 mb-6 rounded-xl overflow-hidden">
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5 h-full flex flex-col">
+                    <div className="relative h-60 overflow-hidden">
                       <Image
-                        src={post.image}
+                        src={post.coverImage}
                         alt={post.title}
                         fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className="text-sm font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
-                        {post.category}
-                      </span>
-                      <span className="text-sm text-gray-500">
-                        {post.date}
-                      </span>
-                      <span className="text-sm text-gray-500">
-                        {post.readTime}
-                      </span>
+                    <div className="p-6 flex-1 flex flex-col">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="inline-flex items-center rounded-full bg-blue-500/10 px-2.5 py-0.5 text-xs font-medium text-blue-400">
+                          {post.tags[0]}
+                        </span>
+                        <span className="text-white/50 text-xs">{post.date}</span>
+                      </div>
+                      <h2 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-200">
+                        {post.title}
+                      </h2>
+                      <p className="text-white/70 text-sm mb-4 flex-1">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/10">
+                        <div className="flex items-center">
+                          <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs mr-2">
+                            {post.author.substring(0, 1)}
+                          </div>
+                          <span className="text-white/70 text-sm">{post.author}</span>
+                        </div>
+                        <span className="text-white/50 text-xs">{post.readingTime}</span>
+                      </div>
                     </div>
-                    <h2 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors">
-                      {post.title}
-                    </h2>
-                    <p className="text-gray-600 mb-6 flex-grow">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center text-blue-600 font-medium">
-                      Read More <ArrowRight className="ml-2 w-4 h-4" />
-                    </div>
-                  </article>
+                  </div>
                 </Link>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Newsletter Section */}
-        <section className="pb-32">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="relative overflow-hidden bg-black rounded-3xl p-12">
-                <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10" />
-                <div className="relative text-center">
-                  <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-                    Stay Updated with Industry Insights
-                  </h2>
-                  <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-                    Join our newsletter and get expert insights, industry news, and practical tips delivered straight to your inbox.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 flex-grow"
-                    />
-                    <Button className="bg-white hover:bg-gray-100 text-black whitespace-nowrap">
-                      Subscribe <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
+          ) : (
+            <div className="text-center py-16">
+              <h3 className="text-2xl font-bold text-white mb-4">No blog posts found</h3>
+              <p className="text-white/70 mb-8">Check back soon for new content!</p>
             </div>
+          )}
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-600 to-blue-700 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.05] z-[1]" />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-white/10 rounded-full blur-[120px] -translate-x-1/2 z-0" />
+        
+        <div className="container px-4 md:px-6 mx-auto relative z-[3]">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Stay Updated with Our Newsletter
+            </h2>
+            <p className="text-white/80 text-lg mb-8">
+              Get the latest web development insights and strategies directly in your inbox.
+            </p>
+            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-white/20"
+                required
+              />
+              <Button className="bg-white text-blue-600 hover:bg-white/90">
+                Subscribe
+              </Button>
+            </form>
           </div>
-        </section>
-      </div>
-    </main>
-  )
+        </div>
+      </section>
+    </div>
+  );
 } 
