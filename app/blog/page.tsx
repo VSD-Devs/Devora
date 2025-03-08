@@ -32,8 +32,7 @@ export default async function BlogPage() {
               <span className="text-white/70">Web Development Insights</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
-              Insights & Resources for Modern Web Development
-            </h1>
+Blog            </h1>
             <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-8">
               Explore our latest articles, guides, and insights to help you build better web experiences for your business.
             </p>
