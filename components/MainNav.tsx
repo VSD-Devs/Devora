@@ -119,7 +119,7 @@ export function MainNav() {
                 aria-label="Devora - Home"
               >
                 <Image
-                  src={isHomePage ? "/DEVORA.png" : "/devora-color.png"}
+                  src={isHomePage ? "/DEVORA.png" : "/devora-bw.png"}
                   alt=""
                   width={isHomePage ? 220 : 180}
                   height={isHomePage ? 68 : 56}
