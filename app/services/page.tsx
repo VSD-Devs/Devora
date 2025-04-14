@@ -89,9 +89,24 @@ export default function ServicesPage() {
                 <span className="bg-gradient-to-r from-teal-300 to-blue-300 bg-clip-text text-transparent"> Into Reality</span>
               </h1>
               
-              <p className="text-lg text-white/80 max-w-2xl mx-auto mb-10">
+              <p className="text-lg text-white/80 max-w-2xl mx-auto mb-12">
                 We specialise in crafting high-performance websites and applications that help startups scale. Get enterprise-grade development at prices that make sense for your business.
               </p>
+              
+              {/* Stats Cards */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
+                {[
+                  { label: "Projects Completed", value: "12+" },
+                  { label: "Happy Clients", value: "12+" },
+                  { label: "Years Experience", value: "3+" },
+                  { label: "Team Members", value: "2" }
+                ].map((stat, i) => (
+                  <div key={i} className="bg-white/5 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/10">
+                    <div className="text-2xl md:text-4xl font-bold text-white mb-2">{stat.value}</div>
+                    <div className="text-sm text-white/70">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/project-inquiry">

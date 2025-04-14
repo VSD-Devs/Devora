@@ -405,7 +405,7 @@ export default function ProjectInquiryPage() {
                               <div className="flex items-center space-x-3 p-3 bg-white border border-gray-200 rounded-lg hover:border-blue-100 transition-colors cursor-pointer data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-50/50">
                                 <RadioGroupItem value="small" id="small" className="w-5 h-5 border border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-500/20" />
                                 <Label htmlFor="small" className="flex-grow cursor-pointer">
-                                  <span className="font-medium text-base text-gray-900">£500 - £1,000</span>
+                                  <span className="font-medium text-base text-gray-900">£250 - £750</span>
                                   <span className="text-sm text-gray-600 block">Best for simple portfolio sites or landing pages</span>
                                 </Label>
                               </div>

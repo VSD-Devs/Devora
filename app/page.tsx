@@ -60,76 +60,77 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebSite',
-            name: 'Devora',
-            url: 'https://devora.dev',
-            description: 'Professional web development services for startups and growing businesses',
-            potentialAction: {
-              '@type': 'SearchAction',
-              target: 'https://devora.dev/search?q={search_term_string}',
-              'query-input': 'required name=search_term_string'
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Devora - Web Design & Development for Startups",
+            "url": "https://www.devora.co.uk/",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://www.devora.co.uk/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
             },
-            mainEntity: {
-              '@type': 'ProfessionalService',
-              name: 'Devora',
-              image: 'https://devora.dev/DEVORA.png',
-              '@id': 'https://devora.dev',
-              url: 'https://devora.dev',
-              telephone: 'YOUR-PHONE-NUMBER',
-              address: {
-                '@type': 'PostalAddress',
-                addressCountry: 'UK'
-              },
-              priceRange: '£££',
-              openingHoursSpecification: {
-                '@type': 'OpeningHoursSpecification',
-                dayOfWeek: [
-                  'Monday',
-                  'Tuesday',
-                  'Wednesday',
-                  'Thursday',
-                  'Friday'
-                ],
-                opens: '09:00',
-                closes: '17:00'
-              },
-              sameAs: [
-                'https://twitter.com/devoradev',
-                'https://linkedin.com/company/devora',
-                'https://github.com/devora'
-              ]
+            "sameAs": [
+              "https://twitter.com/devora",
+              "https://www.linkedin.com/company/devora/",
+              "https://www.instagram.com/devora/"
+            ]
+          })
+        }}
+      />
+      
+      <Script
+        id="organization-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Devora",
+            "url": "https://www.devora.co.uk/",
+            "logo": "https://www.devora.co.uk/logo.png",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+44-XXX-XXXX-XXX",
+              "contactType": "customer service"
             }
           })
         }}
       />
       
       <div className="min-h-screen">
-        <div className="space-y-6 pb-8 md:pb-12 lg:pb-24 pt-10 md:pt-0 lg:pt-0">
-          {/* Hero Section */}
+        <div className="pb-8 md:pb-12 lg:pb-24 pt-10 md:pt-0 lg:pt-0">
+          {/* Hero Section - Dark */}
           <DynamicHero />
           
-          {/* Services Section */}
-          <DynamicServices />
+          {/* Services Section - White */}
+          <div className="bg-white">
+            <DynamicServices />
+          </div>
           
-          {/* Portfolio Section */}
-          <DynamicPortfolio />
+          {/* Portfolio Section - Dark */}
+          <div className="bg-gradient-to-b from-slate-900 to-slate-950">
+            <DynamicPortfolio />
+          </div>
           
-          {/* Testimonials Section */}
-          <DynamicTestimonials />
+          {/* Testimonials Section - White */}
+          <div className="bg-white">
+            <DynamicTestimonials />
+          </div>
           
-          {/* FAQ Section */}
-          <DynamicFAQ />
+          {/* FAQ Section - Dark */}
+          <div className="bg-gradient-to-b from-slate-900 to-slate-950">
+            <DynamicFAQ />
+          </div>
           
-          {/* CTA Section */}
-          <section className="py-16 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+          {/* CTA Section - White with accent */}
+          <section className="py-16 bg-white">
             <div className="container px-4 md:px-6 mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <h2 className="text-3xl font-bold tracking-tight text-white mb-4">
+                  <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-4">
                     Ready to Transform Your Web Presence?
                   </h2>
-                  <p className="text-slate-300 mb-6">
+                  <p className="text-slate-600 mb-6">
                     Let's discuss your project and create a tailored solution that helps your business grow.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
@@ -140,7 +141,7 @@ export default function Home() {
                       </Button>
                     </Link>
                     <Link href="/contact">
-                      <Button variant="outline" className="w-full sm:w-auto bg-transparent border-slate-700 text-white hover:bg-slate-800">
+                      <Button variant="outline" className="w-full sm:w-auto bg-transparent border-slate-300 text-slate-800 hover:bg-slate-100">
                         Contact Us
                       </Button>
                     </Link>

@@ -13,7 +13,7 @@ const formatValue = (key: string, value: string): string => {
       'other': 'Other'
     },
     budgetRange: {
-      'small': '£500 - £1,000',
+      'small': '£200 - £1,0000',
       'medium': '£1,000 - £2,500',
       'large': '£2,500+',
       'not-sure': 'Needs Discussion',

@@ -31,21 +31,21 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-      {/* Subtle background elements */}
-      <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
+    <section className="py-16 md:py-24 relative overflow-hidden">
+      {/* Subtle background elements - Light theme */}
+      <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.03] z-[1]" />
       <div className="absolute top-40 -right-40 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px] z-0" />
       <div className="absolute bottom-40 -left-40 w-80 h-80 bg-teal-500/5 rounded-full blur-[100px] z-0" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-[3]">
         <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-          <div className="inline-flex items-center rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-sm text-slate-600 backdrop-blur-sm mb-4">
-            <span className="mr-1 h-2 w-2 rounded-full bg-teal-400"></span>
+          <div className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm text-slate-600 mb-4">
+            <span className="mr-1 h-2 w-2 rounded-full bg-blue-500"></span>
             <span>Client testimonials</span>
           </div>
           
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">
-            What our <span className="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">clients</span> say
+            What our <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">clients</span> say
           </h2>
           
           <p className="text-slate-600 text-lg">
@@ -53,7 +53,7 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Testimonials - Fluid Layout */}
+        {/* Testimonials - Fluid Layout - Light theme */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div
@@ -61,7 +61,7 @@ export default function Testimonials() {
               className="group relative bg-white rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all border border-slate-100 overflow-hidden"
             >
               {/* Subtle gradient accent */}
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${testimonial.gradient.replace('/10', '/30')}`}></div>
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${testimonial.gradient.replace('/10', '/70')}`}></div>
               
               {/* Quote marks */}
               <div className="absolute top-6 right-6 text-5xl text-slate-100 font-serif">"</div>

@@ -84,23 +84,23 @@ const processSteps = [
 
 export default function Services() {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-      {/* Subtle background elements */}
-      <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
+    <section className="py-20 md:py-28 relative overflow-hidden">
+      {/* Subtle background elements - Adjusted for light theme */}
+      <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.03] z-[1]" />
       <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px] z-0" />
       <div className="absolute top-40 -left-20 w-60 h-60 bg-teal-500/5 rounded-full blur-[80px] z-0" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-[3]">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto mb-16 md:mb-20">
-          <div className="inline-flex items-center rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-sm text-slate-600 backdrop-blur-sm mb-4">
-            <span className="mr-1 h-2 w-2 rounded-full bg-teal-400"></span>
+          <div className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm text-slate-600 mb-4">
+            <span className="mr-1 h-2 w-2 rounded-full bg-blue-500"></span>
             <span>Our services</span>
           </div>
           
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">
             Web Development Solutions for 
-            <span className="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent"> Startups</span>
+            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent"> Startups</span>
           </h2>
           
           <p className="text-slate-600 text-lg leading-relaxed">
@@ -108,7 +108,7 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Services Cards - Fluid Grid */}
+        {/* Services Cards - Fluid Grid - Updated for light theme */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {services.map((service, index) => (
             <div 
@@ -124,13 +124,13 @@ export default function Services() {
                 </div>
               </div>
               
-              <h3 className="text-xl font-semibold mb-3 text-slate-900">{service.title}</h3>
+              <h3 className="text-xl font-semibold mb-3 text-slate-800">{service.title}</h3>
               <p className="text-slate-600 mb-5 text-sm">{service.description}</p>
               
               <ul className="space-y-2 mb-4">
                 {service.features.map((feature, i) => (
                   <li key={i} className="flex items-center text-sm text-slate-700">
-                    <div className="mr-2 h-1.5 w-1.5 rounded-full bg-teal-400"></div>
+                    <div className="mr-2 h-1.5 w-1.5 rounded-full bg-blue-500"></div>
                     {feature}
                   </li>
                 ))}
@@ -139,32 +139,27 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Process Section - Fluid Timeline */}
+        {/* Process Section - Fluid Timeline - Light theme colors */}
         <div className="max-w-4xl mx-auto mt-24">
           <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-slate-900">Our Process</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-slate-800">Our Process</h3>
             <p className="text-slate-600">A streamlined approach to delivering exceptional results</p>
           </div>
           
           {/* Desktop Process - Flowing Cards */}
           <div className="hidden md:block relative">
-            {/* Connecting line - Removed this section */}
-            {/* <div className="absolute left-0 right-0 top-24 h-0.5 bg-gradient-to-r from-blue-400 via-teal-400 to-indigo-400"></div> */}
-            
             <div className="grid grid-cols-4 gap-6">
               {processSteps.map((step, index) => (
                 <div key={index} className="relative pt-16">
-                  {/* Timeline node moved further left */}
                   <div className="absolute -left-2 top-[4.5rem] w-12 h-12 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center z-10">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-teal-400 flex items-center justify-center text-white">
                       {step.icon}
                     </div>
                   </div>
                   
-                  {/* Card - Reduced margin-top */}
                   <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-100 h-full hover:shadow-md transition-all mt-8">
-                    <div className="text-sm font-medium text-slate-500 mb-2">{step.number}</div>
-                    <h4 className="text-xl font-semibold mb-3 text-slate-900">{step.title}</h4>
+                    <div className="text-sm font-medium text-slate-400 mb-2">{step.number}</div>
+                    <h4 className="text-xl font-semibold mb-3 text-slate-800">{step.title}</h4>
                     <p className="text-slate-600 text-sm">{step.description}</p>
                   </div>
                 </div>
@@ -174,24 +169,19 @@ export default function Services() {
           
           {/* Mobile Process - Vertical Timeline */}
           <div className="md:hidden relative max-w-md mx-auto">
-            {/* Vertical connecting line - Removed this section */}
-            {/* <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 via-teal-400 to-indigo-400"></div> */}
-            
             <div className="space-y-8">
               {processSteps.map((step, index) => (
                 <div key={index} className="relative pl-16">
-                  {/* Timeline node - Adjusted position */}
                   <div className="absolute left-6 top-12 -translate-x-1/2 w-10 h-10 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center z-10">
                     <div className="w-7 h-7 rounded-full bg-gradient-to-r from-blue-500 to-teal-400 flex items-center justify-center text-white">
                       {step.icon}
                     </div>
                   </div>
                   
-                  {/* Content - Reduced margin-top */}
                   <div className="bg-white rounded-xl p-5 shadow-sm border border-slate-100 mt-4">
                     <div className="flex items-center mb-2">
-                      <div className="text-sm font-medium text-slate-500 mr-2">{step.number}</div>
-                      <h4 className="text-lg font-semibold text-slate-900">{step.title}</h4>
+                      <div className="text-sm font-medium text-slate-400 mr-2">{step.number}</div>
+                      <h4 className="text-lg font-semibold text-slate-800">{step.title}</h4>
                     </div>
                     <p className="text-slate-600 text-sm">{step.description}</p>
                   </div>
@@ -205,7 +195,7 @@ export default function Services() {
         <div className="mt-20 text-center">
           <Link href="/services">
             <Button 
-              className="bg-slate-900 hover:bg-slate-800 text-white rounded-xl px-6 py-6"
+              className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-6 py-6"
             >
               Explore All Services <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

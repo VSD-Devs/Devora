@@ -72,9 +72,24 @@ export default function PricingPage() {
                 <span className="bg-gradient-to-r from-teal-300 to-blue-300 bg-clip-text text-transparent"> Pricing</span>
               </h1>
               
-              <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              <p className="text-lg text-white/80 max-w-2xl mx-auto mb-12">
                 We believe great web development shouldn't break the bank. Our flexible packages are designed to grow with your startup.
               </p>
+              
+              {/* Stats Cards */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
+                {[
+                  { label: "Flexible Payment Plans", value: "100%" },
+                  { label: "Satisfaction Guarantee", value: "100%" },
+                  { label: "Transparent Pricing", value: "Always" },
+                  { label: "No Hidden Fees", value: "Ever" }
+                ].map((stat, i) => (
+                  <div key={i} className="bg-white/5 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/10">
+                    <div className="text-2xl md:text-4xl font-bold text-white mb-2">{stat.value}</div>
+                    <div className="text-sm text-white/70">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -96,7 +111,7 @@ export default function PricingPage() {
                 
                 <div className="p-6 md:p-8 flex-grow">
                   <h3 className="text-xl md:text-2xl font-bold mb-3 text-slate-900">Starter Package</h3>
-                  <div className="text-3xl font-bold mb-4 text-slate-900">£500 - £750</div>
+                  <div className="text-3xl font-bold mb-4 text-slate-900">£250 - £750</div>
                   <p className="text-slate-600 mb-6 text-sm">Perfect for MVPs and landing pages</p>
                   
                   <ul className="space-y-3 mb-6">

@@ -7,20 +7,20 @@ import Link from "next/link"
 
 export default function Hero() {
   return (
-    <section className="min-h-[90vh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden relative">
+    <section className="min-h-[90vh] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden relative">
       {/* Subtle background texture */}
       <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
       
-      {/* Subtle gradient orbs */}
-      <div className="absolute -top-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-[120px] z-0" />
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 bg-indigo-500/10 rounded-full blur-[100px] z-0" />
+      {/* Subtle gradient orbs - softer colors */}
+      <div className="absolute -top-40 -left-40 w-80 h-80 bg-blue-500/15 rounded-full blur-[120px] z-0" />
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 bg-indigo-500/15 rounded-full blur-[100px] z-0" />
       
       <div className="container mx-auto px-4 md:px-6 h-full flex flex-col justify-center relative z-[3] pt-32 md:pt-40">
         <div className="flex flex-col md:flex-row md:items-center gap-12 md:gap-16">
           {/* Left content - Copy */}
           <div className="flex-1 space-y-6 max-w-2xl">
             <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm backdrop-blur-sm">
-              <span className="mr-1 h-2 w-2 rounded-full bg-teal-400"></span>
+              <span className="mr-1 h-2 w-2 rounded-full bg-blue-400"></span>
               <span>Web Design & Development </span>
             </div>
             
@@ -69,18 +69,18 @@ export default function Hero() {
                 className="object-cover object-center"
                 style={{ borderRadius: '16px' }}
               />
-              <div className="absolute inset-0 bg-gradient-to-tr from-slate-950/50 to-transparent rounded-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/50 to-transparent rounded-2xl" />
               
               {/* Floating UI elements for visual interest */}
               <div className="absolute top-10 right-10 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 shadow-xl">
-                <div className="h-1 w-12 bg-teal-400 rounded-full mb-2"></div>
+                <div className="h-1 w-12 bg-blue-400 rounded-full mb-2"></div>
                 <div className="h-1 w-20 bg-white/40 rounded-full mb-2"></div>
                 <div className="h-1 w-16 bg-white/40 rounded-full"></div>
               </div>
               
               <div className="absolute bottom-10 left-10 bg-white/10 backdrop-blur-md px-5 py-3 rounded-xl border border-white/20 shadow-xl">
                 <div className="flex items-center gap-3">
-                  <div className="h-5 w-5 rounded-full bg-teal-400"></div>
+                  <div className="h-5 w-5 rounded-full bg-blue-400"></div>
                   <div className="text-white font-medium">Excellence in design</div>
                 </div>
               </div>
@@ -102,6 +102,7 @@ export default function Hero() {
               <Image src="/Envirotech-Logo (BW).png" alt="Envirotech Plumbing" fill className="object-contain" />
             </div>
           </div>
+          <div className="pb-16 md:pb-24 lg:pb-32"></div>
         </div>
       </div>
     </section>

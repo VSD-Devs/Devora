@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Affordable Web Development Pricing | Startup-Friendly Packages",
-  description: "Transparent, affordable web development pricing designed for startups. Flexible payment plans, no hidden fees, and packages starting from £500. Get enterprise-quality development within your budget.",
+  description: "Transparent, affordable web development pricing designed for startups. Flexible payment plans, no hidden fees, and packages starting from £250. Get enterprise-quality development within your budget.",
   keywords: [
     "affordable web development",
     "startup web pricing",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Affordable Web Development Pricing | Startup-Friendly Packages",
-    description: "Transparent, affordable web development pricing designed for startups. Flexible payment plans, no hidden fees, and packages starting from £500. Get enterprise-quality development within your budget.",
+    description: "Transparent, affordable web development pricing designed for startups. Flexible payment plans, no hidden fees, and packages starting from £250. Get enterprise-quality development within your budget.",
     type: "website",
     images: [
       {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Affordable Web Development Pricing | Startup-Friendly Packages",
-    description: "Transparent, affordable web development pricing designed for startups. Flexible payment plans, no hidden fees, and packages starting from £500. Get enterprise-quality development within your budget.",
+    description: "Transparent, affordable web development pricing designed for startups. Flexible payment plans, no hidden fees, and packages starting from £250. Get enterprise-quality development within your budget.",
     images: ["/pricing-og.jpg"],
   },
 } 
