@@ -108,16 +108,14 @@ export function MainNav() {
 
   return (
     <>
-      {/* Navigation Bar - Consistent styling for all pages */}
+      {/* Navigation Bar - Using home page styling for all pages */}
       <div 
         className="fixed top-0 left-0 right-0 z-50"
-        style={isHomePage ? 
-          {backgroundColor: 'rgba(15, 23, 42, 0.9)', backdropFilter: 'blur(8px)'} : 
-          {backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)'}}
+        style={{backgroundColor: 'rgba(15, 23, 42, 0.9)', backdropFilter: 'blur(8px)'}}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-3 md:py-4">
-            {/* Logo */}
+            {/* Logo - Using home page logo for all pages */}
             <div className="flex items-center">
               <Link 
                 href="/" 
@@ -125,11 +123,11 @@ export function MainNav() {
                 aria-label="Devora - Home"
               >
                 <Image
-                  src={isHomePage ? "/DEVORA.png" : "/devora-bw.png"}
+                  src="/DEVORA.png"
                   alt=""
-                  width={isHomePage ? 220 : 180}
-                  height={isHomePage ? 68 : 56}
-                  className={`${isHomePage ? 'h-12 sm:h-14' : 'h-10 sm:h-12 md:h-14'} w-auto object-contain`}
+                  width={220}
+                  height={68}
+                  className="h-12 sm:h-14 w-auto object-contain"
                   priority
                 />
               </Link>
@@ -138,18 +136,14 @@ export function MainNav() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center">
               <nav 
-                className={`${isHomePage ? 'bg-slate-800/80 backdrop-blur-md border border-slate-700/50' : 'bg-white/80 backdrop-blur-md border border-gray-200'} rounded-full px-3 py-1.5`}
+                className="bg-slate-800/80 backdrop-blur-md border border-slate-700/50 rounded-full px-3 py-1.5"
                 aria-label="Main navigation"
               >
                 {menuItems.map((item) => (
                   <Link 
                     key={item.href}
                     href={item.href}
-                    className={`px-5 py-2.5 rounded-full transition-all duration-300 text-base font-medium focus:outline-none focus:ring-2 ${
-                      isHomePage 
-                        ? 'text-white hover:bg-white/10 focus:ring-white/50' 
-                        : 'text-gray-900 hover:bg-gray-100 focus:ring-blue-500/40'
-                    } ${pathname === item.href ? isHomePage ? 'bg-white/10' : 'bg-gray-100' : ''}`}
+                    className={`px-5 py-2.5 rounded-full transition-all duration-300 text-base font-medium focus:outline-none focus:ring-2 text-white hover:bg-white/10 focus:ring-white/50 ${pathname === item.href ? 'bg-white/10' : ''}`}
                     aria-current={pathname === item.href ? 'page' : undefined}
                   >
                     {item.label}
@@ -161,11 +155,7 @@ export function MainNav() {
                   <button
                     ref={legalButtonRef}
                     onClick={() => setIsLegalOpen(!isLegalOpen)}
-                    className={`px-5 py-2.5 rounded-full transition-all duration-300 text-base font-medium flex items-center gap-1 focus:outline-none focus:ring-2 ${
-                      isHomePage 
-                        ? 'text-white hover:bg-white/10 focus:ring-white/50' 
-                        : 'text-gray-900 hover:bg-gray-100 focus:ring-blue-500/40'
-                    }`}
+                    className="px-5 py-2.5 rounded-full transition-all duration-300 text-base font-medium flex items-center gap-1 focus:outline-none focus:ring-2 text-white hover:bg-white/10 focus:ring-white/50"
                     aria-expanded={isLegalOpen}
                     aria-haspopup="true"
                   >
@@ -185,11 +175,7 @@ export function MainNav() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className={`absolute right-0 mt-2 rounded-xl overflow-hidden border shadow-lg z-10 ${
-                          isHomePage 
-                            ? 'bg-slate-800/90 backdrop-blur-md border-slate-700' 
-                            : 'bg-white border-gray-200'
-                        }`}
+                        className="absolute right-0 mt-2 rounded-xl overflow-hidden border shadow-lg z-10 bg-slate-800/90 backdrop-blur-md border-slate-700"
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="legal-menu"
@@ -199,11 +185,7 @@ export function MainNav() {
                             <Link
                               key={item.href}
                               href={item.href}
-                              className={`block px-4 py-2 text-sm transition-colors ${
-                                isHomePage 
-                                  ? 'text-gray-200 hover:bg-slate-700 hover:text-white' 
-                                  : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                              } focus:outline-none focus:bg-blue-50 focus:text-blue-600`}
+                              className="block px-4 py-2 text-sm transition-colors text-gray-200 hover:bg-slate-700 hover:text-white focus:outline-none focus:bg-blue-500/20 focus:text-blue-200"
                               onClick={() => setIsLegalOpen(false)}
                               role="menuitem"
                             >
@@ -220,12 +202,7 @@ export function MainNav() {
               <div className="ml-4">
                 <Button 
                   asChild
-                  variant={isHomePage ? "secondary" : "default"}
-                  className={`${
-                    isHomePage 
-                      ? 'bg-blue-600 text-white hover:bg-blue-700' 
-                      : 'bg-blue-600 text-white hover:bg-blue-700'
-                  } px-5 shadow-md`}
+                  className="bg-blue-600 text-white hover:bg-blue-700 px-5 shadow-md"
                 >
                   <Link href="/project-inquiry" className="flex items-center gap-1.5">
                     Start a Project
@@ -239,13 +216,8 @@ export function MainNav() {
             <div className="md:hidden flex items-center gap-3">
               <Button 
                 asChild
-                variant={isHomePage ? "secondary" : "default"}
                 size="sm"
-                className={`${
-                  isHomePage 
-                    ? 'bg-blue-600 text-white hover:bg-blue-700' 
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
-                } hidden sm:flex`}
+                className="bg-blue-600 text-white hover:bg-blue-700 hidden sm:flex"
               >
                 <Link href="/project-inquiry" className="flex items-center gap-1">
                   <span className="text-sm">Start a Project</span>
@@ -256,11 +228,7 @@ export function MainNav() {
               <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className={`p-2 rounded-md focus:outline-none focus:ring-2 ${
-                  isHomePage 
-                    ? 'text-white focus:ring-white/50' 
-                    : 'text-gray-900 focus:ring-blue-500'
-                }`}
+                className="p-2 rounded-md focus:outline-none focus:ring-2 text-white focus:ring-white/50"
                 aria-expanded={isOpen}
                 aria-controls="mobile-menu"
                 aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -285,23 +253,17 @@ export function MainNav() {
             animate={{ opacity: 1, height: "100vh" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className={`fixed inset-0 top-[57px] z-40 overflow-y-auto md:hidden flex flex-col ${
-              isHomePage 
-                ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white' 
-                : 'bg-white text-gray-900'
-            }`}
+            className="fixed inset-0 top-[57px] z-40 overflow-y-auto md:hidden flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white"
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation menu"
           >
-            {isHomePage && (
-              <>
-                <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
-                <div className="absolute -top-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-[120px] z-0" />
-                <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 bg-indigo-500/10 rounded-full blur-[100px] z-0" />
-              </>
-            )}
+            <>
+              <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
+              <div className="absolute -top-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-[120px] z-0" />
+              <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 bg-indigo-500/10 rounded-full blur-[100px] z-0" />
+            </>
             <div className="px-4 pt-6 pb-6 flex flex-col h-full space-y-6 relative z-[2]">
               <nav className="space-y-1.5 flex-1">
                 {menuItems.map((item) => (
@@ -309,14 +271,10 @@ export function MainNav() {
                     key={item.href}
                     href={item.href}
                     className={`block px-4 py-4 text-lg font-medium rounded-lg transition-colors ${
-                      isHomePage
-                        ? pathname === item.href
-                          ? 'bg-white/10 text-white'
-                          : 'text-white/90 hover:bg-white/5'
-                        : pathname === item.href
-                          ? 'bg-gray-100 text-blue-600'
-                          : 'text-gray-900 hover:bg-gray-50'
-                    } focus:outline-none focus:ring-2 ${isHomePage ? 'focus:ring-white/30' : 'focus:ring-blue-500'}`}
+                      pathname === item.href
+                        ? 'bg-white/10 text-white'
+                        : 'text-white/90 hover:bg-white/5'
+                    } focus:outline-none focus:ring-2 focus:ring-white/30`}
                     onClick={() => setIsOpen(false)}
                     aria-current={pathname === item.href ? 'page' : undefined}
                   >
@@ -325,17 +283,13 @@ export function MainNav() {
                 ))}
                 
                 {/* Legal section on mobile */}
-                <div className={`pt-4 mt-4 border-t ${isHomePage ? 'border-white/10' : 'border-gray-200'}`}>
-                  <p className={`px-4 text-sm font-medium uppercase mb-2 ${isHomePage ? 'text-white/50' : 'text-gray-500'}`}>Legal</p>
+                <div className="pt-4 mt-4 border-t border-white/10">
+                  <p className="px-4 text-sm font-medium uppercase mb-2 text-white/50">Legal</p>
                   {legalItems.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`block px-4 py-3 text-base rounded-lg focus:outline-none focus:ring-2 ${
-                        isHomePage
-                          ? 'text-white/80 hover:bg-white/5 focus:ring-white/30'
-                          : 'text-gray-800 hover:bg-gray-50 focus:ring-blue-500'
-                      }`}
+                      className="block px-4 py-3 text-base rounded-lg focus:outline-none focus:ring-2 text-white/80 hover:bg-white/5 focus:ring-white/30"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.label}
@@ -344,14 +298,10 @@ export function MainNav() {
                 </div>
               </nav>
               
-              <div className={`border-t pt-6 ${isHomePage ? 'border-white/10' : 'border-gray-200'}`}>
+              <div className="border-t pt-6 border-white/10">
                 <Button
                   asChild
-                  className={`w-full py-6 shadow-md text-base ${
-                    isHomePage
-                      ? 'bg-white hover:bg-gray-100 text-gray-900'
-                      : 'bg-blue-600 hover:bg-blue-700 text-white'
-                  }`}
+                  className="w-full py-6 shadow-md text-base bg-blue-600 hover:bg-blue-700 text-white"
                 >
                   <Link href="/project-inquiry" className="flex items-center justify-center gap-2">
                     Start Your Project Today
@@ -362,7 +312,7 @@ export function MainNav() {
                 <div className="mt-6 flex items-center justify-center space-x-6">
                   <a 
                     href="https://linkedin.com" 
-                    className={`${isHomePage ? 'text-white/70 hover:text-white' : 'text-gray-500 hover:text-gray-900'} focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1`}
+                    className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1"
                     aria-label="Visit our LinkedIn"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -371,7 +321,7 @@ export function MainNav() {
                   </a>
                   <a 
                     href="https://twitter.com" 
-                    className={`${isHomePage ? 'text-white/70 hover:text-white' : 'text-gray-500 hover:text-gray-900'} focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1`}
+                    className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1"
                     aria-label="Visit our Twitter/X"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -380,7 +330,7 @@ export function MainNav() {
                   </a>
                   <a 
                     href="mailto:hello@devora.co.uk" 
-                    className={`${isHomePage ? 'text-white/70 hover:text-white' : 'text-gray-500 hover:text-gray-900'} focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1`}
+                    className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1"
                     aria-label="Send us an email"
                   >
                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
