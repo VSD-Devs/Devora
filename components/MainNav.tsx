@@ -108,7 +108,13 @@ export function MainNav() {
 
   return (
     <>
-      <div className={`fixed top-0 left-0 right-0 z-50 ${!isHomePage ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
+      {/* Navigation Bar - Consistent styling for all pages */}
+      <div 
+        className="fixed top-0 left-0 right-0 z-50"
+        style={isHomePage ? 
+          {backgroundColor: 'rgba(15, 23, 42, 0.9)', backdropFilter: 'blur(8px)'} : 
+          {backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(8px)'}}
+      >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-3 md:py-4">
             {/* Logo */}
@@ -132,7 +138,7 @@ export function MainNav() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center">
               <nav 
-                className={`${isHomePage ? 'bg-black/30 backdrop-blur-md border border-white/10' : 'bg-white/80 backdrop-blur-md border border-gray-200'} rounded-full px-3 py-1.5`}
+                className={`${isHomePage ? 'bg-slate-800/80 backdrop-blur-md border border-slate-700/50' : 'bg-white/80 backdrop-blur-md border border-gray-200'} rounded-full px-3 py-1.5`}
                 aria-label="Main navigation"
               >
                 {menuItems.map((item) => (
@@ -141,9 +147,9 @@ export function MainNav() {
                     href={item.href}
                     className={`px-5 py-2.5 rounded-full transition-all duration-300 text-base font-medium focus:outline-none focus:ring-2 ${
                       isHomePage 
-                        ? 'text-white hover:bg-white/20 focus:ring-white/50' 
+                        ? 'text-white hover:bg-white/10 focus:ring-white/50' 
                         : 'text-gray-900 hover:bg-gray-100 focus:ring-blue-500/40'
-                    } ${pathname === item.href ? isHomePage ? 'bg-white/20' : 'bg-gray-100' : ''}`}
+                    } ${pathname === item.href ? isHomePage ? 'bg-white/10' : 'bg-gray-100' : ''}`}
                     aria-current={pathname === item.href ? 'page' : undefined}
                   >
                     {item.label}
@@ -157,7 +163,7 @@ export function MainNav() {
                     onClick={() => setIsLegalOpen(!isLegalOpen)}
                     className={`px-5 py-2.5 rounded-full transition-all duration-300 text-base font-medium flex items-center gap-1 focus:outline-none focus:ring-2 ${
                       isHomePage 
-                        ? 'text-white hover:bg-white/20 focus:ring-white/50' 
+                        ? 'text-white hover:bg-white/10 focus:ring-white/50' 
                         : 'text-gray-900 hover:bg-gray-100 focus:ring-blue-500/40'
                     }`}
                     aria-expanded={isLegalOpen}
@@ -181,7 +187,7 @@ export function MainNav() {
                         transition={{ duration: 0.2 }}
                         className={`absolute right-0 mt-2 rounded-xl overflow-hidden border shadow-lg z-10 ${
                           isHomePage 
-                            ? 'bg-gray-900/90 backdrop-blur-md border-gray-700' 
+                            ? 'bg-slate-800/90 backdrop-blur-md border-slate-700' 
                             : 'bg-white border-gray-200'
                         }`}
                         role="menu"
@@ -195,7 +201,7 @@ export function MainNav() {
                               href={item.href}
                               className={`block px-4 py-2 text-sm transition-colors ${
                                 isHomePage 
-                                  ? 'text-gray-200 hover:bg-gray-700 hover:text-white' 
+                                  ? 'text-gray-200 hover:bg-slate-700 hover:text-white' 
                                   : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                               } focus:outline-none focus:bg-blue-50 focus:text-blue-600`}
                               onClick={() => setIsLegalOpen(false)}
@@ -217,7 +223,7 @@ export function MainNav() {
                   variant={isHomePage ? "secondary" : "default"}
                   className={`${
                     isHomePage 
-                      ? 'bg-white text-gray-900 hover:bg-gray-100' 
+                      ? 'bg-blue-600 text-white hover:bg-blue-700' 
                       : 'bg-blue-600 text-white hover:bg-blue-700'
                   } px-5 shadow-md`}
                 >
@@ -237,7 +243,7 @@ export function MainNav() {
                 size="sm"
                 className={`${
                   isHomePage 
-                    ? 'bg-white/90 text-gray-900 hover:bg-white' 
+                    ? 'bg-blue-600 text-white hover:bg-blue-700' 
                     : 'bg-blue-600 text-white hover:bg-blue-700'
                 } hidden sm:flex`}
               >
@@ -281,7 +287,7 @@ export function MainNav() {
             transition={{ duration: 0.3 }}
             className={`fixed inset-0 top-[57px] z-40 overflow-y-auto md:hidden flex flex-col ${
               isHomePage 
-                ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white' 
+                ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white' 
                 : 'bg-white text-gray-900'
             }`}
             id="mobile-menu"
