@@ -1,0 +1,29 @@
+{
+  "name": "Devora",
+  "short_name": "Devora",
+  "description": "Professional web development services tailored for startups and growing businesses",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/DEVORA.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/DEVORA.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "en-GB",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+} 

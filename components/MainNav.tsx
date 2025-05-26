@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useRouter, usePathname } from "next/navigation"
+import { usePathname } from "next/navigation"
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "./ui/button"
@@ -14,9 +14,11 @@ export function MainNav() {
   const [isLegalOpen, setIsLegalOpen] = useState(false)
   const legalButtonRef = useRef<HTMLButtonElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
-  const router = useRouter()
   const pathname = usePathname()
   const isHomePage = pathname === "/"
+  
+  // Hide navigation on project-inquiry pages
+  const isProjectInquiry = pathname?.startsWith('/project-inquiry')
   
   // Keyboard trap for mobile menu
   const navRef = useRef<HTMLDivElement>(null)
@@ -35,12 +37,6 @@ export function MainNav() {
     { href: "/cookies", label: "Cookie Policy" },
     { href: "/refund-policy", label: "Refund Policy" },
   ]
-
-  const handleNavigation = (href: string) => {
-    setIsOpen(false)
-    setIsLegalOpen(false)
-    router.push(href)
-  }
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -106,6 +102,11 @@ export function MainNav() {
     };
   }, [isOpen]);
 
+  // Don't render navigation on project-inquiry pages - MOVED AFTER ALL HOOKS
+  if (isProjectInquiry) {
+    return null
+  }
+
   return (
     <>
       {/* Navigation Bar - Using home page styling for all pages */}
@@ -140,7 +141,7 @@ export function MainNav() {
                 aria-label="Main navigation"
               >
                 {menuItems.map((item) => (
-                  <Link 
+                  <Link
                     key={item.href}
                     href={item.href}
                     className={`px-5 py-2.5 rounded-full transition-all duration-300 text-base font-medium focus:outline-none focus:ring-2 text-white hover:bg-white/10 focus:ring-white/50 ${pathname === item.href ? 'bg-white/10' : ''}`}

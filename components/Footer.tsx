@@ -20,7 +20,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="md:col-span-4 space-y-6">
             <div className="flex items-center">
-              <Logo />
+              <Logo variant="footer" />
             </div>
             <p className="text-sm md:text-base text-gray-400 max-w-md">
               Empowering startups with innovative, high-quality web development solutions that drive growth and success in the digital landscape.

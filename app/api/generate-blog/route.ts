@@ -3,26 +3,33 @@ import { generateBlogPost } from '@/lib/ai-blog-generator';
 
 export async function GET(request: Request) {
   try {
-    // Check for API key in headers for security (implement proper auth in production)
-    const authHeader = request.headers.get('authorization');
+    // Check if this is a Vercel cron request
+    const cronSecret = request.headers.get('authorization');
+    const userAgent = request.headers.get('user-agent');
     
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return NextResponse.json(
-        { error: 'Unauthorized access' },
-        { status: 401 }
-      );
-    }
+    // Vercel cron requests have a specific user-agent and authorization header
+    const isVercelCron = userAgent?.includes('vercel-cron') || 
+                        cronSecret === `Bearer ${process.env.CRON_SECRET}`;
     
-    const token = authHeader.substring(7); // Remove 'Bearer ' prefix
-    
-    // In production, use a secure comparison with your actual API key
-    // This is just a simple example - replace with proper auth
-    const apiKey = process.env.BLOG_GENERATION_API_KEY;
-    if (!apiKey || token !== apiKey) {
-      return NextResponse.json(
-        { error: 'Invalid API key' },
-        { status: 401 }
-      );
+    // For manual API calls, check for proper authentication
+    if (!isVercelCron) {
+      if (!cronSecret || !cronSecret.startsWith('Bearer ')) {
+        return NextResponse.json(
+          { error: 'Unauthorized access' },
+          { status: 401 }
+        );
+      }
+      
+      const token = cronSecret.substring(7); // Remove 'Bearer ' prefix
+      
+      // In production, use a secure comparison with your actual API key
+      const apiKey = process.env.BLOG_GENERATION_API_KEY;
+      if (!apiKey || token !== apiKey) {
+        return NextResponse.json(
+          { error: 'Invalid API key' },
+          { status: 401 }
+        );
+      }
     }
     
     // Generate the blog post
@@ -34,11 +41,12 @@ export async function GET(request: Request) {
         { status: 500 }
       );
     }
-    
+
     return NextResponse.json({
       success: true,
       message: 'Blog post created successfully',
-      slug
+      slug,
+      source: isVercelCron ? 'cron' : 'manual'
     });
     
   } catch (error) {

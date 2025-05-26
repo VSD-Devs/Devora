@@ -5,8 +5,6 @@ import { MainNav } from '@/components/MainNav';
 import Footer from '@/components/Footer';
 import Script from 'next/script';
 import { CookieConsent } from '@/components/CookieConsent';
-import { headers } from 'next/headers';
-import dynamic from 'next/dynamic';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -92,32 +90,20 @@ export const metadata: Metadata = {
   category: 'technology',
 };
 
-// Client component for conditional navigation
-const NavigationWrapper = dynamic(() => import('@/components/NavigationWrapper'), {
-  ssr: false
-});
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const headersList = headers();
-  const pathname = headersList.get("x-pathname") || "";
-  const isProjectInquiry = pathname.startsWith("/project-inquiry");
-  
-  // Create dynamic canonical URL based on current path
-  const canonicalUrl = `https://devora.dev${pathname}`;
-
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="canonical" href={canonicalUrl} />
         <meta name="theme-color" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         
         {/* Preload critical assets */}
         <link rel="preload" as="image" href="/grid.svg" />
+        <link rel="preload" as="image" href="/DEVORA.png" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         
@@ -176,11 +162,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
-        <NavigationWrapper>
-          <MainNav />
-        </NavigationWrapper>
-        <main>
+      <body className={`${inter.className} antialiased`}>
+        <MainNav />
+        <main className="relative">
           {children}
         </main>
         <Footer />
