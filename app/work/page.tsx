@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowLeftRight, Lightbulb, Code, PenTool, CheckCircle, Rocket, ExternalLink, Award, TrendingUp, Star } from "lucide-react";
+import { ArrowRight, ArrowLeftRight, Lightbulb, Code, PenTool, CheckCircle, Rocket, ExternalLink, Award, TrendingUp, Star, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
 
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 // Extended project data with more detailed information
 const projects = [
   {
+    id: "envirotech-plumbing",
     title: "EnviroTech Emergency Plumbing",
     description: "24/7 Emergency Plumbing Service Platform with real-time booking and instant quote functionality",
     image: "/Enviro.png",
@@ -23,6 +24,7 @@ const projects = [
     results: "50% increase in emergency call conversions and 35% reduction in administrative workload through automation."
   },
   {
+    id: "sandalwood-memorials",
     title: "Sandalwood Memorials",
     description: "Premium memorial & headstone design service featuring an elegant product showcase and seamless quote system",
     image: "/Sandalwood-Memorials.png",
@@ -34,6 +36,7 @@ const projects = [
     results: "145% increase in online enquiries and improved engagement metrics, with users spending an average of 5 minutes exploring the memorial options."
   },
   {
+    id: "sandalwood-memories",
     title: "Sandalwood Memories",
     description: "Innovative digital memorial platform helping families preserve and share precious memories of loved ones",
     image: "/Sandalwood-Memories.png",
@@ -45,6 +48,7 @@ const projects = [
     results: "The platform now hosts over 10,000 memories and has received overwhelmingly positive feedback for its sensitive approach to digital memorialisation."
   },
   {
+    id: "slush-dating",
     title: "Slush Dating",
     description: "Revolutionary video dating platform connecting singles through meaningful video conversations",
     image: "/Slush.png",
@@ -56,6 +60,7 @@ const projects = [
     results: "The platform achieved a 78% match-to-conversation rate, significantly higher than industry averages, with users reporting more authentic connections."
   },
   {
+    id: "sky-limit-travels",
     title: "Sky Limit Travels",
     description: "Comprehensive travel booking platform offering flight search, popular destinations, and personalised travel recommendations",
     image: "/skylimittravels-web.png",
@@ -178,6 +183,19 @@ export default function WorkPage() {
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                         <span className="text-slate-700 text-xs font-medium">Live</span>
                       </div>
+                    </div>
+
+                    {/* Case Study Button Overlay */}
+                    <div className="absolute bottom-4 left-4 right-4 flex gap-3 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                      <Link href={`/work/${project.id}`} className="flex-1">
+                        <Button
+                          variant="secondary"
+                          className="w-full bg-white/90 hover:bg-white text-gray-900 font-medium shadow-lg text-sm py-2"
+                        >
+                          <Eye className="w-4 h-4 mr-2" />
+                          View Case Study
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
