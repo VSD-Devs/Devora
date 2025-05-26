@@ -84,7 +84,7 @@ function getAuthorForTopic(topic) {
 }
 
 /**
- * Generate a cover image for the blog post
+ * Generate a cover image for the blog post with multiple sources
  * @param {string} title - The blog post title
  * @param {string} topic - The blog post topic
  * @returns {Promise<string>} - The path to the generated image
@@ -95,39 +95,291 @@ async function generateCoverImage(title, topic) {
   const outputPath = path.join(process.cwd(), 'public/blog', fileName);
   
   try {
-    // Generate a gradient background
-    const width = 1200;
-    const height = 630;
-    const backgroundColor = getColorForTopic(topic);
+    // Try different image sources in order of preference
     
-    // Create a gradient image
-    const svgImage = `
-    <svg width="${width}" height="${height}">
-      <defs>
-        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="${backgroundColor}" stop-opacity="1" />
-          <stop offset="100%" stop-color="#000000" stop-opacity="0.7" />
-        </linearGradient>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#grad)" />
-      <text x="50%" y="50%" font-family="Arial" font-size="60" fill="white" text-anchor="middle" dominant-baseline="middle">
-        ${title.length > 40 ? title.substring(0, 37) + '...' : title}
-      </text>
-      <text x="50%" y="90%" font-family="Arial" font-size="30" fill="white" text-anchor="middle" dominant-baseline="middle">
-        Devora Blog
-      </text>
-    </svg>
-    `;
+    // 1. First try Pexels API (instant approval, no waiting)
+    console.log(`🎯 Attempting to generate image for: ${topic}`);
+    console.log(`📁 Output path: ${outputPath}`);
+    const pexelsImage = await tryPexelsImage(topic, outputPath);
+    if (pexelsImage) {
+      console.log(`✅ Successfully downloaded Pexels image for topic: ${topic}`);
+      return `/blog/${fileName}`;
+    } else {
+      console.log(`⚠️ Pexels image generation failed for topic: ${topic}`);
+    }
     
-    await sharp(Buffer.from(svgImage))
-      .jpeg()
-      .toFile(outputPath);
+    // 2. Try Lorem Picsum (no API key needed, instant)
+    const loremPicsumImage = await tryLoremPicsumImage(topic, outputPath);
+    if (loremPicsumImage) {
+      console.log(`✅ Successfully downloaded Lorem Picsum image for topic: ${topic}`);
+      return `/blog/${fileName}`;
+    }
     
+    // 3. Fallback to enhanced SVG generation
+    await generateEnhancedSVGImage(title, topic, outputPath);
+    console.log(`✅ Generated enhanced SVG image for topic: ${topic}`);
     return `/blog/${fileName}`;
+    
   } catch (error) {
     console.error('Error generating cover image:', error);
     return '/blog/default-cover.jpg';
   }
+}
+
+/**
+ * Try to get an image from Pexels (instant approval, free)
+ */
+async function tryPexelsImage(topic, outputPath) {
+  console.log(`🚀 tryPexelsImage called with topic: "${topic}", outputPath: "${outputPath}"`);
+  
+  if (!process.env.PEXELS_API_KEY) {
+    console.log('Pexels API key not found, skipping Pexels image generation');
+    return false;
+  }
+  
+  console.log('✅ Pexels API key found, proceeding...');
+  
+  try {
+    const searchQuery = getPexelsSearchQuery(topic);
+    console.log(`🔍 Searching Pexels for: "${searchQuery}"`);
+    
+    const response = await fetch(
+      `https://api.pexels.com/v1/search?query=${encodeURIComponent(searchQuery)}&per_page=15&orientation=landscape`,
+      {
+        headers: {
+          'Authorization': process.env.PEXELS_API_KEY,
+        },
+      }
+    );
+    
+    if (!response.ok) {
+      console.log('Pexels API request failed:', response.status, response.statusText);
+      return false;
+    }
+    
+    const data = await response.json();
+    console.log(`📊 API response: ${data.photos?.length || 0} photos found`);
+    
+    if (data.photos && data.photos.length > 0) {
+      // Pick a random image from the results
+      const randomIndex = Math.floor(Math.random() * Math.min(data.photos.length, 8));
+      const selectedImage = data.photos[randomIndex];
+      
+      console.log(`📸 Found ${data.photos.length} images, using image by ${selectedImage.photographer}`);
+      console.log(`🔗 Image URL: ${selectedImage.src.large}`);
+      
+      // Download the large image
+      console.log(`⬇️ Downloading image...`);
+      const imageResponse = await fetch(selectedImage.src.large);
+      console.log(`📡 Image download status: ${imageResponse.status}`);
+      
+      if (imageResponse.ok) {
+        const imageBuffer = await imageResponse.arrayBuffer();
+        console.log(`📦 Image buffer size: ${imageBuffer.byteLength} bytes`);
+        
+        // Process and save the image
+        console.log(`🔧 Processing with Sharp and saving to: ${outputPath}`);
+        try {
+          await sharp(Buffer.from(imageBuffer))
+            .resize(1200, 630, { fit: 'cover' })
+            .jpeg({ quality: 85 })
+            .toFile(outputPath);
+          
+          console.log(`✅ Image saved successfully!`);
+          return true;
+        } catch (sharpError) {
+          console.error(`❌ Sharp processing failed:`, sharpError.message);
+          return false;
+        }
+      } else {
+        console.log(`❌ Failed to download image: ${imageResponse.status} ${imageResponse.statusText}`);
+      }
+    }
+    
+    console.log('No suitable Pexels images found for topic:', topic);
+    return false;
+    
+  } catch (error) {
+    console.error('Error fetching from Pexels:', error);
+    return false;
+  }
+}
+
+/**
+ * Try Lorem Picsum for placeholder images (no API key needed)
+ */
+async function tryLoremPicsumImage(topic, outputPath) {
+  try {
+    // Lorem Picsum provides beautiful placeholder images
+    // We'll use a seed based on the topic for consistency
+    const seed = topic.replace(/\s+/g, '').toLowerCase();
+    const imageUrl = `https://picsum.photos/seed/${seed}/1200/630`;
+    
+    console.log(`🖼️  Trying Lorem Picsum with seed: ${seed}`);
+    
+    const imageResponse = await fetch(imageUrl);
+    if (imageResponse.ok) {
+      const imageBuffer = await imageResponse.arrayBuffer();
+      
+      // Process and save the image
+      await sharp(Buffer.from(imageBuffer))
+        .jpeg({ quality: 85 })
+        .toFile(outputPath);
+      
+      return true;
+    }
+    
+    return false;
+    
+  } catch (error) {
+    console.error('Error fetching from Lorem Picsum:', error);
+    return false;
+  }
+}
+
+/**
+ * Convert blog topic to Pexels search query
+ */
+function getPexelsSearchQuery(topic) {
+  const topicMappings = {
+    'website design for startups': 'startup business team office',
+    'next.js benefits for business websites': 'web development programming computer',
+    'how to choose a web development agency': 'business meeting handshake',
+    'accessible website design principles': 'accessibility technology inclusive',
+    'conversion-focused landing pages': 'analytics business growth chart',
+    'measuring ROI from your website': 'analytics data business metrics',
+    'headless CMS benefits for business': 'content management technology',
+    'website performance and business growth': 'speed performance technology',
+    'e-commerce website best practices': 'ecommerce online shopping',
+    'website security for small businesses': 'security technology protection',
+    'mobile-first web design benefits': 'mobile technology responsive design',
+    'website analytics for business insights': 'data analytics dashboard',
+    'startup digital presence strategy': 'startup business strategy',
+    'bespoke vs template websites': 'custom design development',
+    'branding consistency in web design': 'branding design consistency',
+    'content strategy for business websites': 'content strategy marketing',
+    'website localisation strategies': 'global business international',
+    'website accessibility compliance': 'accessibility compliance technology',
+    'reducing website bounce rates': 'user experience analytics',
+    'user experience design principles': 'user experience design interface'
+  };
+  
+  return topicMappings[topic] || `${topic} business technology`;
+}
+
+/**
+ * Generate enhanced SVG image with better design
+ */
+async function generateEnhancedSVGImage(title, topic, outputPath) {
+  const width = 1200;
+  const height = 630;
+  const backgroundColor = getColorForTopic(topic);
+  const accentColor = getAccentColorForTopic(topic);
+  
+  // Create a more sophisticated SVG design
+  const svgImage = `
+    <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="${backgroundColor}" stop-opacity="1" />
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.8" />
+        </linearGradient>
+        <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="${accentColor}" stop-opacity="0.8" />
+          <stop offset="100%" stop-color="${backgroundColor}" stop-opacity="0.6" />
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge> 
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      
+      <!-- Background -->
+      <rect width="100%" height="100%" fill="url(#bgGrad)" />
+      
+      <!-- Decorative elements -->
+      <circle cx="100" cy="100" r="60" fill="${accentColor}" opacity="0.1" />
+      <circle cx="${width - 100}" cy="${height - 100}" r="80" fill="${accentColor}" opacity="0.15" />
+      <rect x="${width - 200}" y="50" width="150" height="150" fill="url(#accentGrad)" opacity="0.1" transform="rotate(45 ${width - 125} 125)" />
+      
+      <!-- Content area -->
+      <rect x="80" y="120" width="${width - 160}" height="${height - 240}" fill="rgba(255,255,255,0.05)" rx="20" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+      
+      <!-- Title -->
+      <text x="50%" y="45%" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle" filter="url(#glow)">
+        ${title.length > 35 ? title.substring(0, 32) + '...' : title}
+      </text>
+      
+      <!-- Subtitle -->
+      <text x="50%" y="60%" font-family="Arial, sans-serif" font-size="24" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">
+        ${getSubtitleForTopic(topic)}
+      </text>
+      
+      <!-- Brand -->
+      <text x="50%" y="85%" font-family="Arial, sans-serif" font-size="20" font-weight="600" fill="${accentColor}" text-anchor="middle" dominant-baseline="middle">
+        DEVORA INSIGHTS
+      </text>
+      
+      <!-- Decorative line -->
+      <line x1="50%" y1="75%" x2="50%" y2="80%" stroke="${accentColor}" stroke-width="3" transform="translate(-50 0)" />
+      <line x1="50%" y1="75%" x2="50%" y2="80%" stroke="${accentColor}" stroke-width="3" transform="translate(50 0)" />
+    </svg>
+  `;
+  
+  await sharp(Buffer.from(svgImage))
+    .jpeg({ quality: 90 })
+    .toFile(outputPath);
+}
+
+/**
+ * Get accent color for the topic
+ */
+function getAccentColorForTopic(topic) {
+  const baseColor = getColorForTopic(topic);
+  // Create a lighter version of the base color for accent
+  const colorMap = {
+    '#4A56E2': '#818CF8',
+    '#E24A56': '#F87171',
+    '#56E24A': '#34D399',
+    '#4AE2E2': '#22D3EE',
+    '#E24AE2': '#A78BFA',
+    '#E2E24A': '#FBBF24'
+  };
+  
+  return colorMap[baseColor] || '#818CF8';
+}
+
+/**
+ * Get subtitle based on topic
+ */
+function getSubtitleForTopic(topic) {
+  const subtitles = {
+    'website design for startups': 'Building Your Digital Foundation',
+    'next.js benefits for business websites': 'Framework Excellence',
+    'how to choose a web development agency': 'Making the Right Choice',
+    'accessible website design principles': 'Inclusive Design Practices',
+    'conversion-focused landing pages': 'Maximising Results',
+    'measuring ROI from your website': 'Data-Driven Success',
+    'headless CMS benefits for business': 'Content Management Evolution',
+    'website performance and business growth': 'Speed & Success',
+    'e-commerce website best practices': 'Online Sales Excellence',
+    'website security for small businesses': 'Protection & Trust',
+    'mobile-first web design benefits': 'Mobile Excellence',
+    'website analytics for business insights': 'Data-Driven Decisions',
+    'startup digital presence strategy': 'Digital Strategy Guide',
+    'bespoke vs template websites': 'Custom vs Template',
+    'branding consistency in web design': 'Brand Excellence',
+    'content strategy for business websites': 'Content That Converts',
+    'website localisation strategies': 'Global Reach',
+    'website accessibility compliance': 'Inclusive Web Design',
+    'reducing website bounce rates': 'User Engagement',
+    'user experience design principles': 'UX Excellence'
+  };
+  
+  return subtitles[topic] || 'Professional Insights';
 }
 
 /**

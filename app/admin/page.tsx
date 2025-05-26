@@ -132,8 +132,8 @@ export default function AdminPage() {
                     <Calendar className="w-4 h-4 text-blue-600" />
                     <span className="font-medium text-blue-900">Schedule</span>
                   </div>
-                  <p className="text-sm text-blue-700">Every Monday at 9:00 AM UTC</p>
-                  <p className="text-xs text-blue-600 mt-1">Cron: 0 9 * * 1</p>
+                  <p className="text-sm text-blue-700">Every day at 9:00 AM UTC</p>
+                  <p className="text-xs text-blue-600 mt-1">Cron: 0 9 * * *</p>
                 </div>
                 
                 <div className="p-4 bg-green-50 rounded-lg border border-green-200">
@@ -149,7 +149,7 @@ export default function AdminPage() {
               <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
                 <h4 className="font-medium text-slate-900 mb-2">How it works:</h4>
                 <ul className="text-sm text-slate-600 space-y-1">
-                  <li>• Vercel automatically calls your API every Monday at 9 AM</li>
+                  <li>• Vercel automatically calls your API every day at 9 AM UTC</li>
                   <li>• AI generates content about web development topics</li>
                   <li>• New blog post appears on your site immediately</li>
                   <li>• No manual intervention required</li>

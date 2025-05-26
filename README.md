@@ -9,25 +9,90 @@ A modern, responsive website built with Next.js 13+ and Tailwind CSS.
 - Contact forms with email integration
 - Project inquiry multi-step form
 - Blog system with automatic content generation
+- **Enhanced automated image generation** with multiple sources
 - SEO optimised
 - Accessible design
 
 ## Automatic Blog Posting
 
-The website includes an automated blog posting system that can generate content using AI.
+The website includes an automated blog posting system that can generate content using AI and automatically source appropriate images.
 
 ### Setup
 
 1. **Environment Variables**: Add these to your `.env.local` file:
 ```bash
+# Required for blog generation
 BLOG_GENERATION_API_KEY=your-secret-api-key-here
 HUGGING_FACE_API_KEY=your-hugging-face-api-key
+
+# Recommended: For instant professional photos
+PEXELS_API_KEY=your-pexels-api-key
+
+# Optional: For premium photos (10-day approval wait)
+UNSPLASH_ACCESS_KEY=your-unsplash-access-key
+
+# Optional: For additional photo sources
+PIXABAY_API_KEY=your-pixabay-api-key
 ```
 
-2. **Get a Hugging Face API Key**:
+2. **Get API Keys**:
+
+   **Hugging Face API Key** (Required for content):
    - Go to [Hugging Face](https://huggingface.co/)
    - Create an account and get your API token
    - Add it to your environment variables
+
+   **Pexels API Key** (Recommended - Instant approval):
+   - Go to [Pexels API](https://www.pexels.com/api/)
+   - Create a free account
+   - Get your API key immediately (no waiting)
+   - Add it to your environment variables
+
+   **Unsplash API Key** (Optional - Premium quality, 10-day wait):
+   - Go to [Unsplash Developers](https://unsplash.com/developers)
+   - Create a developer account
+   - Create a new application
+   - Wait 10 days for approval
+   - Copy your "Access Key" (not the Secret Key)
+
+   **Pixabay API Key** (Optional - Easy approval):
+   - Go to [Pixabay API](https://pixabay.com/api/docs/)
+   - Create a free account
+   - Usually approved within hours
+
+### Enhanced Image Generation
+
+The system now uses a **five-tier approach** for generating blog images:
+
+1. **🏆 Pexels API (Instant Approval)**:
+   - Professional photos with immediate access
+   - 200 images per hour free tier
+   - No waiting period - get API key instantly
+   - High-quality business and technology imagery
+
+2. **🖼️ Lorem Picsum (No API Key)**:
+   - Beautiful placeholder images
+   - No setup required - works immediately
+   - Consistent images for same topics
+   - Reliable fallback option
+
+3. **📸 Unsplash API (Premium Quality)**:
+   - Highest quality professional photos
+   - Requires 10-day approval wait
+   - 5,000 requests per hour when approved
+   - Premium photography collection
+
+4. **🎨 Pixabay API (Easy Approval)**:
+   - Large library of business-friendly photos
+   - Usually approved within hours
+   - Commercial-friendly licensing
+   - Good variety of technology images
+
+5. **🎨 Enhanced SVG Generation (Always Works)**:
+   - Beautiful gradient-based designs
+   - Topic-specific colour schemes and subtitles
+   - Professional branding with Devora styling
+   - Guaranteed fallback that always works
 
 ### Usage
 
@@ -56,9 +121,37 @@ curl -X GET "https://your-domain.com/api/generate-blog" \
 
 1. **Random Topic Selection**: Picks from 20+ web development topics
 2. **AI Content Generation**: Uses Hugging Face's Mistral-7B model to create quality content
-3. **Markdown Creation**: Formats the content with frontmatter
-4. **File Storage**: Saves to `content/blog/` directory
-5. **Automatic Display**: New posts appear on the blog page immediately
+3. **Smart Image Selection**: 
+   - First tries Unsplash for real photos matching the topic
+   - Falls back to enhanced SVG generation if needed
+   - Automatically optimises images to 1200x630px for social sharing
+4. **Markdown Creation**: Formats the content with frontmatter
+5. **File Storage**: Saves to `content/blog/` directory
+6. **Automatic Display**: New posts appear on the blog page immediately
+
+### Image Quality Examples
+
+**With Pexels API** (instant approval - recommended):
+- "web development trends" → Professional programming and technology photos
+- "startup website essentials" → Modern business and team imagery
+- "ui/ux improvements" → Clean design and interface photos
+
+**With Lorem Picsum** (no API key needed):
+- Consistent, beautiful placeholder images for each topic
+- High-quality curated photography
+- Professional appearance - looks intentional
+- Always available as immediate fallback
+
+**With Unsplash API** (premium quality after 10-day approval):
+- Highest quality professional photography
+- "web development trends" → Premium developer and tech imagery
+- "startup essentials" → Premium business and office photos
+
+**Enhanced SVG Fallback** (always works):
+- Beautiful gradient backgrounds with topic-specific colours
+- Professional typography and branding
+- Decorative elements and modern design
+- Consistent with Devora brand identity
 
 ### Topics Covered
 
@@ -69,75 +162,85 @@ The system can generate content about:
 - Next.js best practices
 - Website optimisation
 - SEO for startups
+- Responsive design principles
+- UI/UX improvements
+- Web accessibility
+- Website security
+- Conversion rate optimisation
 - And many more...
 
 ### Scheduling (Automated)
 
 **Vercel Cron Functions (Recommended):**
 
-The project includes a `vercel.json` file that automatically sets up cron functions:
-
+Add to your `vercel.json`:
 ```json
 {
   "crons": [
     {
       "path": "/api/generate-blog",
-      "schedule": "0 9 * * 1"
+      "schedule": "0 8 * * *"
     }
   ]
 }
 ```
 
-This will automatically generate a new blog post **every Monday at 9:00 AM UTC**.
+**GitHub Actions (Alternative):**
 
-**Admin Dashboard:**
+The included workflow in `.github/workflows/scheduled-blog-post.yml` runs daily at 8 AM UTC.
 
-Visit `/admin` on your deployed site to:
-- Manually generate blog posts
-- View the automated schedule status
-- Check environment variable setup
+### Manual Generation
 
-**Alternative Scheduling Options:**
-
-You can also set up automated posting using:
-- **GitHub Actions** (for automated deployment)
-- **Traditional Cron Jobs** (Linux/Mac servers)
-- **Any task scheduler**
-
-Example traditional cron job (daily at 9 AM):
 ```bash
-0 9 * * * curl -X GET "https://your-domain.com/api/generate-blog" -H "Authorization: Bearer YOUR_API_KEY"
+# Run the script directly
+yarn generate-blog
+
+# Or use the TypeScript version
+npx tsx scripts/generate-blog-post.ts
 ```
 
-**Customising the Schedule:**
+### Image Optimisation
 
-To change when posts are generated, edit the `schedule` in `vercel.json`:
+All generated images are automatically:
+- Resized to 1200x630px (optimal for social sharing)
+- Compressed to 85% quality for fast loading
+- Saved in JPEG format
+- Given unique filenames to prevent conflicts
 
-- `0 9 * * 1` - Every Monday at 9 AM UTC
-- `0 9 * * *` - Every day at 9 AM UTC  
-- `0 9 * * 0,3` - Every Sunday and Wednesday at 9 AM UTC
-- `0 */6 * * *` - Every 6 hours
+### Troubleshooting
 
-After changing the schedule, redeploy to Vercel for changes to take effect.
+**No images appearing:**
+- Check if `public/blog/` directory exists
+- Verify Unsplash API key is correct
+- Check console logs for image generation errors
+
+**Unsplash API issues:**
+- Ensure you're using the Access Key, not Secret Key
+- Check your Unsplash app's rate limits
+- Verify your app is approved for production use
+
+**Poor image relevance:**
+- The system maps topics to relevant search terms
+- You can customise the `getUnsplashSearchQuery()` function
+- SVG fallback ensures you always get appropriate branding
 
 ## Development
 
 ```bash
-npm install
-npm run dev
+# Install dependencies
+yarn install
+
+# Run development server
+yarn dev
+
+# Generate a test blog post
+yarn generate-blog
 ```
 
 ## Deployment
 
-The site is optimised for deployment on Vercel, Netlify, or any Node.js hosting platform.
+The site is optimised for deployment on Vercel with automatic blog generation via cron functions.
 
-## Tech Stack
+## License
 
-- **Framework**: Next.js 13+ (App Router)
-- **Styling**: Tailwind CSS
-- **UI Components**: Radix UI
-- **Animations**: Framer Motion
-- **Forms**: React Hook Form
-- **Email**: Nodemailer
-- **Content**: Markdown with frontmatter
-- **AI**: Hugging Face API (Mistral-7B) 
+MIT License - see LICENSE file for details. 

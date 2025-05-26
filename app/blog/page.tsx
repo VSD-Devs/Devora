@@ -59,7 +59,7 @@ export default async function BlogPage() {
             {/* Stats Cards */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-8 md:mb-12">
               {[
-                { label: "Fresh Content", value: "Weekly", icon: <BookOpen className="w-4 md:w-5 h-4 md:h-5" /> },
+                { label: "Fresh Content", value: "Daily", icon: <BookOpen className="w-4 md:w-5 h-4 md:h-5" /> },
                 { label: "Topics Covered", value: "10+", icon: <Star className="w-4 md:w-5 h-4 md:h-5" /> },
                 { label: "Practical Guides", value: "Growing", icon: <Award className="w-4 md:w-5 h-4 md:h-5" /> },
                 { label: "Quality Focus", value: "100%", icon: <Zap className="w-4 md:w-5 h-4 md:h-5" /> }

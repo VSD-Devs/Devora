@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "generate-blog": "node scripts/generate-blog-post.js",
+    "test-images": "node scripts/test-image-generation.js",
     "ts-node": "ts-node"
   },
   "dependencies": {

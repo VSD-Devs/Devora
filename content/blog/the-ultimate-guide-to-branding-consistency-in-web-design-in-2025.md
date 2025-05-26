@@ -1,7 +1,7 @@
 ---
 title: "The Ultimate Guide to Branding Consistency In Web Design in 2025"
 excerpt: "Discover practical strategies and insights about branding consistency in web design that can transform your business website and improve your digital presence."
-date: "2025-03-08"
+date: "2025-05-26"
 author: "Sarah Thompson, Lead Designer at Devora"
 coverImage: "/blog/branding-consistency-in-web-design.jpg"
 tags: ["devora insights", "web design", "digital strategy", "design principles", "user experience"]

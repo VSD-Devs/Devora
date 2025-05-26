@@ -42,6 +42,9 @@ jobs:
           # ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           # GOOGLE_GEMINI_API_KEY: ${{ secrets.GOOGLE_GEMINI_API_KEY }}
           
+          # Pexels API for professional images (REQUIRED)
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          
           # Keep your blog generation API key
           BLOG_GENERATION_API_KEY: ${{ secrets.BLOG_GENERATION_API_KEY }}
       
