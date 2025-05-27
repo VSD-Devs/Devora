@@ -95,7 +95,7 @@ export default function Home() {
           <div className="relative z-10 container mx-auto px-4 md:px-6 pt-16 md:pt-32 pb-8 md:pb-20">
             <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 md:gap-12 lg:items-center">
               {/* Text Content - Always first on mobile */}
-              <div className="space-y-4 md:space-y-8 relative order-1 lg:order-1">
+              <div className="space-y-4 md:space-y-8 relative order-1 lg:order-1 text-left">
                 {/* Floating decorative elements - Hidden on mobile */}
                 <div className="hidden md:block absolute -top-10 -left-10 w-20 h-20 border border-blue-500/20 rounded-full animate-spin-slow"></div>
                 <div className="hidden md:block absolute top-20 -right-5 w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
@@ -113,58 +113,52 @@ export default function Home() {
           
                 {/* Enhanced Main Headline with creative typography - Responsive sizing */}
                 <div className="relative">
-                  <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
                     <span className="relative inline-block">
                       <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
-                        Beautiful
+                        Beautiful Websites
                       </span>
                       {/* Underline decoration - Smaller on mobile */}
                       <div className="absolute -bottom-1 md:-bottom-2 left-0 w-full h-0.5 md:h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent rounded-full"></div>
                     </span>
                     <br />
-                    <span className="relative inline-block">
-                      <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent">
-                        Websites
-                      </span>
-                      {/* Floating accent - Smaller on mobile */}
-                      <div className="absolute -top-2 md:-top-4 -right-2 md:-right-4 w-2 md:w-3 h-2 md:h-3 bg-blue-400 rounded-full animate-bounce"></div>
-                    </span>
-                    <br />
-                    <span className="text-white font-light">That</span>{" "}
+                    <span className="text-white font-light">That </span>
                     <span className="relative inline-block">
                       <span className="bg-gradient-to-r from-cyan-300 to-blue-500 bg-clip-text text-transparent font-black">
                         Convert
                       </span>
                       {/* Emphasis decoration - Smaller on mobile */}
                       <div className="absolute -bottom-2 md:-bottom-3 left-0 w-full h-1 md:h-2 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-full blur-sm"></div>
+                      {/* Floating accent - Smaller on mobile */}
+                      <div className="absolute -top-2 md:-top-4 -right-2 md:-right-4 w-2 md:w-3 h-2 md:h-3 bg-blue-400 rounded-full animate-bounce"></div>
                     </span>
                   </h1>
           </div>
           
-                {/* Subheadline - Smaller on mobile */}
-                <p className="text-base md:text-lg lg:text-xl text-blue-100 leading-relaxed max-w-xl">
+                {/* Subheadline - Larger on mobile */}
+                <p className="text-lg md:text-xl lg:text-2xl text-blue-100 leading-relaxed max-w-xl">
                   We craft stunning, high-performance websites that help ambitious startups{" "}
                   <span className="text-white font-semibold">stand out</span> and{" "}
                   <span className="text-white font-semibold">scale fast</span>
                 </p>
                 
-                {/* CTA Buttons - Smaller on mobile */}
+                {/* CTA Buttons - Larger on mobile */}
                 <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                     <Link href="/project-inquiry">
-                    <Button size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white border-0 rounded-xl px-6 md:px-8 py-4 md:py-6 text-base md:text-lg font-semibold shadow-2xl">
+                    <Button size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white border-0 rounded-xl px-8 md:px-8 py-5 md:py-6 text-lg md:text-lg font-semibold shadow-2xl">
                         Start Your Project
                       <ArrowRight className="ml-2 h-4 md:h-5 w-4 md:w-5" />
                       </Button>
                     </Link>
                   <Link href="/work">
-                    <Button size="lg" variant="outline" className="w-full sm:w-auto border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 rounded-xl px-6 md:px-8 py-4 md:py-6 text-base md:text-lg font-semibold">
+                    <Button size="lg" variant="outline" className="w-full sm:w-auto border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 rounded-xl px-8 md:px-8 py-5 md:py-6 text-lg md:text-lg font-semibold">
                       View Our Work
                       </Button>
                     </Link>
                   </div>
                 
-                {/* Stats - Smaller on mobile, hidden on small screens to save space */}
-                <div className="hidden sm:grid grid-cols-2 gap-4 md:gap-6 pt-4 md:pt-8">
+                {/* Stats - Larger on mobile, hidden on small screens to save space */}
+                <div className="hidden sm:grid grid-cols-2 gap-4 md:gap-6 pt-4 md:pt-8 text-left">
                   {[
                     { value: "100+", label: "Projects Delivered" },
                     { value: "98%", label: "Client Satisfaction" },
@@ -249,8 +243,16 @@ export default function Home() {
             </div>
           </section>
 
-        {/* Trusted By Section */}
-        <section className="py-12 md:py-20 bg-gradient-to-br from-slate-900 via-black to-slate-900 relative overflow-hidden border-t border-blue-500/20">
+        {/* Trusted By Section - Compact & Asymmetrical */}
+        <section className="py-6 md:py-12 bg-gradient-to-br from-slate-900 via-black to-slate-900 relative overflow-hidden">
+          {/* Organic flowing border for mobile */}
+          <div className="absolute top-0 left-0 w-full h-12 md:h-20 bg-gradient-to-br from-black via-slate-900 to-black">
+            <svg className="absolute bottom-0 w-full h-8 md:h-12" viewBox="0 0 1200 120" preserveAspectRatio="none">
+              <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="currentColor"></path>
+              <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="currentColor"></path>
+              <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="currentColor"></path>
+            </svg>
+          </div>
           {/* Creative background elements - Simplified for mobile */}
           <div className="absolute inset-0">
             {/* Animated grid - Smaller on mobile */}
@@ -268,7 +270,7 @@ export default function Home() {
           
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm text-white mb-6 md:mb-8 shadow-lg">
+              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm px-3 md:px-6 py-2 md:py-3 text-xs md:text-sm text-white mb-4 md:mb-8 shadow-lg">
                 <Star className="w-3 md:w-4 h-3 md:h-4 mr-2 text-blue-400 animate-pulse" />
                 <span className="font-medium">Trusted by innovative companies</span>
                 <div className="ml-2 md:ml-3 flex space-x-1">
@@ -278,12 +280,13 @@ export default function Home() {
         </div>
       </div>
               
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-8 md:mb-12">
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-6 md:mb-12">
                 Join the startups already{" "}
                 <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">scaling with Devora</span>
               </h2>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
+              {/* Asymmetrical layout for mobile */}
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8 mb-4 md:mb-8">
                 {[
                   {
                     logo: "/Slush-Logo (BW) (1).png",
@@ -304,7 +307,7 @@ export default function Home() {
                     metric: "50% more conversions"
                   }
                 ].map((company, index) => (
-                  <div key={index} className="group bg-gradient-to-br from-slate-800/50 to-black/50 backdrop-blur-xl rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-xl hover:shadow-2xl transition-all duration-500 border border-blue-500/20 hover:border-blue-400/40 glow-blue hover:scale-105">
+                  <div key={index} className="group bg-gradient-to-br from-slate-800/50 to-black/50 backdrop-blur-xl rounded-3xl md:rounded-[2rem] p-3 md:p-6 shadow-xl hover:shadow-2xl transition-all duration-500 border border-blue-500/20 hover:border-blue-400/40 glow-blue hover:scale-105 hover:rotate-1">
                     <div className="relative w-24 md:w-32 h-12 md:h-16 mx-auto mb-3 md:mb-4 flex items-center justify-center">
                       <Image 
                         src={company.logo} 
@@ -336,8 +339,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Services Section */}
-        <section className="py-12 md:py-24 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+        {/* Services Section - Tall & Expansive */}
+        <section className="py-16 md:py-32 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
           {/* Creative background elements - Simplified for mobile */}
           <div className="absolute inset-0">
             {/* Animated grid - Smaller on mobile */}
@@ -348,9 +351,10 @@ export default function Home() {
             <div className="hidden md:block absolute bottom-20 left-10 w-6 h-6 bg-blue-500/30 rounded-full animate-bounce"></div>
             <div className="hidden md:block absolute top-1/2 right-1/4 w-4 h-4 border-2 border-cyan-400/50 rounded-full animate-pulse"></div>
             
-            {/* Gradient orbs - Smaller on mobile */}
-            <div className="absolute top-0 right-1/4 w-40 md:w-80 h-40 md:h-80 bg-gradient-to-l from-blue-500/15 to-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-0 left-1/4 w-40 md:w-80 h-40 md:h-80 bg-gradient-to-r from-blue-600/15 to-indigo-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            {/* Organic blob shapes - Smaller on mobile */}
+            <div className="absolute top-0 right-1/4 w-40 md:w-80 h-40 md:h-80 bg-gradient-to-l from-blue-500/15 to-cyan-500/10 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-0 left-1/4 w-40 md:w-80 h-40 md:h-80 bg-gradient-to-r from-blue-600/15 to-indigo-500/10 rounded-[40%_60%_70%_30%/40%_70%_30%_60%] blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-1/2 right-1/3 w-24 md:w-48 h-24 md:h-48 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 rounded-[70%_30%_50%_50%/30%_70%_50%_50%] blur-2xl animate-pulse delay-500"></div>
           </div>
           
           <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -375,7 +379,8 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {/* Masonry-style layout for mobile */}
+            <div className="space-y-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-y-0">
               {[
                 {
                   icon: <Palette className="w-6 md:w-8 h-6 md:h-8" />,
@@ -419,12 +424,12 @@ export default function Home() {
                   features: ["A/B Testing", "Conversion Optimisation", "Analytics"],
                   color: "from-teal-500 to-blue-500"
                 }
-              ].map((service, index) => (
-                <div key={index} className="group bg-white/80 backdrop-blur-xl rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-blue-200/50 hover:border-blue-400/60 hover:scale-105 relative">
+                              ].map((service, index) => (
+                <div key={index} className="group bg-white/80 backdrop-blur-xl rounded-3xl md:rounded-[2.5rem] p-4 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-blue-200/50 hover:border-blue-400/60 hover:scale-105 hover:-rotate-1 relative">
                   {/* Floating accent for each card - Smaller on mobile */}
                   <div className="absolute -top-1 md:-top-2 -right-1 md:-right-2 w-3 md:w-4 h-3 md:h-4 bg-blue-500/60 rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   
-                  <div className={`inline-flex items-center justify-center w-12 md:w-16 h-12 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-r ${service.color} text-white mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                  <div className={`inline-flex items-center justify-center w-12 md:w-16 h-12 md:h-16 rounded-2xl md:rounded-3xl bg-gradient-to-r ${service.color} text-white mb-4 md:mb-6 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300 shadow-lg`}>
                     {service.icon}
                   </div>
                   <h3 className="text-lg md:text-2xl font-bold text-slate-900 mb-3 md:mb-4 group-hover:text-blue-700 transition-colors">{service.title}</h3>
@@ -457,8 +462,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Featured Work Section */}
-        <section className="py-12 md:py-24 bg-gradient-to-br from-black via-slate-900 to-black relative overflow-hidden border-t border-blue-500/20">
+        {/* Featured Work Section - Medium Height */}
+        <section className="py-12 md:py-20 bg-gradient-to-br from-black via-slate-900 to-black relative overflow-hidden -mt-8 md:-mt-12">
           {/* Creative background elements - Simplified for mobile */}
           <div className="absolute inset-0">
             {/* Animated grid with different pattern - Smaller on mobile */}
@@ -496,7 +501,8 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-8 md:mb-16">
+            {/* Asymmetrical project showcase */}
+            <div className="space-y-8 lg:space-y-16 mb-8 md:mb-16">
               {[
                 {
                   title: "Slush Dating",
@@ -514,12 +520,12 @@ export default function Home() {
                   results: "50% increase in emergency call conversions",
                   link: "https://envirotech-plumbing.co.uk"
                 }
-              ].map((project, index) => (
-                <div key={index} className="group bg-gradient-to-br from-slate-800/60 to-black/60 backdrop-blur-xl rounded-2xl md:rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 border border-blue-500/20 hover:border-blue-400/40 hover:scale-105">
+                              ].map((project, index) => (
+                <div key={index} className="group bg-gradient-to-br from-slate-800/60 to-black/60 backdrop-blur-xl rounded-3xl md:rounded-[2rem] overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 border border-blue-500/20 hover:border-blue-400/40 hover:scale-105 hover:rotate-1 lg:grid lg:grid-cols-5 lg:gap-8 lg:items-center">
                   {/* Floating accent - Smaller on mobile */}
                   <div className="absolute -top-2 md:-top-3 -right-2 md:-right-3 w-4 md:w-6 h-4 md:h-6 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   
-                  <div className="relative h-48 md:h-64 overflow-hidden">
+                  <div className="relative h-48 md:h-64 lg:h-80 overflow-hidden lg:col-span-3 lg:rounded-3xl">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -541,7 +547,7 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  <div className="p-4 md:p-8">
+                  <div className="p-4 md:p-8 lg:col-span-2 lg:flex lg:flex-col lg:justify-center relative z-10">
                     <div className="flex flex-wrap gap-2 mb-3 md:mb-4">
                       {project.tags.map((tag, i) => (
                         <span key={i} className="px-2 md:px-3 py-1 md:py-2 bg-gradient-to-r from-blue-600/80 to-cyan-600/80 text-white rounded-full text-xs md:text-sm font-medium shadow-lg backdrop-blur-sm border border-blue-400/30">
@@ -556,7 +562,7 @@ export default function Home() {
                         <TrendingUp className="w-3 md:w-4 h-3 md:h-4 mr-1 md:mr-2 animate-pulse" />
                         {project.results}
                       </div>
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-400 hover:text-cyan-400 font-semibold transition-colors group-hover:translate-x-1 duration-300 text-sm md:text-base">
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="relative z-10 inline-flex items-center text-blue-400 hover:text-cyan-400 font-semibold transition-colors group-hover:translate-x-1 duration-300 text-sm md:text-base">
                         View Project
                         <ArrowRight className="ml-2 h-3 md:h-4 w-3 md:w-4" />
                       </a>
@@ -564,7 +570,7 @@ export default function Home() {
                   </div>
                   
                   {/* Hover glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
               ))}
             </div>
@@ -580,8 +586,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Why Choose Us Section */}
-        <section className="py-12 md:py-24 bg-gradient-to-br from-blue-50 to-slate-50 relative overflow-hidden">
+        {/* Why Choose Us Section - Compact */}
+        <section className="py-10 md:py-16 bg-gradient-to-br from-blue-50 to-slate-50 relative overflow-hidden">
           {/* Creative background elements - Simplified for mobile */}
           <div className="absolute inset-0">
             {/* Animated grid with hexagonal pattern - Smaller on mobile */}
@@ -590,8 +596,8 @@ export default function Home() {
             {/* Floating geometric shapes - Hidden on mobile */}
             <div className="hidden md:block absolute top-16 right-16 w-10 h-10 border border-blue-400/50 rotate-45 animate-spin-slow"></div>
             <div className="hidden md:block absolute bottom-16 left-16 w-8 h-8 bg-cyan-500/40 rounded-full animate-bounce"></div>
-            <div className="hidden md:block absolute top-1/2 left-1/3 w-6 h-6 border-2 border-blue-500/60 rounded-full animate-pulse"></div>
-            <div className="hidden md:block absolute top-1/4 right-1/3 w-4 h-4 bg-blue-400/50 rotate-12 animate-pulse delay-500"></div>
+            <div className="hidden md:block absolute top-1/2 left-1/4 w-6 h-6 border-2 border-blue-500/60 rounded-full animate-pulse"></div>
+            <div className="hidden md:block absolute bottom-1/4 right-16 w-4 h-4 bg-blue-400/50 rotate-12 animate-pulse delay-500"></div>
             
             {/* Large gradient orbs - Smaller on mobile */}
             <div className="absolute top-0 left-0 w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-gradient-to-br from-blue-500/15 to-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -620,7 +626,7 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
               {[
                 {
                   icon: <Clock className="w-6 md:w-8 h-6 md:h-8" />,
@@ -647,8 +653,8 @@ export default function Home() {
                   {/* Floating accent - Smaller on mobile */}
                   <div className="absolute -top-1 md:-top-2 -right-1 md:-right-2 w-3 md:w-4 h-3 md:h-4 bg-blue-500/60 rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   
-                  <div className="relative bg-white/80 backdrop-blur-xl rounded-2xl md:rounded-3xl p-6 md:p-8 border border-blue-200/50 hover:border-blue-400/60 transition-all duration-500 group-hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20">
-                    <div className="inline-flex items-center justify-center w-16 md:w-20 h-16 md:h-20 rounded-xl md:rounded-2xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm text-blue-600 mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg border border-blue-400/40">
+                  <div className="relative bg-white/80 backdrop-blur-xl rounded-3xl md:rounded-[2rem] p-4 md:p-8 border border-blue-200/50 hover:border-blue-400/60 transition-all duration-500 group-hover:scale-105 group-hover:-rotate-2 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20">
+                                          <div className="inline-flex items-center justify-center w-16 md:w-20 h-16 md:h-20 rounded-2xl md:rounded-3xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm text-blue-600 mb-4 md:mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 shadow-lg border border-blue-400/40">
                       {benefit.icon}
                     </div>
                     <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-slate-900 group-hover:text-blue-700 transition-colors">{benefit.title}</h3>
@@ -717,15 +723,7 @@ export default function Home() {
                 </Link>
               </div>
               
-              {/* Additional trust indicators */}
-              <div className="mt-12 pt-8 border-t border-white/20">
-                <p className="text-blue-200 text-sm mb-4">Trusted by innovative startups worldwide</p>
-                <div className="flex justify-center items-center gap-8 opacity-60">
-                  <div className="text-white/60 text-sm">✓ 98% Client Satisfaction</div>
-                  <div className="text-white/60 text-sm">✓ 100+ Projects Delivered</div>
-                  <div className="text-white/60 text-sm">✓ 24/7 Support</div>
-                </div>
-              </div>
+
             </div>
           </div>
         </section>

@@ -101,29 +101,65 @@ export default function WorkPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-black via-slate-900 to-black text-white py-12 md:py-24 relative overflow-hidden">
-        {/* Creative background elements - Simplified for mobile */}
+      <section className="bg-gradient-to-br from-black via-slate-900 to-black text-white pt-20 md:pt-24 pb-12 md:pb-24 relative overflow-hidden">
+        {/* Enhanced Creative background elements */}
         <div className="absolute inset-0">
-          {/* Animated grid - Smaller on mobile */}
+          {/* Multi-layered animated grids */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] animate-pulse"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(236,72,153,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(236,72,153,0.02)_1px,transparent_1px)] bg-[size:90px_90px] md:bg-[size:130px_130px] animate-pulse delay-600"></div>
           
-          {/* Floating geometric shapes - Hidden on mobile */}
+          {/* Floating portfolio-themed elements */}
           <div className="hidden md:block absolute top-20 left-10 w-6 h-6 border border-blue-400/30 rotate-45 animate-spin-slow"></div>
           <div className="hidden md:block absolute top-40 right-20 w-4 h-4 bg-blue-500/30 rounded-full animate-bounce"></div>
           <div className="hidden md:block absolute bottom-40 left-20 w-8 h-8 border-2 border-cyan-400/20 rounded-full animate-pulse"></div>
           
-          {/* Gradient orbs - Smaller on mobile */}
+          {/* Additional floating elements */}
+          <div className="hidden md:block absolute top-28 right-1/4 w-3 h-3 bg-pink-400/40 rotate-45 animate-ping"></div>
+          <div className="hidden md:block absolute bottom-28 right-12 w-5 h-5 border border-indigo-400/30 rounded-full animate-spin-slow"></div>
+          <div className="hidden md:block absolute top-1/2 left-12 w-2 h-2 bg-emerald-400/50 rounded-full animate-bounce delay-400"></div>
+          
+          {/* Design symbols floating animation */}
+          <div className="hidden lg:block absolute top-20 left-1/4 text-pink-400/20 text-3xl font-bold animate-float delay-300">✦</div>
+          <div className="hidden lg:block absolute bottom-20 right-1/4 text-blue-400/20 text-2xl font-bold animate-float delay-800">◆</div>
+          <div className="hidden lg:block absolute top-1/3 right-16 text-purple-400/20 text-xl font-bold animate-bounce delay-1200">●</div>
+          <div className="hidden lg:block absolute bottom-1/3 left-20 text-cyan-400/20 text-2xl font-bold animate-pulse delay-400">▲</div>
+          
+          {/* Portfolio/design icons */}
+          <div className="hidden lg:block absolute top-16 right-1/3 opacity-10 animate-float">
+            <svg className="w-8 h-8 text-pink-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z"/>
+            </svg>
+          </div>
+          <div className="hidden lg:block absolute bottom-16 left-1/3 opacity-10 animate-float delay-1000">
+            <svg className="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z"/>
+            </svg>
+          </div>
+          <div className="hidden lg:block absolute top-1/3 left-1/2 opacity-10 animate-float delay-500">
+            <svg className="w-7 h-7 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
+            </svg>
+          </div>
+          <div className="hidden lg:block absolute bottom-1/4 right-1/3 opacity-10 animate-float delay-800">
+            <svg className="w-6 h-6 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z"/>
+            </svg>
+          </div>
+          
+          {/* Enhanced gradient orbs with portfolio theme colors */}
           <div className="absolute top-0 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-r from-blue-500/10 to-cyan-500/5 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-0 right-1/4 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-l from-blue-600/10 to-indigo-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-0 w-32 md:w-64 h-32 md:h-64 bg-gradient-to-br from-pink-500/8 to-rose-500/4 rounded-full blur-2xl animate-pulse delay-1500"></div>
+          <div className="absolute bottom-1/4 right-0 w-40 md:w-80 h-40 md:h-80 bg-gradient-to-tl from-purple-500/8 to-indigo-500/4 rounded-full blur-3xl animate-pulse delay-2000"></div>
         </div>
         
         <div className="container px-4 md:px-6 mx-auto relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            {/* Enhanced badge */}
-            <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm px-6 py-3 text-sm text-white mb-8 shadow-lg">
-              <Award className="w-4 h-4 mr-2 text-blue-400 animate-pulse" />
+            {/* Enhanced badge - Added more top margin on mobile */}
+            <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm text-white mb-6 md:mb-8 shadow-lg mt-4 md:mt-0">
+              <Award className="w-3 md:w-4 h-3 md:h-4 mr-2 text-blue-400 animate-pulse" />
               <span className="font-medium">Portfolio Showcase</span>
-              <div className="ml-3 flex space-x-1">
+              <div className="ml-2 md:ml-3 flex space-x-1">
                 <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse"></div>
                 <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse delay-100"></div>
                 <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse delay-200"></div>

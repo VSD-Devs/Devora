@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { OptimisedImage } from '@/components/ui/optimised-image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, Tag, Share2, Bookmark, ArrowRight, User, Eye, Heart, Twitter, Linkedin, Facebook } from 'lucide-react';
 import { getPostWithHtml, getAllPosts } from '@/lib/markdown';
@@ -197,7 +197,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <section className="py-8 lg:py-12">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="relative aspect-[16/9] lg:aspect-[21/9] rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
-            <OptimisedImage
+            <Image
               src={post.coverImage}
               alt={post.title}
               fill
@@ -367,7 +367,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 >
                   <article className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 transition-all duration-500 hover:shadow-2xl hover:border-blue-300 hover:-translate-y-2 h-full flex flex-col">
                     <div className="relative h-64 overflow-hidden">
-                      <OptimisedImage
+                      <Image
                         src={relatedPost.coverImage}
                         alt={relatedPost.title}
                         fill

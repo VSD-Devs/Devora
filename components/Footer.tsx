@@ -147,7 +147,7 @@ const Footer = () => {
                 className="bg-transparent border-gray-700 hover:border-blue-500 text-gray-300 hover:text-white hover:bg-blue-950/30 transition-all mt-2"
               >
                 <Link href="/project-inquiry" className="flex items-center gap-2">
-                  <span>Start a Project</span>
+                  <span>Start Project</span>
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>

@@ -1,6 +1,6 @@
 import { ArrowRight, BookOpen, Calendar, Clock, User, Star, Award, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { OptimisedImage } from "@/components/ui/optimised-image"
+import Image from "next/image"
 import { BlogImagePreloader } from "@/components/blog/blog-image-preloader"
 import Link from "next/link"
 import { getAllPosts } from "@/lib/markdown"
@@ -24,26 +24,62 @@ export default async function BlogPage() {
       {/* Preload critical blog images */}
       <BlogImagePreloader posts={allPosts} limit={3} />
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-black via-slate-900 to-black text-white py-12 md:py-24 relative overflow-hidden">
-        {/* Creative background elements - Simplified for mobile */}
+      <section className="bg-gradient-to-br from-black via-slate-900 to-black text-white pt-20 md:pt-24 pb-12 md:pb-24 relative overflow-hidden">
+        {/* Enhanced Creative background elements */}
         <div className="absolute inset-0">
-          {/* Animated grid - Smaller on mobile */}
+          {/* Multi-layered animated grids */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] animate-pulse"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.02)_1px,transparent_1px)] bg-[size:70px_70px] md:bg-[size:100px_100px] animate-pulse delay-500"></div>
           
-          {/* Floating geometric shapes - Hidden on mobile */}
+          {/* Floating blog-themed elements */}
           <div className="hidden md:block absolute top-20 left-10 w-6 h-6 border border-blue-400/30 rotate-45 animate-spin-slow"></div>
           <div className="hidden md:block absolute top-40 right-20 w-4 h-4 bg-blue-500/30 rounded-full animate-bounce"></div>
           <div className="hidden md:block absolute bottom-40 left-20 w-8 h-8 border-2 border-cyan-400/20 rounded-full animate-pulse"></div>
           
-          {/* Gradient orbs - Smaller on mobile */}
+          {/* Additional floating elements */}
+          <div className="hidden md:block absolute top-32 right-1/3 w-3 h-3 bg-green-400/40 rotate-45 animate-ping"></div>
+          <div className="hidden md:block absolute bottom-32 right-16 w-5 h-5 border border-orange-400/30 rounded-full animate-spin-slow"></div>
+          <div className="hidden md:block absolute top-1/2 left-16 w-2 h-2 bg-pink-400/50 rounded-full animate-bounce delay-300"></div>
+          
+          {/* Blog/content symbols floating animation */}
+          <div className="hidden lg:block absolute top-24 left-1/3 text-blue-400/20 text-3xl font-serif animate-float delay-700">"</div>
+          <div className="hidden lg:block absolute bottom-24 right-1/3 text-cyan-400/20 text-3xl font-serif animate-float delay-1000">"</div>
+          <div className="hidden lg:block absolute top-1/3 right-20 text-green-400/20 text-2xl font-bold animate-bounce delay-500">@</div>
+          <div className="hidden lg:block absolute bottom-1/3 left-24 text-purple-400/20 text-2xl font-bold animate-pulse delay-200">#</div>
+          
+          {/* Blog icons */}
+          <div className="hidden lg:block absolute top-16 right-1/4 opacity-10 animate-float">
+            <svg className="w-8 h-8 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+            </svg>
+          </div>
+          <div className="hidden lg:block absolute bottom-20 left-1/4 opacity-10 animate-float delay-1000">
+            <svg className="w-6 h-6 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M5,3C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H5M5,5H19V19H5V5M7,7V9H17V7H7M7,11V13H17V11H7M7,15V17H14V15H7Z"/>
+            </svg>
+          </div>
+          <div className="hidden lg:block absolute top-1/3 left-1/2 opacity-10 animate-float delay-500">
+            <svg className="w-7 h-7 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
+            </svg>
+          </div>
+          <div className="hidden lg:block absolute bottom-1/4 right-1/3 opacity-10 animate-float delay-800">
+            <svg className="w-6 h-6 text-orange-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z"/>
+            </svg>
+          </div>
+          
+          {/* Enhanced gradient orbs with blog theme colors */}
           <div className="absolute top-0 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-r from-blue-500/10 to-cyan-500/5 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-0 right-1/4 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-l from-blue-600/10 to-indigo-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-0 w-32 md:w-64 h-32 md:h-64 bg-gradient-to-br from-green-500/8 to-emerald-500/4 rounded-full blur-2xl animate-pulse delay-1500"></div>
+          <div className="absolute bottom-1/4 right-0 w-40 md:w-80 h-40 md:h-80 bg-gradient-to-tl from-orange-500/8 to-pink-500/4 rounded-full blur-3xl animate-pulse delay-2000"></div>
         </div>
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Enhanced badge - Smaller on mobile */}
-            <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm text-white mb-6 md:mb-8 shadow-lg">
+            {/* Enhanced badge - Added more top margin on mobile */}
+            <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm text-white mb-6 md:mb-8 shadow-lg mt-4 md:mt-0">
               <BookOpen className="w-3 md:w-4 h-3 md:h-4 mr-2 text-blue-400 animate-pulse" />
               <span className="font-medium">Web Development Insights</span>
               <div className="ml-2 md:ml-3 flex space-x-1">
@@ -140,7 +176,7 @@ export default async function BlogPage() {
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-t-2xl md:rounded-t-3xl"></div>
                     
                     <div className="relative h-48 md:h-52 overflow-hidden">
-                      <OptimisedImage
+                      <Image
                         src={post.coverImage}
                         alt={post.title}
                         fill

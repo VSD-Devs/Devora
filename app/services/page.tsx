@@ -4,8 +4,23 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Code2, Paintbrush2, LineChart, Check, ArrowUpRight, Users, Rocket, Star, Shield, Palette, Code, Target, TrendingUp, Zap, Award } from "lucide-react"
 import Script from 'next/script'
 import Link from "next/link"
+import { useRouter } from 'next/navigation'
 
 export default function ServicesPage() {
+  const router = useRouter()
+
+  const handleGetConsultation = () => {
+    router.push('/project-inquiry')
+  }
+
+  const handleViewWork = () => {
+    router.push('/work')
+  }
+
+  const handleGetStarted = () => {
+    router.push('/project-inquiry')
+  }
+
   return (
     <>
       <Script
@@ -69,29 +84,60 @@ export default function ServicesPage() {
       
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-black via-slate-900 to-black text-white py-12 md:py-24 relative overflow-hidden">
-          {/* Creative background elements - Simplified for mobile */}
+        <section className="bg-gradient-to-br from-black via-slate-900 to-black text-white pt-20 md:pt-24 pb-12 md:pb-24 relative overflow-hidden">
+          {/* Enhanced Creative background elements */}
           <div className="absolute inset-0">
-            {/* Animated grid - Smaller on mobile */}
+            {/* Animated grid with multiple layers */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] animate-pulse"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.02)_1px,transparent_1px)] bg-[size:80px_80px] md:bg-[size:120px_120px] animate-pulse delay-500"></div>
             
-            {/* Floating geometric shapes - Hidden on mobile */}
+            {/* Floating code-themed elements */}
             <div className="hidden md:block absolute top-20 left-10 w-6 h-6 border border-blue-400/30 rotate-45 animate-spin-slow"></div>
             <div className="hidden md:block absolute top-40 right-20 w-4 h-4 bg-blue-500/30 rounded-full animate-bounce"></div>
             <div className="hidden md:block absolute bottom-40 left-20 w-8 h-8 border-2 border-cyan-400/20 rounded-full animate-pulse"></div>
             
-            {/* Gradient orbs - Smaller on mobile */}
+            {/* Additional floating elements */}
+            <div className="hidden md:block absolute top-32 right-1/3 w-3 h-3 bg-green-400/40 rotate-45 animate-ping"></div>
+            <div className="hidden md:block absolute bottom-32 right-16 w-5 h-5 border border-purple-400/30 rounded-full animate-spin-slow"></div>
+            <div className="hidden md:block absolute top-1/2 left-16 w-2 h-2 bg-yellow-400/50 rounded-full animate-bounce delay-300"></div>
+            
+            {/* Code brackets floating animation */}
+            <div className="hidden lg:block absolute top-24 left-1/3 text-blue-400/20 text-4xl font-mono animate-pulse delay-700">{'{'}</div>
+            <div className="hidden lg:block absolute bottom-24 right-1/3 text-cyan-400/20 text-4xl font-mono animate-pulse delay-1000">{'}'}</div>
+            <div className="hidden lg:block absolute top-1/3 right-20 text-green-400/20 text-2xl font-mono animate-bounce delay-500">{'<>'}</div>
+            <div className="hidden lg:block absolute bottom-1/3 left-24 text-purple-400/20 text-2xl font-mono animate-pulse delay-200">{'</>'}</div>
+            
+            {/* Enhanced gradient orbs with more variety */}
             <div className="absolute top-0 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-r from-blue-500/10 to-cyan-500/5 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-0 right-1/4 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-l from-blue-600/10 to-indigo-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-1/2 left-0 w-32 md:w-64 h-32 md:h-64 bg-gradient-to-br from-green-500/8 to-emerald-500/4 rounded-full blur-2xl animate-pulse delay-1500"></div>
+            <div className="absolute bottom-1/4 right-0 w-40 md:w-80 h-40 md:h-80 bg-gradient-to-tl from-purple-500/8 to-pink-500/4 rounded-full blur-3xl animate-pulse delay-2000"></div>
+            
+            {/* Floating tech icons */}
+            <div className="hidden lg:block absolute top-16 right-1/4 opacity-10 animate-float">
+              <svg className="w-8 h-8 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L2 7v10c0 5.55 3.84 9.739 9 11 5.16-1.261 9-5.45 9-11V7l-10-5z"/>
+              </svg>
+            </div>
+            <div className="hidden lg:block absolute bottom-20 left-1/4 opacity-10 animate-float delay-1000">
+              <svg className="w-6 h-6 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <div className="hidden lg:block absolute top-1/3 left-1/2 opacity-10 animate-float delay-500">
+              <svg className="w-7 h-7 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+              </svg>
+            </div>
           </div>
           
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              {/* Enhanced badge */}
-              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm px-6 py-3 text-sm text-white mb-8 shadow-lg">
-                <Rocket className="w-4 h-4 mr-2 text-blue-400 animate-pulse" />
+              {/* Enhanced badge - Added more top margin on mobile */}
+              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm text-white mb-6 md:mb-8 shadow-lg mt-4 md:mt-0">
+                <Rocket className="w-3 md:w-4 h-3 md:h-4 mr-2 text-blue-400 animate-pulse" />
                 <span className="font-medium">Professional Web Solutions</span>
-                <div className="ml-3 flex space-x-1">
+                <div className="ml-2 md:ml-3 flex space-x-1">
                   <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse"></div>
                   <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse delay-100"></div>
                   <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse delay-200"></div>
@@ -124,23 +170,21 @@ export default function ServicesPage() {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Link href="/project-inquiry">
-                  <Button 
-                    size="lg" 
-                    className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white border-0 rounded-xl px-8 py-6 font-semibold text-lg shadow-2xl shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 hover:scale-105"
-                  >
-                    Get Free Consultation <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-                <Link href="/work">
-                  <Button 
-                    size="lg" 
-                    variant="outline" 
-                    className="w-full sm:w-auto border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/50 rounded-xl px-8 py-6 font-semibold text-lg shadow-xl transition-all duration-300 hover:scale-105"
-                  >
-                    View Our Work <ArrowUpRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
+                <Button 
+                  size="lg" 
+                  className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white border-0 rounded-xl px-8 py-6 font-semibold text-lg shadow-2xl shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 hover:scale-105"
+                  onClick={handleGetConsultation}
+                >
+                  Get Free Consultation <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="w-full sm:w-auto border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/50 rounded-xl px-8 py-6 font-semibold text-lg shadow-xl transition-all duration-300 hover:scale-105"
+                  onClick={handleViewWork}
+                >
+                  View Our Work <ArrowUpRight className="ml-2 h-5 w-5" />
+                </Button>
               </div>
             </div>
           </div>
@@ -351,14 +395,13 @@ export default function ServicesPage() {
                     Get a free consultation and custom quote for your project. Our team is ready to help transform your vision into reality.
                   </p>
                   
-                  <Link href="/project-inquiry">
-                    <Button 
-                      size="lg" 
-                      className="bg-white text-blue-600 hover:bg-blue-50 hover:scale-105 rounded-xl px-8 py-4 font-semibold text-lg shadow-2xl shadow-black/20 transition-all duration-300"
-                    >
-                      Get Started Now <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </Link>
+                  <Button 
+                    size="lg" 
+                    className="bg-white text-blue-600 hover:bg-blue-50 hover:scale-105 rounded-xl px-8 py-4 font-semibold text-lg shadow-2xl shadow-black/20 transition-all duration-300"
+                    onClick={handleGetStarted}
+                  >
+                    Get Started Now <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
                 </div>
               </div>
             </div>

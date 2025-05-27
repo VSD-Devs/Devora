@@ -4,8 +4,19 @@ import { Check, ArrowRight, Star, Award, Zap, Crown, Rocket } from "lucide-react
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Script from 'next/script'
+import { useRouter } from 'next/navigation'
 
 export default function PricingPage() {
+  const router = useRouter()
+
+  const handleGetStarted = () => {
+    router.push('/project-inquiry')
+  }
+
+  const handleContact = () => {
+    router.push('/contact')
+  }
+
   return (
     <>
       <Script
@@ -53,29 +64,60 @@ export default function PricingPage() {
       
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-black via-slate-900 to-black text-white py-12 md:py-24 relative overflow-hidden">
-          {/* Creative background elements - Simplified for mobile */}
+        <section className="bg-gradient-to-br from-black via-slate-900 to-black text-white pt-20 md:pt-24 pb-12 md:pb-24 relative overflow-hidden">
+          {/* Enhanced Creative background elements */}
           <div className="absolute inset-0">
-            {/* Animated grid - Smaller on mobile */}
+            {/* Multi-layered animated grids */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] animate-pulse"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(168,85,247,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.02)_1px,transparent_1px)] bg-[size:80px_80px] md:bg-[size:120px_120px] animate-pulse delay-700"></div>
             
-            {/* Floating geometric shapes - Hidden on mobile */}
+            {/* Floating pricing-themed elements */}
             <div className="hidden md:block absolute top-20 left-10 w-6 h-6 border border-blue-400/30 rotate-45 animate-spin-slow"></div>
             <div className="hidden md:block absolute top-40 right-20 w-4 h-4 bg-blue-500/30 rounded-full animate-bounce"></div>
             <div className="hidden md:block absolute bottom-40 left-20 w-8 h-8 border-2 border-cyan-400/20 rounded-full animate-pulse"></div>
             
-            {/* Gradient orbs - Smaller on mobile */}
+            {/* Additional floating elements */}
+            <div className="hidden md:block absolute top-28 right-1/4 w-3 h-3 bg-purple-400/40 rotate-45 animate-ping"></div>
+            <div className="hidden md:block absolute bottom-28 right-12 w-5 h-5 border border-green-400/30 rounded-full animate-spin-slow"></div>
+            <div className="hidden md:block absolute top-1/2 left-12 w-2 h-2 bg-yellow-400/50 rounded-full animate-bounce delay-500"></div>
+            
+            {/* Currency symbols floating animation */}
+            <div className="hidden lg:block absolute top-20 left-1/4 text-green-400/20 text-3xl font-bold animate-float delay-300">£</div>
+            <div className="hidden lg:block absolute bottom-20 right-1/4 text-blue-400/20 text-2xl font-bold animate-float delay-800">$</div>
+            <div className="hidden lg:block absolute top-1/3 right-16 text-purple-400/20 text-xl font-bold animate-bounce delay-1200">€</div>
+            <div className="hidden lg:block absolute bottom-1/3 left-20 text-cyan-400/20 text-2xl font-bold animate-pulse delay-400">%</div>
+            
+            {/* Pricing icons */}
+            <div className="hidden lg:block absolute top-16 right-1/3 opacity-10 animate-float">
+              <svg className="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/>
+              </svg>
+            </div>
+            <div className="hidden lg:block absolute bottom-16 left-1/3 opacity-10 animate-float delay-1000">
+              <svg className="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 14V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zm-2-2H3V6h14v6zm-7 6h4v2H10v-2z"/>
+              </svg>
+            </div>
+            <div className="hidden lg:block absolute top-1/2 left-1/2 opacity-10 animate-float delay-600">
+              <svg className="w-7 h-7 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 11H7v3h2v-3zm4 0h-2v3h2v-3zm4 0h-2v3h2v-3zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+              </svg>
+            </div>
+            
+            {/* Enhanced gradient orbs with pricing theme colors */}
             <div className="absolute top-0 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-r from-blue-500/10 to-cyan-500/5 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-0 right-1/4 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-l from-blue-600/10 to-indigo-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-1/2 left-0 w-32 md:w-64 h-32 md:h-64 bg-gradient-to-br from-green-500/8 to-emerald-500/4 rounded-full blur-2xl animate-pulse delay-1500"></div>
+            <div className="absolute bottom-1/4 right-0 w-40 md:w-80 h-40 md:h-80 bg-gradient-to-tl from-purple-500/8 to-pink-500/4 rounded-full blur-3xl animate-pulse delay-2000"></div>
           </div>
           
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              {/* Enhanced badge */}
-              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm px-6 py-3 text-sm text-white mb-8 shadow-lg">
-                <Star className="w-4 h-4 mr-2 text-blue-400 animate-pulse" />
+              {/* Enhanced badge - Added more top margin on mobile */}
+              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm text-white mb-6 md:mb-8 shadow-lg mt-4 md:mt-0">
+                <Star className="w-3 md:w-4 h-3 md:h-4 mr-2 text-blue-400 animate-pulse" />
                 <span className="font-medium">Transparent Pricing</span>
-                <div className="ml-3 flex space-x-1">
+                <div className="ml-2 md:ml-3 flex space-x-1">
                   <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse"></div>
                   <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse delay-100"></div>
                   <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse delay-200"></div>
@@ -182,16 +224,15 @@ export default function PricingPage() {
                     ))}
                   </ul>
                   
-                  <Link href="/project-inquiry" className="block w-full">
-                    <Button 
-                      className="w-full bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white rounded-xl px-6 py-4 font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-                    >
-                      Get Started
-                    </Button>
-                  </Link>
+                  <Button 
+                    className="w-full bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white rounded-xl px-6 py-4 font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 relative z-10"
+                    onClick={handleGetStarted}
+                  >
+                    Get Started
+                  </Button>
                   
                   {/* Hover glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
               </div>
 
@@ -238,16 +279,15 @@ export default function PricingPage() {
                       ))}
                     </ul>
                     
-                    <Link href="/project-inquiry" className="block w-full">
-                      <Button 
-                        className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-xl px-6 py-4 font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
-                      >
-                        Get Started
-                      </Button>
-                    </Link>
+                    <Button 
+                      className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-xl px-6 py-4 font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 relative z-10"
+                      onClick={handleGetStarted}
+                    >
+                      Get Started
+                    </Button>
                     
                     {/* Enhanced hover glow effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                   </div>
                 </div>
               </div>
@@ -288,16 +328,15 @@ export default function PricingPage() {
                     ))}
                   </ul>
                   
-                  <Link href="/project-inquiry" className="block w-full">
-                    <Button 
-                      className="w-full bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white rounded-xl px-6 py-4 font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-                    >
-                      Get Started
-                    </Button>
-                  </Link>
+                  <Button 
+                    className="w-full bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white rounded-xl px-6 py-4 font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 relative z-10"
+                    onClick={handleGetStarted}
+                  >
+                    Get Started
+                  </Button>
                   
                   {/* Hover glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
               </div>
             </div>
@@ -322,17 +361,16 @@ export default function PricingPage() {
                     We understand startup budgets. That's why we offer flexible payment plans to help you get started. Contact us to discuss your project and find a plan that works for you.
                   </p>
                   
-                  <Link href="/contact">
-                    <Button 
-                      className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-xl px-8 py-4 font-semibold text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
-                    >
-                      Schedule a Free Consultation <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </Link>
+                  <Button 
+                    className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-xl px-8 py-4 font-semibold text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 relative z-10"
+                    onClick={handleContact}
+                  >
+                    Schedule a Free Consultation <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
                 </div>
                 
                 {/* Hover glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-3xl opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-3xl opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
               </div>
             </div>
           </div>
@@ -379,23 +417,21 @@ export default function PricingPage() {
                     Have a project that doesn't fit these packages? We'd love to hear about it and create a custom proposal tailored to your specific needs.
                   </p>
                   
-                  <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                    <Link href="/project-inquiry">
+                                      <div className="flex flex-col sm:flex-row gap-6 justify-center">
                       <Button 
-                        className="bg-white text-blue-600 hover:bg-blue-50 hover:scale-105 rounded-xl px-8 py-4 font-semibold text-lg shadow-2xl shadow-black/20 transition-all duration-300"
+                        className="bg-white text-blue-600 hover:bg-blue-50 hover:scale-105 rounded-xl px-8 py-4 font-semibold text-lg shadow-2xl shadow-black/20 transition-all duration-300 relative z-10"
+                        onClick={handleGetStarted}
                       >
                         Start Your Project <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
-                    </Link>
-                    <Link href="/contact">
                       <Button 
                         variant="outline" 
-                        className="border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/50 hover:scale-105 rounded-xl px-8 py-4 font-semibold text-lg shadow-xl transition-all duration-300"
+                        className="border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/50 hover:scale-105 rounded-xl px-8 py-4 font-semibold text-lg shadow-xl transition-all duration-300 relative z-10"
+                        onClick={handleContact}
                       >
                         Contact Us
                       </Button>
-                    </Link>
-                  </div>
+                    </div>
                 </div>
               </div>
             </div>

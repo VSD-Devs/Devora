@@ -206,22 +206,23 @@ export function MainNav() {
                   className="bg-blue-600 text-white hover:bg-blue-700 px-5 shadow-md"
                 >
                   <Link href="/project-inquiry" className="flex items-center gap-1.5">
-                    Start a Project
+                    Start Project
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
               </div>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button and CTA */}
             <div className="md:hidden flex items-center gap-3">
+              {/* Mobile CTA Button - Centered */}
               <Button 
                 asChild
                 size="sm"
-                className="bg-blue-600 text-white hover:bg-blue-700 hidden sm:flex"
+                className="bg-blue-600 text-white hover:bg-blue-700 px-3 py-2"
               >
                 <Link href="/project-inquiry" className="flex items-center gap-1">
-                  <span className="text-sm">Start a Project</span>
+                  <span className="text-sm font-medium">Start Project</span>
                   <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </Link>
               </Button>
@@ -300,17 +301,7 @@ export function MainNav() {
               </nav>
               
               <div className="border-t pt-6 border-white/10">
-                <Button
-                  asChild
-                  className="w-full py-6 shadow-md text-base bg-blue-600 hover:bg-blue-700 text-white"
-                >
-                  <Link href="/project-inquiry" className="flex items-center justify-center gap-2">
-                    Start Your Project Today
-                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                </Button>
-                
-                <div className="mt-6 flex items-center justify-center space-x-6">
+                <div className="flex items-center justify-center space-x-6">
                   <a 
                     href="https://linkedin.com" 
                     className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1"
