@@ -11,24 +11,16 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     // Extended cache for better performance
     minimumCacheTTL: 31536000, // 1 year
-    // Quality settings for different use cases
-    quality: 85,
     // Enable SVG support with security
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     // External domains for image optimisation
     domains: ['images.unsplash.com', 'images.pexels.com', 'cdn.pixabay.com', 'picsum.photos'],
-    // Loader configuration for better performance
-    loader: 'default',
-    // Enable blur placeholder for better UX
-    placeholder: 'blur',
     // Unoptimized for development speed
     unoptimized: process.env.NODE_ENV === 'development' ? false : false,
   },
   experimental: {
     optimizePackageImports: ['lucide-react'],
-    // Enable modern bundling features
-    optimizeCss: true,
     // Improve build performance
     turbo: {
       rules: {
