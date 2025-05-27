@@ -34,7 +34,7 @@ async function testImageGeneration() {
   
   try {
     // Import the TypeScript module using dynamic import
-    const { generateBlogPost } = await import('../lib/ai-blog-generator.js');
+    const { generateBlogPost } = await import('../lib/ai-blog-generator.ts');
     
     const slug = await generateBlogPost();
     

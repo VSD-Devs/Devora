@@ -598,7 +598,7 @@ async function generateContentWithAI(topic: string): Promise<BlogPostData> {
   try {
     // Using Hugging Face API for content generation with a reliable model
     const response = await fetch(
-      "https://api-inference.huggingface.co/models/google/flan-t5-large",
+      "https://api-inference.huggingface.co/models/google/flan-t5-base",
       {
         headers: { 
           Authorization: `Bearer ${process.env.HUGGING_FACE_API_KEY}`,
@@ -608,8 +608,9 @@ async function generateContentWithAI(topic: string): Promise<BlogPostData> {
         body: JSON.stringify({
           inputs: `Write a comprehensive blog post about ${topic} for a web development agency. Include practical business advice, clear headings, and actionable tips. Write in British English with a professional but friendly tone.`,
           parameters: { 
-            max_new_tokens: 1000,
-            temperature: 0.7
+            max_new_tokens: 800,
+            temperature: 0.7,
+            wait_for_model: true
           }
         }),
       }
