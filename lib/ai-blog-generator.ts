@@ -596,9 +596,9 @@ function getSubtitleForTopic(topic: string): string {
  */
 async function generateContentWithAI(topic: string): Promise<BlogPostData> {
   try {
-    // Using Hugging Face API for content generation
+    // Using Hugging Face API for content generation with a reliable model
     const response = await fetch(
-      "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
+      "https://api-inference.huggingface.co/models/google/flan-t5-large",
       {
         headers: { 
           Authorization: `Bearer ${process.env.HUGGING_FACE_API_KEY}`,
@@ -606,38 +606,10 @@ async function generateContentWithAI(topic: string): Promise<BlogPostData> {
         },
         method: "POST",
         body: JSON.stringify({
-          inputs: `<s>[INST]You are a content writer for Devora, a modern web development agency specialising in creating bespoke websites and digital experiences for ambitious startups and established businesses.
-
-ABOUT DEVORA:
-- We focus on crafting elegant, performant, and accessible websites that help businesses grow
-- We prioritise user experience, performance, and conversion-focused design
-- Our target audience is primarily startup founders, small business owners, and decision-makers at medium-sized companies
-- We have particular expertise in Next.js, React, Tailwind CSS, and headless CMS integration
-
-WRITING STYLE GUIDELINES:
-- Write in British English
-- Use a friendly, conversational, but authoritative tone
-- Avoid overly technical jargon without explanation
-- Include practical examples and actionable advice
-- Avoid using the word "expert" in website copy
-- Focus on business benefits rather than technical specifications
-- Use inclusive language and emphasise accessibility
-
-Write a comprehensive blog post about ${topic} that aligns with Devora's brand voice. The post should be well-structured with headings, include practical advice that our clients can implement, and position Devora as a thought leader in web development.
-
-The blog post should include:
-1. A compelling introduction that hooks the reader and establishes relevance for businesses
-2. Several main sections with clear headings (H2) and subheadings (H3) where appropriate
-3. Practical tips and actionable advice that businesses can implement
-4. A conclusion summarizing key points
-5. Use markdown formatting for all headings and emphasis
-
-Ensure the content is accessible to business owners with varying levels of technical knowledge.[/INST]</s>`,
+          inputs: `Write a comprehensive blog post about ${topic} for a web development agency. Include practical business advice, clear headings, and actionable tips. Write in British English with a professional but friendly tone.`,
           parameters: { 
-            max_new_tokens: 2000,
-            temperature: 0.7,
-            top_p: 0.95,
-            do_sample: true
+            max_new_tokens: 1000,
+            temperature: 0.7
           }
         }),
       }

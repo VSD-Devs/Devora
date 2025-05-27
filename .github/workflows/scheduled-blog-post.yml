@@ -2,8 +2,8 @@ name: Daily Blog Post Generation
 
 on:
   schedule:
-    # This cron job runs at 8 AM UTC every day
-    - cron: '0 8 * * *'
+    # This cron job runs at 8:15 AM UTC every day (avoiding high-load times)
+    - cron: '15 8 * * *'
   
   # Allow manual triggering
   workflow_dispatch:
