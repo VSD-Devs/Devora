@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://devora.dev'),
+  metadataBase: new URL('https://www.devora.co.uk'),
   title: {
     default: "Devora | Affordable Web Development for Startups",
     template: "%s | Devora"
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: "https://devora.dev",
+    url: "https://www.devora.co.uk",
     title: "Devora | Affordable Web Development for Startups",
     description: "Transform your startup with professional, affordable web development services. Specialising in React & Next.js development, UI/UX design, and SEO optimization tailored for growing businesses.",
     siteName: "Devora",
@@ -129,8 +129,8 @@ export default function RootLayout({
         {/* Enhanced Structured Data */}
         <OrganizationStructuredData
           name="Devora"
-          url="https://devora.dev"
-          logo="https://devora.dev/DEVORA.png"
+          url="https://www.devora.co.uk"
+          logo="https://www.devora.co.uk/DEVORA.png"
           description="Professional web development services tailored for startups and growing businesses. Specialising in React, Next.js, and modern web technologies."
           address={{
             addressCountry: 'UK',
@@ -138,7 +138,7 @@ export default function RootLayout({
           }}
           contactPoint={{
             contactType: 'customer service',
-            email: 'contact@devora.dev'
+            email: 'contact@devora.co.uk'
           }}
           sameAs={[
             'https://twitter.com/devoradev',
@@ -149,10 +149,10 @@ export default function RootLayout({
         
         <WebsiteStructuredData
           name="Devora"
-          url="https://devora.dev"
+          url="https://www.devora.co.uk"
           description="Professional web development services for startups and growing businesses"
           potentialAction={{
-            target: 'https://devora.dev/search?q={search_term_string}',
+            target: 'https://www.devora.co.uk/search?q={search_term_string}',
             queryInput: 'required name=search_term_string'
           }}
         />

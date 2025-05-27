@@ -29,7 +29,7 @@ const DEFAULT_KEYWORDS = [
 
 const SITE_CONFIG = {
   name: 'Devora',
-  url: 'https://devora.dev',
+  url: 'https://www.devora.co.uk',
   description: 'Professional web development services for startups and growing businesses',
   image: '/og-home.jpg',
   twitter: '@devoradev'
@@ -256,7 +256,7 @@ export function generateLocalBusinessStructuredData() {
     },
     openingHours: 'Mo-Fr 09:00-17:00',
     telephone: '+44-XXX-XXX-XXXX',
-    email: 'contact@devora.dev',
+    email: 'contact@devora.co.uk',
     priceRange: '££',
     aggregateRating: {
       '@type': 'AggregateRating',

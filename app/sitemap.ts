@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/markdown'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://devora.dev'
+  const baseUrl = 'https://www.devora.co.uk'
   
   // Get current date for dynamic content
   const now = new Date()

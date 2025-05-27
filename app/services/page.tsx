@@ -18,7 +18,7 @@ export default function ServicesPage() {
             provider: {
               '@type': 'Organization',
               name: 'Devora',
-              url: 'https://devora.dev'
+              url: 'https://www.devora.co.uk'
             },
             serviceType: 'Web Development',
             areaServed: {

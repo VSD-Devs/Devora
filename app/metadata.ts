@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "TypeScript development", "modern web development", "JAMstack development",
     "headless CMS development", "API development", "web performance optimisation"
   ],
-  authors: [{ name: "Devora Team", url: "https://devora.dev/about" }],
+  authors: [{ name: "Devora Team", url: "https://www.devora.co.uk/about" }],
   creator: "Devora",
   publisher: "Devora",
   category: "Web Development",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description: "Transform your business with affordable, professional web development services tailored for startups. Expert Next.js & React development, responsive design, and performance optimisation.",
     type: "website",
     locale: "en_GB",
-    url: "https://devora.dev",
+    url: "https://www.devora.co.uk",
     siteName: "Devora",
     images: [
       {
@@ -66,10 +66,10 @@ export const metadata: Metadata = {
     site: "@devoradev",
   },
   alternates: {
-    canonical: "https://devora.dev",
+    canonical: "https://www.devora.co.uk",
     languages: {
-      'en-GB': 'https://devora.dev',
-      'en-US': 'https://devora.dev',
+      'en-GB': 'https://www.devora.co.uk',
+      'en-US': 'https://www.devora.co.uk',
     },
   },
   verification: {

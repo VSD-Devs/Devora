@@ -83,26 +83,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <BlogPostStructuredData
         headline={post.title}
         description={post.excerpt}
-        image={`https://devora.dev${post.coverImage}`}
+        image={`https://www.devora.co.uk${post.coverImage}`}
         datePublished={post.date}
         author={{
           name: post.author,
-          url: 'https://devora.dev/about'
+          url: 'https://www.devora.co.uk/about'
         }}
         publisher={{
           name: 'Devora',
-          logo: 'https://devora.dev/DEVORA.png'
+          logo: 'https://www.devora.co.uk/DEVORA.png'
         }}
-        url={`https://devora.dev/blog/${post.slug}`}
+        url={`https://www.devora.co.uk/blog/${post.slug}`}
         keywords={post.tags}
       />
       
       {/* Breadcrumb Structured Data */}
       <BreadcrumbStructuredData
         items={[
-          { name: 'Home', url: 'https://devora.dev' },
-          { name: 'Blog', url: 'https://devora.dev/blog' },
-          { name: post.title, url: `https://devora.dev/blog/${post.slug}` }
+          { name: 'Home', url: 'https://www.devora.co.uk' },
+          { name: 'Blog', url: 'https://www.devora.co.uk/blog' },
+          { name: post.title, url: `https://www.devora.co.uk/blog/${post.slug}` }
         ]}
       />
       {/* Navigation Bar */}

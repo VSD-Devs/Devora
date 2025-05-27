@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/', '/_next/', '/private/', '/*.json$'],
     },
-    sitemap: 'https://devora.dev/sitemap.xml',
-    host: 'https://devora.dev',
+    sitemap: 'https://www.devora.co.uk/sitemap.xml',
+    host: 'https://www.devora.co.uk',
   }
 } 

@@ -19,7 +19,7 @@ export default function PricingPage() {
             provider: {
               '@type': 'Organization',
               name: 'Devora',
-              url: 'https://devora.dev'
+              url: 'https://www.devora.co.uk'
             },
             priceSpecification: [
               {

@@ -8,7 +8,7 @@
 const https = require('https');
 const fs = require('fs');
 
-const SITE_URL = 'https://devora.dev';
+const SITE_URL = 'https://www.devora.co.uk';
 const TEST_PAGES = [
   '/',
   '/blog',
