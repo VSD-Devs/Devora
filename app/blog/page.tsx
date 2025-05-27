@@ -1,8 +1,10 @@
 import { ArrowRight, BookOpen, Calendar, Clock, User, Star, Award, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
+import { OptimisedImage } from "@/components/ui/optimised-image"
+import { BlogImagePreloader } from "@/components/blog/blog-image-preloader"
 import Link from "next/link"
 import { getAllPosts } from "@/lib/markdown"
+import { getOptimalImageDimensions } from "@/lib/image-preloader"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -14,8 +16,13 @@ export const metadata: Metadata = {
 export default async function BlogPage() {
   const allPosts = getAllPosts();
   
+  // Get optimal dimensions for blog thumbnails
+  const { width: thumbWidth, height: thumbHeight } = getOptimalImageDimensions('blog-thumbnail');
+  
   return (
     <div className="min-h-screen">
+      {/* Preload critical blog images */}
+      <BlogImagePreloader posts={allPosts} limit={3} />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-black via-slate-900 to-black text-white py-12 md:py-24 relative overflow-hidden">
         {/* Creative background elements - Simplified for mobile */}
@@ -133,7 +140,7 @@ export default async function BlogPage() {
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-t-2xl md:rounded-t-3xl"></div>
                     
                     <div className="relative h-48 md:h-52 overflow-hidden">
-                      <Image
+                      <OptimisedImage
                         src={post.coverImage}
                         alt={post.title}
                         fill

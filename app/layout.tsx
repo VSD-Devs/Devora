@@ -5,6 +5,7 @@ import { MainNav } from '@/components/MainNav';
 import Footer from '@/components/Footer';
 import Script from 'next/script';
 import { CookieConsent } from '@/components/CookieConsent';
+import { OrganizationStructuredData, WebsiteStructuredData } from '@/components/seo/structured-data';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -125,40 +126,34 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         
-        <Script
-          id="schema-org"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Organization',
-              name: 'Devora',
-              url: 'https://devora.dev',
-              logo: 'https://devora.dev/logo.png',
-              description: 'Professional web development services tailored for startups and growing businesses',
-              address: {
-                '@type': 'PostalAddress',
-                addressCountry: 'UK'
-              },
-              contactPoint: {
-                '@type': 'ContactPoint',
-                contactType: 'customer service',
-                email: 'contact@devora.dev'
-              },
-              sameAs: [
-                'https://twitter.com/devoradev',
-                'https://linkedin.com/company/devora',
-                'https://github.com/devora'
-              ],
-              aggregateRating: {
-                '@type': 'AggregateRating',
-                ratingValue: '4.9',
-                ratingCount: '27',
-                bestRating: '5',
-                worstRating: '1'
-              }
-            })
+        {/* Enhanced Structured Data */}
+        <OrganizationStructuredData
+          name="Devora"
+          url="https://devora.dev"
+          logo="https://devora.dev/DEVORA.png"
+          description="Professional web development services tailored for startups and growing businesses. Specialising in React, Next.js, and modern web technologies."
+          address={{
+            addressCountry: 'UK',
+            addressRegion: 'England'
+          }}
+          contactPoint={{
+            contactType: 'customer service',
+            email: 'contact@devora.dev'
+          }}
+          sameAs={[
+            'https://twitter.com/devoradev',
+            'https://linkedin.com/company/devora',
+            'https://github.com/devora'
+          ]}
+        />
+        
+        <WebsiteStructuredData
+          name="Devora"
+          url="https://devora.dev"
+          description="Professional web development services for startups and growing businesses"
+          potentialAction={{
+            target: 'https://devora.dev/search?q={search_term_string}',
+            queryInput: 'required name=search_term_string'
           }}
         />
       </head>

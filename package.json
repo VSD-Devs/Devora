@@ -10,6 +10,7 @@
     "generate-blog": "node scripts/generate-blog-post.js",
     "test-images": "node scripts/test-image-generation.js",
     "fix-images": "node scripts/fix-missing-images.js",
+    "test-performance": "node scripts/test-performance.js",
     "ts-node": "ts-node"
   },
   "dependencies": {

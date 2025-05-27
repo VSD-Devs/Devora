@@ -1,11 +1,12 @@
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
+import { OptimisedImage } from '@/components/ui/optimised-image';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, Tag, Share2, Bookmark, ArrowRight, User, Eye, Heart, Twitter, Linkedin, Facebook } from 'lucide-react';
 import { getPostWithHtml, getAllPosts } from '@/lib/markdown';
 import { format, parseISO } from 'date-fns';
 import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
+import { BlogPostStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 
 interface BlogPostPageProps {
   params: {
@@ -78,6 +79,32 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   
   return (
     <div className="min-h-screen bg-white">
+      {/* Structured Data for SEO */}
+      <BlogPostStructuredData
+        headline={post.title}
+        description={post.excerpt}
+        image={`https://devora.dev${post.coverImage}`}
+        datePublished={post.date}
+        author={{
+          name: post.author,
+          url: 'https://devora.dev/about'
+        }}
+        publisher={{
+          name: 'Devora',
+          logo: 'https://devora.dev/DEVORA.png'
+        }}
+        url={`https://devora.dev/blog/${post.slug}`}
+        keywords={post.tags}
+      />
+      
+      {/* Breadcrumb Structured Data */}
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: 'https://devora.dev' },
+          { name: 'Blog', url: 'https://devora.dev/blog' },
+          { name: post.title, url: `https://devora.dev/blog/${post.slug}` }
+        ]}
+      />
       {/* Navigation Bar */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200/50 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
@@ -170,7 +197,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <section className="py-8 lg:py-12">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="relative aspect-[16/9] lg:aspect-[21/9] rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
-            <Image
+            <OptimisedImage
               src={post.coverImage}
               alt={post.title}
               fill
@@ -340,7 +367,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 >
                   <article className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 transition-all duration-500 hover:shadow-2xl hover:border-blue-300 hover:-translate-y-2 h-full flex flex-col">
                     <div className="relative h-64 overflow-hidden">
-                      <Image
+                      <OptimisedImage
                         src={relatedPost.coverImage}
                         alt={relatedPost.title}
                         fill
