@@ -398,7 +398,7 @@ export default function ProjectPage({ params }: Props) {
         className="relative min-h-screen bg-black text-white"
         style={{ backgroundImage: "url(/noise.png)" }}
       >
-        <div className="absolute inset-0 bg-black/60" />
+        
         <div className="relative container mx-auto px-6 py-20 md:py-32">
           <div className="max-w-5xl mx-auto">
             {/* Back Navigation */}
@@ -584,7 +584,7 @@ export default function ProjectPage({ params }: Props) {
         className="py-40 bg-black text-white"
         style={{ backgroundImage: "url(/noise.png)" }}
       >
-        <div className="absolute inset-0 bg-black/60" />
+        
         <div className="relative container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <div className="text-xs text-purple-400 uppercase tracking-wider font-light mb-12">Results</div>
