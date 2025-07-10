@@ -19,36 +19,15 @@ export default function WebsiteAuditForm({ className = "", variant = "inline" }:
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  // Test function to check if API is working
-  const testAPI = async () => {
-    try {
-      console.log('Testing API endpoint...')
-      const response = await fetch('/api/website-audit', {
-        method: 'GET',
-      })
-      console.log('Test API response:', response.status, response.ok)
-      const data = await response.json()
-      console.log('Test API data:', data)
-      toast.success('API is working!')
-    } catch (error) {
-      console.error('API test failed:', error)
-      toast.error('API test failed')
-    }
-  }
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    console.log('Form submitted with data:', formData)
-    
     if (!formData.email.trim() || !formData.websiteUrl.trim()) {
-      console.log('Validation failed - missing required fields')
       toast.error("Please fill in your email and website URL")
       return
     }
 
     setIsSubmitting(true)
-    console.log('Submitting to API...')
 
     try {
       const response = await fetch('/api/website-audit', {
@@ -59,17 +38,12 @@ export default function WebsiteAuditForm({ className = "", variant = "inline" }:
         body: JSON.stringify(formData),
       })
 
-      console.log('API Response status:', response.status)
-      console.log('API Response ok:', response.ok)
-
       const data = await response.json()
-      console.log('API Response data:', data)
 
       if (!response.ok) {
         throw new Error(data.error || 'Something went wrong')
       }
 
-      console.log('Success! Showing success toast')
       toast.success("Website audit request submitted! We'll be in touch soon.")
       
       // Reset form
@@ -79,7 +53,6 @@ export default function WebsiteAuditForm({ className = "", variant = "inline" }:
         company: ""
       })
     } catch (error: any) {
-      console.error('Error submitting form:', error)
       toast.error(error.message || 'Failed to submit request. Please try again.')
     } finally {
       setIsSubmitting(false)
@@ -126,34 +99,23 @@ export default function WebsiteAuditForm({ className = "", variant = "inline" }:
             required
           />
           
-          <div className="space-y-2">
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full h-12 bg-white text-black hover:bg-gray-100 font-light tracking-wide transition-colors group"
-            >
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Submitting...
-                </>
-              ) : (
-                <>
-                  Get Free Audit
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </>
-              )}
-            </Button>
-            
-            {/* Temporary test button - remove after debugging */}
-            <Button
-              type="button"
-              onClick={testAPI}
-              className="w-full h-8 bg-gray-600 text-white hover:bg-gray-700 font-light text-sm"
-            >
-              Test API
-            </Button>
-          </div>
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full h-12 bg-white text-black hover:bg-gray-100 font-light tracking-wide transition-colors group"
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Submitting...
+              </>
+            ) : (
+              <>
+                Get Free Audit
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </>
+            )}
+          </Button>
         </form>
       </div>
     )

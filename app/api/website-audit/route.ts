@@ -24,22 +24,9 @@ transporter.verify(function (error, success) {
   }
 });
 
-// Simple GET endpoint for testing
-export async function GET() {
-  console.log('Website audit API GET endpoint called');
-  return NextResponse.json({ message: 'Website audit API is working' });
-}
-
 export async function POST(request: Request) {
   try {
-    console.log('=== Website Audit API Called ===');
-    console.log('Request method:', request.method);
-    console.log('Request headers:', Object.fromEntries(request.headers.entries()));
-
-    const body = await request.json();
-    console.log('Request body:', body);
-    
-    const { email, websiteUrl, company } = body;
+    const { email, websiteUrl, company } = await request.json();
 
     // Basic validation for required fields
     if (!email?.trim() || !websiteUrl?.trim()) {

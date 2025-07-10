@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { MainNav } from '@/components/MainNav';
 import Footer from '@/components/Footer';
-import Script from 'next/script';
 import { CookieConsent } from '@/components/CookieConsent';
 import { OrganizationStructuredData, WebsiteStructuredData } from '@/components/seo/structured-data';
 import { Toaster } from '@/components/ui/sonner';

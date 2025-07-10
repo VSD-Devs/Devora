@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState, useRef, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "./ui/button"
 import { Logo } from "./Logo"
 import { Menu, X, ChevronDown, ChevronUp, ArrowUpRight } from "lucide-react"
@@ -167,35 +166,29 @@ export function MainNav() {
                     )}
                   </button>
                   
-                  <AnimatePresence>
-                    {isLegalOpen && (
-                      <motion.div
-                        ref={dropdownRef}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute right-0 mt-2 rounded-xl overflow-hidden border shadow-lg z-10 bg-black/90 backdrop-blur-md border-gray-700"
-                        role="menu"
-                        aria-orientation="vertical"
-                        aria-labelledby="legal-menu"
-                      >
-                        <div className="py-1">
-                          {legalItems.map((item) => (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              className="block px-4 py-2 text-sm transition-colors text-gray-200 hover:bg-gray-800 hover:text-white focus:outline-none focus:bg-gray-700/50 focus:text-white"
-                              onClick={() => setIsLegalOpen(false)}
-                              role="menuitem"
-                            >
-                              {item.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {isLegalOpen && (
+                    <div
+                      ref={dropdownRef}
+                      className="absolute right-0 mt-2 rounded-xl overflow-hidden border shadow-lg z-10 bg-black/90 backdrop-blur-md border-gray-700"
+                      role="menu"
+                      aria-orientation="vertical"
+                      aria-labelledby="legal-menu"
+                    >
+                      <div className="py-1">
+                        {legalItems.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="block px-4 py-2 text-sm transition-colors text-gray-200 hover:bg-gray-800 hover:text-white focus:outline-none focus:bg-gray-700/50 focus:text-white"
+                            onClick={() => setIsLegalOpen(false)}
+                            role="menuitem"
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </nav>
               
@@ -246,94 +239,88 @@ export function MainNav() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            ref={navRef}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100vh" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 top-[57px] z-40 overflow-y-auto md:hidden flex flex-col bg-gradient-to-br from-black via-gray-900 to-black text-white"
-            id="mobile-menu"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Mobile navigation menu"
-          >
-            <>
-              <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
-              <div className="absolute -top-40 -left-40 w-80 h-80 bg-gray-500/5 rounded-full blur-[120px] z-0" />
-              <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 bg-gray-400/5 rounded-full blur-[100px] z-0" />
-            </>
-            <div className="px-4 pt-6 pb-6 flex flex-col h-full space-y-6 relative z-[2]">
-              <nav className="space-y-1.5 flex-1">
-                {menuItems.map((item) => (
+      {isOpen && (
+        <div
+          ref={navRef}
+          className="fixed inset-0 top-[57px] z-40 overflow-y-auto md:hidden flex flex-col bg-gradient-to-br from-black via-gray-900 to-black text-white"
+          id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation menu"
+        >
+          <>
+            <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
+            <div className="absolute -top-40 -left-40 w-80 h-80 bg-gray-500/5 rounded-full blur-[120px] z-0" />
+            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 bg-gray-400/5 rounded-full blur-[100px] z-0" />
+          </>
+          <div className="px-4 pt-6 pb-6 flex flex-col h-full space-y-6 relative z-[2]">
+            <nav className="space-y-1.5 flex-1">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`block px-4 py-4 text-lg font-medium rounded-lg transition-colors ${
+                    pathname === item.href
+                      ? 'bg-white/10 text-white'
+                      : 'text-white/90 hover:bg-white/5'
+                  } focus:outline-none focus:ring-2 focus:ring-white/30`}
+                  onClick={() => setIsOpen(false)}
+                  aria-current={pathname === item.href ? 'page' : undefined}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              
+              {/* Legal section on mobile */}
+              <div className="pt-4 mt-4 border-t border-white/10">
+                <p className="px-4 text-sm font-medium uppercase mb-2 text-white/50">Legal</p>
+                {legalItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`block px-4 py-4 text-lg font-medium rounded-lg transition-colors ${
-                      pathname === item.href
-                        ? 'bg-white/10 text-white'
-                        : 'text-white/90 hover:bg-white/5'
-                    } focus:outline-none focus:ring-2 focus:ring-white/30`}
+                    className="block px-4 py-3 text-base rounded-lg focus:outline-none focus:ring-2 text-white/80 hover:bg-white/5 focus:ring-white/30"
                     onClick={() => setIsOpen(false)}
-                    aria-current={pathname === item.href ? 'page' : undefined}
                   >
                     {item.label}
                   </Link>
                 ))}
-                
-                {/* Legal section on mobile */}
-                <div className="pt-4 mt-4 border-t border-white/10">
-                  <p className="px-4 text-sm font-medium uppercase mb-2 text-white/50">Legal</p>
-                  {legalItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="block px-4 py-3 text-base rounded-lg focus:outline-none focus:ring-2 text-white/80 hover:bg-white/5 focus:ring-white/30"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </nav>
-              
-              <div className="border-t pt-6 border-white/10">
-                <div className="flex items-center justify-center space-x-6">
-                  <a 
-                    href="https://linkedin.com" 
-                    className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30 rounded-full p-1"
-                    aria-label="Visit our LinkedIn"
-                  >
-                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                    </svg>
-                  </a>
-                  <a 
-                    href="https://twitter.com" 
-                    className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30 rounded-full p-1"
-                    aria-label="Visit our Twitter/X"
-                  >
-                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z" />
-                    </svg>
-                  </a>
-                  <a 
-                    href="mailto:hello@devora.co.uk" 
-                    className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30 rounded-full p-1"
-                    aria-label="Send us an email"
-                  >
-                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </a>
-                </div>
+              </div>
+            </nav>
+            
+            <div className="border-t pt-6 border-white/10">
+              <div className="flex items-center justify-center space-x-6">
+                <a 
+                  href="https://linkedin.com" 
+                  className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30 rounded-full p-1"
+                  aria-label="Visit our LinkedIn"
+                >
+                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                </a>
+                <a 
+                  href="https://twitter.com" 
+                  className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30 rounded-full p-1"
+                  aria-label="Visit our Twitter/X"
+                >
+                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z" />
+                  </svg>
+                </a>
+                <a 
+                  href="mailto:hello@devora.co.uk" 
+                  className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30 rounded-full p-1"
+                  aria-label="Send us an email"
+                >
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </a>
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      )}
     </>
   )
 } 
