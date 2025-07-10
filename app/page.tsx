@@ -101,12 +101,13 @@ export default function Home() {
                   {/* Minimal CTA */}
                   <div className="flex items-center gap-8">
                     <Link href="/contact">
-                      <Button variant="ghost" className="text-white hover:text-gray-300 p-0 h-auto font-light text-lg tracking-wide border-b border-white border-opacity-30 rounded-none pb-1 transition-colors">
-                        Enquire →
+                      <Button variant="ghost" className="text-white p-0 h-auto font-light text-lg tracking-wide border-b border-white/30 hover:border-white rounded-none pb-1 transition-colors group">
+                        Enquire
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </Button>
                     </Link>
                     <Link href="/work">
-                      <Button variant="ghost" className="text-gray-400 hover:text-white p-0 h-auto font-light text-lg tracking-wide transition-colors">
+                      <Button variant="ghost" className="text-gray-400 hover:text-white p-0 h-auto font-light text-lg tracking-wide border-b border-transparent hover:border-white rounded-none pb-1 transition-colors">
                         View work
                       </Button>
                     </Link>
@@ -114,7 +115,7 @@ export default function Home() {
                 </div>
 
                 {/* Right Column - Website Audit Form */}
-                <div className="lg:pt-8">
+                <div className="flex items-center justify-start lg:justify-end lg:pt-8">
                   <WebsiteAuditForm variant="hero" />
                 </div>
               </div>

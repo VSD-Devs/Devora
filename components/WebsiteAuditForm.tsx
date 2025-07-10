@@ -4,30 +4,40 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
-import { Loader2, ArrowRight } from "lucide-react"
+import { Loader2, ArrowRight, Globe, CheckCircle } from "lucide-react"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 interface WebsiteAuditFormProps {
   className?: string
   variant?: "hero" | "inline"
 }
 
-export default function WebsiteAuditForm({ className = "", variant = "inline" }: WebsiteAuditFormProps) {
+function AuditFormContent({ onFormSubmit }: { onFormSubmit: () => void }) {
   const [formData, setFormData] = useState({
     email: "",
     websiteUrl: "",
-    company: ""
+    company: "",
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
-    if (!formData.email.trim() || !formData.websiteUrl.trim()) {
-      toast.error("Please fill in your email and website URL")
-      return
-    }
-
-    setIsSubmitting(true)
+    setIsLoading(true)
 
     try {
       const response = await fetch('/api/website-audit', {
@@ -44,141 +54,175 @@ export default function WebsiteAuditForm({ className = "", variant = "inline" }:
         throw new Error(data.error || 'Something went wrong')
       }
 
-      toast.success("Website audit request submitted! We'll be in touch soon.")
-      
+      toast.success("Audit request received! We'll send your report within 24 hours.", {
+        duration: 5000,
+      })
+
       // Reset form
       setFormData({
         email: "",
         websiteUrl: "",
-        company: ""
+        company: "",
       })
-    } catch (error: any) {
-      toast.error(error.message || 'Failed to submit request. Please try again.')
+
+      onFormSubmit()
+    } catch (error) {
+      console.error('Form submission error:', error)
+      toast.error('Failed to submit audit request. Please try again.', {
+        duration: 5000,
+      })
     } finally {
-      setIsSubmitting(false)
+      setIsLoading(false)
     }
   }
 
-  if (variant === "hero") {
-    return (
-      <div className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-8 ${className}`}>
-        <div className="mb-6">
-          <h3 className="text-2xl font-light text-white mb-2 tracking-wide">
-            Free Website Audit
-          </h3>
-          <p className="text-gray-400 font-light">
-            Get a detailed analysis of your website's performance, SEO, and user experience.
-          </p>
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="text-center mb-8">
+        <div className="w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <Globe className="w-8 h-8 text-white" />
         </div>
-        
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <h3 className="text-2xl font-light text-white mb-2">Free Website Audit</h3>
+        <p className="text-gray-400 font-light">
+          Get a comprehensive analysis of your website's performance, SEO, and user experience.
+        </p>
+      </div>
+
+      {/* What's included */}
+      <div className="bg-gray-800/50 rounded-xl p-6 mb-8">
+        <h4 className="text-white font-light mb-4">What you'll receive:</h4>
+        <div className="space-y-3">
+          {[
+            "Performance & speed analysis",
+            "SEO optimisation recommendations",
+            "Mobile responsiveness review",
+            "User experience assessment",
+            "Conversion opportunities"
+          ].map((item, index) => (
+            <div key={index} className="flex items-center gap-3">
+              <CheckCircle className="w-4 h-4 text-gray-400 flex-shrink-0" />
+              <span className="text-gray-300 font-light text-sm">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Form */}
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm text-gray-300 mb-2 font-light">
+              Website URL *
+            </label>
             <Input
-              type="email"
-              placeholder="Your email"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="h-12 bg-white/10 border-white/20 text-white placeholder-gray-400 focus:bg-white/15 focus:border-white/30 font-light"
+              type="url"
+              name="websiteUrl"
+              value={formData.websiteUrl}
+              onChange={handleChange}
+              placeholder="https://yourwebsite.com"
+              className="h-12 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-white focus:ring-0"
               required
             />
+          </div>
+
+          <div>
+            <label className="block text-sm text-gray-300 mb-2 font-light">
+              Email address *
+            </label>
             <Input
-              type="text"
-              placeholder="Company name (optional)"
-              value={formData.company}
-              onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-              className="h-12 bg-white/10 border-white/20 text-white placeholder-gray-400 focus:bg-white/15 focus:border-white/30 font-light"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="you@company.com"
+              className="h-12 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-white focus:ring-0"
+              required
             />
           </div>
-          
-          <Input
-            type="url"
-            placeholder="https://yourwebsite.com"
-            value={formData.websiteUrl}
-            onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
-            className="h-12 bg-white/10 border-white/20 text-white placeholder-gray-400 focus:bg-white/15 focus:border-white/30 font-light"
-            required
-          />
-          
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full h-12 bg-white text-black hover:bg-gray-100 font-light tracking-wide transition-colors group"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Submitting...
-              </>
-            ) : (
-              <>
-                Get Free Audit
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </>
-            )}
-          </Button>
-        </form>
-      </div>
+
+          <div>
+            <label className="block text-sm text-gray-300 mb-2 font-light">
+              Company name
+            </label>
+            <Input
+              type="text"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              placeholder="Your Company"
+              className="h-12 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-white focus:ring-0"
+            />
+          </div>
+        </div>
+
+        <Button 
+          type="submit" 
+          className="w-full h-12 bg-white text-gray-900 hover:bg-gray-200 font-light transition-all duration-200"
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin mr-2" />
+              Submitting...
+            </>
+          ) : (
+            <>
+              Get My Free Audit
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </>
+          )}
+        </Button>
+      </form>
+
+      <p className="text-xs text-gray-500 text-center font-light">
+        No spam, just valuable insights delivered within 24 hours
+      </p>
+    </div>
+  )
+}
+
+export default function WebsiteAuditForm({ className = "", variant = "inline" }: WebsiteAuditFormProps) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  if (variant === "hero") {
+    return (
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogTrigger asChild>
+          <div className={`group cursor-pointer ${className}`}>
+            <div className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center">
+                    <Globe className="w-6 h-6 text-gray-300" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-light text-lg">Free Website Audit</h3>
+                    <p className="text-gray-400 text-sm font-light">Get insights in 24 hours</p>
+                  </div>
+                </div>
+                <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
+              </div>
+            </div>
+          </div>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[500px] bg-gray-900 border-gray-700">
+          <DialogHeader className="sr-only">
+            <DialogTitle>Website Audit Request</DialogTitle>
+            <DialogDescription>
+              Request a free comprehensive audit of your website
+            </DialogDescription>
+          </DialogHeader>
+          <AuditFormContent onFormSubmit={() => setIsOpen(false)} />
+        </DialogContent>
+      </Dialog>
     )
   }
 
   // Inline variant
   return (
-    <div className={`bg-gray-50 border border-gray-200 rounded-lg p-6 ${className}`}>
-      <div className="mb-4">
-        <h3 className="text-xl font-light text-black mb-2 tracking-wide">
-          Free Website Audit
-        </h3>
-        <p className="text-gray-600 font-light text-sm">
-          Get a detailed analysis of your website's performance and potential improvements.
-        </p>
-      </div>
-      
-      <form onSubmit={handleSubmit} className="space-y-3">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <Input
-            type="email"
-            placeholder="Your email"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="h-10 font-light"
-            required
-          />
-          <Input
-            type="text"
-            placeholder="Company (optional)"
-            value={formData.company}
-            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-            className="h-10 font-light"
-          />
-        </div>
-        
-        <Input
-          type="url"
-          placeholder="https://yourwebsite.com"
-          value={formData.websiteUrl}
-          onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
-          className="h-10 font-light"
-          required
-        />
-        
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full h-10 font-light tracking-wide transition-colors group"
-        >
-          {isSubmitting ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Submitting...
-            </>
-          ) : (
-            <>
-              Get Free Audit
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </>
-          )}
-        </Button>
-      </form>
+    <div className={`bg-gray-900 border border-gray-800 rounded-2xl p-8 ${className}`}>
+      <AuditFormContent onFormSubmit={() => {}} />
     </div>
   )
 } 
