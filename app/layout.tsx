@@ -17,7 +17,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.devora.co.uk'),
   title: {
-    default: "Devora | Affordable Web Development for Startups",
+    default: "Devora |  Web Design, Web Development, Digital Solutions",
     template: "%s | Devora"
   },
   description: "Transform your startup with professional, affordable web development services. Specialising in React & Next.js development, UI/UX design, and SEO optimization tailored for growing businesses.",
