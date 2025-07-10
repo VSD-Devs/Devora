@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import Script from 'next/script';
 import { CookieConsent } from '@/components/CookieConsent';
 import { OrganizationStructuredData, WebsiteStructuredData } from '@/components/seo/structured-data';
+import { Toaster } from '@/components/ui/sonner';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -164,6 +165,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <CookieConsent />
+        <Toaster />
       </body>
     </html>
   );

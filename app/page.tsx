@@ -25,6 +25,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import Script from 'next/script';
+import WebsiteAuditForm from "@/components/WebsiteAuditForm";
 
 export default function Home() {
   return (
@@ -79,32 +80,43 @@ export default function Home() {
         >
           <div className="absolute inset-0 bg-black/60" />
           <div className="relative container mx-auto px-6 py-20 md:py-32">
-            <div className="max-w-5xl mx-auto">
-              {/* Main headline - Ultra clean typography */}
-              <div className="mb-16 mt-12">
-                <h1 className="text-6xl md:text-8xl lg:text-9xl font-light leading-[0.85] tracking-tighter mb-8">
-                  <span className="block text-white font-extralight">Creating</span>
-                  <span className="block text-white font-extralight">Stunning</span>
-                  <span className="block text-gray-300 font-extralight italic">Websites</span>
-                </h1>
-                
-                <p className="text-lg md:text-xl text-gray-400 max-w-xl font-light leading-relaxed tracking-wide">
-                  that Elevates Your Online Presence
-                </p>
-              </div>
-              
-              {/* Minimal CTA */}
-              <div className="flex items-center gap-8 mb-20">
-                <Link href="/contact">
-                  <Button variant="ghost" className="text-white hover:text-gray-300 p-0 h-auto font-light text-lg tracking-wide border-b border-white border-opacity-30 rounded-none pb-1 transition-colors">
-                    Enquire →
-                  </Button>
-                </Link>
-                <Link href="/work">
-                  <Button variant="ghost" className="text-gray-400 hover:text-white p-0 h-auto font-light text-lg tracking-wide transition-colors">
-                    View work
-                  </Button>
-                </Link>
+            <div className="max-w-7xl mx-auto">
+              {/* Hero Content Grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-20 mt-12">
+                {/* Left Column - Main Content */}
+                <div>
+                  {/* Main headline - Ultra clean typography */}
+                  <div className="mb-16">
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-[0.85] tracking-tighter mb-8">
+                      <span className="block text-white font-extralight">Creating</span>
+                      <span className="block text-white font-extralight">Stunning</span>
+                      <span className="block text-gray-300 font-extralight italic">Websites</span>
+                    </h1>
+                    
+                    <p className="text-lg md:text-xl text-gray-400 max-w-xl font-light leading-relaxed tracking-wide">
+                      that Elevates Your Online Presence
+                    </p>
+                  </div>
+                  
+                  {/* Minimal CTA */}
+                  <div className="flex items-center gap-8">
+                    <Link href="/contact">
+                      <Button variant="ghost" className="text-white hover:text-gray-300 p-0 h-auto font-light text-lg tracking-wide border-b border-white border-opacity-30 rounded-none pb-1 transition-colors">
+                        Enquire →
+                      </Button>
+                    </Link>
+                    <Link href="/work">
+                      <Button variant="ghost" className="text-gray-400 hover:text-white p-0 h-auto font-light text-lg tracking-wide transition-colors">
+                        View work
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Right Column - Website Audit Form */}
+                <div className="lg:pt-8">
+                  <WebsiteAuditForm variant="hero" />
+                </div>
               </div>
               
               {/* Minimal stats */}
