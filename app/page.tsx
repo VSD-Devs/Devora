@@ -76,14 +76,8 @@ export default function Home() {
         <section className="relative min-h-screen bg-black text-white">
           <div className="container mx-auto px-6 py-20 md:py-32">
             <div className="max-w-5xl mx-auto">
-              {/* Subtle status indicator */}
-              <div className="inline-flex items-center gap-3 mb-12">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-400"></div>
-                <span className="text-sm text-gray-400 font-light tracking-wide">Available for new projects</span>
-              </div>
-              
               {/* Main headline - Ultra clean typography */}
-              <div className="mb-16">
+              <div className="mb-16 mt-12">
                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-light leading-[0.85] tracking-tighter mb-8">
                   <span className="block text-white font-extralight">Creating</span>
                   <span className="block text-white font-extralight">Stunning</span>
