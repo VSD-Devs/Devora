@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, Calendar, Clock, User, Star, Award, Zap } from "lucide-react"
+import { ArrowRight, BookOpen, Calendar, Clock, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { BlogImagePreloader } from "@/components/blog/blog-image-preloader"
@@ -6,6 +6,7 @@ import Link from "next/link"
 import { getAllPosts } from "@/lib/markdown"
 import { getOptimalImageDimensions } from "@/lib/image-preloader"
 import type { Metadata } from "next"
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: "Blog | Devora - Web Development Insights",
@@ -20,298 +21,219 @@ export default async function BlogPage() {
   const { width: thumbWidth, height: thumbHeight } = getOptimalImageDimensions('blog-thumbnail');
   
   return (
-    <div className="min-h-screen">
-      {/* Preload critical blog images */}
-      <BlogImagePreloader posts={allPosts} limit={3} />
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-black via-slate-900 to-black text-white pt-20 md:pt-24 pb-12 md:pb-24 relative overflow-hidden">
-        {/* Enhanced Creative background elements */}
-        <div className="absolute inset-0">
-          {/* Multi-layered animated grids */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] animate-pulse"></div>
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.02)_1px,transparent_1px)] bg-[size:70px_70px] md:bg-[size:100px_100px] animate-pulse delay-500"></div>
-          
-          {/* Floating blog-themed elements */}
-          <div className="hidden md:block absolute top-20 left-10 w-6 h-6 border border-blue-400/30 rotate-45 animate-spin-slow"></div>
-          <div className="hidden md:block absolute top-40 right-20 w-4 h-4 bg-blue-500/30 rounded-full animate-bounce"></div>
-          <div className="hidden md:block absolute bottom-40 left-20 w-8 h-8 border-2 border-cyan-400/20 rounded-full animate-pulse"></div>
-          
-          {/* Additional floating elements */}
-          <div className="hidden md:block absolute top-32 right-1/3 w-3 h-3 bg-green-400/40 rotate-45 animate-ping"></div>
-          <div className="hidden md:block absolute bottom-32 right-16 w-5 h-5 border border-orange-400/30 rounded-full animate-spin-slow"></div>
-          <div className="hidden md:block absolute top-1/2 left-16 w-2 h-2 bg-pink-400/50 rounded-full animate-bounce delay-300"></div>
-          
-          {/* Blog/content symbols floating animation */}
-          <div className="hidden lg:block absolute top-24 left-1/3 text-blue-400/20 text-3xl font-serif animate-float delay-700">"</div>
-          <div className="hidden lg:block absolute bottom-24 right-1/3 text-cyan-400/20 text-3xl font-serif animate-float delay-1000">"</div>
-          <div className="hidden lg:block absolute top-1/3 right-20 text-green-400/20 text-2xl font-bold animate-bounce delay-500">@</div>
-          <div className="hidden lg:block absolute bottom-1/3 left-24 text-purple-400/20 text-2xl font-bold animate-pulse delay-200">#</div>
-          
-          {/* Blog icons */}
-          <div className="hidden lg:block absolute top-16 right-1/4 opacity-10 animate-float">
-            <svg className="w-8 h-8 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-            </svg>
-          </div>
-          <div className="hidden lg:block absolute bottom-20 left-1/4 opacity-10 animate-float delay-1000">
-            <svg className="w-6 h-6 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M5,3C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H5M5,5H19V19H5V5M7,7V9H17V7H7M7,11V13H17V11H7M7,15V17H14V15H7Z"/>
-            </svg>
-          </div>
-          <div className="hidden lg:block absolute top-1/3 left-1/2 opacity-10 animate-float delay-500">
-            <svg className="w-7 h-7 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
-            </svg>
-          </div>
-          <div className="hidden lg:block absolute bottom-1/4 right-1/3 opacity-10 animate-float delay-800">
-            <svg className="w-6 h-6 text-orange-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z"/>
-            </svg>
-          </div>
-          
-          {/* Enhanced gradient orbs with blog theme colors */}
-          <div className="absolute top-0 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-r from-blue-500/10 to-cyan-500/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-l from-blue-600/10 to-indigo-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-0 w-32 md:w-64 h-32 md:h-64 bg-gradient-to-br from-green-500/8 to-emerald-500/4 rounded-full blur-2xl animate-pulse delay-1500"></div>
-          <div className="absolute bottom-1/4 right-0 w-40 md:w-80 h-40 md:h-80 bg-gradient-to-tl from-orange-500/8 to-pink-500/4 rounded-full blur-3xl animate-pulse delay-2000"></div>
-        </div>
+    <>
+      <Script
+        id="blog-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            name: 'Devora Blog',
+            description: 'Web development insights and strategies for startups',
+            url: 'https://www.devora.co.uk/blog',
+            publisher: {
+              '@type': 'Organization',
+              name: 'Devora',
+              url: 'https://www.devora.co.uk'
+            },
+            blogPost: allPosts.map(post => ({
+              '@type': 'BlogPosting',
+              headline: post.title,
+              description: post.excerpt,
+              url: `https://www.devora.co.uk/blog/${post.slug}`,
+              datePublished: post.date,
+              author: {
+                '@type': 'Person',
+                name: post.author
+              }
+            }))
+          })
+        }}
+      />
+      
+      <div className="min-h-screen">
+        {/* Preload critical blog images */}
+        <BlogImagePreloader posts={allPosts} limit={3} />
         
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Enhanced badge - Added more top margin on mobile */}
-            <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm text-white mb-6 md:mb-8 shadow-lg mt-4 md:mt-0">
-              <BookOpen className="w-3 md:w-4 h-3 md:h-4 mr-2 text-blue-400 animate-pulse" />
-              <span className="font-medium">Web Development Insights</span>
-              <div className="ml-2 md:ml-3 flex space-x-1">
-                <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse"></div>
-                <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse delay-100"></div>
-                <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse delay-200"></div>
-              </div>
-            </div>
-            
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">Digital Insights</span>
-              <br />
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">& Strategy</span>
-            </h1>
-            
-            <p className="text-base md:text-lg text-blue-100 max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed">
-              Practical insights and strategies to help you build better web experiences for your business.
-            </p>
-            
-            {/* Stats Cards */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-8 md:mb-12">
-              {[
-                { label: "Fresh Content", value: "Daily", icon: <BookOpen className="w-4 md:w-5 h-4 md:h-5" /> },
-                { label: "Topics Covered", value: "10+", icon: <Star className="w-4 md:w-5 h-4 md:h-5" /> },
-                { label: "Practical Guides", value: "Growing", icon: <Award className="w-4 md:w-5 h-4 md:h-5" /> },
-                { label: "Quality Focus", value: "100%", icon: <Zap className="w-4 md:w-5 h-4 md:h-5" /> }
-              ].map((stat, i) => (
-                <div key={i} className="bg-gradient-to-br from-slate-800/50 to-black/50 backdrop-blur-xl rounded-xl md:rounded-2xl p-3 md:p-6 border border-blue-500/20 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 hover:scale-105 group">
-                  <div className="text-blue-400 mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300 flex justify-center">
-                    {stat.icon}
-                  </div>
-                  <div className="text-lg md:text-2xl lg:text-4xl font-bold text-white mb-1 md:mb-2">{stat.value}</div>
-                  <div className="text-xs md:text-sm text-blue-200">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Blog Grid Section */}
-      <section className="py-12 md:py-24 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
-        {/* Creative background elements - Simplified for mobile */}
-        <div className="absolute inset-0">
-          {/* Animated grid - Smaller on mobile */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.08)_1px,transparent_1px)] bg-[size:60px_60px] md:bg-[size:100px_100px] animate-pulse"></div>
-          
-          {/* Floating geometric shapes - Hidden on mobile */}
-          <div className="hidden md:block absolute top-10 right-10 w-8 h-8 border border-blue-400/40 rotate-45 animate-spin-slow"></div>
-          <div className="hidden md:block absolute bottom-10 left-10 w-6 h-6 bg-blue-500/30 rounded-full animate-bounce"></div>
-          <div className="hidden md:block absolute top-1/2 right-1/4 w-4 h-4 border-2 border-cyan-400/50 rounded-full animate-pulse"></div>
-          
-          {/* Gradient orbs - Smaller on mobile */}
-          <div className="absolute top-0 right-1/4 w-40 md:w-80 h-40 md:h-80 bg-gradient-to-l from-blue-500/15 to-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 left-1/4 w-40 md:w-80 h-40 md:h-80 bg-gradient-to-r from-blue-600/15 to-indigo-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-        
-        <div className="container px-4 md:px-6 mx-auto relative z-10">
-          <div className="max-w-3xl mx-auto text-center mb-8 md:mb-16">
-            {/* Enhanced badge - Smaller on mobile */}
-            <div className="inline-flex items-center rounded-full border border-blue-400/40 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm text-blue-700 mb-6 md:mb-8 shadow-lg">
-              <Star className="w-3 md:w-4 h-3 md:h-4 mr-2 text-blue-600 animate-pulse" />
-              <span className="font-medium">Latest Articles</span>
-              <div className="ml-2 md:ml-3 flex space-x-1">
-                <div className="w-1 h-1 bg-blue-600 rounded-full animate-pulse"></div>
-                <div className="w-1 h-1 bg-blue-600 rounded-full animate-pulse delay-100"></div>
-                <div className="w-1 h-1 bg-blue-600 rounded-full animate-pulse delay-200"></div>
-              </div>
-            </div>
-            
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-slate-900">
-              Latest{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Insights</span>
-            </h2>
-            
-            <p className="text-base md:text-lg text-slate-700">
-              Practical insights, tips and strategies for your startup's digital journey
-            </p>
+        {/* Hero Section - Ultra Minimalist */}
+        <section className="relative min-h-screen bg-gray-950 text-white overflow-hidden">
+          {/* Subtle dot pattern overlay */}
+          <div className="absolute inset-0 opacity-[0.03]">
+            <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
           </div>
           
-          {allPosts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {allPosts.map((post, index) => (
-                <Link 
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="group block"
-                >
-                  <div className="bg-white/80 backdrop-blur-xl rounded-2xl md:rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-blue-200/50 hover:border-blue-400/60 group-hover:scale-105 h-full flex flex-col relative">
-                    {/* Floating accent */}
-                    <div className="absolute -top-1 md:-top-2 -right-1 md:-right-2 w-3 md:w-4 h-3 md:h-4 bg-blue-500/60 rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    
-                    {/* Gradient accent line */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-t-2xl md:rounded-t-3xl"></div>
-                    
-                    <div className="relative h-48 md:h-52 overflow-hidden">
-                      <Image
-                        src={post.coverImage}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        priority={index < 3}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                      
-                      {/* Overlay badges */}
-                      <div className="absolute top-3 md:top-4 left-3 md:left-4 right-3 md:right-4 flex items-center justify-between">
-                        <span className="inline-flex items-center rounded-full bg-blue-600/90 backdrop-blur-sm px-2 md:px-3 py-1 text-xs font-medium text-white border border-blue-400/30 shadow-lg">
-                          {post.tags[0]}
-                        </span>
-                        <div className="flex items-center gap-2">
-                          <span className="inline-flex items-center text-white/90 text-xs bg-black/50 backdrop-blur-sm rounded-full px-2 md:px-3 py-1 border border-white/20">
-                            <Clock className="w-3 h-3 mr-1" />
-                            {post.readingTime}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="p-4 md:p-6 flex-1 flex flex-col">
-                      <div className="mb-3 md:mb-4">
-                        <div className="flex items-center text-slate-500 text-xs md:text-sm mb-2">
-                          <Calendar className="w-3 md:w-4 h-3 md:h-4 mr-1 md:mr-2" />
-                          {post.date}
-                        </div>
-                        <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2 md:mb-3 group-hover:text-blue-700 transition-colors duration-200 line-clamp-2">
-                          {post.title}
-                        </h3>
-                        <p className="text-sm md:text-base text-slate-600 group-hover:text-slate-700 transition-colors line-clamp-3 flex-1">
-                          {post.excerpt}
-                        </p>
-                      </div>
-                      
-                      <div className="flex items-center justify-between mt-auto pt-3 md:pt-4 border-t border-blue-200/50">
-                        <div className="flex items-center">
-                          <div className="w-6 md:w-8 h-6 md:h-8 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center text-blue-600 text-xs md:text-sm font-semibold mr-2 md:mr-3 border border-blue-400/30">
-                            <User className="w-3 md:w-4 h-3 md:h-4" />
-                          </div>
-                          <span className="text-slate-700 text-xs md:text-sm font-medium">{post.author}</span>
-                        </div>
-                        <div className="flex items-center text-blue-600 text-xs md:text-sm font-semibold group-hover:translate-x-1 transition-transform duration-300">
-                          Read more <ArrowRight className="ml-1 h-3 md:h-4 w-3 md:w-4" />
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Hover glow effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </div>
+          <div className="container mx-auto px-6 py-20 md:py-32 relative z-20">
+            <div className="max-w-5xl mx-auto">
+              {/* Subtle status indicator */}
+              <div className="inline-flex items-center gap-3 mb-12">
+                <div className="w-1.5 h-1.5 rounded-full bg-green-400"></div>
+                <span className="text-sm text-gray-400 font-light tracking-wide">Our insights</span>
+              </div>
+              
+              {/* Main headline - Ultra clean typography */}
+              <div className="mb-16">
+                <h1 className="text-6xl md:text-8xl lg:text-9xl font-light leading-[0.85] tracking-tighter mb-8">
+                  <span className="block text-white font-extralight">Digital</span>
+                  <span className="block text-gray-300 font-extralight italic">Insights</span>
+                </h1>
+                
+                <p className="text-lg md:text-xl text-gray-400 max-w-2xl font-light leading-relaxed tracking-wide">
+                  Practical insights and strategies to help you build better web experiences for your business.
+                </p>
+              </div>
+              
+              {/* Minimal CTA */}
+                             <div className="flex items-center gap-8 mb-20">
+                 <Link href="/contact">
+                   <Button variant="ghost" className="text-white hover:text-gray-300 p-0 h-auto font-light text-lg tracking-wide border-b border-white border-opacity-30 rounded-none pb-1 transition-colors">
+                     Enquire →
+                   </Button>
+                 </Link>
+                <Link href="/contact">
+                  <Button variant="ghost" className="text-gray-400 hover:text-white p-0 h-auto font-light text-lg tracking-wide transition-colors">
+                    Get in touch
+                  </Button>
                 </Link>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12 md:py-16 bg-white/80 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-blue-200/50 shadow-xl">
-              <div className="inline-flex items-center justify-center w-16 md:w-20 h-16 md:h-20 rounded-2xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-600 shadow-lg border border-blue-400/30 mb-6 mx-auto">
-                <BookOpen className="w-8 md:w-10 h-8 md:h-10" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-4">No blog posts found</h3>
-              <p className="text-slate-600 mb-6 md:mb-8">Check back soon for new content!</p>
-              <Link href="/">
-                <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-xl px-6 md:px-8 py-3 md:py-4 font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                  Back to Home
-                  <ArrowRight className="ml-2 h-4 md:h-5 w-4 md:w-5" />
-                </Button>
-              </Link>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="py-12 md:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-600 relative overflow-hidden text-white">
-        {/* Creative background elements */}
-        <div className="absolute inset-0">
-          {/* Animated grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px] animate-pulse"></div>
-          
-          {/* Floating geometric shapes - Hidden on mobile */}
-          <div className="hidden md:block absolute top-10 left-10 w-8 h-8 border-2 border-white/20 rounded-full animate-spin-slow"></div>
-          <div className="hidden md:block absolute top-20 right-20 w-6 h-6 bg-white/10 rotate-45 animate-bounce"></div>
-          <div className="hidden md:block absolute bottom-20 left-1/4 w-10 h-10 border border-white/30 rotate-12 animate-pulse"></div>
-          
-          {/* Gradient orbs */}
-          <div className="absolute -top-40 -left-40 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-br from-white/10 to-cyan-300/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -right-40 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-tl from-white/10 to-blue-300/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-        
-        <div className="container px-4 md:px-6 mx-auto relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-xl rounded-2xl md:rounded-3xl p-6 md:p-12 border border-white/20 hover:shadow-2xl hover:shadow-black/20 transition-all duration-500 hover:scale-105">
-              <div className="text-center">
-                {/* Enhanced badge - Smaller on mobile */}
-                <div className="inline-flex items-center rounded-full border border-white/30 bg-white/10 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm text-white mb-6 md:mb-8 shadow-lg">
-                  <Star className="w-3 md:w-4 h-3 md:h-4 mr-2 text-cyan-300 animate-pulse" />
-                  <span className="font-medium">Stay Updated</span>
-                  <div className="ml-2 md:ml-3 flex space-x-1">
-                    <div className="w-1 h-1 bg-cyan-300 rounded-full animate-pulse"></div>
-                    <div className="w-1 h-1 bg-cyan-300 rounded-full animate-pulse delay-100"></div>
-                    <div className="w-1 h-1 bg-cyan-300 rounded-full animate-pulse delay-200"></div>
+              
+              {/* Minimal stats */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-16 border-t border-gray-800 border-opacity-30">
+                {[
+                  { value: "Fresh", label: "Content" },
+                  { value: "10+", label: "Topics" },
+                  { value: "Practical", label: "Guides" },
+                  { value: "Quality", label: "Focus" }
+                ].map((stat, index) => (
+                  <div key={index}>
+                    <div className="text-2xl md:text-3xl font-light text-white mb-1 tracking-wide">{stat.value}</div>
+                    <div className="text-xs text-gray-500 uppercase tracking-wider font-light">{stat.label}</div>
                   </div>
-                </div>
-                
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">
-                  Join Our{" "}
-                  <span className="bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">Newsletter</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Blog Grid Section - Ultra Minimalist */}
+        <section className="py-32 bg-white relative overflow-hidden">
+          {/* Subtle background elements */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-gray-50 to-transparent rounded-full opacity-40 -translate-y-48 translate-x-48"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-gray-50 to-transparent rounded-full opacity-40 translate-y-48 -translate-x-48"></div>
+          
+          <div className="container mx-auto px-6 relative">
+            <div className="max-w-6xl mx-auto">
+              {/* Ultra minimal header */}
+              <div className="mb-24">
+                <div className="text-xs text-gray-400 uppercase tracking-wider font-light mb-8">Latest articles</div>
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-extralight text-black leading-[0.9] tracking-tighter">
+                  Recent posts
                 </h2>
-                
-                <p className="text-blue-100 text-base md:text-lg mb-6 md:mb-8 leading-relaxed">
+              </div>
+              
+              {allPosts.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {allPosts.map((post, index) => (
+                    <Link 
+                      key={post.slug}
+                      href={`/blog/${post.slug}`}
+                      className="group block"
+                    >
+                      <article className="bg-white border border-gray-100 hover:border-gray-200 transition-all duration-300 group-hover:shadow-lg h-full flex flex-col">
+                        <div className="relative h-48 overflow-hidden bg-gray-100">
+                          <Image
+                            src={post.coverImage}
+                            alt={post.title}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            priority={index < 3}
+                          />
+                        </div>
+                        
+                        <div className="p-6 flex-1 flex flex-col">
+                          <div className="mb-4">
+                            <div className="flex items-center text-gray-400 text-sm mb-3">
+                              <Calendar className="w-4 h-4 mr-2" />
+                              {post.date}
+                              <span className="mx-2">•</span>
+                              <Clock className="w-4 h-4 mr-2" />
+                              {post.readingTime}
+                            </div>
+                            <h3 className="text-xl font-light text-black mb-3 group-hover:text-gray-600 transition-colors line-clamp-2">
+                              {post.title}
+                            </h3>
+                            <p className="text-gray-500 font-light leading-relaxed line-clamp-3 flex-1">
+                              {post.excerpt}
+                            </p>
+                          </div>
+                          
+                          <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-50">
+                            <div className="flex items-center">
+                              <div className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 text-xs mr-3">
+                                <User className="w-3 h-3" />
+                              </div>
+                              <span className="text-gray-600 text-sm font-light">{post.author}</span>
+                            </div>
+                            <div className="flex items-center text-black text-sm font-light group-hover:translate-x-1 transition-transform">
+                              Read more <ArrowRight className="ml-2 h-4 w-4" />
+                            </div>
+                          </div>
+                        </div>
+                      </article>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-16 bg-gray-50 border border-gray-100">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 mb-6 mx-auto">
+                    <BookOpen className="w-8 h-8 text-gray-400" />
+                  </div>
+                  <h3 className="text-2xl font-light text-black mb-4">No blog posts found</h3>
+                  <p className="text-gray-500 mb-8 font-light">Check back soon for new content!</p>
+                  <Link href="/">
+                    <Button variant="ghost" className="text-black hover:text-gray-600 p-0 h-auto font-light text-lg tracking-wide border-b border-black border-opacity-30 rounded-none pb-1 transition-colors">
+                      Back to home →
+                    </Button>
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* Newsletter Section - Ultra Minimalist */}
+        <section className="py-32 bg-gray-900 text-white">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-extralight text-white leading-[0.9] tracking-tighter mb-8">
+                  Stay<br />informed
+                </h2>
+                <p className="text-lg text-gray-400 font-light leading-relaxed max-w-xl mx-auto">
                   Get the latest web development insights and strategies directly in your inbox.
                 </p>
-                
-                <form className="flex flex-col sm:flex-row gap-3 md:gap-4 max-w-md mx-auto">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="flex-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 md:py-4 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all duration-300"
-                    required
-                  />
-                  <Button className="bg-white text-blue-600 hover:bg-blue-50 hover:scale-105 rounded-xl px-6 md:px-8 py-3 md:py-4 font-semibold shadow-2xl shadow-black/20 transition-all duration-300">
-                    Subscribe <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </form>
-                
-                <p className="text-blue-200 text-xs md:text-sm mt-4 opacity-80">
-                  Join our growing community of developers. Unsubscribe anytime.
-                </p>
               </div>
+              
+              <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto mb-8">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 bg-transparent border border-gray-700 px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:border-gray-500 transition-colors font-light"
+                  required
+                />
+                <Button variant="ghost" className="text-white hover:text-gray-300 border border-gray-700 hover:border-gray-500 px-6 py-3 font-light tracking-wide transition-colors">
+                  Subscribe <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </form>
+              
+              <p className="text-center text-gray-500 text-sm font-light">
+                Join our growing community. Unsubscribe anytime.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 } 

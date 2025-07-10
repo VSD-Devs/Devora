@@ -1,176 +1,164 @@
 import Link from 'next/link'
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, ChevronRight, ArrowUpRight } from 'lucide-react'
-import { Button } from './ui/button'
 import { Logo } from './Logo'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
   
   return (
-    <footer className="bg-gradient-to-b from-black to-gray-900 text-gray-300 relative overflow-hidden" aria-labelledby="footer-heading">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-[0.03]" aria-hidden="true" />
-      <div className="absolute -left-40 bottom-0 w-96 h-96 rounded-full bg-blue-500/5 blur-[120px]" aria-hidden="true" />
-      <div className="absolute -right-40 top-20 w-96 h-96 rounded-full bg-purple-500/5 blur-[120px]" aria-hidden="true" />
-      
+    <footer className="bg-black text-white border-t border-gray-800 border-opacity-30" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">Footer</h2>
       
-      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:py-16 lg:px-8 relative">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16">
+      <div className="max-w-6xl mx-auto px-6 py-24">
+        {/* Main footer content */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 mb-16">
           {/* Company Info */}
-          <div className="md:col-span-4 space-y-6">
+          <div className="md:col-span-6 space-y-8">
             <div className="flex items-center">
               <Logo variant="footer" />
             </div>
-            <p className="text-sm md:text-base text-gray-400 max-w-md">
-              Empowering startups with innovative, high-quality web development solutions that drive growth and success in the digital landscape.
+            <p className="text-gray-400 font-light leading-relaxed max-w-md tracking-wide">
+              We create digital experiences that help startups grow and succeed in today's competitive landscape.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://linkedin.com" className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-800/30 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900" aria-label="Devora on LinkedIn">
-                <Linkedin size={20} aria-hidden="true" />
-              </a>
-              <a href="https://facebook.com" className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-800/30 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900" aria-label="Devora on Facebook">
-                <Facebook size={20} aria-hidden="true" />
-              </a>
-              <a href="https://instagram.com" className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-800/30 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900" aria-label="Devora on Instagram">
-                <Instagram size={20} aria-hidden="true" />
+            <div>
+              <div className="text-sm text-gray-500 uppercase tracking-wider font-light mb-2">Email</div>
+              <a 
+                href="mailto:hello@devora.co.uk" 
+                className="text-white hover:text-gray-300 transition-colors font-light text-lg tracking-wide border-b border-white border-opacity-30 pb-1"
+              >
+                hello@devora.co.uk
               </a>
             </div>
           </div>
 
-          {/* Services */}
-          <div className="md:col-span-2 space-y-4">
-            <h3 className="text-white text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link 
-                  href="/services#web-development" 
-                  className="text-sm text-gray-400 hover:text-white transition-colors flex items-center group"
-                >
-                  <ChevronRight className="h-3 w-3 mr-2 text-gray-600 group-hover:text-blue-400 transition-colors" aria-hidden="true" />
-                  <span>Web Development</span>
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/services#ui-ux-design" 
-                  className="text-sm text-gray-400 hover:text-white transition-colors flex items-center group"
-                >
-                  <ChevronRight className="h-3 w-3 mr-2 text-gray-600 group-hover:text-blue-400 transition-colors" aria-hidden="true" />
-                  <span>UI/UX Design</span>
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/services#ecommerce" 
-                  className="text-sm text-gray-400 hover:text-white transition-colors flex items-center group"
-                >
-                  <ChevronRight className="h-3 w-3 mr-2 text-gray-600 group-hover:text-blue-400 transition-colors" aria-hidden="true" />
-                  <span>E-commerce Solutions</span>
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/services#seo" 
-                  className="text-sm text-gray-400 hover:text-white transition-colors flex items-center group"
-                >
-                  <ChevronRight className="h-3 w-3 mr-2 text-gray-600 group-hover:text-blue-400 transition-colors" aria-hidden="true" />
-                  <span>SEO Optimisation</span>
-                </Link>
-              </li>
+          {/* Navigation Links */}
+          <div className="md:col-span-3 space-y-8">
+            <div className="text-sm text-gray-500 uppercase tracking-wider font-light">Navigation</div>
+            <ul className="space-y-4">
+              {[
+                { href: "/", label: "Home" },
+                { href: "/services", label: "Services" },
+                { href: "/about", label: "About" },
+                { href: "/work", label: "Work" },
+                { href: "/blog", label: "Blog" },
+                { href: "/contact", label: "Contact" }
+              ].map((link, index) => (
+                <li key={index}>
+                  <Link 
+                    href={link.href} 
+                    className="text-gray-400 hover:text-white transition-colors font-light tracking-wide"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Quick Links */}
-          <div className="md:col-span-2 space-y-4">
-            <h3 className="text-white text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-3">
+          {/* Quick Actions */}
+          <div className="md:col-span-3 space-y-8">
+            <div className="text-sm text-gray-500 uppercase tracking-wider font-light">Get started</div>
+            <ul className="space-y-4">
               <li>
                 <Link 
-                  href="/about" 
-                  className="text-sm text-gray-400 hover:text-white transition-colors flex items-center group"
+                  href="/contact" 
+                  className="text-white hover:text-gray-300 transition-colors font-light tracking-wide border-b border-white border-opacity-30 pb-1"
                 >
-                  <ChevronRight className="h-3 w-3 mr-2 text-gray-600 group-hover:text-blue-400 transition-colors" aria-hidden="true" />
-                  <span>About Us</span>
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/#portfolio" 
-                  className="text-sm text-gray-400 hover:text-white transition-colors flex items-center group"
-                >
-                  <ChevronRight className="h-3 w-3 mr-2 text-gray-600 group-hover:text-blue-400 transition-colors" aria-hidden="true" />
-                  <span>Portfolio</span>
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/blog" 
-                  className="text-sm text-gray-400 hover:text-white transition-colors flex items-center group"
-                >
-                  <ChevronRight className="h-3 w-3 mr-2 text-gray-600 group-hover:text-blue-400 transition-colors" aria-hidden="true" />
-                  <span>Blog</span>
+                  Enquire
                 </Link>
               </li>
               <li>
                 <Link 
                   href="/contact" 
-                  className="text-sm text-gray-400 hover:text-white transition-colors flex items-center group"
+                  className="text-gray-400 hover:text-white transition-colors font-light tracking-wide"
                 >
-                  <ChevronRight className="h-3 w-3 mr-2 text-gray-600 group-hover:text-blue-400 transition-colors" aria-hidden="true" />
-                  <span>Contact</span>
+                  Get in touch
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div className="md:col-span-4 space-y-4">
-            <h3 className="text-white text-lg font-semibold mb-4">Contact Us</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <MapPin className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <span className="text-sm text-gray-400">Sheffield Science Park Cooper Buildings, Arundel St, Sheffield City Centre, Sheffield S1 2NS</span>
-              </li>
-              <li className="flex items-center">
-                <Mail className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0" aria-hidden="true" />
-                <a href="mailto:hello@devora.co.uk" className="text-sm text-gray-400 hover:text-white transition-colors">
-                  hello@devora.co.uk
+              <li>
+                <a 
+                  href="mailto:hello@devora.co.uk" 
+                  className="text-gray-400 hover:text-white transition-colors font-light tracking-wide"
+                >
+                  Send an email
                 </a>
               </li>
             </ul>
-            
-            <div className="pt-4">
-              <Button 
-                asChild
-                variant="outline"
-                className="bg-transparent border-gray-700 hover:border-blue-500 text-gray-300 hover:text-white hover:bg-blue-950/30 transition-all mt-2"
+          </div>
+        </div>
+
+        {/* Social and legal links */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pt-16 border-t border-gray-800 border-opacity-30">
+          {/* Social links */}
+          <div className="space-y-4">
+            <div className="text-sm text-gray-500 uppercase tracking-wider font-light">Follow us</div>
+            <div className="flex gap-8">
+              <a 
+                href="https://linkedin.com" 
+                className="text-gray-400 hover:text-white transition-colors font-light tracking-wide"
+                aria-label="Devora on LinkedIn"
               >
-                <Link href="/project-inquiry" className="flex items-center gap-2">
-                  <span>Start Project</span>
-                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </Button>
+                LinkedIn
+              </a>
+              <a 
+                href="https://twitter.com" 
+                className="text-gray-400 hover:text-white transition-colors font-light tracking-wide"
+                aria-label="Devora on Twitter"
+              >
+                Twitter
+              </a>
+              <a 
+                href="https://instagram.com" 
+                className="text-gray-400 hover:text-white transition-colors font-light tracking-wide"
+                aria-label="Devora on Instagram"
+              >
+                Instagram
+              </a>
+            </div>
+          </div>
+
+          {/* Legal links */}
+          <div className="space-y-4">
+            <div className="text-sm text-gray-500 uppercase tracking-wider font-light">Legal</div>
+            <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+              <Link 
+                href="/terms" 
+                className="text-gray-400 hover:text-white transition-colors font-light tracking-wide text-sm"
+              >
+                Terms of Service
+              </Link>
+              <Link 
+                href="/privacy" 
+                className="text-gray-400 hover:text-white transition-colors font-light tracking-wide text-sm"
+              >
+                Privacy Policy
+              </Link>
+              <Link 
+                href="/cookies" 
+                className="text-gray-400 hover:text-white transition-colors font-light tracking-wide text-sm"
+              >
+                Cookie Policy
+              </Link>
+              <Link 
+                href="/refund-policy" 
+                className="text-gray-400 hover:text-white transition-colors font-light tracking-wide text-sm"
+              >
+                Refund Policy
+              </Link>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-gray-500">
+        {/* Copyright */}
+        <div className="pt-12 border-t border-gray-800 border-opacity-30 mt-12">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-500 font-light text-sm tracking-wide">
               © {currentYear} Devora. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="/terms" className="text-sm text-gray-500 hover:text-gray-300 transition-colors">
-                Terms of Service
-              </Link>
-              <Link href="/privacy" className="text-sm text-gray-500 hover:text-gray-300 transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/cookies" className="text-sm text-gray-500 hover:text-gray-300 transition-colors">
-                Cookie Policy
-              </Link>
+            <div className="flex items-center gap-2">
+              <div className="w-1 h-1 bg-green-400 rounded-full"></div>
+              <span className="text-gray-500 font-light text-sm tracking-wide">
+                Available for new projects
+              </span>
             </div>
           </div>
         </div>
@@ -179,4 +167,4 @@ const Footer = () => {
   )
 }
 
-export default Footer 
+export default Footer

@@ -85,7 +85,7 @@ export default function Portfolio() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-gray-950 via-gray-900 to-black relative overflow-hidden" id="portfolio" aria-labelledby="portfolio-heading">
+    <section className="py-12 md:py-16 bg-gradient-to-b from-gray-950 via-gray-900 to-black relative overflow-hidden" id="portfolio" aria-labelledby="portfolio-heading">
       {/* Enhanced decorative elements */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5" aria-hidden="true" />
       <div className="absolute -left-40 top-40 w-96 h-96 rounded-full bg-blue-500/10 blur-[120px] animate-pulse" aria-hidden="true" />
@@ -93,21 +93,21 @@ export default function Portfolio() {
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-r from-blue-500/5 to-purple-500/5 blur-[150px]" aria-hidden="true" />
 
       <div className="container mx-auto px-4 relative">
-        <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-white/90 px-6 py-3 rounded-full mb-8 backdrop-blur-sm border border-white/10">
+        <div className="max-w-4xl mx-auto text-center mb-10 md:mb-14">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-white/90 px-6 py-3 rounded-full mb-6 backdrop-blur-sm border border-white/10">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" aria-hidden="true"></span>
             </span>
             <span className="font-medium text-sm sm:text-base">Featured Projects</span>
           </div>
-          <h2 id="portfolio-heading" className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-gray-300 leading-[1.1] tracking-tight">
+          <h2 id="portfolio-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-gray-300 leading-[1.1] tracking-tight">
             Transforming Ideas into 
             <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Digital Success Stories
             </span>
           </h2>
-          <p className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+          <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
             We turn startup visions into powerful digital experiences. Explore how we've helped businesses achieve remarkable growth through innovative web solutions.
           </p>
         </div>
@@ -246,7 +246,7 @@ export default function Portfolio() {
         <div className="flex flex-col items-center mt-16 md:mt-24">
           <div className="text-center mb-8">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Ready to Start Your Project?
+              Ready to Work Together?
             </h3>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               Let's discuss how we can help transform your business with a bespoke digital solution.
@@ -264,7 +264,7 @@ export default function Portfolio() {
                 variant="outline" 
                 className="border-gray-600 text-white hover:bg-gray-800 px-8 py-3 text-base font-medium transition-all duration-300"
               >
-                Start Your Project
+                Enquire
               </Button>
             </Link>
           </div>

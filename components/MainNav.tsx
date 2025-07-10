@@ -26,7 +26,6 @@ export function MainNav() {
   const menuItems = [
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
-    { href: "/pricing", label: "Pricing" },
     { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },
   ]
@@ -112,7 +111,7 @@ export function MainNav() {
       {/* Navigation Bar - Using home page styling for all pages */}
       <div 
         className="fixed top-0 left-0 right-0 z-50"
-        style={{backgroundColor: 'rgba(15, 23, 42, 0.9)', backdropFilter: 'blur(8px)'}}
+        style={{backgroundColor: 'rgba(0, 0, 0, 0.9)', backdropFilter: 'blur(8px)'}}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-3 md:py-4">
@@ -137,7 +136,7 @@ export function MainNav() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center">
               <nav 
-                className="bg-slate-800/80 backdrop-blur-md border border-slate-700/50 rounded-full px-3 py-1.5"
+                className="bg-black/80 backdrop-blur-md border border-gray-800/50 rounded-full px-3 py-1.5"
                 aria-label="Main navigation"
               >
                 {menuItems.map((item) => (
@@ -176,7 +175,7 @@ export function MainNav() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute right-0 mt-2 rounded-xl overflow-hidden border shadow-lg z-10 bg-slate-800/90 backdrop-blur-md border-slate-700"
+                        className="absolute right-0 mt-2 rounded-xl overflow-hidden border shadow-lg z-10 bg-black/90 backdrop-blur-md border-gray-700"
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="legal-menu"
@@ -186,7 +185,7 @@ export function MainNav() {
                             <Link
                               key={item.href}
                               href={item.href}
-                              className="block px-4 py-2 text-sm transition-colors text-gray-200 hover:bg-slate-700 hover:text-white focus:outline-none focus:bg-blue-500/20 focus:text-blue-200"
+                              className="block px-4 py-2 text-sm transition-colors text-gray-200 hover:bg-gray-800 hover:text-white focus:outline-none focus:bg-gray-700/50 focus:text-white"
                               onClick={() => setIsLegalOpen(false)}
                               role="menuitem"
                             >
@@ -203,10 +202,10 @@ export function MainNav() {
               <div className="ml-4">
                 <Button 
                   asChild
-                  className="bg-blue-600 text-white hover:bg-blue-700 px-5 shadow-md"
+                  className="bg-black text-white hover:bg-gray-800 px-5 shadow-md border border-gray-700"
                 >
-                  <Link href="/project-inquiry" className="flex items-center gap-1.5">
-                    Start Project
+                  <Link href="/contact" className="flex items-center gap-1.5">
+                    Enquire
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
@@ -219,10 +218,10 @@ export function MainNav() {
               <Button 
                 asChild
                 size="sm"
-                className="bg-blue-600 text-white hover:bg-blue-700 px-3 py-2"
+                className="bg-black text-white hover:bg-gray-800 px-3 py-2 border border-gray-700"
               >
-                <Link href="/project-inquiry" className="flex items-center gap-1">
-                  <span className="text-sm font-medium">Start Project</span>
+                <Link href="/contact" className="flex items-center gap-1">
+                  <span className="text-sm font-medium">Enquire</span>
                   <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </Link>
               </Button>
@@ -255,7 +254,7 @@ export function MainNav() {
             animate={{ opacity: 1, height: "100vh" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 top-[57px] z-40 overflow-y-auto md:hidden flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white"
+            className="fixed inset-0 top-[57px] z-40 overflow-y-auto md:hidden flex flex-col bg-gradient-to-br from-black via-gray-900 to-black text-white"
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
@@ -263,8 +262,8 @@ export function MainNav() {
           >
             <>
               <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
-              <div className="absolute -top-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-[120px] z-0" />
-              <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 bg-indigo-500/10 rounded-full blur-[100px] z-0" />
+              <div className="absolute -top-40 -left-40 w-80 h-80 bg-gray-500/5 rounded-full blur-[120px] z-0" />
+              <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 bg-gray-400/5 rounded-full blur-[100px] z-0" />
             </>
             <div className="px-4 pt-6 pb-6 flex flex-col h-full space-y-6 relative z-[2]">
               <nav className="space-y-1.5 flex-1">
@@ -304,7 +303,7 @@ export function MainNav() {
                 <div className="flex items-center justify-center space-x-6">
                   <a 
                     href="https://linkedin.com" 
-                    className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1"
+                    className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30 rounded-full p-1"
                     aria-label="Visit our LinkedIn"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -313,7 +312,7 @@ export function MainNav() {
                   </a>
                   <a 
                     href="https://twitter.com" 
-                    className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1"
+                    className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30 rounded-full p-1"
                     aria-label="Visit our Twitter/X"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -322,7 +321,7 @@ export function MainNav() {
                   </a>
                   <a 
                     href="mailto:hello@devora.co.uk" 
-                    className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1"
+                    className="text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30 rounded-full p-1"
                     aria-label="Send us an email"
                   >
                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

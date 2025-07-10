@@ -4,11 +4,9 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { ArrowRight, Mail, MessageSquare, ChevronLeft, MapPin, Phone } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import toast, { Toaster } from 'react-hot-toast'
-import Head from 'next/head'
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function ContactPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -82,211 +80,265 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="min-h-screen">
       <Toaster />
       
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-16 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
-        {/* Subtle background texture */}
-        <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
-        
-        {/* Subtle gradient orbs */}
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-[120px] z-0" />
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 bg-indigo-500/10 rounded-full blur-[100px] z-0" />
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-[3]">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm backdrop-blur-sm mb-6">
-              <span className="mr-1 h-2 w-2 rounded-full bg-teal-400"></span>
-              <span>Get in touch</span>
+      {/* Hero Section - Ultra Minimalist */}
+      <section className="relative min-h-screen bg-black text-white">
+        <div className="container mx-auto px-6 py-20 md:py-32">
+          <div className="max-w-5xl mx-auto">
+            {/* Subtle status indicator */}
+            <div className="inline-flex items-center gap-3 mb-12">
+              <div className="w-1.5 h-1.5 rounded-full bg-green-400"></div>
+              <span className="text-sm text-gray-400 font-light tracking-wide">Get in touch</span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">Let's Discuss</span>
-              <span className="bg-gradient-to-r from-teal-300 to-blue-300 bg-clip-text text-transparent"> Further</span>
-            </h1>
+            {/* Main headline - Ultra clean typography */}
+            <div className="mb-16">
+              <h1 className="text-6xl md:text-8xl lg:text-9xl font-light leading-[0.85] tracking-tighter mb-8">
+                <span className="block text-white font-extralight">Let's</span>
+                <span className="block text-gray-300 font-extralight italic">connect</span>
+              </h1>
+              
+              <p className="text-lg md:text-xl text-gray-400 max-w-2xl font-light leading-relaxed tracking-wide">
+                Ready to work together? We'd love to hear from you.
+              </p>
+            </div>
             
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              Get in touch with us to start your next digital project
-            </p>
+            {/* Minimal contact options */}
+            <div className="flex items-center gap-8 mb-20">
+              <a href="mailto:hello@devora.co.uk" className="text-white hover:text-gray-300 transition-colors font-light text-lg tracking-wide border-b border-white border-opacity-30 pb-1">
+                hello@devora.co.uk
+              </a>
+              <span className="text-gray-500 font-light">or</span>
+              <span className="text-gray-400 font-light text-lg tracking-wide">
+                Fill out the form below
+              </span>
+            </div>
+            
+            {/* Minimal info */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-16 border-t border-gray-800 border-opacity-30">
+              {[
+                { label: "Email", value: "hello@devora.co.uk" },
+                { label: "Response time", value: "Within 24 hours" },
+                { label: "Office hours", value: "Mon-Fri 9am-6pm GMT" }
+              ].map((info, index) => (
+                <div key={index}>
+                  <div className="text-sm text-gray-500 uppercase tracking-wider font-light mb-2">{info.label}</div>
+                  <div className="text-lg font-light text-white tracking-wide">{info.value}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-        {/* Subtle background elements */}
-        <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.02] z-[1]" />
-        <div className="absolute top-40 -right-40 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px] z-0" />
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-[3]">
-          <div className="grid md:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
-            {/* Contact Info - Left Side */}
-            <div className="space-y-10">
-              <div className="space-y-6">
-                <div className="inline-flex items-center rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-sm text-slate-600 backdrop-blur-sm">
-                  <span className="mr-1 h-2 w-2 rounded-full bg-teal-400"></span>
-                  <span>Contact us</span>
-                </div>
-                
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                  Ready to <span className="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">connect</span> with us?
-                </h2>
-                
-                <p className="text-lg text-slate-600">
-                  We're here to help you build something extraordinary for your startup. Get in touch and let's discuss your project.
-                </p>
-              </div>
-              
-              {/* Contact Cards */}
-              <div className="grid gap-6">
-                <div className="flex items-start gap-5 p-5 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500/10 to-teal-500/10 flex items-center justify-center">
-                    <Mail className="w-5 h-5 text-teal-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1 text-slate-900">Email Us</h3>
-                    <a href="mailto:hello@devora.com" className="text-slate-600 hover:text-teal-600 transition-colors">
-                      hello@devora.com
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-5 p-5 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500/10 to-teal-500/10 flex items-center justify-center">
-                    <MessageSquare className="w-5 h-5 text-teal-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1 text-slate-900">Office Hours</h3>
-                    <p className="text-slate-600">Monday - Friday: 9am - 6pm GMT</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-5 p-5 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500/10 to-teal-500/10 flex items-center justify-center">
-                    <Phone className="w-5 h-5 text-teal-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1 text-slate-900">Phone</h3>
-                    <p className="text-slate-600">+44 123 456 7890</p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Mobile Quick Contact Options - Only visible on small screens */}
-              <div className="flex md:hidden justify-center space-x-4 py-6">
-                <a href="mailto:hello@devora.com" 
-                  className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-500/10 to-teal-500/10 text-teal-600 hover:shadow-md transition-all">
-                  <Mail className="w-5 h-5" />
-                </a>
-                <a href="tel:+441234567890" 
-                  className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-500/10 to-teal-500/10 text-teal-600 hover:shadow-md transition-all">
-                  <Phone className="w-5 h-5" />
-                </a>
-                <a href="#" 
-                  className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-500/10 to-teal-500/10 text-teal-600 hover:shadow-md transition-all">
-                  <MapPin className="w-5 h-5" />
-                </a>
-              </div>
+      {/* Contact Form Section - Ultra Minimalist */}
+      <section className="py-32 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            {/* Ultra minimal header */}
+            <div className="mb-24">
+              <div className="text-xs text-gray-400 uppercase tracking-wider font-light mb-8">Send us a message</div>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-extralight text-black leading-[0.9] tracking-tighter">
+                Contact form
+              </h2>
             </div>
             
-            {/* Contact Form - Right Side */}
-            <div>
-              <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-md transition-all">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-slate-700">First Name</label>
-                      <Input
-                        type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        placeholder="John"
-                        className="h-11 rounded-lg border-slate-200 bg-white shadow-sm focus:border-teal-500 focus:ring-teal-500"
-                        required
-                        autoComplete="given-name"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-slate-700">Last Name</label>
-                      <Input
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        placeholder="Doe"
-                        className="h-11 rounded-lg border-slate-200 bg-white shadow-sm focus:border-teal-500 focus:ring-teal-500"
-                        required
-                        autoComplete="family-name"
-                      />
-                    </div>
-                  </div>
+            {/* Clean form */}
+            <form onSubmit={handleSubmit} className="space-y-12">
+              {/* Name fields */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                    First name *
+                  </label>
+                  <Input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    placeholder="John"
+                    className="h-12 border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 font-light text-lg"
+                    required
+                    autoComplete="given-name"
+                  />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                    Last name *
+                  </label>
+                  <Input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    placeholder="Doe"
+                    className="h-12 border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 font-light text-lg"
+                    required
+                    autoComplete="family-name"
+                  />
+                </div>
+              </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-700">Email</label>
-                    <Input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="john@company.com"
-                      className="h-11 rounded-lg border-slate-200 bg-white shadow-sm focus:border-teal-500 focus:ring-teal-500"
-                      required
-                      autoComplete="email"
-                      inputMode="email"
-                    />
-                  </div>
+              {/* Email */}
+              <div className="space-y-3">
+                <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                  Email address *
+                </label>
+                <Input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="john@company.com"
+                  className="h-12 border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 font-light text-lg"
+                  required
+                  autoComplete="email"
+                  inputMode="email"
+                />
+              </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-700">Company</label>
-                    <Input
-                      type="text"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      placeholder="Your Company Name"
-                      className="h-11 rounded-lg border-slate-200 bg-white shadow-sm focus:border-teal-500 focus:ring-teal-500"
-                      autoComplete="organization"
-                    />
-                  </div>
+              {/* Company */}
+              <div className="space-y-3">
+                <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                  Company
+                </label>
+                <Input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  placeholder="Your Company Name"
+                  className="h-12 border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 font-light text-lg"
+                  autoComplete="organization"
+                />
+              </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-700">Phone (optional)</label>
-                    <Input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+1 (123) 456-7890"
-                      className="h-11 rounded-lg border-slate-200 bg-white shadow-sm focus:border-teal-500 focus:ring-teal-500"
-                      autoComplete="tel"
-                      inputMode="tel"
-                    />
-                  </div>
+              {/* Phone */}
+              <div className="space-y-3">
+                <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                  Phone
+                </label>
+                <Input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="+44 123 456 7890"
+                  className="h-12 border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 font-light text-lg"
+                  autoComplete="tel"
+                  inputMode="tel"
+                />
+              </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-700">Message</label>
-                    <Textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us about your project..."
-                      className="min-h-[120px] rounded-lg border-slate-200 bg-white shadow-sm focus:border-teal-500 focus:ring-teal-500"
-                      required
-                    />
-                  </div>
+              {/* Message */}
+              <div className="space-y-3">
+                <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                  Message *
+                </label>
+                <Textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell us about your project..."
+                  className="min-h-[120px] border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 py-4 font-light text-lg resize-none"
+                  required
+                />
+              </div>
 
+              {/* Submit button */}
+              <div className="pt-12 border-t border-gray-100">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1 h-1 bg-green-400 rounded-full"></div>
+                    <span className="text-sm text-gray-500 font-light">
+                      We'll respond within 24 hours
+                    </span>
+                  </div>
+                  
                   <Button 
-                    type="submit" 
-                    className="w-full bg-gradient-to-r from-blue-500 to-teal-400 hover:from-blue-600 hover:to-teal-500 text-white border-0 rounded-xl px-6 py-6 font-medium text-base"
+                    type="submit"
+                    variant="ghost"
+                    className="text-black hover:text-gray-600 p-0 h-auto font-light text-lg tracking-wide border-b border-black border-opacity-30 rounded-none pb-1 transition-colors group"
                     disabled={isLoading}
                   >
-                    {isLoading ? "Sending..." : "Send Message"} 
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    {isLoading ? "Sending..." : "Send message"}
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
-                </form>
+                </div>
               </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* Alternative Contact Section - Ultra Minimalist */}
+      <section className="py-32 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            {/* Ultra minimal header */}
+            <div className="mb-24">
+              <div className="text-xs text-gray-400 uppercase tracking-wider font-light mb-8">Other ways to reach us</div>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-extralight text-black leading-[0.9] tracking-tighter">
+                Get in touch
+              </h2>
+            </div>
+            
+            {/* Simple contact list */}
+            <div className="space-y-16">
+              {[
+                {
+                  method: "Email",
+                  value: "hello@devora.co.uk",
+                  description: "Best for project inquiries and detailed discussions",
+                  link: "mailto:hello@devora.co.uk"
+                },
+                {
+                  method: "Project Inquiry",
+                  value: "Detailed form",
+                  description: "For comprehensive project requirements and quotes",
+                  link: "/contact"
+                },
+                {
+                  method: "Office Hours",
+                  value: "Monday - Friday, 9am - 6pm GMT",
+                  description: "We typically respond within 24 hours during business days"
+                }
+              ].map((contact, index) => (
+                <div key={index} className="group flex items-start justify-between py-8 border-b border-gray-200 last:border-b-0">
+                  <div className="flex-1">
+                    <h3 className="text-2xl md:text-3xl font-light text-black mb-2 tracking-wide">
+                      {contact.method}
+                    </h3>
+                    <p className="text-lg text-gray-600 font-light mb-2">
+                      {contact.value}
+                    </p>
+                    <p className="text-gray-500 font-light leading-relaxed max-w-xl">
+                      {contact.description}
+                    </p>
+                  </div>
+                  {contact.link && (
+                    <div className="ml-8">
+                      {contact.link.startsWith('mailto:') ? (
+                        <a 
+                          href={contact.link}
+                          className="opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <ArrowRight className="w-5 h-5 text-black" />
+                        </a>
+                      ) : (
+                        <Link 
+                          href={contact.link}
+                          className="opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <ArrowRight className="w-5 h-5 text-black" />
+                        </Link>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>

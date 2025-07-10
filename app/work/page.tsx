@@ -389,16 +389,16 @@ export default function WorkPage() {
             </div>
             
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">
-              Ready to Start Your{" "}
-              <span className="bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">Project?</span>
+              Ready to Work{" "}
+              <span className="bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">Together?</span>
             </h2>
             <p className="text-blue-100 mb-6 md:mb-8 text-base md:text-lg leading-relaxed">
               Let's discuss how we can help transform your digital presence and achieve your business goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link href="/project-inquiry">
+              <Link href="/contact">
                 <Button className="bg-white text-blue-600 hover:bg-blue-50 hover:scale-105 rounded-xl px-8 py-4 text-lg font-semibold shadow-2xl shadow-black/20 transition-all duration-300">
-                  Start Your Project
+                  Enquire
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>

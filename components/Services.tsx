@@ -84,7 +84,7 @@ const processSteps = [
 
 export default function Services() {
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden">
+    <section className="py-12 md:py-16 relative overflow-hidden">
       {/* Subtle background elements - Adjusted for light theme */}
       <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.03] z-[1]" />
       <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px] z-0" />
@@ -92,7 +92,7 @@ export default function Services() {
 
       <div className="container mx-auto px-4 md:px-6 relative z-[3]">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto mb-16 md:mb-20">
+        <div className="max-w-3xl mx-auto mb-8 md:mb-12">
           <div className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm text-slate-600 mb-4">
             <span className="mr-1 h-2 w-2 rounded-full bg-blue-500"></span>
             <span>Our services</span>
@@ -109,7 +109,7 @@ export default function Services() {
         </div>
 
         {/* Services Cards - Fluid Grid - Updated for light theme */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {services.map((service, index) => (
             <div 
               key={index} 
@@ -140,9 +140,9 @@ export default function Services() {
         </div>
 
         {/* Process Section - Fluid Timeline - Light theme colors */}
-        <div className="max-w-4xl mx-auto mt-24">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-slate-800">Our Process</h3>
+        <div className="max-w-4xl mx-auto mt-16">
+          <div className="text-center mb-8">
+            <h3 className="text-xl md:text-2xl font-bold mb-4 text-slate-800">Our Process</h3>
             <p className="text-slate-600">A streamlined approach to delivering exceptional results</p>
           </div>
           
@@ -192,10 +192,10 @@ export default function Services() {
         </div>
         
         {/* CTA */}
-        <div className="mt-20 text-center">
+        <div className="mt-12 text-center">
           <Link href="/services">
             <Button 
-              className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-6 py-6"
+              className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-6 py-3"
             >
               Explore All Services <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

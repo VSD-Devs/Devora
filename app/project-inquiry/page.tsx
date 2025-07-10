@@ -13,18 +13,18 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowLeft, CheckCircle2, ChevronRight, ChevronLeft, Send, Sparkles, Rocket, Target } from "lucide-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 
 const steps = [
-  { id: 1, title: "About You", description: "Your contact details" },
-  { id: 2, title: "Project Basics", description: "Type and requirements" },
-  { id: 3, title: "Your Vision", description: "Goals and timeline" },
-  { id: 4, title: "Budget", description: "Choose your package" },
-  { id: 5, title: "Final Details", description: "Almost there!" }
+  { id: 1, title: "Contact Details" },
+  { id: 2, title: "Project Type" },
+  { id: 3, title: "Your Vision" },
+  { id: 4, title: "Budget Range" },
+  { id: 5, title: "Final Details" }
 ]
 
 export default function ProjectInquiryPage() {
@@ -40,22 +40,14 @@ export default function ProjectInquiryPage() {
   const nextStep = () => {
     if (currentStep < steps.length) {
       setCurrentStep(currentStep + 1)
-      
-      // Scroll to top when moving to next step (mobile)
-      if (window.innerWidth < 768) {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      }
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
   const prevStep = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1)
-      
-      // Scroll to top when moving to previous step (mobile)
-      if (window.innerWidth < 768) {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      }
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
@@ -77,7 +69,6 @@ export default function ProjectInquiryPage() {
         throw new Error(data.error || 'Something went wrong')
       }
 
-      // Redirect to success page
       router.push('/project-inquiry/success')
     } catch (error: any) {
       toast.error(error.message || 'Failed to submit form. Please try again.')
@@ -85,449 +76,416 @@ export default function ProjectInquiryPage() {
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-  }
-
   const handleBack = () => {
     router.push('/')
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 relative overflow-hidden">
-      {/* Creative background elements */}
-      <div className="absolute inset-0">
-        {/* Animated grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.08)_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] animate-pulse"></div>
-        
-        {/* Floating geometric shapes - Hidden on mobile */}
-        <div className="hidden md:block absolute top-20 left-10 w-6 h-6 border border-blue-400/40 rotate-45 animate-spin-slow"></div>
-        <div className="hidden md:block absolute top-40 right-20 w-4 h-4 bg-blue-500/40 rounded-full animate-bounce"></div>
-        <div className="hidden md:block absolute bottom-40 left-20 w-8 h-8 border-2 border-cyan-400/30 rounded-full animate-pulse"></div>
-        
-        {/* Gradient orbs */}
-        <div className="absolute top-0 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-r from-blue-500/15 to-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-l from-blue-600/15 to-indigo-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
+    <div className="min-h-screen">
+      {/* Hero Section - Ultra Minimalist */}
+      <section className="relative min-h-screen bg-black text-white">
+        <div className="container mx-auto px-6 py-20 md:py-32">
+          <div className="max-w-4xl mx-auto">
+            {/* Back button */}
+            <button
+              onClick={handleBack}
+              className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors font-light mb-12 group"
+              aria-label="Back to homepage"
+            >
+              <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              <span>Back to home</span>
+            </button>
 
-      {/* Accessibility skip link */}
-      <a href="#inquiry-form" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-md">
-        Skip to form
-      </a>
-
-      {/* Back Button */}
-      <div className="absolute top-6 left-4 md:left-8 z-50">
-        <button
-          onClick={handleBack}
-          className="inline-flex items-center text-slate-600 hover:text-slate-900 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-50 rounded-md p-2 backdrop-blur-sm bg-white/80 border border-slate-200 hover:bg-white/90 transition-all shadow-sm"
-          aria-label="Back to homepage"
-        >
-          <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
-          <span className="text-base">Back</span>
-        </button>
-      </div>
-
-      {/* Hero Section */}
-      <div className="relative z-10 pt-20 pb-8 md:pt-24 md:pb-12">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Enhanced badge */}
-            <div className="inline-flex items-center rounded-full border border-blue-400/40 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm text-blue-700 mb-6 md:mb-8 shadow-lg">
-              <Rocket className="w-3 md:w-4 h-3 md:h-4 mr-2 text-blue-600 animate-pulse" />
-              <span className="font-medium">Start Your Journey</span>
-              <div className="ml-2 md:ml-3 flex space-x-1">
-                <div className="w-1 h-1 bg-blue-600 rounded-full animate-pulse"></div>
-                <div className="w-1 h-1 bg-blue-600 rounded-full animate-pulse delay-100"></div>
-                <div className="w-1 h-1 bg-blue-600 rounded-full animate-pulse delay-200"></div>
+            {/* Subtle status indicator */}
+            <div className="inline-flex items-center gap-3 mb-12">
+              <div className="w-1.5 h-1.5 rounded-full bg-green-400"></div>
+              <span className="text-sm text-gray-400 font-light tracking-wide">Start your project</span>
+            </div>
+            
+            {/* Main headline - Ultra clean typography */}
+            <div className="mb-16">
+              <h1 className="text-6xl md:text-8xl lg:text-9xl font-light leading-[0.85] tracking-tighter mb-8">
+                <span className="block text-white font-extralight">Tell us about</span>
+                <span className="block text-gray-300 font-extralight italic">your project</span>
+              </h1>
+              
+              <p className="text-lg md:text-xl text-gray-400 max-w-2xl font-light leading-relaxed tracking-wide">
+                A few questions to understand your needs and provide you with an accurate quote.
+              </p>
+            </div>
+            
+            {/* Progress indicator */}
+            <div className="flex items-center gap-8 mb-20">
+              <span className="text-gray-400 font-light text-lg tracking-wide">
+                Step {currentStep} of {steps.length}
+              </span>
+              <div className="flex-1 max-w-xs">
+                <div className="h-0.5 bg-gray-800 rounded-full">
+                  <div 
+                    className="h-full bg-white transition-all duration-300 rounded-full"
+                    style={{ width: `${(currentStep / steps.length) * 100}%` }}
+                  />
+                </div>
               </div>
             </div>
             
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 bg-clip-text text-transparent">Let's Build</span>
-              <br />
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Something Amazing</span>
-            </h1>
-            
-            <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed">
-              Tell us about your vision and let's create something extraordinary together. This will only take a few minutes.
-            </p>
+            {/* Current step title */}
+            <div className="mb-16">
+              <h2 className="text-3xl md:text-4xl font-light text-white mb-4 tracking-wide">
+                {steps[currentStep - 1].title}
+              </h2>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Main Form Container */}
-      <div className="relative z-10 container mx-auto px-4 md:px-6 pb-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Form Card */}
-          <div className="relative">
-            {/* Subtle glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl md:rounded-3xl blur-xl" aria-hidden="true" />
-            
-            {/* Card */}
-            <div id="inquiry-form" className="relative bg-white/90 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-slate-200/80 shadow-2xl overflow-hidden">
-              {/* Progress Steps */}
-              <div className="border-b border-slate-200/80 bg-gradient-to-r from-slate-50/80 to-blue-50/80 p-4 md:p-6" aria-label={`Step ${currentStep} of ${steps.length}: ${steps[currentStep - 1].title}`}>
-                {/* Mobile Progress Bar */}
-                <div className="block sm:hidden">
-                  <div className="h-2 bg-slate-200 rounded-full overflow-hidden mb-3">
-                    <div 
-                      className="h-full bg-gradient-to-r from-blue-500 to-cyan-500 transition-all duration-300"
-                      style={{ width: `${(currentStep / steps.length) * 100}%` }}
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <div className="text-sm text-slate-600 text-center">
-                    Step {currentStep} of {steps.length}: <span className="font-medium text-slate-900">{steps[currentStep - 1].title}</span>
-                  </div>
-                </div>
+      {/* Form Section - Ultra Minimalist */}
+      <section className="py-32 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <form className="space-y-12">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentStep}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="space-y-12"
+                >
+                  {/* Step 1: Contact Details */}
+                  {currentStep === 1 && (
+                    <div className="space-y-12">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="space-y-3">
+                          <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                            First name *
+                          </label>
+                          <Input
+                            type="text"
+                            value={formData.firstName || ''}
+                            onChange={(e) => updateFormData({ firstName: e.target.value })}
+                            placeholder="John"
+                            className="h-12 border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 font-light text-lg"
+                            required
+                          />
+                        </div>
+                        <div className="space-y-3">
+                          <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                            Last name *
+                          </label>
+                          <Input
+                            type="text"
+                            value={formData.lastName || ''}
+                            onChange={(e) => updateFormData({ lastName: e.target.value })}
+                            placeholder="Doe"
+                            className="h-12 border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 font-light text-lg"
+                            required
+                          />
+                        </div>
+                      </div>
 
-                {/* Desktop Progress Steps */}
-                <div className="hidden sm:flex justify-between items-center relative">
-                  <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-slate-300 -z-10" aria-hidden="true" />
-                  {steps.map((step) => (
-                    <div
-                      key={step.id}
-                      className={`flex flex-col items-center ${
-                        currentStep >= step.id ? "text-slate-900" : "text-slate-500"
-                      }`}
-                    >
-                      <div
-                        className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-all shadow-lg ${
-                          currentStep > step.id
-                            ? "bg-gradient-to-r from-blue-500 to-cyan-500 text-white"
-                            : currentStep === step.id
-                            ? "bg-gradient-to-r from-blue-500 to-cyan-500 text-white ring-4 ring-blue-400/30"
-                            : "bg-slate-200 border border-slate-300"
-                        }`}
-                        aria-current={currentStep === step.id ? "step" : undefined}
-                        aria-label={`Step ${step.id}: ${step.title}`}
-                      >
-                        {currentStep > step.id ? (
-                          <CheckCircle2 className="w-5 h-5" aria-hidden="true" />
-                        ) : (
-                          <span className="text-sm font-semibold">{step.id}</span>
-                        )}
+                      <div className="space-y-3">
+                        <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                          Email address *
+                        </label>
+                        <Input
+                          type="email"
+                          value={formData.email || ''}
+                          onChange={(e) => updateFormData({ email: e.target.value })}
+                          placeholder="john@company.com"
+                          className="h-12 border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 font-light text-lg"
+                          required
+                        />
                       </div>
-                      <div className="text-sm font-medium">
-                        {step.title}
+
+                      <div className="space-y-3">
+                        <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                          Company name
+                        </label>
+                        <Input
+                          type="text"
+                          value={formData.company || ''}
+                          onChange={(e) => updateFormData({ company: e.target.value })}
+                          placeholder="Your Company"
+                          className="h-12 border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 font-light text-lg"
+                        />
                       </div>
-                      <div className="text-xs text-slate-500">{step.description}</div>
+
+                      <div className="space-y-3">
+                        <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                          Phone number
+                        </label>
+                        <Input
+                          type="tel"
+                          value={formData.phone || ''}
+                          onChange={(e) => updateFormData({ phone: e.target.value })}
+                          placeholder="+44 123 456 7890"
+                          className="h-12 border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 font-light text-lg"
+                        />
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
+                  )}
 
-              {/* Form Content */}
-              <div className="p-6 md:p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentStep}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.3 }}
-                      className="min-h-[400px]"
-                    >
-                      {currentStep === 1 && (
-                        <div className="space-y-6">
-                          <div className="text-center mb-8">
-                            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-400/40 mb-4">
-                              <Target className="w-8 h-8 text-blue-600" />
-                            </div>
-                            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
-                              About You
-                            </h2>
-                            <p className="text-slate-600">Tell us a bit about yourself so we can get in touch.</p>
-                          </div>
-                          <div className="grid gap-6">
-                            <div className="space-y-2">
-                              <Label htmlFor="name" className="text-base text-slate-900 font-medium">Name <span className="text-blue-600">*</span></Label>
-                              <Input
-                                id="name"
-                                required
-                                placeholder="Your full name"
-                                className="bg-white border-slate-300 text-slate-900 placeholder:text-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 h-12 text-base"
-                                value={formData.name || ''}
-                                onChange={(e) => updateFormData({ name: e.target.value })}
-                                aria-required="true"
-                              />
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="email" className="text-base text-slate-900 font-medium">Email <span className="text-blue-600">*</span></Label>
-                              <Input
-                                id="email"
-                                type="email"
-                                required
-                                placeholder="your@email.com"
-                                className="bg-white border-slate-300 text-slate-900 placeholder:text-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 h-12 text-base"
-                                value={formData.email || ''}
-                                onChange={(e) => updateFormData({ email: e.target.value })}
-                                aria-required="true"
-                              />
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="phone" className="text-base text-slate-900 font-medium">Phone (Optional)</Label>
-                              <Input
-                                id="phone"
-                                type="tel"
-                                placeholder="Your phone number"
-                                className="bg-white border-slate-300 text-slate-900 placeholder:text-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 h-12 text-base"
-                                value={formData.phone || ''}
-                                onChange={(e) => updateFormData({ phone: e.target.value })}
-                                aria-required="false"
-                              />
-                              <p className="text-xs text-slate-500">We'll only use this for urgent project updates</p>
-                            </div>
-                          </div>
-                        </div>
-                      )}
+                  {/* Step 2: Project Type */}
+                  {currentStep === 2 && (
+                    <div className="space-y-12">
+                      <div className="space-y-3">
+                        <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                          Project type *
+                        </label>
+                        <Select 
+                          value={formData.projectType || ''}
+                          onValueChange={(value) => updateFormData({ projectType: value })}
+                        >
+                          <SelectTrigger className="h-12 border-0 border-b border-gray-200 rounded-none bg-transparent text-black focus:border-black focus:ring-0 px-0 font-light text-lg">
+                            <SelectValue placeholder="Select project type" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-white border border-gray-200">
+                            <SelectItem value="website">Business Website</SelectItem>
+                            <SelectItem value="ecommerce">E-commerce Store</SelectItem>
+                            <SelectItem value="app">Web Application</SelectItem>
+                            <SelectItem value="redesign">Website Redesign</SelectItem>
+                            <SelectItem value="maintenance">Maintenance & Updates</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
 
-                      {currentStep === 2 && (
-                        <div className="space-y-6">
-                          <div className="text-center mb-8">
-                            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-400/40 mb-4">
-                              <Sparkles className="w-8 h-8 text-blue-600" />
-                            </div>
-                            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
-                              Project Basics
-                            </h2>
-                            <p className="text-slate-600">Let us know what type of project you're looking to build.</p>
-                          </div>
-                          <div className="grid gap-6">
-                            <div className="space-y-2">
-                              <Label htmlFor="website-type" className="text-base text-slate-900 font-medium">Website Type <span className="text-blue-600">*</span></Label>
-                              <Select 
-                                required
-                                value={formData.websiteType || ''}
-                                onValueChange={(value) => updateFormData({ websiteType: value })}
-                              >
-                                <SelectTrigger className="bg-white border-slate-300 text-slate-900 h-12 text-base">
-                                  <SelectValue placeholder="Select website type" />
-                                </SelectTrigger>
-                                <SelectContent className="bg-white border-slate-300">
-                                  <SelectItem value="portfolio">Portfolio Website</SelectItem>
-                                  <SelectItem value="ecommerce">E-commerce Website</SelectItem>
-                                  <SelectItem value="corporate">Corporate Website</SelectItem>
-                                  <SelectItem value="blog">Blog</SelectItem>
-                                  <SelectItem value="web-app">Web Application</SelectItem>
-                                  <SelectItem value="other">Other</SelectItem>
-                                </SelectContent>
-                              </Select>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {currentStep === 3 && (
-                        <div className="space-y-6">
-                          <div className="text-center mb-8">
-                            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-400/40 mb-4">
-                              <Target className="w-8 h-8 text-blue-600" />
-                            </div>
-                            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
-                              Your Vision
-                            </h2>
-                            <p className="text-slate-600">Share your goals and timeline for the project.</p>
-                          </div>
-                          <div className="grid gap-6">
-                            <div className="space-y-2">
-                              <Label htmlFor="purpose" className="text-base text-slate-900 font-medium">Primary Purpose <span className="text-blue-600">*</span></Label>
-                              <Select 
-                                required
-                                value={formData.purpose || ''}
-                                onValueChange={(value) => updateFormData({ purpose: value })}
-                              >
-                                <SelectTrigger className="bg-white border-slate-300 text-slate-900 h-12 text-base">
-                                  <SelectValue placeholder="Select primary purpose" />
-                                </SelectTrigger>
-                                <SelectContent className="bg-white border-slate-300">
-                                  <SelectItem value="leads">Generate Leads</SelectItem>
-                                  <SelectItem value="sales">Sell Products</SelectItem>
-                                  <SelectItem value="credibility">Build Credibility</SelectItem>
-                                  <SelectItem value="showcase">Showcase Work</SelectItem>
-                                  <SelectItem value="other">Other</SelectItem>
-                                </SelectContent>
-                              </Select>
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="inspiration" className="text-base text-slate-900 font-medium">Website Inspiration</Label>
-                              <Textarea
-                                placeholder="Share links to websites you love or describe the style you're looking for"
-                                className="bg-white border-slate-300 text-slate-900 placeholder:text-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 min-h-[120px] text-base"
-                                value={formData.inspiration || ''}
-                                onChange={(e) => updateFormData({ inspiration: e.target.value })}
-                              />
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="timeline" className="text-base text-slate-900 font-medium">Desired Timeline <span className="text-blue-600">*</span></Label>
-                              <Select 
-                                required
-                                value={formData.timeline || ''}
-                                onValueChange={(value) => updateFormData({ timeline: value })}
-                              >
-                                <SelectTrigger className="bg-white border-slate-300 text-slate-900 h-12 text-base">
-                                  <SelectValue placeholder="Select timeline" />
-                                </SelectTrigger>
-                                <SelectContent className="bg-white border-slate-300">
-                                  <SelectItem value="asap">ASAP</SelectItem>
-                                  <SelectItem value="1-month">Within 1 month</SelectItem>
-                                  <SelectItem value="1-3-months">1-3 months</SelectItem>
-                                  <SelectItem value="3-plus-months">3+ months</SelectItem>
-                                  <SelectItem value="flexible">Flexible</SelectItem>
-                                </SelectContent>
-                              </Select>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {currentStep === 4 && (
-                        <div className="space-y-6">
-                          <div className="text-center mb-8">
-                            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-400/40 mb-4">
-                              <Target className="w-8 h-8 text-blue-600" />
-                            </div>
-                            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
-                              What's Your Budget Range?
-                            </h2>
-                            <p className="text-slate-600">This helps us recommend the most suitable package for your needs.</p>
-                          </div>
-                          <div className="space-y-4">
-                            <RadioGroup 
-                              defaultValue={formData.budgetRange || "not-sure"} 
-                              className="space-y-4"
-                              onValueChange={(value) => updateFormData({ budgetRange: value })}
-                            >
-                              <div className="flex items-center space-x-4 p-4 bg-slate-50 border border-slate-200 rounded-xl hover:border-blue-500/50 transition-all cursor-pointer data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-50 shadow-sm">
-                                <RadioGroupItem value="small" id="small" className="w-5 h-5 border-slate-400 text-blue-500 focus:ring-2 focus:ring-blue-500/20" />
-                                <Label htmlFor="small" className="flex-grow cursor-pointer">
-                                  <span className="font-medium text-base text-slate-900">£250 - £750</span>
-                                  <span className="text-sm text-slate-600 block">Best for simple portfolio sites or landing pages</span>
-                                </Label>
-                              </div>
-                              <div className="flex items-center space-x-4 p-4 bg-slate-50 border border-slate-200 rounded-xl hover:border-blue-500/50 transition-all cursor-pointer data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-50 shadow-sm">
-                                <RadioGroupItem value="medium" id="medium" className="w-5 h-5 border-slate-400 text-blue-500 focus:ring-2 focus:ring-blue-500/20" />
-                                <Label htmlFor="medium" className="flex-grow cursor-pointer">
-                                  <span className="font-medium text-base text-slate-900">£1,000 - £2,500</span>
-                                  <span className="text-sm text-slate-600 block">Ideal for business websites with custom features</span>
-                                </Label>
-                              </div>
-                              <div className="flex items-center space-x-4 p-4 bg-slate-50 border border-slate-200 rounded-xl hover:border-blue-500/50 transition-all cursor-pointer data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-50 shadow-sm">
-                                <RadioGroupItem value="large" id="large" className="w-5 h-5 border-slate-400 text-blue-500 focus:ring-2 focus:ring-blue-500/20" />
-                                <Label htmlFor="large" className="flex-grow cursor-pointer">
-                                  <span className="font-medium text-base text-slate-900">£2,500+</span>
-                                  <span className="text-sm text-slate-600 block">Perfect for complex web applications or e-commerce</span>
-                                </Label>
-                              </div>
-                              <div className="flex items-center space-x-4 p-4 bg-slate-50 border border-slate-200 rounded-xl hover:border-blue-500/50 transition-all cursor-pointer data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-50 shadow-sm">
-                                <RadioGroupItem value="not-sure" id="not-sure" className="w-5 h-5 border-slate-400 text-blue-500 focus:ring-2 focus:ring-blue-500/20" />
-                                <Label htmlFor="not-sure" className="flex-grow cursor-pointer">
-                                  <span className="font-medium text-base text-slate-900">I'm not sure yet</span>
-                                  <span className="text-sm text-slate-600 block">Let's discuss what's best for your needs</span>
-                                </Label>
-                              </div>
-                            </RadioGroup>
-                          </div>
-                        </div>
-                      )}
-
-                      {currentStep === 5 && (
-                        <div className="space-y-6">
-                          <div className="text-center mb-8">
-                            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-400/40 mb-4">
-                              <Sparkles className="w-8 h-8 text-blue-600" />
-                            </div>
-                            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
-                              Final Details
-                            </h2>
-                            <p className="text-slate-600">Add any additional information that might help us understand your project better.</p>
-                          </div>
-                          <div className="grid gap-6">
-                            <div className="space-y-2">
-                              <Label htmlFor="additional-info" className="text-base text-slate-900 font-medium">Additional Details</Label>
-                              <Textarea
-                                placeholder="Tell us anything else that might help us understand your project better"
-                                className="bg-white border-slate-300 text-slate-900 placeholder:text-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 min-h-[120px] text-base"
-                                value={formData.additionalInfo || ''}
-                                onChange={(e) => updateFormData({ additionalInfo: e.target.value })}
-                              />
-                            </div>
-                            <div className="flex items-center space-x-3 p-4 bg-slate-50 border border-slate-200 rounded-xl shadow-sm">
+                      <div className="space-y-3">
+                        <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                          Key features needed
+                        </label>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {[
+                            'Contact forms',
+                            'Blog/News section',
+                            'Online booking',
+                            'Payment processing',
+                            'User accounts',
+                            'Content management',
+                            'SEO optimisation',
+                            'Analytics setup'
+                          ].map((feature) => (
+                            <div key={feature} className="flex items-center gap-3">
                               <Checkbox
-                                id="consultation"
-                                className="w-5 h-5 border-slate-400 text-blue-500 focus:ring-2 focus:ring-blue-500/20 rounded"
-                                checked={formData.wantsConsultation || false}
-                                onCheckedChange={(checked) => updateFormData({ wantsConsultation: checked })}
+                                id={feature}
+                                checked={formData.features?.includes(feature) || false}
+                                onCheckedChange={(checked) => {
+                                  const currentFeatures = formData.features || []
+                                  const newFeatures = checked 
+                                    ? [...currentFeatures, feature]
+                                    : currentFeatures.filter((f: string) => f !== feature)
+                                  updateFormData({ features: newFeatures })
+                                }}
+                                className="border-gray-300 text-black"
                               />
-                              <Label 
-                                htmlFor="consultation" 
-                                className="text-base text-slate-900 cursor-pointer"
-                              >
-                                I'd like to schedule a free 15-minute consultation
+                              <Label htmlFor={feature} className="text-gray-600 font-light cursor-pointer">
+                                {feature}
                               </Label>
                             </div>
-                          </div>
+                          ))}
                         </div>
-                      )}
-                    </motion.div>
-                  </AnimatePresence>
-                </form>
-              </div>
+                      </div>
 
-              {/* Form Navigation Buttons */}
-              <div className="border-t border-slate-200/80 bg-gradient-to-r from-slate-50/80 to-blue-50/80 p-6 flex items-center justify-between">
+                      <div className="space-y-3">
+                        <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                          Project description
+                        </label>
+                        <Textarea
+                          value={formData.description || ''}
+                          onChange={(e) => updateFormData({ description: e.target.value })}
+                          placeholder="Tell us about your project..."
+                          className="min-h-[120px] border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 py-4 font-light text-lg resize-none"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Step 3: Vision */}
+                  {currentStep === 3 && (
+                    <div className="space-y-12">
+                      <div className="space-y-3">
+                        <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                          Primary purpose *
+                        </label>
+                        <Select 
+                          value={formData.purpose || ''}
+                          onValueChange={(value) => updateFormData({ purpose: value })}
+                        >
+                          <SelectTrigger className="h-12 border-0 border-b border-gray-200 rounded-none bg-transparent text-black focus:border-black focus:ring-0 px-0 font-light text-lg">
+                            <SelectValue placeholder="Select primary purpose" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-white border border-gray-200">
+                            <SelectItem value="leads">Generate Leads</SelectItem>
+                            <SelectItem value="sales">Sell Products</SelectItem>
+                            <SelectItem value="credibility">Build Credibility</SelectItem>
+                            <SelectItem value="showcase">Showcase Work</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      <div className="space-y-3">
+                        <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                          Design inspiration
+                        </label>
+                        <Textarea
+                          value={formData.inspiration || ''}
+                          onChange={(e) => updateFormData({ inspiration: e.target.value })}
+                          placeholder="Share links to websites you love or describe the style you're looking for"
+                          className="min-h-[120px] border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 py-4 font-light text-lg resize-none"
+                        />
+                      </div>
+
+                      <div className="space-y-3">
+                        <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                          Timeline *
+                        </label>
+                        <Select 
+                          value={formData.timeline || ''}
+                          onValueChange={(value) => updateFormData({ timeline: value })}
+                        >
+                          <SelectTrigger className="h-12 border-0 border-b border-gray-200 rounded-none bg-transparent text-black focus:border-black focus:ring-0 px-0 font-light text-lg">
+                            <SelectValue placeholder="Select timeline" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-white border border-gray-200">
+                            <SelectItem value="asap">ASAP</SelectItem>
+                            <SelectItem value="1-month">Within 1 month</SelectItem>
+                            <SelectItem value="1-3-months">1-3 months</SelectItem>
+                            <SelectItem value="3-plus-months">3+ months</SelectItem>
+                            <SelectItem value="flexible">Flexible</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Step 4: Budget */}
+                  {currentStep === 4 && (
+                    <div className="space-y-12">
+                      <div className="space-y-8">
+                        <RadioGroup 
+                          value={formData.budgetRange || "not-sure"} 
+                          onValueChange={(value) => updateFormData({ budgetRange: value })}
+                          className="space-y-6"
+                        >
+                          {[
+                            {
+                              value: "small",
+                              label: "£250 - £750",
+                              description: "Simple portfolio sites or landing pages"
+                            },
+                            {
+                              value: "medium", 
+                              label: "£1,000 - £2,500",
+                              description: "Business websites with custom features"
+                            },
+                            {
+                              value: "large",
+                              label: "£2,500+", 
+                              description: "Complex web applications or e-commerce"
+                            },
+                            {
+                              value: "not-sure",
+                              label: "I'm not sure yet",
+                              description: "Let's discuss what's best for your needs"
+                            }
+                          ].map((option) => (
+                            <div key={option.value} className="group flex items-start gap-4 py-6 border-b border-gray-100 last:border-b-0">
+                              <RadioGroupItem 
+                                value={option.value} 
+                                id={option.value} 
+                                className="mt-1 border-gray-300 text-black"
+                              />
+                              <div className="flex-1">
+                                <Label htmlFor={option.value} className="cursor-pointer">
+                                  <div className="text-lg font-light text-black mb-1 group-hover:text-gray-600 transition-colors">
+                                    {option.label}
+                                  </div>
+                                  <div className="text-gray-500 font-light text-sm">
+                                    {option.description}
+                                  </div>
+                                </Label>
+                              </div>
+                            </div>
+                          ))}
+                        </RadioGroup>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Step 5: Final Details */}
+                  {currentStep === 5 && (
+                    <div className="space-y-12">
+                      <div className="space-y-3">
+                        <label className="text-sm text-gray-400 uppercase tracking-wider font-light">
+                          Additional information
+                        </label>
+                        <Textarea
+                          value={formData.additionalInfo || ''}
+                          onChange={(e) => updateFormData({ additionalInfo: e.target.value })}
+                          placeholder="Anything else that might help us understand your project better?"
+                          className="min-h-[120px] border-0 border-b border-gray-200 rounded-none bg-transparent text-black placeholder-gray-400 focus:border-black focus:ring-0 px-0 py-4 font-light text-lg resize-none"
+                        />
+                      </div>
+
+                      <div className="flex items-center gap-3 py-6 border-b border-gray-100">
+                        <Checkbox
+                          id="consultation"
+                          checked={formData.wantsConsultation || false}
+                          onCheckedChange={(checked) => updateFormData({ wantsConsultation: checked })}
+                          className="border-gray-300 text-black"
+                        />
+                        <Label htmlFor="consultation" className="text-gray-600 font-light cursor-pointer">
+                          I'd like to schedule a free 15-minute consultation call
+                        </Label>
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Navigation */}
+              <div className="flex items-center justify-between pt-12 border-t border-gray-100">
                 <Button
                   type="button"
-                  variant="outline"
+                  variant="ghost"
                   onClick={prevStep}
                   disabled={currentStep === 1 || isSubmitting}
-                  className="flex items-center gap-2 border-slate-300 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 hover:border-slate-400 focus:ring-2 focus:ring-blue-500/20 shadow-sm"
-                  aria-label="Previous step"
+                  className="text-gray-400 hover:text-black p-0 h-auto font-light text-lg tracking-wide transition-colors group disabled:opacity-50"
                 >
-                  <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-                  <span className="hidden sm:inline">Previous</span>
-                  <span className="sm:hidden">Back</span>
+                  <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+                  Previous
                 </Button>
                 
                 {currentStep < steps.length ? (
                   <Button
                     type="button"
-                    variant="default"
+                    variant="ghost"
                     onClick={nextStep}
-                    className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 focus:ring-2 focus:ring-blue-500/20 text-white flex items-center gap-2 shadow-lg"
-                    aria-label="Next step"
+                    className="text-black hover:text-gray-600 p-0 h-auto font-light text-lg tracking-wide border-b border-black border-opacity-30 rounded-none pb-1 transition-colors group"
                   >
-                    <span>Next</span>
-                    <ChevronRight className="w-4 h-4" aria-hidden="true" />
+                    Next step
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 ) : (
                   <Button
                     type="button"
-                    variant="default"
+                    variant="ghost"
                     onClick={submitForm}
                     disabled={isSubmitting}
-                    className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 focus:ring-2 focus:ring-blue-500/20 text-white flex items-center gap-2 shadow-lg"
-                    aria-label="Submit form"
+                    className="text-black hover:text-gray-600 p-0 h-auto font-light text-lg tracking-wide border-b border-black border-opacity-30 rounded-none pb-1 transition-colors group disabled:opacity-50"
                   >
-                    {isSubmitting ? (
-                      <>
-                        <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" aria-hidden="true" />
-                        <span>Submitting...</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>Submit</span>
-                        <Send className="w-4 h-4" aria-hidden="true" />
-                      </>
-                    )}
+                    {isSubmitting ? 'Submitting...' : 'Submit project'}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 )}
               </div>
-            </div>
+            </form>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   )
-} 
+}

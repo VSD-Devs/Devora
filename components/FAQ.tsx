@@ -32,13 +32,13 @@ export default function FAQ() {
   };
   
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 relative overflow-hidden">
+    <section className="py-12 md:py-16 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 relative overflow-hidden">
       {/* Subtle background elements */}
       <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.03] z-[1]" />
       <div className="absolute top-0 right-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-[120px] z-0" />
       
       <div className="container mx-auto px-4 md:px-6 relative z-[3]">
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+        <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12">
           <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/70 backdrop-blur-sm mb-4">
             <span className="mr-1 h-2 w-2 rounded-full bg-teal-400"></span>
             <span>FAQ</span>
@@ -92,8 +92,8 @@ export default function FAQ() {
           <div className="text-center mt-12">
             <Link href="/contact">
               <Button
-                size="lg"
-                className="bg-white text-slate-900 hover:bg-white/90 rounded-xl px-6 py-6 font-medium text-base"
+                size="default"
+                className="bg-white text-slate-900 hover:bg-white/90 rounded-xl px-6 py-3 font-medium"
               >
                 Have More Questions? <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
