@@ -153,28 +153,6 @@ export default function Home() {
                 </div>
               </div>
               
-              {/* Client list */}
-              <div className="border-t border-gray-800 border-opacity-30 pt-16">
-                <div className="text-xs text-gray-500 uppercase tracking-wider font-light mb-12">Trusted by</div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-12 items-center">
-                  {[
-                    { name: "Slush Dating", logo: "/Slush-Logo (BW) (1).png" },
-                    { name: "EnviroTech", logo: "/Envirotech-Logo (BW).png" },
-                    { name: "Sandalwood", logo: "/Sandalwood-Memorials-BW.png" },
-                    { name: "Skylimit Travels", logo: "/skylimittravels-website.png" }
-                  ].map((client, index) => (
-                    <div key={index} className="flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity">
-                      <Image
-                        src={client.logo}
-                        alt={client.name}
-                        width={140}
-                        height={60}
-                        className="object-contain filter invert"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </section>
