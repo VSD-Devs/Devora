@@ -1,7 +1,7 @@
 ---
 title: "The Ultimate Guide to Website Performance And Business Growth in 2025"
 excerpt: "Discover practical strategies and insights about website performance and business growth that can transform your business website and improve your digital presence."
-date: "2025-05-26"
+date: "2025-07-10"
 author: "James Wilson, Technical Director at Devora"
 coverImage: "/blog/website-performance-and-business-growth.jpg"
 tags: ["devora insights", "web design", "digital strategy", "startup advice", "business growth"]

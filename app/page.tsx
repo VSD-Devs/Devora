@@ -157,70 +157,147 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Services Section - Ultra Minimalist */}
-        <section className="py-32 bg-white">
-          <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto">
-              {/* Ultra minimal header */}
-              <div className="mb-24">
-                <div className="text-xs text-gray-400 uppercase tracking-wider font-light mb-8">Services</div>
-                <h2 className="text-5xl md:text-6xl lg:text-7xl font-extralight text-black leading-[0.9] tracking-tighter">
+        {/* Services Section - Ultra Modern Grid */}
+        <section className="py-32 bg-white relative overflow-hidden">
+          {/* Sophisticated background elements */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-50 to-transparent rounded-full opacity-20 -translate-y-48 translate-x-48"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-purple-50 to-transparent rounded-full opacity-20 translate-y-48 -translate-x-48"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-px h-full bg-gradient-to-b from-transparent via-gray-200 to-transparent opacity-30"></div>
+          
+          <div className="container mx-auto px-6 relative">
+            <div className="max-w-7xl mx-auto">
+              {/* Enhanced header */}
+              <div className="mb-20 text-center">
+                <div className="inline-flex items-center gap-3 mb-8">
+                  <div className="w-8 h-px bg-gradient-to-r from-transparent to-gray-400"></div>
+                  <span className="text-xs text-gray-400 uppercase tracking-wider font-light">Services</span>
+                  <div className="w-8 h-px bg-gradient-to-l from-transparent to-gray-400"></div>
+                </div>
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-extralight text-black leading-[0.9] tracking-tighter mb-6">
                   What we do
                 </h2>
+                <p className="text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
+                  We create digital experiences that drive results through strategic design and cutting-edge development.
+                </p>
               </div>
               
-              {/* Clean services list */}
-              <div className="space-y-16">
+              {/* Modern services grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 {[
                   {
-                    icon: <Palette className="w-8 h-8 text-gray-300" />,
+                    icon: <Palette className="w-8 h-8" />,
                     title: "UI/UX Design",
-                    description: "Intuitive experiences that convert"
+                    description: "Intuitive experiences that convert visitors into customers",
+                    accent: "gray",
+                    features: ["User Research", "Wireframing", "Prototyping"]
                   },
                   {
-                    icon: <Code className="w-8 h-8 text-gray-300" />,
+                    icon: <Code className="w-8 h-8" />,
                     title: "Web Development",
-                    description: "Fast, scalable, modern solutions"
+                    description: "Fast, scalable solutions built with modern technologies",
+                    accent: "gray",
+                    features: ["React/Next.js", "Performance", "Scalability"]
                   },
                   {
-                    icon: <TrendingUp className="w-8 h-8 text-gray-300" />,
+                    icon: <TrendingUp className="w-8 h-8" />,
                     title: "Digital Strategy",
-                    description: "Data-driven growth planning"
+                    description: "Data-driven planning for sustainable business growth",
+                    accent: "gray",
+                    features: ["Analytics", "Growth Plans", "Optimisation"]
                   },
                   {
-                    icon: <Award className="w-8 h-8 text-gray-300" />,
+                    icon: <Award className="w-8 h-8" />,
                     title: "Brand Identity",
-                    description: "Cohesive visual storytelling"
+                    description: "Cohesive visual storytelling across all touchpoints",
+                    accent: "gray",
+                    features: ["Logo Design", "Brand Guidelines", "Visual Systems"]
                   },
                   {
-                    icon: <Zap className="w-8 h-8 text-gray-300" />,
+                    icon: <Zap className="w-8 h-8" />,
                     title: "SEO & Performance",
-                    description: "Visibility and speed optimisation"
+                    description: "Visibility and speed optimisation for better results",
+                    accent: "gray",
+                    features: ["Technical SEO", "Site Speed", "Core Web Vitals"]
+                  },
+                  {
+                    icon: <Shield className="w-8 h-8" />,
+                    title: "Support & Maintenance",
+                    description: "Ongoing care to keep your digital presence running smoothly",
+                    accent: "gray",
+                    features: ["24/7 Monitoring", "Updates", "Security"]
                   }
                 ].map((service, index) => (
-                  <div key={index} className="group flex items-start gap-8 py-6 border-b border-gray-100 last:border-b-0">
-                    <div>
-                      {service.icon}
+                  <div 
+                    key={index} 
+                    className={`group relative p-8 rounded-2xl border border-gray-100 hover:border-black/20 bg-white hover:bg-gradient-to-br hover:from-gray-100/30 hover:to-white transition-all duration-500 hover:shadow-xl hover:-translate-y-2`}
+                  >
+                    {/* Accent dot */}
+                    <div className={`absolute -top-3 -right-3 w-6 h-6 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 scale-0 group-hover:scale-100`}></div>
+                    
+                    {/* Icon with background */}
+                    <div className={`inline-flex p-4 rounded-2xl bg-gray-100 group-hover:bg-gray-200 transition-colors duration-500 mb-6`}>
+                      <div className={`text-black group-hover:scale-110 transition-transform duration-500`}>
+                        {service.icon}
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl md:text-3xl font-light text-black mb-2 tracking-wide group-hover:text-gray-600 transition-colors">
+                    
+                    {/* Content */}
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-light text-black group-hover:text-gray-700 transition-colors tracking-wide">
                         {service.title}
                       </h3>
-                      <p className="text-gray-500 font-light leading-relaxed">
+                      <p className="text-gray-600 font-light leading-relaxed text-sm">
                         {service.description}
                       </p>
+                      
+                      {/* Feature tags */}
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {service.features.map((feature, featureIndex) => (
+                          <span 
+                            key={featureIndex}
+                            className={`px-2 py-1 text-xs font-light bg-gray-100 text-gray-700 rounded-lg border border-gray-200 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-${featureIndex * 100}`}
+                          >
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                      <ArrowRight className="w-5 h-5 text-black" />
+                    
+                    {/* Hover arrow */}
+                    <div className={`absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-2 group-hover:translate-x-0`}>
+                      <ArrowRight className={`w-4 h-4 text-gray-600`} />
                     </div>
                   </div>
                 ))}
               </div>
               
-              {/* Minimal CTA */}
-              <div className="mt-20 pt-12 border-t border-gray-100">
-                <Link href="/services" className="text-black hover:text-gray-600 transition-colors font-light tracking-wide border-b border-black border-opacity-20 pb-1">
-                  View all services →
+              {/* Enhanced CTA with stats */}
+              <div className="text-center space-y-8">
+                {/* Mini stats */}
+                <div className="flex items-center justify-center gap-12 text-sm text-gray-500 font-light">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span>100+ Projects Delivered</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                    <span>98% Client Satisfaction</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                    <span>2 Week Average Delivery</span>
+                  </div>
+                </div>
+                
+                {/* CTA */}
+                <Link 
+                  href="/services" 
+                  className="inline-flex items-center gap-3 text-black hover:text-gray-600 transition-all duration-300 font-light text-lg tracking-wide group"
+                >
+                  <span className="border-b border-black/20 group-hover:border-black/40 pb-1 transition-colors">
+                    Explore all services
+                  </span>
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>
@@ -230,84 +307,107 @@ export default function Home() {
         {/* Portfolio Section - Ultra Minimalist */}
         <section className="py-32 bg-gray-50">
           <div className="container mx-auto px-6">
-            <div className="max-w-5xl mx-auto">
+            <div className="max-w-7xl mx-auto">
               {/* Ultra minimal header */}
-              <div className="mb-24">
+              <div className="mb-32">
                 <div className="text-xs text-gray-400 uppercase tracking-wider font-light mb-8">Selected work</div>
                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-extralight text-black leading-[0.9] tracking-tighter">
                   Recent projects
                 </h2>
               </div>
               
-              {/* Clean project list */}
-              <div className="space-y-20">
-                {[
-                  {
-                    number: "01",
-                    title: "Slush Dating Platform",
-                    description: "Video-first dating experience",
-                    year: "2024",
-                    category: "Platform",
-                    image: "/Slush.png"
-                  },
-                  {
-                    number: "02",
-                    title: "EnviroTech Plumbing",
-                    description: "Emergency service platform",
-                    year: "2024", 
-                    category: "Service",
-                    image: "/Enviro.png"
-                  },
-                  {
-                    number: "03",
-                    title: "Sandalwood Memorials",
-                    description: "Premium memorial services",
-                    year: "2023",
-                    category: "Service",
-                    image: "/Sandalwood-Memorials.png"
-                  }
-                ].map((project, index) => (
-                  <div key={index} className="group">
-                    {/* Project image area */}
-                    <div className="bg-white border border-gray-200 h-80 mb-8 overflow-hidden relative">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute top-4 left-4">
-                        <div className="w-8 h-8 bg-black/5 rounded-full flex items-center justify-center">
-                          <span className="text-gray-400 text-xs font-light">{project.number}</span>
-                        </div>
-                      </div>
-                    </div>
+              {/* Modern project grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-32">
+                {/* Featured project - full width on mobile */}
+                <Link href="/work/slush-dating" className="lg:col-span-2 group cursor-pointer">
+                  <div className="relative h-[60vh] bg-white overflow-hidden">
+                    <Image
+                      src="/Slush.png"
+                      alt="Slush Dating Platform"
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
-                    {/* Project details */}
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-4 mb-2">
-                          <h3 className="text-2xl md:text-3xl font-light text-black tracking-wide group-hover:text-gray-600 transition-colors">
-                            {project.title}
+                    {/* Floating content */}
+                    <div className="absolute bottom-0 left-0 right-0 p-12 bg-gradient-to-t from-black/80 to-transparent">
+                      <div className="flex items-end justify-between">
+                        <div>
+                          <div className="text-xs text-gray-300 uppercase tracking-wider font-light mb-2">Platform • 2024</div>
+                          <h3 className="text-3xl md:text-4xl font-light text-white mb-4 tracking-wide">
+                            Slush Dating Platform
                           </h3>
-                          <span className="text-sm text-gray-400 font-light">{project.year}</span>
+                          <p className="text-gray-300 font-light text-lg max-w-md">
+                            Video-first dating experience revolutionising modern connections
+                          </p>
                         </div>
-                        <p className="text-gray-500 font-light">
-                          {project.description}
-                        </p>
-                      </div>
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity ml-8">
-                        <ArrowRight className="w-5 h-5 text-black" />
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <ArrowRight className="w-6 h-6 text-white" />
+                        </div>
                       </div>
                     </div>
                   </div>
-                ))}
+                </Link>
+
+                {/* Secondary projects */}
+                <Link href="/work/envirotech-plumbing" className="group cursor-pointer">
+                  <div className="relative h-[40vh] bg-white overflow-hidden mb-8">
+                    <Image
+                      src="/Enviro.png"
+                      alt="EnviroTech Plumbing"
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <div className="text-xs text-gray-400 uppercase tracking-wider font-light mb-2">Service • 2024</div>
+                      <h3 className="text-2xl font-light text-black mb-2 tracking-wide group-hover:text-gray-600 transition-colors">
+                        EnviroTech Plumbing
+                      </h3>
+                      <p className="text-gray-500 font-light">
+                        Emergency service platform
+                      </p>
+                    </div>
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <ArrowRight className="w-5 h-5 text-black" />
+                    </div>
+                  </div>
+                </Link>
+
+                <Link href="/work/sandalwood-memorials" className="group cursor-pointer">
+                  <div className="relative h-[40vh] bg-white overflow-hidden mb-8">
+                    <Image
+                      src="/Sandalwood-Memorials.png"
+                      alt="Sandalwood Memorials"
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <div className="text-xs text-gray-400 uppercase tracking-wider font-light mb-2">Service • 2023</div>
+                      <h3 className="text-2xl font-light text-black mb-2 tracking-wide group-hover:text-gray-600 transition-colors">
+                        Sandalwood Memorials
+                      </h3>
+                      <p className="text-gray-500 font-light">
+                        Premium memorial services
+                      </p>
+                    </div>
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <ArrowRight className="w-5 h-5 text-black" />
+                    </div>
+                  </div>
+                </Link>
               </div>
               
               {/* Minimal CTA */}
-              <div className="mt-20 pt-12 border-t border-gray-200">
-                <Link href="/work" className="text-black hover:text-gray-600 transition-colors font-light tracking-wide border-b border-black border-opacity-20 pb-1">
-                  View all projects →
+              <div className="text-center">
+                <Link href="/work" className="inline-flex items-center gap-3 text-black hover:text-gray-600 transition-colors font-light text-lg tracking-wide group">
+                  <span className="border-b border-black/20 pb-1">View all projects</span>
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>

@@ -7,14 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate-blog": "node scripts/generate-blog-post.js",
-    "test-images": "node scripts/test-image-generation.js",
-    "fix-images": "node scripts/fix-missing-images.js",
-    "test-performance": "node scripts/test-performance.js",
-    "ts-node": "ts-node"
+    "reinstall": "npm cache clean --force && rm -rf node_modules package-lock.json && npm install",
+    "generate-blog": "node -r ts-node/register scripts/generate-blog-post.ts",
+    "test-image": "node scripts/test-image-generation.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
+    "@huggingface/inference": "^4.4.0",
     "@next/swc-wasm-nodejs": "13.5.1",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
@@ -80,7 +79,7 @@
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "remark-parse": "^11.0.0",
-    "sharp": "^0.33.5",
+    "sharp": "^0.34.3",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss": "3.3.3",

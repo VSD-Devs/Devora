@@ -207,22 +207,27 @@ All generated images are automatically:
 - Saved in JPEG format
 - Given unique filenames to prevent conflicts
 
-### Troubleshooting
+## Resolving Caching & Dependency Issues
 
-**No images appearing:**
-- Check if `public/blog/` directory exists
-- Verify Unsplash API key is correct
-- Check console logs for image generation errors
+If you encounter persistent build errors, especially related to packages like `sharp` on an Apple Silicon (M1/M2/M3) Mac, it is likely due to a caching issue with `npm`.
 
-**Unsplash API issues:**
-- Ensure you're using the Access Key, not Secret Key
-- Check your Unsplash app's rate limits
-- Verify your app is approved for production use
+### The Quick Fix: `reinstall`
 
-**Poor image relevance:**
-- The system maps topics to relevant search terms
-- You can customise the `getUnsplashSearchQuery()` function
-- SVG fallback ensures you always get appropriate branding
+A custom script has been added to `package.json` to automate the cleaning process. If you are facing stubborn build errors, run the following command:
+
+```bash
+npm run reinstall
+```
+
+This command will:
+1.  Forcefully clear the `npm` cache.
+2.  Delete the `node_modules` directory.
+3.  Remove the `package-lock.json` file.
+4.  Perform a fresh, clean installation of all dependencies.
+
+### Proactive Prevention: The `.npmrc` File
+
+To prevent issues with `sharp` specifically, a `.npmrc` file has been added to the project root. This file tells `npm` to always install the `darwin-arm64` version of `sharp`, which is the correct one for Apple Silicon Macs. You do not need to do anything to use this file; its presence is enough.
 
 ## Development
 

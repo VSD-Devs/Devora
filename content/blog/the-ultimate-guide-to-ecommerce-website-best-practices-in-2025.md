@@ -1,8 +1,8 @@
 ---
 title: "The Ultimate Guide to E-commerce Website Best Practices in 2025"
 excerpt: "Discover practical strategies and insights about e-commerce website best practices that can transform your business website and improve your digital presence."
-date: "2025-05-26"
-author: "Emma Davies, Content Strategist at Devora"
+date: "2025-07-10"
+author: "Michael Chen, Frontend Developer at Devora"
 coverImage: "/blog/e-commerce-website-best-practices.jpg"
 tags: ["devora insights", "web design", "digital strategy", "e-commerce website best practices"]
 ---
