@@ -73,8 +73,12 @@ export default function Home() {
       
       <div className="min-h-screen">
         {/* Hero Section - Ultra Minimalist */}
-        <section className="relative min-h-screen bg-black text-white">
-          <div className="container mx-auto px-6 py-20 md:py-32">
+        <section
+          className="relative min-h-screen bg-black text-white"
+          style={{ backgroundImage: "url(/noise.png)" }}
+        >
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="relative container mx-auto px-6 py-20 md:py-32">
             <div className="max-w-5xl mx-auto">
               {/* Main headline - Ultra clean typography */}
               <div className="mb-16 mt-12">
@@ -157,14 +161,14 @@ export default function Home() {
                     { name: "Slush Dating", logo: "/Slush-Logo (BW) (1).png" },
                     { name: "EnviroTech", logo: "/Envirotech-Logo (BW).png" },
                     { name: "Sandalwood", logo: "/Sandalwood-Memorials-BW.png" },
-                    { name: "Devora", logo: "/devora-bw.png" }
+                    { name: "Skylimit Travels", logo: "/skylimittravels-website.png" }
                   ].map((client, index) => (
                     <div key={index} className="flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity">
                       <Image
                         src={client.logo}
                         alt={client.name}
-                        width={120}
-                        height={40}
+                        width={140}
+                        height={60}
                         className="object-contain filter invert"
                       />
                     </div>
@@ -191,34 +195,34 @@ export default function Home() {
               <div className="space-y-16">
                 {[
                   {
-                    number: "01",
+                    icon: <Palette className="w-8 h-8 text-gray-300" />,
                     title: "UI/UX Design",
                     description: "Intuitive experiences that convert"
                   },
                   {
-                    number: "02", 
+                    icon: <Code className="w-8 h-8 text-gray-300" />,
                     title: "Web Development",
                     description: "Fast, scalable, modern solutions"
                   },
                   {
-                    number: "03",
-                    title: "Digital Strategy", 
+                    icon: <TrendingUp className="w-8 h-8 text-gray-300" />,
+                    title: "Digital Strategy",
                     description: "Data-driven growth planning"
                   },
                   {
-                    number: "04",
+                    icon: <Award className="w-8 h-8 text-gray-300" />,
                     title: "Brand Identity",
                     description: "Cohesive visual storytelling"
                   },
                   {
-                    number: "05",
+                    icon: <Zap className="w-8 h-8 text-gray-300" />,
                     title: "SEO & Performance",
                     description: "Visibility and speed optimisation"
                   }
                 ].map((service, index) => (
                   <div key={index} className="group flex items-start gap-8 py-6 border-b border-gray-100 last:border-b-0">
-                    <div className="text-sm text-gray-300 font-light tracking-wider">
-                      {service.number}
+                    <div>
+                      {service.icon}
                     </div>
                     <div className="flex-1">
                       <h3 className="text-2xl md:text-3xl font-light text-black mb-2 tracking-wide group-hover:text-gray-600 transition-colors">
