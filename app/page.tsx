@@ -25,7 +25,6 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import Script from 'next/script';
-import WebsiteAuditForm from "@/components/WebsiteAuditForm";
 
 export default function Home() {
   return (
@@ -82,46 +81,41 @@ export default function Home() {
           <div className="relative container mx-auto px-6 py-20 md:py-32">
             <div className="max-w-7xl mx-auto">
               {/* Hero Content Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-20 mt-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-8 md:mb-20 mt-12">
                 {/* Left Column - Main Content */}
-                <div>
+                <div className="lg:col-span-2">
                   {/* Main headline - Ultra clean typography */}
-                  <div className="mb-16">
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-[0.85] tracking-tighter mb-8">
+                  <div className="mb-12 md:mb-16">
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-[0.85] tracking-tighter mb-6 md:mb-8">
                       <span className="block text-white font-extralight">Creating</span>
                       <span className="block text-white font-extralight">Stunning</span>
                       <span className="block text-gray-300 font-extralight italic">Websites</span>
                     </h1>
                     
-                    <p className="text-lg md:text-xl text-gray-400 max-w-xl font-light leading-relaxed tracking-wide">
+                    <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-xl font-light leading-relaxed tracking-wide">
                       that Elevates Your Online Presence
                     </p>
                   </div>
                   
                   {/* Minimal CTA */}
-                  <div className="flex items-center gap-8">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
                     <Link href="/contact">
-                      <Button variant="ghost" className="text-white p-0 h-auto font-light text-lg tracking-wide border-b border-white/30 hover:border-white rounded-none pb-1 transition-colors group">
+                      <Button variant="ghost" className="text-white p-0 h-auto font-light text-base sm:text-lg tracking-wide border-b border-white/30 hover:border-white rounded-none pb-1 transition-colors group">
                         Enquire
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </Button>
                     </Link>
                     <Link href="/work">
-                      <Button variant="ghost" className="text-gray-400 hover:text-white p-0 h-auto font-light text-lg tracking-wide border-b border-transparent hover:border-white rounded-none pb-1 transition-colors">
+                      <Button variant="ghost" className="text-gray-400 hover:text-white p-0 h-auto font-light text-base sm:text-lg tracking-wide border-b border-transparent hover:border-white rounded-none pb-1 transition-colors">
                         View work
                       </Button>
                     </Link>
                   </div>
                 </div>
-
-                {/* Right Column - Website Audit Form */}
-                <div className="flex items-center justify-start lg:justify-end lg:pt-8">
-                  <WebsiteAuditForm variant="hero" />
-                </div>
               </div>
               
               {/* Minimal stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-16 border-t border-gray-800 border-opacity-30">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 pt-12 md:pt-16 border-t border-gray-800 border-opacity-30">
                 {[
                   { value: "100+", label: "Projects" },
                   { value: "98%", label: "Satisfaction" },

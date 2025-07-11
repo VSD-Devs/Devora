@@ -88,34 +88,6 @@ const Footer = () => {
 
         {/* Social and legal links */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pt-16 border-t border-gray-800 border-opacity-30">
-          {/* Social links */}
-          <div className="space-y-4">
-            <div className="text-sm text-gray-500 uppercase tracking-wider font-light">Follow us</div>
-            <div className="flex gap-8">
-              <a 
-                href="https://linkedin.com" 
-                className="text-gray-400 hover:text-white transition-colors font-light tracking-wide"
-                aria-label="Devora on LinkedIn"
-              >
-                LinkedIn
-              </a>
-              <a 
-                href="https://twitter.com" 
-                className="text-gray-400 hover:text-white transition-colors font-light tracking-wide"
-                aria-label="Devora on Twitter"
-              >
-                Twitter
-              </a>
-              <a 
-                href="https://instagram.com" 
-                className="text-gray-400 hover:text-white transition-colors font-light tracking-wide"
-                aria-label="Devora on Instagram"
-              >
-                Instagram
-              </a>
-            </div>
-          </div>
-
           {/* Legal links */}
           <div className="space-y-4">
             <div className="text-sm text-gray-500 uppercase tracking-wider font-light">Legal</div>

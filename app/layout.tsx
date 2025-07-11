@@ -100,7 +100,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <meta name="theme-color" content="#000000" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
         
         {/* Preload critical assets */}
         <link rel="preload" as="image" href="/grid.svg" />

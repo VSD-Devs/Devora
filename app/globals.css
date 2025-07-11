@@ -78,7 +78,13 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-color: #000000;
   }
+}
+
+html {
+  background-color: #000000;
+  color-scheme: dark;
 }
 
 /* Force transparent background for homepage navigation */

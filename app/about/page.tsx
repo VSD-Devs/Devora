@@ -21,14 +21,14 @@ export default function AboutPage() {
               name: 'Devora',
               url: 'https://www.devora.co.uk',
               description: 'Web development specialists empowering startups with affordable, high-impact web solutions.',
-              foundingDate: '2019',
+              foundingDate: '2024',
               location: {
                 '@type': 'Country',
                 name: 'United Kingdom'
               },
               employees: {
                 '@type': 'QuantitativeValue',
-                value: '10+'
+                value: '5+'
               }
             }
           })
@@ -85,15 +85,15 @@ export default function AboutPage() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-16 border-t border-gray-800 border-opacity-30">
                 {[
                   { value: "100+", label: "Projects", icon: <Rocket className="w-5 h-5" /> },
-                  { value: "5+", label: "Years", icon: <Award className="w-5 h-5" /> },
+                  { value: "2+", label: "Years experience", icon: <Award className="w-5 h-5" /> },
                   { value: "50+", label: "Happy clients", icon: <Heart className="w-5 h-5" /> },
-                  { value: "10+", label: "Team members", icon: <Users className="w-5 h-5" /> }
+                  { value: "5+", label: "Team members", icon: <Users className="w-5 h-5" /> }
                 ].map((stat, index) => (
                   <div key={index} className="group">
-                    <div className="flex items-center gap-2 mb-2 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex items-center gap-2 mb-2 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       {stat.icon}
                     </div>
-                    <div className="text-2xl md:text-3xl font-light text-white mb-1 tracking-wide group-hover:text-blue-300 transition-colors">
+                    <div className="text-2xl md:text-3xl font-light text-white mb-1 tracking-wide group-hover:text-gray-300 transition-colors">
                       {stat.value}
                     </div>
                     <div className="text-xs text-gray-500 uppercase tracking-wider font-light">{stat.label}</div>
@@ -213,34 +213,34 @@ export default function AboutPage() {
                     icon: <Target className="w-8 h-8" />,
                     title: "Quality First",
                     description: "We never compromise on quality, ensuring every project meets the highest standards of craftsmanship and performance.",
-                    accent: "blue"
+                    accent: "gray"
                   },
                   {
                     icon: <Users className="w-8 h-8" />,
                     title: "Transparent Communication",
                     description: "Clear, honest communication throughout every project, keeping you informed and involved at every step.",
-                    accent: "green"
+                    accent: "gray"
                   },
                   {
                     icon: <Rocket className="w-8 h-8" />,
                     title: "Startup-Focused", 
                     description: "We understand the unique challenges startups face and tailor our approach to support your growth journey.",
-                    accent: "purple"
+                    accent: "gray"
                   },
                   {
                     icon: <Heart className="w-8 h-8" />,
                     title: "Long-term Partnership",
                     description: "Building lasting relationships with our clients, supporting your business as it grows and evolves.",
-                    accent: "orange"
+                    accent: "gray"
                   }
                 ].map((value, index) => (
                   <div 
                     key={index} 
-                    className={`group p-8 rounded-2xl border border-gray-100 hover:border-${value.accent}-200 bg-white hover:bg-gradient-to-br hover:from-${value.accent}-50/30 hover:to-white transition-all duration-500 hover:shadow-xl hover:-translate-y-2`}
+                    className={`group p-8 rounded-2xl border border-gray-100 hover:border-gray-300 bg-white hover:bg-gray-50 transition-all duration-500 hover:shadow-xl hover:-translate-y-2`}
                   >
                     {/* Icon with background */}
-                    <div className={`inline-flex p-4 rounded-2xl bg-${value.accent}-50 group-hover:bg-${value.accent}-100 transition-colors duration-500 mb-6`}>
-                      <div className={`text-${value.accent}-600 group-hover:scale-110 transition-transform duration-500`}>
+                    <div className={`inline-flex p-4 rounded-2xl bg-gray-100 group-hover:bg-gray-200 transition-colors duration-500 mb-6`}>
+                      <div className={`text-black group-hover:scale-110 transition-transform duration-500`}>
                         {value.icon}
                       </div>
                     </div>
@@ -254,7 +254,7 @@ export default function AboutPage() {
                     
                     {/* Hover arrow */}
                     <div className={`mt-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-2 group-hover:translate-x-0`}>
-                      <ArrowRight className={`w-5 h-5 text-${value.accent}-600`} />
+                      <ArrowRight className={`w-5 h-5 text-black`} />
                     </div>
                   </div>
                 ))}
@@ -274,14 +274,14 @@ export default function AboutPage() {
               <div className="mb-20 text-center">
                 <div className="inline-flex items-center gap-3 mb-8">
                   <div className="w-8 h-px bg-gradient-to-r from-transparent to-gray-400"></div>
-                  <span className="text-xs text-gray-400 uppercase tracking-wider font-light">The people</span>
+                  <span className="text-xs text-gray-400 uppercase tracking-wider font-light">Small but mighty</span>
                   <div className="w-8 h-px bg-gradient-to-l from-transparent to-gray-400"></div>
                 </div>
                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-extralight text-black leading-[0.9] tracking-tighter mb-6">
-                  Our team
+                  Our approach
                 </h2>
                 <p className="text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
-                  Talented individuals united by a shared passion for creating exceptional digital experiences.
+                  As a focused team, we work closely with each client to deliver personalised, high-quality solutions.
                 </p>
               </div>
               
@@ -289,27 +289,27 @@ export default function AboutPage() {
                 {/* Left side - Team description */}
                 <div className="space-y-6 text-gray-600 font-light leading-relaxed text-lg">
                   <div className="flex gap-4 group">
-                    <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center mt-1 group-hover:bg-blue-200 transition-colors">
-                      <Code className="w-3 h-3 text-blue-600" />
+                    <div className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center mt-1 group-hover:bg-gray-200 transition-colors">
+                      <Code className="w-3 h-3 text-black" />
                     </div>
                     <p>
-                      Our diverse team brings together years of experience in web development, design, and digital strategy. Each member contributes unique expertise whilst sharing our commitment to excellence.
+                      We're a small, dedicated team with extensive experience in web development and design. This allows us to maintain direct communication and deliver truly personalised service.
                     </p>
                   </div>
                   <div className="flex gap-4 group">
-                    <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mt-1 group-hover:bg-green-200 transition-colors">
-                      <Users className="w-3 h-3 text-green-600" />
+                    <div className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center mt-1 group-hover:bg-gray-200 transition-colors">
+                      <Users className="w-3 h-3 text-black" />
                     </div>
                     <p>
-                      From frontend specialists to backend engineers, UX designers to SEO strategists, we've assembled a team that can handle every aspect of your digital project.
+                      Being small means every project gets our full attention. You'll work directly with the people building your website, not through layers of account managers.
                     </p>
                   </div>
                   <div className="flex gap-4 group">
-                    <div className="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center mt-1 group-hover:bg-purple-200 transition-colors">
-                      <Zap className="w-3 h-3 text-purple-600" />
+                    <div className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center mt-1 group-hover:bg-gray-200 transition-colors">
+                      <Zap className="w-3 h-3 text-black" />
                     </div>
                     <p>
-                      We believe in continuous learning and staying ahead of industry trends to ensure our clients always receive cutting-edge solutions.
+                      We stay current with the latest technologies and best practices, ensuring your website is built with modern, reliable solutions.
                     </p>
                   </div>
                 </div>
@@ -317,16 +317,16 @@ export default function AboutPage() {
                 {/* Right side - Enhanced team stats */}
                 <div className="space-y-6">
                   {[
-                    { label: "Average experience", value: "5+ years", icon: <Award className="w-5 h-5" />, accent: "blue" },
-                    { label: "Combined projects", value: "500+", icon: <Rocket className="w-5 h-5" />, accent: "green" },
-                    { label: "Technologies mastered", value: "20+", icon: <Code className="w-5 h-5" />, accent: "purple" },
-                    { label: "Client satisfaction", value: "98%", icon: <Heart className="w-5 h-5" />, accent: "orange" }
+                    { label: "Years in business", value: "5+", icon: <Award className="w-5 h-5" />, accent: "gray" },
+                    { label: "Projects completed", value: "100+", icon: <Rocket className="w-5 h-5" />, accent: "gray" },
+                    { label: "Technologies we use", value: "Latest", icon: <Code className="w-5 h-5" />, accent: "gray" },
+                    { label: "Client satisfaction", value: "98%", icon: <Heart className="w-5 h-5" />, accent: "gray" }
                   ].map((stat, index) => (
-                    <div key={index} className={`group p-6 rounded-xl border border-gray-100 hover:border-${stat.accent}-200 bg-white hover:bg-gradient-to-r hover:from-${stat.accent}-50/30 hover:to-white transition-all duration-300`}>
+                    <div key={index} className={`group p-6 rounded-xl border border-gray-100 hover:border-gray-300 bg-white hover:bg-gray-50 transition-all duration-300`}>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className={`p-2 rounded-lg bg-${stat.accent}-50 group-hover:bg-${stat.accent}-100 transition-colors duration-300`}>
-                            <div className={`text-${stat.accent}-600`}>
+                          <div className={`p-2 rounded-lg bg-gray-100 group-hover:bg-gray-200 transition-colors duration-300`}>
+                            <div className={`text-black`}>
                               {stat.icon}
                             </div>
                           </div>

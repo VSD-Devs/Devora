@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
-import { Loader2, ArrowRight, Globe, CheckCircle } from "lucide-react"
+import { Loader2, ArrowRight, Globe, CheckCircle, ChevronDown } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -13,6 +13,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
 
 interface WebsiteAuditFormProps {
   className?: string
@@ -26,6 +31,7 @@ function AuditFormContent({ onFormSubmit }: { onFormSubmit: () => void }) {
     company: "",
   })
   const [isLoading, setIsLoading] = useState(false)
+  const [isFeaturesOpen, setIsFeaturesOpen] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -77,42 +83,47 @@ function AuditFormContent({ onFormSubmit }: { onFormSubmit: () => void }) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-3 sm:space-y-6 p-1 sm:p-2 md:p-0 max-h-[85vh] sm:max-h-[75vh] overflow-y-auto">
       {/* Header */}
-      <div className="text-center mb-8">
-        <div className="w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <Globe className="w-8 h-8 text-white" />
+      <div className="text-center mb-3 sm:mb-6">
+        <div className="w-8 h-8 sm:w-12 sm:h-12 bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-1 sm:mb-3">
+          <Globe className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
         </div>
-        <h3 className="text-2xl font-light text-white mb-2">Free Website Audit</h3>
-        <p className="text-gray-400 font-light">
-          Get a comprehensive analysis of your website's performance, SEO, and user experience.
+        <h3 className="text-base sm:text-xl font-light text-white">Free Website Audit</h3>
+        <p className="text-gray-400 font-light text-xs sm:text-sm px-2 sm:px-6">
+          Quick insights to improve performance.
         </p>
       </div>
 
       {/* What's included */}
-      <div className="bg-gray-800/50 rounded-xl p-6 mb-8">
-        <h4 className="text-white font-light mb-4">What you'll receive:</h4>
-        <div className="space-y-3">
-          {[
-            "Performance & speed analysis",
-            "SEO optimisation recommendations",
-            "Mobile responsiveness review",
-            "User experience assessment",
-            "Conversion opportunities"
-          ].map((item, index) => (
-            <div key={index} className="flex items-center gap-3">
-              <CheckCircle className="w-4 h-4 text-gray-400 flex-shrink-0" />
-              <span className="text-gray-300 font-light text-sm">{item}</span>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Collapsible open={isFeaturesOpen} onOpenChange={setIsFeaturesOpen} className="bg-gray-800/50 rounded-lg sm:rounded-xl p-2 sm:p-4 mx-2 sm:mx-0">
+        <CollapsibleTrigger className="flex justify-between items-center w-full">
+          <h4 className="text-white font-light text-xs sm:text-sm">What you'll receive:</h4>
+          <ChevronDown className={`w-4 h-4 sm:w-5 sm:h-5 text-gray-400 transition-transform ${isFeaturesOpen ? 'rotate-180' : ''}`} />
+        </CollapsibleTrigger>
+        <CollapsibleContent className="pt-2 sm:pt-4">
+          <div className="space-y-1 sm:space-y-2">
+            {[
+              "Performance & speed analysis",
+              "SEO optimisation recommendations",
+              "Mobile responsiveness review",
+              "User experience assessment",
+              "Conversion opportunities"
+            ].map((item, index) => (
+              <div key={index} className="flex items-start gap-2 sm:gap-3">
+                <CheckCircle className="w-3 h-3 text-gray-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300 font-light text-xs leading-relaxed">{item}</span>
+              </div>
+            ))}
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 px-2 sm:px-0">
+        <div className="space-y-3 sm:space-y-4">
           <div>
-            <label className="block text-sm text-gray-300 mb-2 font-light">
+            <label className="block text-xs text-gray-300 mb-1 font-light">
               Website URL *
             </label>
             <Input
@@ -121,13 +132,15 @@ function AuditFormContent({ onFormSubmit }: { onFormSubmit: () => void }) {
               value={formData.websiteUrl}
               onChange={handleChange}
               placeholder="https://yourwebsite.com"
-              className="h-12 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-white focus:ring-0"
+              className="h-10 sm:h-11 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-white focus:ring-0 text-sm"
               required
+              autoFocus={false}
+              autoComplete="url"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-gray-300 mb-2 font-light">
+            <label className="block text-xs text-gray-300 mb-1 font-light">
               Email address *
             </label>
             <Input
@@ -136,13 +149,15 @@ function AuditFormContent({ onFormSubmit }: { onFormSubmit: () => void }) {
               value={formData.email}
               onChange={handleChange}
               placeholder="you@company.com"
-              className="h-12 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-white focus:ring-0"
+              className="h-10 sm:h-11 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-white focus:ring-0 text-sm"
               required
+              autoComplete="email"
+              inputMode="email"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-gray-300 mb-2 font-light">
+            <label className="block text-xs text-gray-300 mb-1 font-light">
               Company name
             </label>
             <Input
@@ -151,14 +166,15 @@ function AuditFormContent({ onFormSubmit }: { onFormSubmit: () => void }) {
               value={formData.company}
               onChange={handleChange}
               placeholder="Your Company"
-              className="h-12 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-white focus:ring-0"
+              className="h-10 sm:h-11 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-white focus:ring-0 text-sm"
+              autoComplete="organization"
             />
           </div>
         </div>
 
         <Button 
           type="submit" 
-          className="w-full h-12 bg-white text-gray-900 hover:bg-gray-200 font-light transition-all duration-200"
+          className="w-full h-10 sm:h-11 bg-white text-gray-900 hover:bg-gray-200 font-light transition-all duration-200 text-sm"
           disabled={isLoading}
         >
           {isLoading ? (
@@ -175,7 +191,7 @@ function AuditFormContent({ onFormSubmit }: { onFormSubmit: () => void }) {
         </Button>
       </form>
 
-      <p className="text-xs text-gray-500 text-center font-light">
+      <p className="text-xs text-gray-500 text-center font-light px-2 sm:px-0">
         No spam, just valuable insights delivered within 24 hours
       </p>
     </div>

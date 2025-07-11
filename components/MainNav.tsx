@@ -5,14 +5,19 @@ import { usePathname } from "next/navigation"
 import { useState, useRef, useEffect } from "react"
 import { Button } from "./ui/button"
 import { Logo } from "./Logo"
-import { Menu, X, ChevronDown, ChevronUp, ArrowUpRight } from "lucide-react"
+import { Menu, X, ArrowUpRight } from "lucide-react"
 import Image from "next/image"
+import WebsiteAuditForm from "./WebsiteAuditForm"
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 export function MainNav() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isLegalOpen, setIsLegalOpen] = useState(false)
-  const legalButtonRef = useRef<HTMLButtonElement>(null)
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const [isAuditOpen, setIsAuditOpen] = useState(false)
+  const navRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
   const isHomePage = pathname === "/"
   
@@ -20,38 +25,16 @@ export function MainNav() {
   const isProjectInquiry = pathname?.startsWith('/project-inquiry')
   
   // Keyboard trap for mobile menu
-  const navRef = useRef<HTMLDivElement>(null)
 
   const menuItems = [
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },
+    { href: "/contact", label: "Contact" },
   ]
 
-  const legalItems = [
-    { href: "/terms", label: "Terms of Service" },
-    { href: "/privacy", label: "Privacy Policy" },
-    { href: "/cookies", label: "Cookie Policy" },
-    { href: "/refund-policy", label: "Refund Policy" },
-  ]
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current && 
-        !dropdownRef.current.contains(event.target as Node) &&
-        legalButtonRef.current &&
-        !legalButtonRef.current.contains(event.target as Node)
-      ) {
-        setIsLegalOpen(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
   
   // Handle keyboard navigation and focus trap in mobile menu
   useEffect(() => {
@@ -138,7 +121,7 @@ export function MainNav() {
                 className="bg-black/80 backdrop-blur-md border border-gray-800/50 rounded-full px-3 py-1.5"
                 aria-label="Main navigation"
               >
-                {menuItems.map((item) => (
+                                {menuItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
@@ -148,76 +131,40 @@ export function MainNav() {
                     {item.label}
                   </Link>
                 ))}
-                
-                {/* Legal Dropdown */}
-                <div className="relative inline-block">
-                  <button
-                    ref={legalButtonRef}
-                    onClick={() => setIsLegalOpen(!isLegalOpen)}
-                    className="px-5 py-2.5 rounded-full transition-all duration-300 text-base font-medium flex items-center gap-1 focus:outline-none focus:ring-2 text-white hover:bg-white/10 focus:ring-white/50"
-                    aria-expanded={isLegalOpen}
-                    aria-haspopup="true"
-                  >
-                    Legal
-                    {isLegalOpen ? (
-                      <ChevronUp className="h-4 w-4" aria-hidden="true" />
-                    ) : (
-                      <ChevronDown className="h-4 w-4" aria-hidden="true" />
-                    )}
-                  </button>
-                  
-                  {isLegalOpen && (
-                    <div
-                      ref={dropdownRef}
-                      className="absolute right-0 mt-2 rounded-xl overflow-hidden border shadow-lg z-10 bg-black/90 backdrop-blur-md border-gray-700"
-                      role="menu"
-                      aria-orientation="vertical"
-                      aria-labelledby="legal-menu"
-                    >
-                      <div className="py-1">
-                        {legalItems.map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className="block px-4 py-2 text-sm transition-colors text-gray-200 hover:bg-gray-800 hover:text-white focus:outline-none focus:bg-gray-700/50 focus:text-white"
-                            onClick={() => setIsLegalOpen(false)}
-                            role="menuitem"
-                          >
-                            {item.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
               </nav>
               
               <div className="ml-4">
-                <Button 
-                  asChild
-                  className="bg-black text-white hover:bg-gray-800 px-5 shadow-md border border-gray-700"
-                >
-                  <Link href="/contact" className="flex items-center gap-1.5">
-                    Enquire
-                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                </Button>
+                <Dialog open={isAuditOpen} onOpenChange={setIsAuditOpen}>
+                  <DialogTrigger asChild>
+                    <Button 
+                      className="bg-blue-600 text-white hover:bg-blue-700 px-5 shadow-md border border-blue-500"
+                    >
+                      Free Audit
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[500px] bg-gray-900 border-gray-700">
+                    <WebsiteAuditForm variant="inline" />
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
 
             {/* Mobile Menu Button and CTA */}
             <div className="md:hidden flex items-center gap-3">
               {/* Mobile CTA Button - Centered */}
-              <Button 
-                asChild
-                size="sm"
-                className="bg-black text-white hover:bg-gray-800 px-3 py-2 border border-gray-700"
-              >
-                <Link href="/contact" className="flex items-center gap-1">
-                  <span className="text-sm font-medium">Enquire</span>
-                  <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-                </Link>
-              </Button>
+              <Dialog open={isAuditOpen} onOpenChange={setIsAuditOpen}>
+                <DialogTrigger asChild>
+                  <Button 
+                    size="sm"
+                    className="bg-blue-600 text-white hover:bg-blue-700 px-3 py-2 border border-blue-500"
+                  >
+                    Free Audit
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="mx-4 w-[calc(100vw-2rem)] max-w-[500px] bg-gray-900 border-gray-700">
+                  <WebsiteAuditForm variant="inline" />
+                </DialogContent>
+              </Dialog>
 
               <button
                 type="button"
@@ -255,7 +202,7 @@ export function MainNav() {
           </>
           <div className="px-4 pt-6 pb-6 flex flex-col h-full space-y-6 relative z-[2]">
             <nav className="space-y-1.5 flex-1">
-              {menuItems.map((item) => (
+                            {menuItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -270,21 +217,6 @@ export function MainNav() {
                   {item.label}
                 </Link>
               ))}
-              
-              {/* Legal section on mobile */}
-              <div className="pt-4 mt-4 border-t border-white/10">
-                <p className="px-4 text-sm font-medium uppercase mb-2 text-white/50">Legal</p>
-                {legalItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block px-4 py-3 text-base rounded-lg focus:outline-none focus:ring-2 text-white/80 hover:bg-white/5 focus:ring-white/30"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
             </nav>
             
             <div className="border-t pt-6 border-white/10">
