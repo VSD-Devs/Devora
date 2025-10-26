@@ -16,8 +16,8 @@ export function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border" role="banner">
-      <div className="container mx-auto px-6 py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border shadow-sm" role="banner">
+      <div className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2" aria-label="Devora - Home">
             <Image 
@@ -28,23 +28,23 @@ export function Header() {
               className="w-12 h-12"
               priority={true}
             />
-            <span className="text-xl font-semibold">Devora</span>
+            <span className="text-lg font-bold">Devora</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
-            <Link href={getNavHref("#about")} className="text-sm hover:text-primary transition-colors font-light">
+            <Link href={getNavHref("#about")} className="text-base font-medium text-foreground/80 hover:text-primary transition-colors duration-200">
               About
             </Link>
-            <Link href="/case-studies" className="text-sm hover:text-primary transition-colors font-light">
+            <Link href="/case-studies" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors duration-200">
               Portfolio
             </Link>
-            <Link href="/blog" className="text-sm hover:text-primary transition-colors font-light" aria-label="Web design and development blog">
+            <Link href="/blog" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors duration-200" aria-label="Web design and development blog">
               Blog
             </Link>
-            <Link href={getNavHref("#services")} className="text-sm hover:text-primary transition-colors font-light">
+            <Link href={getNavHref("#services")} className="text-base font-medium text-foreground/80 hover:text-primary transition-colors duration-200">
               Services
             </Link>
-            <Link href={getNavHref("#contact")} className="text-sm hover:text-primary transition-colors font-light">
+            <Link href={getNavHref("#contact")} className="text-base font-medium text-foreground/80 hover:text-primary transition-colors duration-200">
               Contact
             </Link>
           </nav>
