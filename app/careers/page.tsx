@@ -42,38 +42,25 @@ export default function CareersPage() {
               Join the <span className="font-serif italic font-normal">Devora</span> team
             </h1>
             <p className="text-lg opacity-90">
-              We're looking for talented individuals passionate about helping start-ups succeed. Build your career with us.
+              We're always looking for talented individuals passionate about helping start-ups succeed. Check back soon for opportunities.
             </p>
           </div>
         </section>
 
-        {/* Openings */}
+        {/* No Vacancies Message */}
         <section className="py-24 px-6">
           <div className="container mx-auto max-w-4xl">
-            <h2 className="text-4xl font-bold mb-12">Open Positions</h2>
-
-            <div className="grid gap-6">
-              {openings.map((job, i) => (
-                <div
-                  key={i}
-                  className="bg-card border border-border rounded-xl p-8 hover:border-primary/50 transition-colors"
-                >
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4 gap-4">
-                    <div>
-                      <h3 className="text-2xl font-bold mb-2">{job.title}</h3>
-                      <div className="flex gap-3 text-sm text-muted-foreground">
-                        <span className="bg-primary/10 text-primary px-3 py-1 rounded-full">{job.type}</span>
-                        <span className="bg-secondary/10 text-secondary px-3 py-1 rounded-full">{job.location}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground mb-6">{job.description}</p>
-                  <Button variant="outline" className="gap-2">
-                    Apply Now
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </div>
-              ))}
+            <div className="bg-card border border-border rounded-xl p-12 text-center">
+              <h2 className="text-3xl font-bold mb-4">No Vacancies Currently</h2>
+              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+                We don't have any open positions at the moment, but we're always interested in connecting with talented individuals. If you'd like to be considered for future opportunities, please get in touch.
+              </p>
+              <Link href="/#contact">
+                <Button className="gap-2">
+                  Send us your details
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -81,11 +68,11 @@ export default function CareersPage() {
         {/* CTA */}
         <section className="py-24 px-6 bg-muted/50">
           <div className="container mx-auto max-w-3xl text-center">
-            <h2 className="text-4xl font-bold mb-6">Don't see your role?</h2>
+            <h2 className="text-4xl font-bold mb-6">Interested in working with us?</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Send us a message and tell us about yourself. We're always interested in connecting with talented individuals.
+              Send us a message and tell us about yourself. We're always interested in connecting with talented individuals and will reach out when positions become available.
             </p>
-            <Link href="#contact">
+            <Link href="/#contact">
               <Button size="lg" className="rounded-full gap-2">
                 Get in touch
                 <ArrowRight className="w-5 h-5" />
