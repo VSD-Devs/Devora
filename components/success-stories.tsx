@@ -77,6 +77,17 @@ export function SuccessStories() {
           </div>
         </div>
 
+        {/* JSON-LD Schema for Testimonials */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AggregateRating",
+            ratingValue: "5",
+            reviewCount: testimonials.length,
+          }) }}
+        />
+
         {/* Mobile Carousel - Auto-scrolling */}
         <div className="md:hidden">
           <div className="overflow-hidden" ref={emblaRef}>

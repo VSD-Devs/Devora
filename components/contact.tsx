@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Mail, Phone, MapPin, Loader2 } from "lucide-react"
+import { ArrowRight, Mail, MapPin, Loader2 } from "lucide-react"
 import { toast } from "sonner"
 import { SuccessModal } from "@/components/success-modal"
 
@@ -94,16 +94,6 @@ export function Contact() {
                 <div className="min-w-0">
                   <h3 className="font-semibold text-sm md:text-base mb-0.5 md:mb-1">Email</h3>
                   <p className="text-muted-foreground text-xs md:text-sm break-all">hello@devora.co.uk</p>
-                </div>
-              </div>
-
-              <div className="flex gap-3 md:gap-4">
-                <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-semibold text-sm md:text-base mb-0.5 md:mb-1">Phone</h3>
-                  <p className="text-muted-foreground text-xs md:text-sm break-all">+44 (0)123 456 7890</p>
                 </div>
               </div>
 

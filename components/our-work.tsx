@@ -206,7 +206,7 @@ export function OurWork() {
         <div className="flex justify-center mt-12 md:mt-16">
           <Link href="/case-studies">
             <Button size="lg" className="gap-2">
-              View some of our case studies
+              View case studies
               <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>

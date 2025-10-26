@@ -6,7 +6,7 @@ export function About() {
   return (
     <section id="about" className="py-16 md:py-24 px-4 md:px-6" aria-labelledby="about-heading">
       <div className="container mx-auto">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
+        <article className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
           <div>
             <div className="inline-block bg-primary text-primary-foreground px-3 md:px-4 py-1 rounded-full text-xs font-semibold mb-4 md:mb-6" role="banner">
               <span aria-hidden="true">★</span> ABOUT US
@@ -40,7 +40,7 @@ export function About() {
               height="500"
             />
           </div>
-        </div>
+        </article>
       </div>
     </section>
   )
