@@ -1,0 +1,35 @@
+# Robots.txt for Devora Website
+# Generated for SEO optimisation
+
+# Default rules for all search engines
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*.json
+Disallow: /.next/
+Disallow: /node_modules/
+
+# Allow specific search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# Specific disallows for better crawl budget
+User-agent: *
+Disallow: /*?*
+Disallow: *.pdf$
+Disallow: *.docx$
+Disallow: /admin/
+Disallow: /login/
+Disallow: /logout/
+Disallow: /search?
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+
+# Sitemap reference
+Sitemap: https://www.devora.co.uk/sitemap.xml
+

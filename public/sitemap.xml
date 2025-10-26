@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage - Highest Priority -->
+  <url>
+    <loc>https://www.devora.co.uk/</loc>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Blog Index Page -->
+  <url>
+    <loc>https://www.devora.co.uk/blog</loc>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-branding-consistency-in-web-design-in-2025</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-branding-consistency-in-web-.jpg</image:loc>
+      <image:title>The Ultimate Guide to Branding Consistency In Web Design in 2025</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-content-strategy-for-business-websites-in-2025</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-conversionfocused-landing-pages-in-2025</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-ecommerce-website-best-practices-in-2025</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-mobilefirst-web-design-benefits-in-2025</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-reducing-website-bounce-rates-in-2025</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-user-experience-design-principles-in-2025</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-website-analytics-for-business-insights-in-2025</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-website-design-for-startups-in-2025</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-website-localisation-strategies-in-2025</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-website-performance-and-business-growth-in-2025</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-website-security-for-small-businesses-in-2025</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Case Studies -->
+  <url>
+    <loc>https://www.devora.co.uk/case-studies/envirotech-plumbing</loc>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.devora.co.uk/case-studies/envirotech-plumbing.png</image:loc>
+      <image:title>EnviroTech Emergency Plumbing - 24/7 Emergency Service Platform</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/case-studies/sandalwood-memorials</loc>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.devora.co.uk/case-studies/sandalwood-memorials.png</image:loc>
+      <image:title>Sandalwood Memorials - Premium Memorial Design Showcase</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/case-studies/sandalwood-memories</loc>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.devora.co.uk/case-studies/sandalwood-memories.png</image:loc>
+      <image:title>Sandalwood Memories - Digital Memorial Platform</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/case-studies/slush-dating</loc>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.devora.co.uk/case-studies/slush-dating.png</image:loc>
+      <image:title>Slush Dating - Video Dating Platform</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/case-studies/sky-limit-travels</loc>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.devora.co.uk/case-studies/sky-limit-travels.png</image:loc>
+      <image:title>Sky Limit Travels - Travel Booking Platform</image:title>
+    </image:image>
+  </url>
+
+  <!-- Service & Information Pages -->
+  <url>
+    <loc>https://www.devora.co.uk/careers</loc>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/privacy</loc>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.devora.co.uk/terms</loc>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
+
