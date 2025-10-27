@@ -144,7 +144,7 @@ export default async function BlogPage() {
               Interested? Let's have a discussion.
             </h2>
             <p className="text-lg text-primary-foreground/90 font-light leading-relaxed max-w-2xl mx-auto mb-8">
-              Let's discuss how we can help your startup grow with affordable, scalable digital solutions.
+              Let's discuss how we can help your startup grow with expert web design and development solutions.
             </p>
             
             <Link href="/#contact">

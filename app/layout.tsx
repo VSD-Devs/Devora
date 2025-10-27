@@ -11,14 +11,13 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif"
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.devora.co.uk'),
   title: {
-    default: "Devora - Affordable Web Design & Development for Start-ups | UK",
+    default: "Web Design & Development for Start-ups | Devora",
     template: "%s | Devora"
   },
-  description: "Award-winning web design and development agency specialising in affordable digital solutions for start-ups. Flexible pricing, rapid deployment, and ongoing support. Launch your start-up with confidence.",
+  description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups. Expert design, rapid deployment, and ongoing support. Build your start-up with us.",
   keywords: [
     "web design agency UK",
     "web development for start-ups",
-    "affordable web design",
     "start-up website design",
     "custom web development",
     "responsive web design",
@@ -27,7 +26,6 @@ export const metadata: Metadata = {
     "digital agency UK",
     "website design London",
     "start-up web solutions",
-    "flexible pricing web design",
     "rapid website deployment",
     "professional web services"
   ],
@@ -44,8 +42,8 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: "https://www.devora.co.uk",
     siteName: "Devora",
-    title: "Devora - Affordable Web Design & Development for Start-ups",
-    description: "Award-winning web design and development agency specialising in affordable digital solutions for start-ups. Flexible pricing, rapid deployment, and ongoing support.",
+    title: "Web Design & Development for Start-ups",
+    description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups. Expert design, rapid deployment, and ongoing support.",
     images: [
       {
         url: "/devora-office.png",
@@ -57,8 +55,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Devora - Affordable Web Design & Development for Start-ups",
-    description: "Award-winning web design and development agency specialising in affordable digital solutions for start-ups.",
+    title: "Web Design & Development for Start-ups",
+    description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups.",
     images: ["/devora-office.png"],
     creator: "@devora",
   },
@@ -83,8 +81,8 @@ export const metadata: Metadata = {
   category: "technology",
   icons: {
     icon: [
-      { url: '/devora-bw.png', sizes: '32x32', type: 'image/png' },
-      { url: '/devora-bw.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/devora-bw.png', sizes: '192x192', type: 'image/png' },
     ],
     apple: [
       { url: '/devora-bw.png', sizes: '180x180', type: 'image/png' },

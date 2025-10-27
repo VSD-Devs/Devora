@@ -11,10 +11,10 @@ import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Affordable Web Design & Development for Start-ups | Devora",
-  description: "Award-winning web design and development agency specialising in affordable digital solutions for start-ups. Flexible pricing, rapid deployment, and ongoing support. Launch your start-up with confidence.",
+  title: "Web Design & Development for Start-ups | Devora",
+  description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups. Expert design, rapid deployment, and ongoing support. Build your start-up with us.",
   keywords: [
-    "affordable web design UK",
+    "web design agency UK",
     "web development for start-ups",
     "start-up website design",
     "custom web development agency",
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
     canonical: "https://www.devora.co.uk",
   },
   openGraph: {
-    title: "Affordable Web Design & Development for Start-ups | Devora",
-    description: "Award-winning web design and development agency specialising in affordable digital solutions for start-ups. Flexible pricing, rapid deployment, and ongoing support.",
+    title: "Web Design & Development for Start-ups | Devora",
+    description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups. Expert design, rapid deployment, and ongoing support.",
     url: "https://www.devora.co.uk",
     type: "website",
     locale: "en_GB",
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Affordable Web Design & Development for Start-ups | Devora",
-    description: "Award-winning web design and development agency specialising in affordable digital solutions for start-ups.",
+    title: "Web Design & Development for Start-ups | Devora",
+    description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups.",
     images: ["/devora-office.png"],
     creator: "@devora",
   },
@@ -74,7 +74,7 @@ export default function Home() {
       "https://instagram.com/devora",
     ],
     foundingDate: "2020",
-    slogan: "We create, you grow. simple as that.",
+    slogan: "Web design and development built for start-ups",
     knowsAbout: [
       "Web Design",
       "Web Development",
@@ -89,7 +89,7 @@ export default function Home() {
     "@type": "WebSite",
     name: "Devora",
     url: "https://www.devora.co.uk",
-    description: "Affordable web design and development agency for start-ups",
+    description: "Web design and development agency specialising in custom solutions for start-ups",
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -106,7 +106,7 @@ export default function Home() {
     name: "Devora Web Design & Development",
     url: "https://www.devora.co.uk",
     image: "https://www.devora.co.uk/devora-office.png",
-    description: "Professional web design and development services for start-ups with flexible pricing and rapid deployment",
+    description: "Professional web design and development services for start-ups with expert design and rapid deployment",
     priceRange: "££",
     address: {
       "@type": "PostalAddress",
@@ -171,7 +171,7 @@ export default function Home() {
     "@type": "LocalBusiness",
     name: "Devora",
     image: "https://www.devora.co.uk/devora-bw.png",
-    description: "Award-winning web design and development agency specialising in affordable digital solutions for start-ups",
+    description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups",
     address: {
       "@type": "PostalAddress",
       addressCountry: "GB",
@@ -201,7 +201,7 @@ export default function Home() {
         name: "Why should I choose Devora for web design and development?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Devora specialises in affordable, high-quality web design and development solutions for start-ups. We offer flexible pricing, rapid deployment, no lock-in contracts, and transparent communication. With 80+ successful launches, we understand the unique needs of growing businesses.",
+          text: "Devora specialises in high-quality web design and development solutions for start-ups. We offer expert design, rapid deployment, no lock-in contracts, and transparent communication. With 80+ successful launches, we understand the unique needs of growing businesses.",
         },
       },
       {
@@ -230,10 +230,10 @@ export default function Home() {
       },
       {
         "@type": "Question",
-        name: "What makes your pricing flexible?",
+        name: "What makes Devora different?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We understand that every start-up has different budgets at different growth stages. Our flexible pricing models adapt to whether you're bootstrapped or funded, ensuring transparent costs with no hidden fees.",
+          text: "We understand that every start-up has different needs at different growth stages. Our expert team adapts to whether you're bootstrapped or funded, delivering transparent results without hidden fees.",
         },
       },
     ],

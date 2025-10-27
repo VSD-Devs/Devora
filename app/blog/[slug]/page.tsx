@@ -276,7 +276,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 Ready to work together?
               </h2>
               <p className="text-lg text-primary-foreground/90 font-light leading-relaxed max-w-2xl mx-auto">
-                Let's discuss how we can help your startup grow with scalable, affordable digital solutions.
+                Let's discuss how we can help your startup grow with expert web design and development solutions.
               </p>
             </div>
             

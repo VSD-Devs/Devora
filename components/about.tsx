@@ -13,13 +13,13 @@ export function About() {
             </div>
 
             <h2 id="about-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-balance">
-              We <span className="font-serif italic font-normal">are</span> start-up builders, dedicated to{" "}
-              <span className="font-serif italic font-normal">affordable growth</span> and{" "}
-              <span className="font-serif italic font-normal">smart scaling.</span>
+              We <span className="font-serif italic font-normal">are</span> start-up builders, experts in{" "}
+              <span className="font-serif italic font-normal">design</span> and{" "}
+              <span className="font-serif italic font-normal">development.</span>
             </h2>
 
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6 md:mb-8">
-              We partner with ambitious <strong>start-ups</strong> to create <strong>cost-effective digital solutions</strong> without compromise. Our <strong>flexible pricing models</strong> adapt to your growth stage, whether you're bootstrapped or funded, we've got a <strong>web design</strong> and <strong>development plan</strong> that works for you.
+              We partner with ambitious <strong>start-ups</strong> to create exceptional <strong>digital solutions</strong> that drive growth. Our <strong>expert team</strong> adapts to your needs, whether you're bootstrapped or funded, delivering <strong>professional web design</strong> and <strong>development</strong> that makes an impact.
             </p>
 
             <Link href="#contact" aria-label="Get started with Devora web design services">

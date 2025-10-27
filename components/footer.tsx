@@ -11,7 +11,7 @@ export function Footer() {
               <Image src="/devora-logo-white.png" alt="Devora logo" width={32} height={32} className="w-8 h-8" />
               <span className="text-xl font-semibold">Devora</span>
             </div>
-            <p className="text-sm opacity-80"><strong>Start-up specialists</strong> building affordable, scalable <strong>web design</strong> and <strong>development solutions</strong>.</p>
+            <p className="text-sm opacity-80"><strong>Start-up specialists</strong> building expert <strong>web design</strong> and <strong>development solutions</strong>.</p>
           </div>
 
           <nav aria-label="Services navigation">

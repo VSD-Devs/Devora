@@ -80,7 +80,7 @@ export function Contact() {
               Interested? Let's <span className="font-serif italic font-normal">discuss.</span>
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground mt-3 md:mt-4 max-w-2xl">
-              Let's discuss how we can help your start-up grow with affordable, scalable digital solutions.
+              Let's discuss how we can help your start-up grow with expert web design and development solutions.
             </p>
           </div>
 

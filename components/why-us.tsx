@@ -12,11 +12,11 @@ export function WhyUs() {
   ]
 
   const withUs = [
-    "Transparent, affordable pricing from day one",
+    "Transparent pricing and honest communication",
     "No hidden costs, only pay for what you build",
-    "Scale your investment as your start-up grows",
+    "Expert team that understands start-up needs",
     "Ongoing support included, every step of the way",
-    "Custom packages that fit your bootstrap budget",
+    "Custom solutions tailored to your vision",
     "Fast deployment to get you to market quickly",
     "Plain English communication, always",
   ]
@@ -32,7 +32,7 @@ export function WhyUs() {
             Why choose <span className="font-serif italic font-normal">Devora</span> for your <strong>web design</strong> and <strong>development</strong>?
           </h2>
           <p className="text-background/70 max-w-2xl mx-auto text-sm md:text-base lg:text-xl leading-relaxed">
-            We specialise in <strong>affordable web design solutions</strong> for <strong>start-ups</strong>. Flexible pricing, no lock-in contracts, rapid deployment.
+            We specialise in <strong>custom web design solutions</strong> for <strong>start-ups</strong>. Expert team, no lock-in contracts, rapid deployment.
           </p>
         </div>
 
