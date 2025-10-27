@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: "Web Design & Development for Start-ups | Devora",
     template: "%s | Devora"
   },
-  description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups. Expert design, rapid deployment, and ongoing support. Build your start-up with us.",
+  description: "Expert web design & development for start-ups in the UK. Custom digital solutions with rapid deployment, 80+ launches, and ongoing support. Specialists in start-up growth.",
   keywords: [
     "web design agency UK",
     "web development for start-ups",
@@ -107,12 +107,15 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.vercel-insights.com" />
         <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
       </head>
       <body suppressHydrationWarning className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         {children}
+        {/* Analytics loaded with defer for non-critical performance impact */}
         <Analytics />
+        {/* Cookie banner loads after content */}
         <CookieBanner />
       </body>
     </html>
