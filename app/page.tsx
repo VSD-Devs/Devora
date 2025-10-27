@@ -6,6 +6,7 @@ import { WhyUs } from "@/components/why-us"
 import { OurServices } from "@/components/our-services"
 import { OurWork } from "@/components/our-work"
 import { SuccessStories } from "@/components/success-stories"
+import { FAQ } from "@/components/faq"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
@@ -173,6 +174,7 @@ export default function Home() {
         <OurServices />
         <OurWork />
         <SuccessStories />
+        <FAQ />
         <Contact />
         <Footer />
       </main>

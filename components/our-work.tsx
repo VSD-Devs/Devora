@@ -21,9 +21,9 @@ export function OurWork() {
       name: "LR Talent",
       slug: "lr-talent",
       description:
-        "A specialized recruitment agency platform for HR and executive support professionals. We developed a professional website with dedicated sections for candidates and employers, enabling streamlined talent matching and relationship-driven recruitment.",
+        "A startup recruitment platform for HR and executive support professionals. We developed a complete brand identity including logo design, plus a professional website with dedicated sections for candidates and employers, enabling streamlined talent matching and relationship-driven recruitment.",
       image: "/case-studies/lr-talent.png",
-      tags: ["Recruitment", "Corporate Website", "Web Design"],
+      tags: ["Startup Website", "Brand Development", "Recruitment"],
     },
     {
       name: "Rectify International",
@@ -31,7 +31,7 @@ export function OurWork() {
       description:
         "An energy recruitment and consultancy specialist's digital platform showcasing expertise in sourcing talent for the energy sector. We created a professional showcase highlighting their services, successful placements, and industry expertise.",
       image: "/case-studies/rectify.png",
-      tags: ["Recruitment", "Corporate Website", "Portfolio"],
+      tags: ["Recruitment", "Portfolio", "Web Design"],
     },
     {
       name: "Sandalwood Memorials",
@@ -47,7 +47,7 @@ export function OurWork() {
       description:
         "A high-voltage electrical connections provider's digital platform showcasing their expertise in delivering reliable electrical solutions to residential, commercial, and industrial sectors. We built a professional showcase that highlights their technical capabilities and project portfolio.",
       image: "/case-studies/hv-direct.png",
-      tags: ["Corporate Website", "Portfolio", "Web Design"],
+      tags: ["Portfolio", "Web Design", "B2B Platform"],
     },
     {
       name: "Resilience Fitness Wellbeing",

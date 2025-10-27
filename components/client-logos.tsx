@@ -18,6 +18,8 @@ export function ClientLogos() {
     { src: "/Sandalwood-Memorials-BW.png", alt: "Sandalwood Memorials - E-commerce website client" },
   ]
 
+  const doubledLogos = [...logos, ...logos];
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
     loop: true,
@@ -72,7 +74,7 @@ export function ClientLogos() {
             <>
               <div className="overflow-hidden" ref={emblaRef}>
                 <div className="flex gap-4 md:gap-8">
-                  {logos.map((logo, i) => (
+                  {doubledLogos.map((logo, i) => (
                     <div 
                       key={i} 
                       className="flex items-center justify-center h-24 md:h-32 bg-primary-foreground/10 rounded-lg relative flex-[0_0_calc(50%-0.5rem)] sm:flex-[0_0_calc(33.333%-1rem)] md:flex-[0_0_calc(25%-1.5rem)] min-w-0"

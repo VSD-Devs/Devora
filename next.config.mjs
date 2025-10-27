@@ -19,27 +19,16 @@ const nextConfig = {
   reactStrictMode: true,
   // Trailing slash for better SEO consistency
   trailingSlash: false,
-  // Optimize script loading strategy
-  scriptLoader: 'off',
-  // Enable SWC minification for faster builds
-  swcMinify: true,
-  // Optimize CSS
-  cssOptimization: true,
   async headers() {
     return [
       {
-        source: '/.*\\.(jpg|jpeg|gif|png|webp|svg|ico)$',
+        source: '/:path*',
         headers: [
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
           },
-          {
-            key: 'Expires',
-            value: new Date(Date.now() + 31536000 * 1000).toUTCString(),
-          },
         ],
-        regex: true,
       },
       {
         source: '/blog/:path*',

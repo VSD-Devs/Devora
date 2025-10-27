@@ -12,7 +12,7 @@ const caseStudies: Record<string, any> = {
     subtitle: "24/7 Emergency Plumbing Service Platform",
     client: "EnviroTech",
     category: "Service Platform",
-    duration: "3 months",
+    duration: "4 weeks",
     year: "2024",
     challenge:
       "EnviroTech, a leading emergency plumbing service provider, was struggling with outdated phone-based booking systems that couldn't handle peak demand. Customer wait times exceeded 30 minutes, bookings were being lost, and field engineers had no real-time visibility of job locations. Their competitors were offering instant quotes while they manually calculated prices, losing business to faster, more convenient platforms.",
@@ -79,7 +79,7 @@ const caseStudies: Record<string, any> = {
     subtitle: "Teacher Recruitment Platform",
     client: "NL Education",
     category: "Recruitment Platform",
-    duration: "4 months",
+    duration: "4 weeks",
     year: "2024",
     challenge:
       "NL Education faced a critical challenge in their recruitment process. Schools across England were manually advertising vacancies in multiple places, receiving hundreds of unsuitable applications, and struggling to identify the right match quickly. Teachers were applying to dozens of roles, creating a time-consuming vetting process. The average time-to-hire was 8-12 weeks, and many positions remained unfilled mid-term, disrupting student learning.",
@@ -147,12 +147,13 @@ const caseStudies: Record<string, any> = {
     title: "LR Talent",
     subtitle: "Executive & HR Recruitment",
     client: "LR Talent",
-    category: "Recruitment Agency",
-    duration: "3 months",
+    category: "Startup Recruitment Platform",
+    duration: "1 month",
     year: "2024",
     challenge:
-      "LR Talent, a boutique recruitment agency, was competing against larger firms with bigger marketing budgets. Their website was static and didn't reflect their personalized, founder-led approach. Candidates couldn't understand the difference between them and generic job boards, employers didn't realize the value of their deep industry relationships and careful vetting process. They were losing opportunities to online platforms and couldn't showcase their track record effectively.",
+      "LR Talent, a newly-launched startup recruitment agency, was competing against larger established firms with bigger marketing budgets. They needed to establish their brand and online presence from the ground up. Their website was static and didn't reflect their personalized, founder-led approach. Candidates couldn't understand the difference between them and generic job boards, employers didn't realize the value of their deep industry relationships and careful vetting process. They were losing opportunities to online platforms and couldn't showcase their track record effectively.",
     challenges: [
+      "Establishing brand identity for a new startup",
       "Static website not reflecting personalised approach",
       "Inability to differentiate from generic job boards",
       "Hidden track record of successful placements",
@@ -160,11 +161,13 @@ const caseStudies: Record<string, any> = {
       "No way for candidates and employers to connect directly",
     ],
     solution:
-      "We created a modern, personality-driven platform that tells LR Talent's story. The homepage emphasises their unique value: founder-led search, deep relationships with top companies, and hand-selected candidates only. A comprehensive 'For Candidates' section allows candidates to submit CVs, specify salary expectations, and see matching opportunities curated by the team. An 'For Employers' section lets companies post vacancies and connects them directly to LR Talent's consultants for personalized searches. We integrated a candidate portfolio showcasing successful placements and testimonials from both companies and placed professionals. A secure dashboard lets clients track active searches, review shortlisted candidates, and manage the hiring process. The design emphasises trust, professionalism, and personal relationships, differentiating them from impersonal job boards.",
+      "We created a comprehensive brand identity and modern, personality-driven platform that tells LR Talent's story. Starting with logo design and brand guidelines, we established a strong visual identity that communicates trust and professionalism. The homepage emphasises their unique value: founder-led search, deep relationships with top companies, and hand-selected candidates only. A comprehensive 'For Candidates' section allows candidates to submit CVs, specify salary expectations, and see matching opportunities curated by the team. An 'For Employers' section lets companies post vacancies and connects them directly to LR Talent's consultants for personalized searches. We integrated a candidate portfolio showcasing successful placements and testimonials from both companies and placed professionals. A secure dashboard lets clients track active searches, review shortlisted candidates, and manage the hiring process. The design emphasises trust, professionalism, and personal relationships, differentiating them from impersonal job boards.",
     solutionPhases: [
       {
-        title: "Brand Strategy",
+        title: "Brand Development",
         points: [
+          "Logo design establishing startup identity and professionalism",
+          "Brand guidelines and visual identity system",
           "Developed narrative around founder-led, relationship-focused recruitment",
           "Created distinct messaging for candidates vs employers",
           "Designed visual identity emphasizing trust and professionalism",
@@ -210,7 +213,7 @@ const caseStudies: Record<string, any> = {
       author: "Michael Chen",
       role: "Head of HR, Tech Startup",
     },
-    services: ["Bespoke Web Design", "Candidate Management System", "Client Portal", "SEO Optimization", "Brand Strategy"],
+    services: ["Brand Development", "Logo Design", "Bespoke Web Design", "Candidate Management System", "Client Portal", "SEO Optimisation"],
     technologies: ["Next.js", "React", "Tailwind CSS", "PostgreSQL", "Supabase Auth", "Stripe"],
   },
   "rectify": {
@@ -218,7 +221,7 @@ const caseStudies: Record<string, any> = {
     subtitle: "Energy Sector Recruitment & Consultancy",
     client: "Rectify International",
     category: "B2B Recruitment",
-    duration: "4 months",
+    duration: "3 weeks",
     year: "2024",
     challenge:
       "Rectify International specializes in recruiting highly skilled engineers and consultants for the energy sector. Their old website didn't communicate their deep sector expertise, and potential candidates didn't realize the caliber of projects Rectify sources. Energy companies searching for hard-to-find talent (offshore engineers, renewable specialists, compliance experts) couldn't easily express their specific needs. Rectify was losing opportunities to competitors with better web presence, and their extensive project portfolio was hidden from view.",
@@ -285,10 +288,10 @@ const caseStudies: Record<string, any> = {
   },
   "sandalwood-memorials": {
     title: "Sandalwood Memorials",
-    subtitle: "Premium Memorial Design & E-Commerce",
+    subtitle: "Digital Memorial Planning Platform",
     client: "Sandalwood Memorials",
-    category: "E-Commerce Platform",
-    duration: "3 months",
+    category: "Digital Memorial Platform",
+    duration: "4 weeks",
     year: "2024",
     challenge:
       "Sandalwood Memorials, a prestigious headstone and memorial design company, faced unique challenges. Families grieving loved ones had little time to shop around, couldn't visualize custom designs before ordering, and often felt overwhelmed by the technical details. Their old website showed photos but didn't help customers understand options or move from idea to order. Many potential customers found competitors first, and their premium quality and bespoke design capabilities weren't obvious online.",
@@ -354,10 +357,10 @@ const caseStudies: Record<string, any> = {
   },
   "sandalwood-memories": {
     title: "Sandalwood Memories",
-    subtitle: "Digital Memorial Platform",
+    subtitle: "AI-Powered Wellness & Remembrance",
     client: "Sandalwood Memories",
-    category: "Digital Memorial Platform",
-    duration: "4 months",
+    category: "Health & Wellness Consultancy",
+    duration: "1 month",
     year: "2024",
     challenge:
       "In the digital age, grieving families were scattered across the country (and world), making it difficult to share memories, coordinate support, and commemorate loved ones together. Social media felt inappropriate for memorial sharing, and existing tribute sites were clunky and impersonal. Sandalwood Memories identified a gap: families needed a dedicated, private, beautiful space to preserve memories, share stories, and honor their loved ones.",
@@ -422,10 +425,10 @@ const caseStudies: Record<string, any> = {
   },
   "hv-direct": {
     title: "HV Direct",
-    subtitle: "High-Voltage Electrical Solutions",
+    subtitle: "Bespoke Travel Experience Specialist",
     client: "HV Direct",
     category: "B2B Technical Services",
-    duration: "3 months",
+    duration: "3 weeks",
     year: "2024",
     challenge:
       "HV Direct is a technical B2B electrical services provider serving residential, commercial, and industrial sectors. Their old website was a generic brochure that didn't articulate their specialized expertise, project scope, or technical capabilities. Potential clients (contractors, property managers, industrial facility managers) had no way to understand the breadth of solutions HV Direct offered, from emergency repairs to large-scale installations. Competitors with better web presence were winning bids, and their portfolio of impressive projects was hidden.",
@@ -490,11 +493,11 @@ const caseStudies: Record<string, any> = {
     technologies: ["Next.js", "Tailwind CSS", "PostgreSQL", "Prisma ORM", "Stripe for invoicing integration", "SendGrid for email"],
   },
   "rfw": {
-    title: "Resilience Fitness Wellbeing",
-    subtitle: "Executive Health & Wellness Consultancy",
-    client: "Dr. Natalie Grinvalds",
-    category: "Health & Wellness Consultancy",
-    duration: "6 months",
+    title: "Rechtschaffen Family Wealth",
+    subtitle: "Private Wealth Management",
+    client: "Rechtschaffen Family Wealth",
+    category: "E-Commerce Platform",
+    duration: "3 weeks",
     year: "2024",
     challenge:
       "Dr. Natalie Grinvalds, a health and workplace wellbeing consultant, was operating largely through referrals and struggling to reach executives and organisations who needed her expertise. Her website didn't communicate her unique credentials (15+ years in health consulting, degrees in both health sciences and business), nor did it explain the tangible value of her services: improved employee retention, reduced absenteeism, enhanced productivity. Corporate HR teams searching for wellness programmes couldn't easily understand what Natalie offered differently than wellness app companies or generic fitness coaches.",
@@ -558,10 +561,10 @@ const caseStudies: Record<string, any> = {
   },
   "slush-dating": {
     title: "Slush Dating",
-    subtitle: "Video-First Dating Platform",
+    subtitle: "AI-Powered Dating Platform",
     client: "Slush Dating",
     category: "Dating Platform",
-    duration: "4 months",
+    duration: "4 weeks",
     year: "2024",
     challenge:
       "Online dating had a problem: swipe culture led to superficial connections, text conversations were slow, and many matches never met in person. Traditional dating apps relied on photos and text bios, leading to awkward first meetings and wasted time. Slush Dating identified an opportunity: what if first connections happened via video, where real personality shines through? They needed a platform enabling quick, genuine video conversations between matched singles.",
@@ -625,10 +628,10 @@ const caseStudies: Record<string, any> = {
   },
   "sky-limit-travels": {
     title: "Sky Limit Travels",
-    subtitle: "Intelligent Travel Booking Platform",
+    subtitle: "Bespoke Travel Experience Specialist",
     client: "Sky Limit Travels",
-    category: "Travel Booking Platform",
-    duration: "5 months",
+    category: "B2B Technical Services",
+    duration: "3 weeks",
     year: "2024",
     challenge:
       "Travel planning was fragmented and overwhelming: flight searches scattered across multiple sites, destination inspiration hard to find, booking involved multiple platforms (flights, hotels, car rentals). Travelers spent hours comparing prices, cross-referencing reviews, and manually piecing together itineraries. Travel agencies couldn't compete with massive OTA platforms, and casual travelers got lost in information overload. Sky Limit Travels wanted to create a modern travel platform that felt personal, inspired wanderlust, and streamlined the entire booking process.",
