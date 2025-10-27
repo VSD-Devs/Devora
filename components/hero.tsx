@@ -4,8 +4,15 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Star } from "lucide-react"
 import Image from "next/image"
+import { useEffect, useState } from "react"
 
 export function Hero() {
+  const [isMounted, setIsMounted] = useState(false)
+  
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+  
   const teamMembers = [
     { src: "/placeholder-user.jpg", alt: "Devora team member - Web Designer" },
     { src: "/placeholder-user.jpg", alt: "Devora team member - Web Developer" },
@@ -21,10 +28,12 @@ export function Hero() {
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
-            <div className="hidden sm:inline-flex items-center gap-2 bg-primary-foreground/10 px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium mb-6 md:mb-8 overflow-x-auto" role="banner">
-              <span aria-hidden="true" className="flex-shrink-0">★</span>
-              <span className="whitespace-nowrap">BUILT FOR START-UPS • EXPERT DESIGN • RAPID DELIVERY</span>
-            </div>
+            {isMounted && (
+              <div className="hidden sm:inline-flex items-center gap-2 bg-primary-foreground/10 px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium mb-6 md:mb-8 overflow-x-auto" role="banner">
+                <span aria-hidden="true" className="flex-shrink-0">★</span>
+                <span className="whitespace-nowrap">BUILT FOR START-UPS • FAIR PRICING • WEB DEVELOPMENT</span>
+              </div>
+            )}
 
             <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-2 md:mb-6 text-balance leading-tight md:leading-normal">
               <span className="sr-only">Web Design and Development for Start-ups - </span>
