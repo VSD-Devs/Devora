@@ -89,6 +89,8 @@ export function ClientLogos() {
                       />
                     </div>
                   ))}
+                  {/* Add spacing after last logo to prevent connection with first logo on loop */}
+                  <div className="flex-[0_0_2rem] sm:flex-[0_0_3rem] md:flex-[0_0_4rem] min-w-0" />
                 </div>
               </div>
 
