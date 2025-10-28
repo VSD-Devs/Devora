@@ -7,10 +7,10 @@ import Image from "next/image"
 
 export function Hero() {
   const teamMembers = [
-    { src: "/placeholder-user.jpg", alt: "Devora team member - Web Designer" },
-    { src: "/placeholder-user.jpg", alt: "Devora team member - Web Developer" },
-    { src: "/placeholder-user.jpg", alt: "Devora team member - UX Designer" },
-    { src: "/placeholder-user.jpg", alt: "Devora team member - Project Manager" },
+    { src: "/face-1.png", alt: "Devora team member - Web Designer" },
+    { src: "/face-2.png", alt: "Devora team member - Web Developer" },
+    { src: "/face-3.png", alt: "Devora team member - UX Designer" },
+    { src: "/face-4.png", alt: "Devora team member - Project Manager" },
   ]
 
   return (
