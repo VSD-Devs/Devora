@@ -92,7 +92,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           
           {/* Content Container */}
           <div className="relative z-10 container mx-auto">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto">
               {/* Back button */}
               <Link
                 href="/blog"
@@ -149,7 +149,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         
         {/* Article Content */}
         <section className="py-16 md:py-24 bg-background">
-          <div className="max-w-4xl mx-auto px-6">
+          <div className="max-w-6xl mx-auto px-6">
             <article className="max-w-none">
               <div 
                 dangerouslySetInnerHTML={{ __html: post.contentHtml }} 
@@ -196,7 +196,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         
         {/* Author Section */}
         <section className="py-16 bg-muted border-t border-border">
-          <div className="max-w-4xl mx-auto px-6">
+          <div className="max-w-6xl mx-auto px-6">
             <div className="text-center">
               <div className="w-16 h-16 bg-primary text-primary-foreground flex items-center justify-center font-light text-xl mx-auto mb-6 rounded-full">
                 {post.author.substring(0, 1)}
@@ -270,7 +270,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         
         {/* Newsletter CTA */}
         <section className="py-20 bg-primary text-primary-foreground px-6">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-6xl mx-auto text-center">
             <div className="mb-12">
               <h2 className="text-4xl md:text-5xl font-light text-primary-foreground mb-6 leading-tight tracking-tight">
                 Ready to work together?

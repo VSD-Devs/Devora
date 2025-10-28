@@ -36,13 +36,7 @@ export default async function BlogPage() {
                 Practical knowledge and proven strategies to help you build better web experiences and grow your business online.
               </p>
             </div>
-          </div>
-        </section>
 
-        {/* Blog Grid Section */}
-        <section className="py-6 md:py-8 bg-gradient-to-b from-secondary/10 via-secondary/5 to-background relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(0,0,0,0.02),rgba(0,0,0,0))]"></div>
-          <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-6xl mx-auto">
               {/* Section Header */}
               <div className="mb-12 md:mb-16">
