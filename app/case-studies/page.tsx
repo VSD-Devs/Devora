@@ -6,6 +6,37 @@ import { ArrowRight, ArrowLeft } from "lucide-react"
 import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Case Studies | Devora - Web Design & Development Portfolio",
+  description: "Explore our portfolio of successful web design and development projects. From start-ups to established brands, see how we've transformed businesses with custom digital solutions.",
+  keywords: [
+    "case studies",
+    "web design portfolio",
+    "web development examples",
+    "startup projects",
+    "digital transformation",
+    "successful web projects",
+  ],
+  alternates: {
+    canonical: "https://www.devora.co.uk/case-studies",
+  },
+  openGraph: {
+    title: "Case Studies | Devora - Web Design & Development Portfolio",
+    description: "Explore our portfolio of successful web design and development projects.",
+    url: "https://www.devora.co.uk/case-studies",
+    type: "website",
+    images: [
+      {
+        url: "/devora-office.png",
+        width: 1200,
+        height: 630,
+        alt: "Devora - Case Studies & Portfolio",
+      },
+    ],
+  },
+}
 
 const allProjects = [
   {
