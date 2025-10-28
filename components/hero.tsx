@@ -43,7 +43,7 @@ export function Hero() {
 
           <div className="space-y-3 mt-2 sm:mt-4 lg:mt-0">
             <p className="text-base md:text-lg leading-relaxed">
-              We help start-ups launch and grow with professional web design and custom development. Expert solutions tailored to your needs, with transparent communication and rapid delivery.
+              We help start-ups launch and grow with professional web design and custom development. Bespoke solutions tailored to your needs, with transparent communication and swift delivery.
             </p>
 
             <div className="flex flex-row items-center gap-2 sm:gap-4 pt-2 md:pt-4" role="group" aria-label="Client testimonials and ratings">

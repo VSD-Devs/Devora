@@ -94,8 +94,8 @@ export default function AllCaseStudiesPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen pt-20">
-        <section className="py-12 md:py-24 px-4 md:px-6">
+      <main className="min-h-screen flex flex-col">
+        <section className="py-12 md:py-24 px-4 md:px-6 pt-32 md:pt-48 bg-gradient-to-br from-background via-background to-secondary/5">
           <div className="container mx-auto">
             <div className="mb-8 md:mb-16">
               <div className="inline-block bg-primary text-primary-foreground px-3 md:px-4 py-1 rounded-full text-xs font-semibold mb-3 md:mb-6">
@@ -122,7 +122,7 @@ export default function AllCaseStudiesPage() {
                   <div
                     className="bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl h-full flex flex-col cursor-pointer"
                   >
-                    <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-secondary/20 to-secondary/5">
                       <Image
                         src={project.image || "/placeholder.svg"}
                         alt={`${project.name} - Web design and development case study showcase`}

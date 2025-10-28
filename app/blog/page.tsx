@@ -22,7 +22,7 @@ export default async function BlogPage() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-12 md:py-24 px-4 md:px-6 pt-32 md:pt-48">
+        <section className="py-12 md:py-24 px-4 md:px-6 pt-32 md:pt-48 bg-gradient-to-br from-background via-background to-secondary/5">
           <div className="container mx-auto">
             <div className="mb-8 md:mb-16">
               <div className="inline-block bg-primary text-primary-foreground px-3 md:px-4 py-1 rounded-full text-xs font-semibold mb-3 md:mb-6">
@@ -40,8 +40,9 @@ export default async function BlogPage() {
         </section>
 
         {/* Blog Grid Section */}
-        <section className="py-6 md:py-8 bg-muted/30 relative overflow-hidden">
-          <div className="container mx-auto px-6 relative">
+        <section className="py-6 md:py-8 bg-gradient-to-b from-secondary/10 via-secondary/5 to-background relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(0,0,0,0.02),rgba(0,0,0,0))]"></div>
+          <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-6xl mx-auto">
               {/* Section Header */}
               <div className="mb-12 md:mb-16">
@@ -62,9 +63,9 @@ export default async function BlogPage() {
                       href={`/blog/${post.slug}`}
                       className="group block h-full"
                     >
-                      <article className="bg-card border border-border hover:border-foreground/20 transition-all duration-300 group-hover:shadow-lg h-full flex flex-col rounded-2xl overflow-hidden">
+                      <article className="bg-card border border-border hover:border-foreground/20 transition-all duration-300 group-hover:shadow-lg h-full flex flex-col rounded-2xl overflow-hidden hover:bg-card/80">
                         {/* Image Container */}
-                        <div className="relative h-56 overflow-hidden bg-muted">
+                        <div className="relative h-56 overflow-hidden bg-gradient-to-br from-secondary/20 to-secondary/5">
                           <Image
                             src={post.coverImage}
                             alt={post.title}
@@ -120,7 +121,7 @@ export default async function BlogPage() {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-16 bg-muted border border-border rounded-2xl">
+                <div className="text-center py-16 bg-gradient-to-br from-secondary/5 to-secondary/10 border border-border rounded-2xl">
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 mb-6 rounded-full">
                     <BookOpen className="w-8 h-8 text-muted-foreground" />
                   </div>
