@@ -11,7 +11,7 @@ export function ClientLogos() {
     { src: "/white-logo.png", alt: "Devora - Web design agency client logo" },
     { src: "/lr-talent-logo-white.png", alt: "LR Talent - Recruitment platform client", width: 240, height: 140 },
     { src: "/nl-education-white.png", alt: "NL Education - E-learning platform client", width: 240, height: 140 },
-    { src: "/rectify-logo-white.png", alt: "Rectify - Business software client", width: 180, height: 100 },
+    { src: "/rectify-logo-white.png", alt: "Rectify - Business software client", width: 140, height: 60 },
     { src: "/rfw-logo-white.png", alt: "RFW - Corporate web development client" },
     { src: "/Envirotech-Logo (BW).png", alt: "EnviroTech Emergency Plumbing - Service platform client" },
     { src: "/Slush-Logo (BW) (1).png", alt: "Slush Dating - Video dating app client" },
@@ -77,14 +77,14 @@ export function ClientLogos() {
                   {doubledLogos.map((logo, i) => (
                     <div 
                       key={i} 
-                      className="flex items-center justify-center h-24 md:h-32 bg-primary-foreground/10 rounded-lg relative flex-[0_0_calc(50%-0.5rem)] sm:flex-[0_0_calc(33.333%-1rem)] md:flex-[0_0_calc(25%-1.5rem)] min-w-0"
+                      className="flex items-center justify-center h-16 md:h-32 bg-primary-foreground/10 rounded-lg relative flex-[0_0_calc(50%-0.5rem)] sm:flex-[0_0_calc(33.333%-1rem)] md:flex-[0_0_calc(25%-1.5rem)] min-w-0"
                     >
                       <Image
                         src={logo.src}
                         alt={logo.alt}
                         width={logo.width || 200}
                         height={logo.height || 120}
-                        className={`object-contain ${logo.width ? 'max-w-[220px] max-h-[130px]' : 'max-w-[180px] max-h-[90px]'}`}
+                        className={`object-contain ${logo.width ? 'max-w-[140px] max-h-[70px] md:max-w-[220px] md:max-h-[130px]' : 'max-w-[120px] max-h-[60px] md:max-w-[180px] md:max-h-[90px]'}`}
                         loading="lazy"
                       />
                     </div>
