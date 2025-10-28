@@ -22,7 +22,7 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
             <div className="hidden sm:inline-flex items-center gap-2.5 bg-transparent px-0 py-2 text-xs md:text-sm font-medium mb-6 md:mb-8" role="banner">
-              <span aria-hidden="true" className="flex-shrink-0 text-primary-foreground">■</span>
+              <span aria-hidden="true" className="inline-block w-2 h-2 bg-primary-foreground rounded-[2px] flex-shrink-0" />
               <span className="whitespace-nowrap tracking-wider">BUILT FOR START-UPS • FAIR PRICING • WEB DEVELOPMENT</span>
             </div>
 
@@ -34,9 +34,9 @@ export function Hero() {
             </h1>
 
             <Link href="#contact" aria-label="Get started with professional web design" className="inline-block mt-3 md:mt-8">
-              <Button size="lg" className="rounded-full gap-2 w-full sm:w-auto justify-center md:justify-start px-6 md:px-8 py-2.5 md:py-3 text-base md:text-lg bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300">
-                Get started
-                <ArrowRight className="w-4 md:w-5 h-4 md:h-5" aria-hidden="true" />
+              <Button size="lg" className="rounded-full gap-2 w-full sm:w-auto justify-center md:justify-start px-8 md:px-10 py-3 md:py-4 text-lg md:text-xl bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300">
+                Enquire
+                <ArrowRight className="w-5 md:w-6 h-5 md:h-6" aria-hidden="true" />
               </Button>
             </Link>
           </div>
