@@ -5,6 +5,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
+    "dev:clean": "rm -rf .next && npm run dev",
     "lint": "eslint .",
     "start": "next start",
     "generate-blog-images": "node lib/generate-blog-images.js",
