@@ -59,52 +59,47 @@
   </url>
 
   <url>
-    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-reducing-website-bounce-rates-in-2025</loc>
-    <lastmod>2025-05-26</lastmod>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-website-accessibility-in-2025</loc>
+    <lastmod>2025-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-website-accessibility-in-2.jpg</image:loc>
+      <image:title>Website Accessibility in 2025 – Building Inclusive Digital Experiences</image:title>
+    </image:image>
   </url>
 
   <url>
-    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-user-experience-design-principles-in-2025</loc>
-    <lastmod>2025-05-26</lastmod>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-scalable-web-applications-in-2025</loc>
+    <lastmod>2025-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-scalable-web-applications-in.jpg</image:loc>
+      <image:title>Building Scalable Web Applications – Architecture Best Practices for 2025</image:title>
+    </image:image>
   </url>
 
   <url>
-    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-website-analytics-for-business-insights-in-2025</loc>
-    <lastmod>2025-05-26</lastmod>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-seo-strategies-for-startups-in-2025</loc>
+    <lastmod>2025-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-seo-strategies-for-startups-i.jpg</image:loc>
+      <image:title>SEO Strategies for Startup Websites – Dominate Search Rankings in 2025</image:title>
+    </image:image>
   </url>
 
   <url>
-    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-website-design-for-startups-in-2025</loc>
-    <lastmod>2025-05-26</lastmod>
+    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-modern-javascript-frameworks-in-2025</loc>
+    <lastmod>2025-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-website-localisation-strategies-in-2025</loc>
-    <lastmod>2025-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-website-performance-and-business-growth-in-2025</loc>
-    <lastmod>2025-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-website-security-for-small-businesses-in-2025</loc>
-    <lastmod>2025-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.devora.co.uk/blog/the-ultimate-guide-to-modern-javascript-frameworks-i.jpg</image:loc>
+      <image:title>Modern JavaScript Frameworks – Choosing the Right One for Your Project in 2025</image:title>
+    </image:image>
   </url>
 
   <!-- Case Studies -->
