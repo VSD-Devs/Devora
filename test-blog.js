@@ -17,3 +17,4 @@ if (fs.existsSync(postsDirectory)) {
   console.log('Blog directory does not exist');
 }
 
+
