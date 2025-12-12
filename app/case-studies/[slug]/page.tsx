@@ -693,6 +693,85 @@ const caseStudies: Record<string, any> = {
     services: ["Complex Web Platform", "Real-Time API Integration", "Payment Processing", "Recommendation Engine", "Trip Management Dashboard"],
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "Amadeus API for flights", "Booking.com API for hotels", "Stripe for payments", "GraphQL for efficient queries"],
   },
+  "luma-education": {
+    title: "Luma Education Recruitment",
+    subtitle: "Specialist Education Recruitment Platform",
+    client: "Luma Education Recruitment",
+    website: "https://www.lumaeducationrecruitment.co.uk/",
+    category: "Recruitment Platform",
+    duration: "4 weeks",
+    year: "2025",
+    challenge:
+      "Luma Education Recruitment needed a modern, conversion-focused website that would stand out in the competitive education recruitment sector. Their previous website didn't effectively communicate their specialist expertise across multiple educational sectors, nor did it address the specific pain points that keep school leaders up at night. Critically, they needed seamless integration with their HelloEduN CRM system to automatically display live vacancies, and ensure these opportunities reached the widest possible audience through Google Jobs integration. They needed a platform that would inspire confidence in both schools seeking talent and educators looking for opportunities, whilst clearly differentiating them from generic recruitment agencies.",
+    challenges: [
+      "Generic website not showcasing specialist sector expertise",
+      "Difficulty communicating value proposition to both schools and educators",
+      "No clear differentiation from competitors",
+      "Limited ability to address specific recruitment challenges schools face",
+      "Need for seamless CRM integration to display live vacancies automatically",
+      "Requirement for Google Jobs integration to maximise vacancy visibility",
+      "Need for a modern, conversion-focused platform that builds trust",
+    ],
+    solution:
+      "We created a sophisticated, modern recruitment platform that positions Luma as the trusted partner for education recruitment. The design features a striking hero section with compelling messaging 'Connecting Educators with Schools' that immediately communicates their purpose. A comprehensive 'Our Specialisms' section showcases expertise across eight sectors: Early Years, Primary, Secondary, SEND, Leadership, Non-classroom, International, and Bespoke Tutoring, with interactive sector selection that reveals tailored recruitment solutions. The platform addresses key pain points through a 'Solutions' section highlighting rapid response cover, safeguarding assurance, urgent supply teaching solutions, and specialist SEN recruitment. An engaging FAQ-style section titled 'The questions that keep school leaders up at night' provides thoughtful answers that build confidence and demonstrate deep understanding of the sector. Critically, we integrated HelloEduN CRM to automatically pull and display live vacancies in real-time, ensuring the website always shows current opportunities without manual updates. We also implemented Google Jobs structured data markup, enabling all vacancies to appear in Google Jobs search results, dramatically increasing visibility and reach to qualified educators actively searching for roles. The design emphasises trust, professionalism, and personal relationships through warm imagery, clear calls-to-action, and intuitive navigation. We integrated WhatsApp chat functionality for instant communication and created dedicated sections for both schools and educators, ensuring the platform serves both audiences effectively.",
+    solutionPhases: [
+      {
+        title: "Discovery & Strategy",
+        points: [
+          "Conducted stakeholder interviews to understand recruitment challenges and sector nuances",
+          "Competitive analysis of education recruitment platforms",
+          "User journey mapping for both schools and educators",
+          "Content strategy development addressing key pain points",
+        ],
+      },
+      {
+        title: "Design & User Experience",
+        points: [
+          "Created modern, professional visual identity emphasising trust and expertise",
+          "Designed intuitive sector navigation with interactive specialism showcase",
+          "Developed conversion-focused layouts with clear calls-to-action",
+          "Integrated warm, authentic imagery that reflects the education sector",
+        ],
+      },
+      {
+        title: "Development & Features",
+        points: [
+          "Built responsive platform with sector-specific content management",
+          "Integrated HelloEduN CRM API for real-time vacancy display and synchronisation",
+          "Implemented Google Jobs structured data markup for enhanced vacancy visibility",
+          "Created automated vacancy feed ensuring website always shows current opportunities",
+          "Integrated WhatsApp chat for instant communication",
+          "Created interactive FAQ section addressing school leaders' concerns",
+          "Implemented SEO-optimised structure for sector-specific searches",
+        ],
+      },
+      {
+        title: "Launch & Optimisation",
+        points: [
+          "Comprehensive testing across devices and browsers",
+          "Performance optimisation for fast load times",
+          "SEO implementation for sector-specific keywords",
+          "Ongoing support and content updates",
+        ],
+      },
+    ],
+    results: {
+      "Vacancy Visibility": "All vacancies automatically appear in Google Jobs search results",
+      "CRM Integration": "Seamless real-time synchronisation with HelloEduN CRM system",
+      "Website Engagement": "Significant increase in time on site and page views",
+      "Inquiry Quality": "Improved quality of inquiries from both schools and educators",
+      "Brand Positioning": "Established as premium, specialist education recruitment partner",
+      "User Experience": "Intuitive navigation and clear value proposition",
+      "Conversion Optimisation": "Strategic placement of calls-to-action throughout the platform",
+    },
+    testimonial: {
+      quote: "The new website perfectly captures who we are as a specialist education recruitment agency. It's modern, professional, and clearly communicates our expertise across all sectors. The design builds trust immediately, and we've seen a marked improvement in the quality of inquiries from both schools and educators.",
+      author: "Luma Education Recruitment Team",
+      role: "Luma Education Recruitment",
+    },
+    services: ["Bespoke Web Design", "CRM Integration", "Google Jobs Integration", "Sector-Specific Content Strategy", "Conversion Optimisation", "WhatsApp Integration", "SEO Strategy"],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "HelloEduN CRM API", "Google Jobs API", "Structured Data Markup", "Responsive Design", "WhatsApp Business API", "SEO Optimisation"],
+  },
 }
 
 export async function generateStaticParams() {
@@ -767,6 +846,22 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                       <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Client</p>
                       <p className="text-lg font-bold">{caseStudy.client || 'Not specified'}</p>
                     </div>
+                    {caseStudy.website && (
+                      <>
+                        <div className="h-px bg-border" />
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Website</p>
+                          <Link
+                            href={caseStudy.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-lg font-bold text-primary hover:text-primary/80 transition-colors"
+                          >
+                            Visit Website →
+                          </Link>
+                        </div>
+                      </>
+                    )}
                     <div className="h-px bg-border" />
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Duration</p>
@@ -783,6 +878,30 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
             </div>
           </div>
         </section>
+
+        {/* Hero Section Showcase - Special for Luma */}
+        {resolvedParams.slug === "luma-education" && (
+          <section className="py-12 md:py-20 px-4 md:px-6 bg-muted/30">
+            <div className="container mx-auto max-w-6xl">
+              <div className="mb-8 text-center">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3">Hero Section</h2>
+                <p className="text-muted-foreground">Modern, conversion-focused design that builds trust</p>
+              </div>
+              <div className="rounded-2xl overflow-hidden border border-border shadow-xl bg-card">
+                <div className="relative w-full" style={{ paddingBottom: '62.5%' }}>
+                  <Image
+                    src="/case-studies/luma-education.png"
+                    alt="Luma Education Recruitment - Hero section showcase"
+                    fill
+                    className="object-contain"
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Problem & Solution - Side by Side */}
         <section className="py-12 md:py-20 px-4 md:px-6">

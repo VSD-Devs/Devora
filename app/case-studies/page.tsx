@@ -38,6 +38,14 @@ export const metadata: Metadata = {
 
 const allProjects = [
   {
+    name: "Luma Education Recruitment",
+    slug: "luma-education",
+    description:
+      "A specialist education recruitment platform connecting bright talent with bright futures. We created a modern, conversion-focused website featuring seamless HelloEduN CRM integration for real-time vacancy display and Google Jobs integration to maximise visibility. The platform showcases expertise across eight educational sectors, addressing the specific challenges that keep school leaders up at night whilst building trust with both schools and educators.",
+    image: "/case-studies/luma-education.png",
+    tags: ["Recruitment Platform", "Web Design", "Conversion Optimisation"],
+  },
+  {
     name: "EnviroTech Emergency Plumbing",
     slug: "envirotech-plumbing",
     description:
