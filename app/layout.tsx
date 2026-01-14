@@ -11,23 +11,27 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif"
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.devora.co.uk'),
   title: {
-    default: "Web Design & Development for Start-ups | Devora",
+    default: "Web Design & Development for Start-ups in Sheffield | Devora",
     template: "%s | Devora"
   },
-  description: "Expert web design & development for start-ups in the UK. Custom digital solutions with rapid deployment, 80+ launches, and ongoing support. Specialists in start-up growth.",
+  description: "Sheffield-based web design & development agency for start-ups. Custom digital solutions with rapid deployment, 80+ launches, and ongoing support. Serving Sheffield, South Yorkshire & Yorkshire.",
   keywords: [
-    "web design agency UK",
+    "web design Sheffield",
+    "web development Sheffield",
+    "web agency Sheffield",
+    "startup web design Sheffield",
+    "web design South Yorkshire",
+    "web agency Yorkshire",
+    "digital agency Sheffield",
+    "website design near me Sheffield",
+    "Sheffield web developers",
+    "affordable web design Sheffield",
     "web development for start-ups",
     "start-up website design",
     "custom web development",
     "responsive web design",
-    "ecommerce development",
-    "web application development",
-    "digital agency UK",
-    "website design London",
-    "start-up web solutions",
-    "rapid website deployment",
-    "professional web services"
+    "ecommerce development Sheffield",
+    "web application development"
   ],
   authors: [{ name: "Devora" }],
   creator: "Devora",

@@ -8,18 +8,18 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "Blog | Devora - Web Development Insights",
-  description: "Explore the latest web development trends, tips, and strategies to help your startup grow online. Expert insights from the Devora team.",
-  keywords: ["web development blog", "startup tips", "react development", "next.js tutorials", "SEO strategies", "web design tips"],
+  title: "Blog | Devora - Web Development Insights from Sheffield",
+  description: "Explore the latest web development trends, tips, and strategies from our Sheffield-based team. Expert insights to help your startup grow online.",
+  keywords: ["web development blog", "startup tips", "Sheffield web design tips", "Yorkshire startup advice", "react development", "next.js tutorials", "SEO strategies Sheffield", "web design tips Yorkshire"],
 }
 
 export default async function BlogPage() {
   const allPosts = getAllPosts();
-  
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1">
         {/* Hero Section */}
         <section className="py-12 md:py-24 px-4 md:px-6 pt-32 md:pt-48 bg-gradient-to-br from-background via-background to-secondary/5">
@@ -48,11 +48,11 @@ export default async function BlogPage() {
                   Recent posts
                 </h2>
               </div>
-              
+
               {allPosts.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {allPosts.map((post, index) => (
-                    <Link 
+                    <Link
                       key={post.slug}
                       href={`/blog/${post.slug}`}
                       className="group block h-full"
@@ -70,7 +70,7 @@ export default async function BlogPage() {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
-                        
+
                         {/* Content */}
                         <div className="p-6 flex-1 flex flex-col">
                           {/* Meta Info */}
@@ -85,18 +85,18 @@ export default async function BlogPage() {
                                 <span>{post.readingTime}</span>
                               </div>
                             </div>
-                            
+
                             {/* Title */}
                             <h3 className="text-xl font-light text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
                               {post.title}
                             </h3>
-                            
+
                             {/* Excerpt */}
                             <p className="text-muted-foreground font-light leading-relaxed line-clamp-3 flex-1 text-sm">
                               {post.excerpt}
                             </p>
                           </div>
-                          
+
                           {/* Footer */}
                           <div className="flex items-center justify-between mt-auto pt-4 border-t border-border">
                             <div className="flex items-center gap-2">
@@ -141,7 +141,7 @@ export default async function BlogPage() {
             <p className="text-lg text-primary-foreground/90 font-light leading-relaxed max-w-2xl mx-auto mb-8">
               Let's discuss how we can help your startup grow with expert web design and development solutions.
             </p>
-            
+
             <Link href="/#contact">
               <Button size="lg" className="rounded-full bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-light gap-2">
                 Get in touch <ArrowRight className="w-4 h-4" />
@@ -150,7 +150,7 @@ export default async function BlogPage() {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );

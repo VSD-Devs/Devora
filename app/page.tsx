@@ -12,23 +12,26 @@ import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Web Design & Development for Start-ups | Devora",
-  description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups. Expert design, rapid deployment, and ongoing support. Build your start-up with us.",
+  title: "Web Design & Development for Start-ups in Sheffield | Devora",
+  description: "Sheffield-based web design and development agency specialising in custom digital solutions for start-ups. Expert design, rapid deployment, and ongoing support. Serving Sheffield, South Yorkshire & Yorkshire.",
   keywords: [
-    "web design agency UK",
-    "web development for start-ups",
-    "start-up website design",
-    "custom web development agency",
-    "responsive web design",
-    "web design agency London",
-    "startup web solutions",
+    "web design Sheffield",
+    "web development Sheffield",
+    "web agency Sheffield",
+    "startup web design Sheffield",
+    "web design South Yorkshire",
+    "web agency Yorkshire",
+    "digital agency Sheffield",
+    "website design near me",
+    "Sheffield web developers",
+    "affordable web design Sheffield",
   ],
   alternates: {
     canonical: "https://www.devora.co.uk",
   },
   openGraph: {
-    title: "Web Design & Development for Start-ups | Devora",
-    description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups. Expert design, rapid deployment, and ongoing support.",
+    title: "Web Design & Development for Start-ups in Sheffield | Devora",
+    description: "Sheffield-based web design and development agency for start-ups. Expert design, rapid deployment, and ongoing support. Serving Sheffield, South Yorkshire & Yorkshire.",
     url: "https://www.devora.co.uk",
     type: "website",
     locale: "en_GB",
@@ -69,6 +72,10 @@ export default function Home() {
         ],
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Sheffield",
+          "addressLocality": "Sheffield",
+          "addressRegion": "South Yorkshire",
+          "postalCode": "S1",
           "addressCountry": "GB"
         },
         "contact": {
@@ -103,7 +110,12 @@ export default function Home() {
         "provider": {
           "@id": "https://www.devora.co.uk/#organization"
         },
-        "areaServed": "GB",
+        "areaServed": [
+          { "@type": "City", "name": "Sheffield" },
+          { "@type": "AdministrativeArea", "name": "South Yorkshire" },
+          { "@type": "AdministrativeArea", "name": "Yorkshire" },
+          { "@type": "Country", "name": "United Kingdom" }
+        ],
         "serviceType": ["Web Design", "Web Development", "Branding", "Digital Marketing"]
       },
       {
@@ -126,8 +138,22 @@ export default function Home() {
         "description": "Award-winning web design and development agency",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Sheffield",
+          "addressLocality": "Sheffield",
+          "addressRegion": "South Yorkshire",
+          "postalCode": "S1",
           "addressCountry": "GB"
         },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 53.3811,
+          "longitude": -1.4701
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Sheffield" },
+          { "@type": "AdministrativeArea", "name": "South Yorkshire" },
+          { "@type": "AdministrativeArea", "name": "Yorkshire" }
+        ],
         "url": "https://www.devora.co.uk",
         "telephone": "+44-1234-567890",
         "priceRange": "$$"

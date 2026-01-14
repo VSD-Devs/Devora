@@ -43,32 +43,44 @@ interface BlogPostData {
 async function generateCoverImage(title: string, topic: string): Promise<string> {
   const fileName = `${topic.replace(/\s+/g, '-')}-${Date.now()}.jpg`;
   const outputPath = path.join(process.cwd(), 'public/blog', fileName);
-  
+
+  // Ensure we have access to process.env in this context
+  const hfKey = process.env.HUGGING_FACE_API_KEY;
+  const pexelsKey = process.env.PEXELS_API_KEY;
+
   try {
+    console.log(`🖼️ Starting cover image generation for: "${title}" (topic: ${topic})`);
     // Ensure directory exists
     const blogDir = path.join(process.cwd(), 'public/blog');
     if (!fs.existsSync(blogDir)) {
+      console.log(`📁 Creating directory: ${blogDir}`);
       fs.mkdirSync(blogDir, { recursive: true });
     }
 
     // 1. Try Lorem Picsum (no API key needed, instant)
+    console.log(`🔍 Trying Lorem Picsum for image...`);
     const loremPicsumImage = await tryLoremPicsumImage(topic, outputPath);
     if (loremPicsumImage) {
+      console.log(`✅ Lorem Picsum image used: /blog/${fileName}`);
       return `/blog/${fileName}`;
     }
-    
+
     // 2. Try Pexels API if available
+    console.log(`🔍 Trying Pexels API for image...`);
     const pexelsImage = await tryPexelsImage(topic, outputPath);
     if (pexelsImage) {
+      console.log(`✅ Pexels image used: /blog/${fileName}`);
       return `/blog/${fileName}`;
     }
-    
+
     // 3. Fallback to enhanced SVG generation
+    console.log(`⚠️ Falling back to enhanced SVG generation...`);
     await generateEnhancedSVGImage(title, topic, outputPath);
+    console.log(`✅ SVG image generated: /blog/${fileName}`);
     return `/blog/${fileName}`;
-    
+
   } catch (error) {
-    console.error('Error generating cover image:', error);
+    console.error('❌ Error generating cover image:', error);
     return '/blog/default-cover.jpg';
   }
 }
@@ -80,19 +92,19 @@ async function tryLoremPicsumImage(topic: string, outputPath: string): Promise<b
   try {
     const seed = topic.replace(/\s+/g, '').toLowerCase();
     const imageUrl = `https://picsum.photos/seed/${seed}/1200/630`;
-    
+
     const imageResponse = await fetch(imageUrl);
     if (imageResponse.ok) {
       const imageBuffer = await imageResponse.arrayBuffer();
-      
+
       await sharp(Buffer.from(imageBuffer))
         .jpeg({ quality: 85 })
         .toFile(outputPath);
-      
+
       console.log(`✅ Successfully downloaded Lorem Picsum image for topic: ${topic}`);
       return true;
     }
-    
+
     return false;
   } catch (error) {
     console.error('Error fetching from Lorem Picsum:', error);
@@ -104,13 +116,15 @@ async function tryLoremPicsumImage(topic: string, outputPath: string): Promise<b
  * Try to get an image from Pexels
  */
 async function tryPexelsImage(topic: string, outputPath: string): Promise<boolean> {
-  if (!process.env.PEXELS_API_KEY) {
+  const apiKey = process.env.PEXELS_API_KEY?.trim();
+  if (!apiKey) {
+    console.log('⚠️ Pexels API key not found or empty.');
     return false;
   }
-  
+
   try {
     const searchQuery = getPexelsSearchQuery(topic);
-    
+
     const response = await fetch(
       `https://api.pexels.com/v1/search?query=${encodeURIComponent(searchQuery)}&per_page=15&orientation=landscape`,
       {
@@ -119,31 +133,31 @@ async function tryPexelsImage(topic: string, outputPath: string): Promise<boolea
         },
       }
     );
-    
+
     if (!response.ok) {
       return false;
     }
-    
+
     const data = await response.json();
-    
+
     if (data.photos && data.photos.length > 0) {
       const randomIndex = Math.floor(Math.random() * Math.min(data.photos.length, 8));
       const selectedImage = data.photos[randomIndex];
-      
+
       const imageResponse = await fetch(selectedImage.src.large);
       if (imageResponse.ok) {
         const imageBuffer = await imageResponse.arrayBuffer();
-        
+
         await sharp(Buffer.from(imageBuffer))
           .resize(1200, 630, { fit: 'cover' })
           .jpeg({ quality: 85 })
           .toFile(outputPath);
-        
+
         console.log(`✅ Successfully downloaded Pexels image for topic: ${topic}`);
         return true;
       }
     }
-    
+
     return false;
   } catch (error) {
     console.error('Error fetching from Pexels:', error);
@@ -154,7 +168,7 @@ async function tryPexelsImage(topic: string, outputPath: string): Promise<boolea
 /**
  * Convert blog topic to Pexels search query
  */
-function getPexelsSearchQuery(topic: string): string {
+export function getPexelsSearchQuery(topic: string): string {
   const topicMappings: Record<string, string> = {
     'web development trends': 'technology computer programming',
     'startup website essentials': 'startup business team',
@@ -177,7 +191,7 @@ function getPexelsSearchQuery(topic: string): string {
     'client communication tips': 'business meeting communication',
     'web project management': 'project management team'
   };
-  
+
   return topicMappings[topic] || `${topic} business technology`;
 }
 
@@ -189,7 +203,7 @@ async function generateEnhancedSVGImage(title: string, topic: string, outputPath
   const height = 630;
   const backgroundColor = getColorForTopic(topic);
   const accentColor = getAccentColorForTopic(topic);
-  
+
   const svgImage = `
     <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -212,11 +226,11 @@ async function generateEnhancedSVGImage(title: string, topic: string, outputPath
       </text>
     </svg>
   `;
-  
+
   await sharp(Buffer.from(svgImage))
     .jpeg({ quality: 90 })
     .toFile(outputPath);
-    
+
   console.log(`✅ Generated SVG image for topic: ${topic}`);
 }
 
@@ -246,7 +260,7 @@ function getColorForTopic(topic: string): string {
     'client communication tips': '#2563EB',
     'web project management': '#16A34A'
   };
-  
+
   return topicColors[topic] || '#4F46E5';
 }
 
@@ -277,7 +291,7 @@ function getAccentColorForTopic(topic: string): string {
     '#2563EB': '#3B82F6',
     '#16A34A': '#22C55E'
   };
-  
+
   return colorMap[baseColor] || '#818CF8';
 }
 
@@ -307,7 +321,7 @@ function getSubtitleForTopic(topic: string): string {
     'client communication tips': 'Professional Relations',
     'web project management': 'Successful Delivery'
   };
-  
+
   return subtitles[topic] || 'Professional Insights';
 }
 
@@ -317,16 +331,16 @@ function getSubtitleForTopic(topic: string): string {
 async function generateContentWithAI(topic: string): Promise<BlogPostData> {
   try {
     const response = await fetch(
-      "https://api-inference.huggingface.co/models/google/flan-t5-base",
+      "https://router.huggingface.co/models/google/flan-t5-base",
       {
-        headers: { 
+        headers: {
           Authorization: `Bearer ${process.env.HUGGING_FACE_API_KEY}`,
-          "Content-Type": "application/json" 
+          "Content-Type": "application/json"
         },
         method: "POST",
         body: JSON.stringify({
           inputs: `Write a comprehensive blog post about ${topic} for a web development agency. Include practical business advice, clear headings, and actionable tips. Write in British English with a professional but friendly tone.`,
-          parameters: { 
+          parameters: {
             max_new_tokens: 800,
             temperature: 0.7,
             wait_for_model: true
@@ -334,44 +348,44 @@ async function generateContentWithAI(topic: string): Promise<BlogPostData> {
         }),
       }
     );
-    
-    const result = await response.json();
-    
-    if (result.error) {
-      console.error("Hugging Face API error:", result.error);
-      throw new Error(`API Error: ${result.error}`);
+
+    const result = await response.json().catch(() => ({ error: "Invalid JSON response from API" }));
+
+    if (result.error || result.message === "Not Found" || !result[0]?.generated_text && !result.generated_text) {
+      console.error("AI API error or invalid response:", result.error || result.message || "No content generated");
+      throw new Error(`API Error: ${result.error || result.message || "Invalid response"}`);
     }
-    
+
     let generatedContent = result[0]?.generated_text || result.generated_text || "";
-    
+
     if (generatedContent.includes("[/INST]")) {
       generatedContent = generatedContent.split("[/INST]")[1] || generatedContent;
     }
     generatedContent = generatedContent.replace("</s>", "").trim();
-    
+
     let title = `The Ultimate Guide to ${topic.split(' ')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ')} in ${new Date().getFullYear()}`;
-    
+
     const firstLine = generatedContent.split('\n')[0];
     if (firstLine && firstLine.startsWith('# ')) {
       title = firstLine.replace('# ', '');
       generatedContent = generatedContent.replace(firstLine, '').trim();
     }
-    
+
     let excerpt = `Discover the latest strategies and tips for ${topic} that can transform your business and improve your online presence.`;
-    
+
     const firstParagraph = generatedContent
       .split('\n\n')
       .find((p: string) => p && !p.startsWith('#') && p.length > 100);
-    
+
     if (firstParagraph) {
       excerpt = firstParagraph.substring(0, 160) + (firstParagraph.length > 160 ? '...' : '');
     }
-    
+
     const today = format(new Date(), 'yyyy-MM-dd');
     const coverImage = await generateCoverImage(title, topic);
-    
+
     return {
       title,
       excerpt,
@@ -383,7 +397,9 @@ async function generateContentWithAI(topic: string): Promise<BlogPostData> {
     };
   } catch (error) {
     console.error("Error generating content with AI:", error);
-    return generateFallbackContent(topic);
+    const fallbackData = generateFallbackContent(topic);
+    fallbackData.coverImage = await generateCoverImage(fallbackData.title, topic);
+    return fallbackData;
   }
 }
 
@@ -398,7 +414,7 @@ function getAuthorForTopic(topic: string): string {
     'Alex Rodriguez',
     'Sophie Williams'
   ];
-  
+
   const index = topic.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % authors.length;
   return authors[index];
 }
@@ -409,19 +425,19 @@ function getAuthorForTopic(topic: string): string {
 function generateTagsForTopic(topic: string): string[] {
   const lowerTopic = topic.toLowerCase();
   const baseTags = ['web development', 'digital strategy', 'business growth'];
-  
+
   const topicTags: string[] = [];
-  
+
   if (lowerTopic.includes('startup') || lowerTopic.includes('business')) {
     topicTags.push('startup advice', 'business strategy');
   }
-  
+
   if (lowerTopic.includes('performance') || lowerTopic.includes('optimization') || lowerTopic.includes('optimisation')) {
     topicTags.push('website performance', 'speed optimisation');
   }
-  
+
   topicTags.push(topic);
-  
+
   return [...baseTags, ...topicTags].slice(0, 6);
 }
 
@@ -433,9 +449,9 @@ function generateFallbackContent(topic: string): BlogPostData {
   const capitalizedTopic = topic.split(' ')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
-  
+
   const title = `The Ultimate Guide to ${capitalizedTopic} in ${new Date().getFullYear()}`;
-  
+
   return {
     title,
     excerpt: `Discover practical strategies and insights about ${topic} that can transform your business website and improve your digital presence.`,
@@ -464,7 +480,7 @@ Following industry best practices ensures that your approach is effective and su
 
 Mastering ${topic} is an ongoing journey that requires a strategic approach and attention to detail.
     `,
-    coverImage: '/blog/default-cover.jpg',
+    coverImage: '', // Will be filled by the caller
     author: getAuthorForTopic(topic),
     date: today,
     tags: generateTagsForTopic(topic),
@@ -473,14 +489,38 @@ Mastering ${topic} is an ongoing journey that requires a strategic approach and 
 
 export async function generateBlogPost(): Promise<string | null> {
   try {
+    const today = format(new Date(), 'yyyy-MM-dd');
+
+    // Check if a post already exists for today
+    const postsDirectory = path.join(process.cwd(), 'content/blog');
+    if (fs.existsSync(postsDirectory)) {
+      const existingFiles = fs.readdirSync(postsDirectory);
+      const hasPostToday = existingFiles.some(file => {
+        if (!file.endsWith('.md')) return false;
+        try {
+          const content = fs.readFileSync(path.join(postsDirectory, file), 'utf-8');
+          return content.includes(`date: "${today}"`);
+        } catch (e) {
+          return false;
+        }
+      });
+
+      if (hasPostToday) {
+        console.log(`ℹ️ A blog post for today (${today}) already exists. Skipping generation.`);
+        return 'already-exists';
+      }
+    }
+
     const randomTopic = BLOG_TOPICS[Math.floor(Math.random() * BLOG_TOPICS.length)];
+    console.log(`🎲 Selected topic: "${randomTopic}"`);
+
     const postData = await generateContentWithAI(randomTopic);
-    
+
     const slug = postData.title
       .toLowerCase()
       .replace(/[^\w\s]/g, '')
       .replace(/\s+/g, '-');
-    
+
     const markdownContent = `---
 title: "${postData.title}"
 excerpt: "${postData.excerpt}"
@@ -492,18 +532,17 @@ tags: [${postData.tags.map(tag => `"${tag}"`).join(', ')}]
 
 ${postData.content}
 `;
-    
-    const postsDirectory = path.join(process.cwd(), 'content/blog');
+
     if (!fs.existsSync(postsDirectory)) {
       fs.mkdirSync(postsDirectory, { recursive: true });
     }
-    
+
     const filePath = path.join(postsDirectory, `${slug}.md`);
     fs.writeFileSync(filePath, markdownContent);
-    
+
     console.log(`✅ Successfully generated blog post: ${slug}`);
     console.log(`📸 Cover image: ${postData.coverImage}`);
-    
+
     return slug;
   } catch (error) {
     console.error('Error generating blog post:', error);

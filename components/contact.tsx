@@ -103,7 +103,7 @@ export function Contact() {
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-semibold text-sm md:text-base mb-0.5 md:mb-1">Location</h3>
-                  <p className="text-muted-foreground text-xs md:text-sm">United Kingdom</p>
+                  <p className="text-muted-foreground text-xs md:text-sm">Sheffield, South Yorkshire</p>
                 </div>
               </div>
             </div>
@@ -214,9 +214,9 @@ export function Contact() {
                   />
                 </div>
 
-                <Button 
-                  type="submit" 
-                  size="lg" 
+                <Button
+                  type="submit"
+                  size="lg"
                   className="rounded-full gap-2 w-full md:w-auto text-sm md:text-base"
                   disabled={isLoading}
                 >

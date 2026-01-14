@@ -94,7 +94,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-primary-foreground/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm opacity-80">
-          <p>© 2025 Devora. All rights reserved. <span className="sr-only">Affordable web design and development for start-ups in the UK.</span></p>
+          <p>© 2026 Devora. All rights reserved. <span className="sr-only">Affordable web design and development for start-ups in Sheffield, South Yorkshire, and across the UK.</span></p>
           <nav aria-label="Social media navigation">
             <ul className="flex gap-6">
               <li>

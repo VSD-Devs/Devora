@@ -14,7 +14,7 @@ export function Hero() {
   ]
 
   return (
-    <section 
+    <section
       className="relative bg-primary text-primary-foreground pt-32 pb-12 md:pt-32 md:pb-20 px-4 md:px-6"
       aria-label="Hero section - Web design and development for start-ups"
     >
@@ -23,7 +23,7 @@ export function Hero() {
           <div>
             <div className="hidden sm:inline-flex items-center gap-2.5 bg-transparent px-0 py-2 text-xs md:text-sm font-medium mb-6 md:mb-8" role="banner">
               <span aria-hidden="true" className="inline-block w-2 h-2 bg-primary-foreground rounded-[2px] flex-shrink-0" />
-              <span className="whitespace-nowrap tracking-wider">BUILT FOR START-UPS • FAIR PRICING • WEB DEVELOPMENT</span>
+              <span className="whitespace-nowrap tracking-wider">SHEFFIELD-BASED • BUILT FOR START-UPS • FAIR PRICING</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-8 text-balance leading-tight md:leading-tight">
@@ -50,10 +50,10 @@ export function Hero() {
               <div className="hidden sm:flex -space-x-2" aria-label="Team members">
                 {teamMembers.map((member, index) => (
                   <div key={index} className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-primary-foreground/20 border-2 border-primary flex-shrink-0">
-                    <Image 
-                      src={member.src} 
-                      alt={member.alt} 
-                      width={40} 
+                    <Image
+                      src={member.src}
+                      alt={member.alt}
+                      width={40}
                       height={40}
                       className="rounded-full w-full h-full"
                       loading="eager"
