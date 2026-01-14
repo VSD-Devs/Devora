@@ -1,13 +1,12 @@
-import { Button } from "@/components/ui/button"
-import { CheckCircle, Home, ArrowRight } from "lucide-react"
-import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { CheckCircle, ArrowRight } from "lucide-react"
+import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-    title: "Thank You | Devora",
-    description: "Thank you for getting in touch with Devora. We've received your message and will get back to you shortly.",
+    title: "Thank You for Your Enquiry",
+    description: "Thank you for contacting Devora. We've received your enquiry and will be in touch within 24 hours.",
     robots: {
         index: false,
         follow: false,
@@ -16,50 +15,68 @@ export const metadata: Metadata = {
 
 export default function ThankYouPage() {
     return (
-        <div className="min-h-screen flex flex-col bg-background">
+        <>
             <Header />
-            <main className="flex-grow flex items-center justify-center py-20 px-4">
-                <div className="max-w-2xl w-full text-center">
-                    <div className="mb-8 flex justify-center">
-                        <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center animate-in zoom-in duration-500">
-                            <CheckCircle className="w-10 h-10 text-primary" strokeWidth={1.5} />
+            <main className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center px-4">
+                <div className="max-w-2xl mx-auto text-center py-24">
+                    {/* Success Icon */}
+                    <div className="mb-8">
+                        <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-lg shadow-green-500/20">
+                            <CheckCircle className="w-10 h-10 text-white" />
                         </div>
                     </div>
 
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
-                        Thank <span className="font-serif italic font-normal">You!</span>
+                    {/* Heading */}
+                    <h1 className="text-4xl md:text-5xl font-light text-white mb-4">
+                        Thank You!
                     </h1>
 
-                    <p className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-lg mx-auto">
-                        Your message has been received. Our team will review your enquiry and get back to you within <span className="text-foreground font-semibold">2 working days</span>.
+                    {/* Message */}
+                    <p className="text-xl text-gray-300 font-light mb-4">
+                        We've received your enquiry and appreciate you reaching out.
+                    </p>
+                    <p className="text-lg text-gray-400 font-light mb-8">
+                        Our team will review your request and get back to you within <span className="text-white font-medium">24 hours</span>.
                     </p>
 
-                    <div className="grid gap-4 sm:flex sm:justify-center">
-                        <Link href="/">
-                            <Button size="lg" className="rounded-full gap-2 px-8 py-6 text-lg w-full sm:w-auto">
-                                <Home className="w-5 h-5" />
-                                Back to Home
-                            </Button>
-                        </Link>
-                        <Link href="/case-studies">
-                            <Button size="lg" variant="outline" className="rounded-full gap-2 px-8 py-6 text-lg w-full sm:w-auto">
-                                View Our Work
-                                <ArrowRight className="w-5 h-5" />
-                            </Button>
-                        </Link>
+                    {/* What happens next */}
+                    <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 mb-8 text-left">
+                        <h2 className="text-lg font-light text-white mb-4">What happens next?</h2>
+                        <ul className="space-y-3">
+                            <li className="flex items-start gap-3">
+                                <span className="w-6 h-6 bg-gray-700 rounded-full flex items-center justify-center text-sm text-white flex-shrink-0 mt-0.5">1</span>
+                                <span className="text-gray-300 font-light">We'll review your submission and prepare a tailored response</span>
+                            </li>
+                            <li className="flex items-start gap-3">
+                                <span className="w-6 h-6 bg-gray-700 rounded-full flex items-center justify-center text-sm text-white flex-shrink-0 mt-0.5">2</span>
+                                <span className="text-gray-300 font-light">A member of our team will reach out via email</span>
+                            </li>
+                            <li className="flex items-start gap-3">
+                                <span className="w-6 h-6 bg-gray-700 rounded-full flex items-center justify-center text-sm text-white flex-shrink-0 mt-0.5">3</span>
+                                <span className="text-gray-300 font-light">We'll schedule a call to discuss your project in detail</span>
+                            </li>
+                        </ul>
                     </div>
 
-                    <div className="mt-16 pt-10 border-t border-border">
-                        <p className="text-sm text-muted-foreground">
-                            Need immediate assistance? Email us at{" "}
-                            <a href="mailto:hello@devora.co.uk" className="text-primary hover:underline font-medium">
-                                hello@devora.co.uk
-                            </a>
-                        </p>
-                    </div>
+                    {/* Back to Home */}
+                    <Link
+                        href="/"
+                        className="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-lg font-light hover:bg-gray-100 transition-all duration-200"
+                    >
+                        Return to Homepage
+                        <ArrowRight className="w-4 h-4" />
+                    </Link>
+
+                    {/* Additional contact info */}
+                    <p className="text-sm text-gray-500 mt-8 font-light">
+                        Have an urgent question? Email us directly at{" "}
+                        <a href="mailto:hello@devora.co.uk" className="text-gray-300 hover:text-white transition-colors">
+                            hello@devora.co.uk
+                        </a>
+                    </p>
                 </div>
             </main>
             <Footer />
-        </div>
+        </>
     )
 }

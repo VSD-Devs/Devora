@@ -24,8 +24,8 @@ interface WebsiteAuditFormProps {
   className?: string
   variant?: "hero" | "inline"
 }
-function AuditFormContent({ onFormSubmit }: { onFormSubmit: () => void }) {
-  const router = useRouter()
+
+function AuditFormContent({ onFormSubmit, router }: { onFormSubmit: () => void; router: ReturnType<typeof useRouter> }) {
   const [formData, setFormData] = useState({
     email: "",
     websiteUrl: "",
@@ -61,23 +61,16 @@ function AuditFormContent({ onFormSubmit }: { onFormSubmit: () => void }) {
         throw new Error(data.error || 'Something went wrong')
       }
 
-      // Redirect to thank you page
-      router.push('/thank-you')
-
-      // Reset form
-      setFormData({
-        email: "",
-        websiteUrl: "",
-        company: "",
-      })
-
+      // Close dialog if open
       onFormSubmit()
+
+      // Redirect to thank you page for Google Ads conversion tracking
+      router.push('/thank-you')
     } catch (error) {
       console.error('Form submission error:', error)
       toast.error('Failed to submit audit request. Please try again.', {
         duration: 5000,
       })
-    } finally {
       setIsLoading(false)
     }
   }
@@ -200,6 +193,7 @@ function AuditFormContent({ onFormSubmit }: { onFormSubmit: () => void }) {
 
 export default function WebsiteAuditForm({ className = "", variant = "inline" }: WebsiteAuditFormProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const router = useRouter()
 
   if (variant === "hero") {
     return (
@@ -229,7 +223,7 @@ export default function WebsiteAuditForm({ className = "", variant = "inline" }:
               Request a free comprehensive audit of your website
             </DialogDescription>
           </DialogHeader>
-          <AuditFormContent onFormSubmit={() => setIsOpen(false)} />
+          <AuditFormContent onFormSubmit={() => setIsOpen(false)} router={router} />
         </DialogContent>
       </Dialog>
     )
@@ -238,7 +232,7 @@ export default function WebsiteAuditForm({ className = "", variant = "inline" }:
   // Inline variant
   return (
     <div className={`bg-gray-900 border border-gray-800 rounded-2xl p-8 ${className}`}>
-      <AuditFormContent onFormSubmit={() => { }} />
+      <AuditFormContent onFormSubmit={() => { }} router={router} />
     </div>
   )
 }

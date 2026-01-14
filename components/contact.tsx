@@ -45,25 +45,14 @@ export function Contact() {
         throw new Error(data.error || 'Something went wrong')
       }
 
-      // Redirect to thank you page
+      // Redirect to thank you page for Google Ads conversion tracking
       router.push('/thank-you')
-
-      // Reset form
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        company: "",
-        phone: "",
-        message: "",
-      })
     } catch (error) {
       console.error('Form submission error:', error)
       const errorMessage = error instanceof Error ? error.message : 'Failed to send message. Please try again.'
       toast.error(errorMessage, {
         duration: 5000,
       })
-    } finally {
       setIsLoading(false)
     }
   }
