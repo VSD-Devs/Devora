@@ -1,12 +1,13 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Mail, MapPin, Loader2 } from "lucide-react"
 import { toast } from "sonner"
-import { SuccessModal } from "@/components/success-modal"
 
 export function Contact() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -16,7 +17,6 @@ export function Contact() {
     message: "",
   })
   const [isLoading, setIsLoading] = useState(false)
-  const [showSuccessModal, setShowSuccessModal] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -45,7 +45,8 @@ export function Contact() {
         throw new Error(data.error || 'Something went wrong')
       }
 
-      setShowSuccessModal(true)
+      // Redirect to thank you page
+      router.push('/thank-you')
 
       // Reset form
       setFormData({
@@ -237,12 +238,6 @@ export function Contact() {
           </div>
         </div>
       </section>
-
-      <SuccessModal
-        isOpen={showSuccessModal}
-        onClose={() => setShowSuccessModal(false)}
-        type="contact"
-      />
     </>
   )
 }

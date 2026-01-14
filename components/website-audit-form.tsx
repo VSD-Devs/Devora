@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
@@ -18,14 +19,13 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
-import { SuccessModal } from "@/components/success-modal"
 
 interface WebsiteAuditFormProps {
   className?: string
   variant?: "hero" | "inline"
 }
-
-function AuditFormContent({ onFormSubmit, onSuccess }: { onFormSubmit: () => void; onSuccess: () => void }) {
+function AuditFormContent({ onFormSubmit }: { onFormSubmit: () => void }) {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     email: "",
     websiteUrl: "",
@@ -61,7 +61,8 @@ function AuditFormContent({ onFormSubmit, onSuccess }: { onFormSubmit: () => voi
         throw new Error(data.error || 'Something went wrong')
       }
 
-      onSuccess()
+      // Redirect to thank you page
+      router.push('/thank-you')
 
       // Reset form
       setFormData({
@@ -171,8 +172,8 @@ function AuditFormContent({ onFormSubmit, onSuccess }: { onFormSubmit: () => voi
           </div>
         </div>
 
-        <Button 
-          type="submit" 
+        <Button
+          type="submit"
           className="w-full h-10 sm:h-11 bg-white text-gray-900 hover:bg-gray-200 font-light transition-all duration-200 text-sm"
           disabled={isLoading}
         >
@@ -199,62 +200,45 @@ function AuditFormContent({ onFormSubmit, onSuccess }: { onFormSubmit: () => voi
 
 export default function WebsiteAuditForm({ className = "", variant = "inline" }: WebsiteAuditFormProps) {
   const [isOpen, setIsOpen] = useState(false)
-  const [showSuccessModal, setShowSuccessModal] = useState(false)
 
   if (variant === "hero") {
     return (
-      <>
-        <Dialog open={isOpen} onOpenChange={setIsOpen}>
-          <DialogTrigger asChild>
-            <div className={`group cursor-pointer ${className}`}>
-              <div className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600 transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center">
-                      <Globe className="w-6 h-6 text-gray-300" />
-                    </div>
-                    <div>
-                      <h3 className="text-white font-light text-lg">Free Website Audit</h3>
-                      <p className="text-gray-400 text-sm font-light">Get insights in 24 hours</p>
-                    </div>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogTrigger asChild>
+          <div className={`group cursor-pointer ${className}`}>
+            <div className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center">
+                    <Globe className="w-6 h-6 text-gray-300" />
                   </div>
-                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
+                  <div>
+                    <h3 className="text-white font-light text-lg">Free Website Audit</h3>
+                    <p className="text-gray-400 text-sm font-light">Get insights in 24 hours</p>
+                  </div>
                 </div>
+                <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
               </div>
             </div>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[500px] bg-gray-900 border-gray-700">
-            <DialogHeader className="sr-only">
-              <DialogTitle>Website Audit Request</DialogTitle>
-              <DialogDescription>
-                Request a free comprehensive audit of your website
-              </DialogDescription>
-            </DialogHeader>
-            <AuditFormContent onFormSubmit={() => setIsOpen(false)} onSuccess={() => setShowSuccessModal(true)} />
-          </DialogContent>
-        </Dialog>
-
-        <SuccessModal
-          isOpen={showSuccessModal}
-          onClose={() => setShowSuccessModal(false)}
-          type="audit"
-        />
-      </>
+          </div>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[500px] bg-gray-900 border-gray-700">
+          <DialogHeader className="sr-only">
+            <DialogTitle>Website Audit Request</DialogTitle>
+            <DialogDescription>
+              Request a free comprehensive audit of your website
+            </DialogDescription>
+          </DialogHeader>
+          <AuditFormContent onFormSubmit={() => setIsOpen(false)} />
+        </DialogContent>
+      </Dialog>
     )
   }
 
   // Inline variant
   return (
-    <>
-      <div className={`bg-gray-900 border border-gray-800 rounded-2xl p-8 ${className}`}>
-        <AuditFormContent onFormSubmit={() => {}} onSuccess={() => setShowSuccessModal(true)} />
-      </div>
-
-      <SuccessModal
-        isOpen={showSuccessModal}
-        onClose={() => setShowSuccessModal(false)}
-        type="audit"
-      />
-    </>
+    <div className={`bg-gray-900 border border-gray-800 rounded-2xl p-8 ${className}`}>
+      <AuditFormContent onFormSubmit={() => { }} />
+    </div>
   )
 }
