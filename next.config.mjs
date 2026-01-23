@@ -54,6 +54,15 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/locations/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
       // Exclude Next.js dev files from caching for HMR
       {
         source: '/_next/:path*',
