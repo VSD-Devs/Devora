@@ -26,6 +26,7 @@ export function Header() {
     { href: getNavHref("#about"), label: "About" },
     { href: "/case-studies", label: "Portfolio" },
     { href: "/blog", label: "Blog", ariaLabel: "Web design and development blog" },
+    { href: "/locations", label: "Locations", ariaLabel: "Web development services by location" },
     { href: getNavHref("#services"), label: "Services" },
   ]
 
