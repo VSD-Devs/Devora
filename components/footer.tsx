@@ -112,6 +112,11 @@ export function Footer() {
                   LinkedIn
                 </Link>
               </li>
+              <li>
+                <Link href="https://x.com/DevoraLtd38083" target="_blank" rel="me noopener noreferrer" className="hover:opacity-100 transition-opacity" aria-label="Follow Devora on X (Twitter)">
+                  X
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>

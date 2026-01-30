@@ -68,7 +68,8 @@ export default function Home() {
         "sameAs": [
           "https://www.facebook.com/share/14UKFzshvcq/?mibextid=wwXIfr",
           "https://www.instagram.com/devoraltd?igsh=MTBvNGQxbmhrb28xaA==",
-          "https://www.linkedin.com/company/devora-web-design-development/"
+          "https://www.linkedin.com/company/devora-web-design-development/",
+          "https://x.com/DevoraLtd38083"
         ],
         "address": {
           "@type": "PostalAddress",
