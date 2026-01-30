@@ -1,10 +1,13 @@
 ---
-title: "Microservices Architecture – Complete Guide for Startups in 2026"
+title: Microservices Architecture – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for microservices architecture. Learn how to implement microservices effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for microservices
+  architecture. Learn how to implement microservices effectively in your
+  startup's web development projects. Practical insights and actionable tips
+  from industry professionals.
 date: '2026-01-10'
-author: "Emily Chen"
-coverImage: "/blog/microservices-architecture-1769158691159.jpg"
+author: Emily Chen
+coverImage: /blog/microservices-architecture-complete-guide-for-star.jpg
 tags:
   - microservices
   - architecture

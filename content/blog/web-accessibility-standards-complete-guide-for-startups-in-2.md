@@ -1,10 +1,13 @@
 ---
-title: "Web Accessibility Standards – Complete Guide for Startups in 2026"
+title: Web Accessibility Standards – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for web accessibility standards. Learn how to implement accessibility effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for web accessibility
+  standards. Learn how to implement accessibility effectively in your startup's
+  web development projects. Practical insights and actionable tips from industry
+  professionals.
 date: '2026-01-19'
-author: "Sophie Williams"
-coverImage: "/blog/web-accessibility-standards-1769158703213.jpg"
+author: Sophie Williams
+coverImage: /blog/web-accessibility-standards-complete-guide-for-sta.jpg
 tags:
   - accessibility
   - a11y

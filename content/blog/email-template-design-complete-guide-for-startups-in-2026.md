@@ -1,10 +1,13 @@
 ---
-title: "Email Template Design – Complete Guide for Startups in 2026"
+title: Email Template Design – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for email template design. Learn how to implement email design effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for email template design.
+  Learn how to implement email design effectively in your startup's web
+  development projects. Practical insights and actionable tips from industry
+  professionals.
 date: '2026-01-26'
-author: "Emily Chen"
-coverImage: "/blog/email-template-design-1769158712212.jpg"
+author: Emily Chen
+coverImage: /blog/email-template-design-complete-guide-for-startups-.jpg
 tags:
   - email design
   - html email

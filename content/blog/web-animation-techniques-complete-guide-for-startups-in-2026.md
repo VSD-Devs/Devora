@@ -1,10 +1,12 @@
 ---
-title: "Web Animation Techniques – Complete Guide for Startups in 2026"
+title: Web Animation Techniques – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for web animation techniques. Learn how to implement animation effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for web animation techniques.
+  Learn how to implement animation effectively in your startup's web development
+  projects. Practical insights and actionable tips from industry professionals.
 date: '2026-01-09'
-author: "Emily Chen"
-coverImage: "/blog/web-animation-techniques-1769158689801.jpg"
+author: Emily Chen
+coverImage: /blog/web-animation-techniques-complete-guide-for-startu.jpg
 tags:
   - animation
   - css

@@ -1,10 +1,12 @@
 ---
-title: "Database Optimisation – Complete Guide for Startups in 2026"
+title: Database Optimisation – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for database optimisation. Learn how to implement database effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for database optimisation.
+  Learn how to implement database effectively in your startup's web development
+  projects. Practical insights and actionable tips from industry professionals.
 date: '2026-01-05'
-author: "James Thompson"
-coverImage: "/blog/database-optimisation-1769158683714.jpg"
+author: James Thompson
+coverImage: /blog/database-optimisation-complete-guide-for-startups-.jpg
 tags:
   - database
   - performance

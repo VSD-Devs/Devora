@@ -1,10 +1,12 @@
 ---
-title: "Testing Web Applications – Complete Guide for Startups in 2026"
+title: Testing Web Applications – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for testing web applications. Learn how to implement testing effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for testing web applications.
+  Learn how to implement testing effectively in your startup's web development
+  projects. Practical insights and actionable tips from industry professionals.
 date: '2026-01-16'
-author: "Sophie Williams"
-coverImage: "/blog/testing-web-applications-1769158698920.jpg"
+author: Sophie Williams
+coverImage: /blog/testing-web-applications-complete-guide-for-startu.jpg
 tags:
   - testing
   - jest

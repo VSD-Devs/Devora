@@ -1,10 +1,15 @@
 ---
-title: Website Performance Optimisation Guide – Boost Speed and Core Web Vitals in 2026
+title: >-
+  Website Performance Optimisation Guide – Boost Speed and Core Web Vitals in
+  2026
 excerpt: >-
-  Learn how to optimise your website's performance and improve Core Web Vitals scores. Discover proven techniques for faster load times, better user experience, and higher search rankings. Essential strategies for startups looking to dominate search results.
+  Learn how to optimise your website's performance and improve Core Web Vitals
+  scores. Discover proven techniques for faster load times, better user
+  experience, and higher search rankings. Essential strategies for startups
+  looking to dominate search results.
 date: '2026-01-23'
 author: Sarah Mitchell
-coverImage: /blog/website-performance-optimisation-1769158439659.jpg
+coverImage: /blog/website-performance-optimisation-guide-2026.jpg
 tags:
   - website performance
   - core web vitals

@@ -1,10 +1,13 @@
 ---
-title: "Web Security Best Practices – Complete Guide for Startups in 2026"
+title: Web Security Best Practices – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for web security best practices. Learn how to implement security effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for web security best
+  practices. Learn how to implement security effectively in your startup's web
+  development projects. Practical insights and actionable tips from industry
+  professionals.
 date: '2026-01-17'
-author: "Emily Chen"
-coverImage: "/blog/web-security-best-practices-1769158700414.jpg"
+author: Emily Chen
+coverImage: /blog/web-security-best-practices-complete-guide-for-sta.jpg
 tags:
   - security
   - web security

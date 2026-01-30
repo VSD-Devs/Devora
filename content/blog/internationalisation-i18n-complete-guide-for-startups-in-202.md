@@ -1,10 +1,13 @@
 ---
-title: "Internationalisation (i18n) – Complete Guide for Startups in 2026"
+title: Internationalisation (i18n) – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for internationalisation (i18n). Learn how to implement i18n effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for internationalisation
+  (i18n). Learn how to implement i18n effectively in your startup's web
+  development projects. Practical insights and actionable tips from industry
+  professionals.
 date: '2026-01-28'
-author: "Sarah Mitchell"
-coverImage: "/blog/internationalisation-i18n-1769158715012.jpg"
+author: Sarah Mitchell
+coverImage: /blog/internationalisation-i18n-complete-guide-for-start.jpg
 tags:
   - i18n
   - localisation

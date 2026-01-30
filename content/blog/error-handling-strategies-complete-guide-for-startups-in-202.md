@@ -1,10 +1,13 @@
 ---
-title: "Error Handling Strategies – Complete Guide for Startups in 2026"
+title: Error Handling Strategies – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for error handling strategies. Learn how to implement error handling effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for error handling
+  strategies. Learn how to implement error handling effectively in your
+  startup's web development projects. Practical insights and actionable tips
+  from industry professionals.
 date: '2026-01-15'
-author: "Emily Chen"
-coverImage: "/blog/error-handling-strategies-1769158697317.jpg"
+author: Emily Chen
+coverImage: /blog/error-handling-strategies-complete-guide-for-start.jpg
 tags:
   - error handling
   - javascript

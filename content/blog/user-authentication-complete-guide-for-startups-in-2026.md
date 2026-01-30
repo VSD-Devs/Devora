@@ -1,10 +1,13 @@
 ---
-title: "User Authentication – Complete Guide for Startups in 2026"
+title: User Authentication – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for user authentication. Learn how to implement authentication effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for user authentication.
+  Learn how to implement authentication effectively in your startup's web
+  development projects. Practical insights and actionable tips from industry
+  professionals.
 date: '2026-01-06'
-author: "Sophie Williams"
-coverImage: "/blog/user-authentication-1769158685334.jpg"
+author: Sophie Williams
+coverImage: /blog/user-authentication-complete-guide-for-startups-in.jpg
 tags:
   - authentication
   - security

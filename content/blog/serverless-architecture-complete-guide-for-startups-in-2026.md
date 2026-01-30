@@ -1,10 +1,13 @@
 ---
-title: "Serverless Architecture – Complete Guide for Startups in 2026"
+title: Serverless Architecture – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for serverless architecture. Learn how to implement serverless effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for serverless architecture.
+  Learn how to implement serverless effectively in your startup's web
+  development projects. Practical insights and actionable tips from industry
+  professionals.
 date: '2026-01-24'
-author: "Alex Rodriguez"
-coverImage: "/blog/serverless-architecture-1769158709223.jpg"
+author: Alex Rodriguez
+coverImage: /blog/serverless-architecture-complete-guide-for-startup.jpg
 tags:
   - serverless
   - aws lambda

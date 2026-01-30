@@ -1,10 +1,13 @@
 ---
-title: "Social Media Integration – Complete Guide for Startups in 2026"
+title: Social Media Integration – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for social media integration. Learn how to implement social media effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for social media integration.
+  Learn how to implement social media effectively in your startup's web
+  development projects. Practical insights and actionable tips from industry
+  professionals.
 date: '2026-01-28'
-author: "Sarah Mitchell"
-coverImage: "/blog/social-media-integration-1769158720000.jpg"
+author: Sarah Mitchell
+coverImage: /blog/social-media-integration-complete-guide-for-startu.jpg
 tags:
   - social media
   - web development

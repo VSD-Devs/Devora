@@ -1,10 +1,12 @@
 ---
-title: "GraphQL vs REST – Complete Guide for Startups in 2026"
+title: GraphQL vs REST – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for graphql vs rest. Learn how to implement graphql effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for graphql vs rest. Learn
+  how to implement graphql effectively in your startup's web development
+  projects. Practical insights and actionable tips from industry professionals.
 date: '2026-01-08'
-author: "Sarah Mitchell"
-coverImage: "/blog/graphql-vs-rest-1769158688382.jpg"
+author: Sarah Mitchell
+coverImage: /blog/graphql-vs-rest-complete-guide-for-startups-in-202.jpg
 tags:
   - graphql
   - rest api

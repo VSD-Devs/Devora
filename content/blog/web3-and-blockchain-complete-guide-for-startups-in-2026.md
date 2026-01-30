@@ -1,10 +1,12 @@
 ---
-title: "Web3 and Blockchain – Complete Guide for Startups in 2026"
+title: Web3 and Blockchain – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for web3 and blockchain. Learn how to implement web3 effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for web3 and blockchain.
+  Learn how to implement web3 effectively in your startup's web development
+  projects. Practical insights and actionable tips from industry professionals.
 date: '2026-01-22'
-author: "Sophie Williams"
-coverImage: "/blog/web3-and-blockchain-1769158707610.jpg"
+author: Sophie Williams
+coverImage: /blog/web3-and-blockchain-complete-guide-for-startups-in.jpg
 tags:
   - web3
   - blockchain

@@ -1,10 +1,13 @@
 ---
-title: "Component Library Design – Complete Guide for Startups in 2026"
+title: Component Library Design – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for component library design. Learn how to implement components effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for component library design.
+  Learn how to implement components effectively in your startup's web
+  development projects. Practical insights and actionable tips from industry
+  professionals.
 date: '2026-01-13'
-author: "Alex Rodriguez"
-coverImage: "/blog/component-library-design-1769158695746.jpg"
+author: Alex Rodriguez
+coverImage: /blog/component-library-design-complete-guide-for-startu.jpg
 tags:
   - components
   - ui library

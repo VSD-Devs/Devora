@@ -1,10 +1,13 @@
 ---
-title: "API Design Principles – Complete Guide for Startups in 2026"
+title: API Design Principles – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for api design principles. Learn how to implement api design effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for api design principles.
+  Learn how to implement api design effectively in your startup's web
+  development projects. Practical insights and actionable tips from industry
+  professionals.
 date: '2026-01-03'
-author: "Alex Rodriguez"
-coverImage: "/blog/api-design-principles-1769158680558.jpg"
+author: Alex Rodriguez
+coverImage: /blog/api-design-principles-complete-guide-for-startups-.jpg
 tags:
   - api design
   - backend development

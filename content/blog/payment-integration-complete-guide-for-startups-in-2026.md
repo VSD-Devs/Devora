@@ -1,10 +1,12 @@
 ---
-title: "Payment Integration – Complete Guide for Startups in 2026"
+title: Payment Integration – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for payment integration. Learn how to implement payments effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for payment integration.
+  Learn how to implement payments effectively in your startup's web development
+  projects. Practical insights and actionable tips from industry professionals.
 date: '2026-01-30'
-author: "Emily Chen"
-coverImage: "/blog/payment-integration-1769158718080.jpg"
+author: Emily Chen
+coverImage: /blog/payment-integration-complete-guide-for-startups-in.jpg
 tags:
   - payments
   - stripe

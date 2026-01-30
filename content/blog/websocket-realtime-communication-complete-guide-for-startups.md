@@ -1,10 +1,13 @@
 ---
-title: "WebSocket Real-time Communication – Complete Guide for Startups in 2026"
+title: WebSocket Real-time Communication – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for websocket real-time communication. Learn how to implement websocket effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for websocket real-time
+  communication. Learn how to implement websocket effectively in your startup's
+  web development projects. Practical insights and actionable tips from industry
+  professionals.
 date: '2026-01-12'
-author: "Emily Chen"
-coverImage: "/blog/websocket-realtime-communication-1769158694147.jpg"
+author: Emily Chen
+coverImage: /blog/websocket-realtime-communication-complete-guide-fo.jpg
 tags:
   - websocket
   - real-time

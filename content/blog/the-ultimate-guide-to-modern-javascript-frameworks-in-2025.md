@@ -1,10 +1,12 @@
 ---
 title: Modern JavaScript Frameworks – Choosing the Right One for Your Project in 2025
 excerpt: >-
-  Navigate the JavaScript ecosystem with confidence. Learn about React, Vue, Angular, Svelte, and emerging frameworks to choose the perfect technology stack for your web development projects.
+  Navigate the JavaScript ecosystem with confidence. Learn about React, Vue,
+  Angular, Svelte, and emerging frameworks to choose the perfect technology
+  stack for your web development projects.
 date: '2025-10-29'
 author: Devora team
-coverImage: /blog/the-ultimate-guide-to-modern-javascript-frameworks-i.jpg
+coverImage: /blog/the-ultimate-guide-to-modern-javascript-frameworks.jpg
 tags:
   - devora insights
   - javascript

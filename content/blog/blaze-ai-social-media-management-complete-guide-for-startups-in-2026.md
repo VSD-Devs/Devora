@@ -1,10 +1,15 @@
 ---
-title: "Blaze.ai Review – How AI-Powered Social Media Management Transforms Startup Marketing in 2026"
+title: >-
+  Blaze.ai Review – How AI-Powered Social Media Management Transforms Startup
+  Marketing in 2026
 excerpt: >-
-  Discover how Blaze.ai revolutionises social media management for startups. Learn about AI-powered content creation, scheduling, and analytics that help businesses grow faster. Complete guide with real results and practical insights.
+  Discover how Blaze.ai revolutionises social media management for startups.
+  Learn about AI-powered content creation, scheduling, and analytics that help
+  businesses grow faster. Complete guide with real results and practical
+  insights.
 date: '2026-01-29'
-author: "Sarah Mitchell"
-coverImage: "/blog/blaze-ai-social-media-management-1769158730000.jpg"
+author: Sarah Mitchell
+coverImage: /blog/blaze-ai-social-media-management-complete-guide-fo.jpg
 tags:
   - social media management
   - AI marketing tools

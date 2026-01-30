@@ -1,10 +1,12 @@
 ---
-title: "CI/CD Pipeline Setup – Complete Guide for Startups in 2026"
+title: CI/CD Pipeline Setup – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for ci/cd pipeline setup. Learn how to implement ci/cd effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for ci/cd pipeline setup.
+  Learn how to implement ci/cd effectively in your startup's web development
+  projects. Practical insights and actionable tips from industry professionals.
 date: '2026-01-20'
-author: "Emily Chen"
-coverImage: "/blog/cicd-pipeline-setup-1769158704637.jpg"
+author: Emily Chen
+coverImage: /blog/cicd-pipeline-setup-complete-guide-for-startups-in.jpg
 tags:
   - ci/cd
   - devops

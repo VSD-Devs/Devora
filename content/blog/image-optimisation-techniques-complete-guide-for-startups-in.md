@@ -1,10 +1,13 @@
 ---
-title: "Image Optimisation Techniques – Complete Guide for Startups in 2026"
+title: Image Optimisation Techniques – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for image optimisation techniques. Learn how to implement image optimisation effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for image optimisation
+  techniques. Learn how to implement image optimisation effectively in your
+  startup's web development projects. Practical insights and actionable tips
+  from industry professionals.
 date: '2026-01-25'
-author: "James Thompson"
-coverImage: "/blog/image-optimisation-techniques-1769158710645.jpg"
+author: James Thompson
+coverImage: /blog/image-optimisation-techniques-complete-guide-for-s.jpg
 tags:
   - image optimisation
   - performance

@@ -1,10 +1,16 @@
 ---
-title: "The Ultimate Guide to Web Development Trends in 2026"
-excerpt: "Discover practical strategies and insights about web development trends that can transform your business website and improve your digital presence."
-date: "2026-01-14"
-author: "Sarah Mitchell"
-coverImage: "/blog/web-development-trends-1768425208086.jpg"
-tags: ["web development", "digital strategy", "business growth", "web development trends"]
+title: The Ultimate Guide to Web Development Trends in 2026
+excerpt: >-
+  Discover practical strategies and insights about web development trends that
+  can transform your business website and improve your digital presence.
+date: '2026-01-14'
+author: Sarah Mitchell
+coverImage: /blog/the-ultimate-guide-to-web-development-trends-in-20.jpg
+tags:
+  - web development
+  - digital strategy
+  - business growth
+  - web development trends
 ---
 
 

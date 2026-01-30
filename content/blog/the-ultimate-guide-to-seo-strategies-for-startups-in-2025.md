@@ -1,10 +1,12 @@
 ---
 title: SEO Strategies for Startup Websites – Dominate Search Rankings in 2025
 excerpt: >-
-  Drive organic traffic to your startup website. Learn proven SEO strategies, technical optimisation techniques, and content marketing tactics that will help your business rank higher and attract more customers.
+  Drive organic traffic to your startup website. Learn proven SEO strategies,
+  technical optimisation techniques, and content marketing tactics that will
+  help your business rank higher and attract more customers.
 date: '2025-10-29'
 author: Devora team
-coverImage: /blog/the-ultimate-guide-to-seo-strategies-for-startups-i.jpg
+coverImage: /blog/the-ultimate-guide-to-seo-strategies-for-startups-.jpg
 tags:
   - devora insights
   - seo

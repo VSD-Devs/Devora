@@ -1,10 +1,12 @@
 ---
-title: "React Server Components – Complete Guide for Startups in 2026"
+title: React Server Components – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for react server components. Learn how to implement react effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for react server components.
+  Learn how to implement react effectively in your startup's web development
+  projects. Practical insights and actionable tips from industry professionals.
 date: '2026-01-01'
-author: "Emily Chen"
-coverImage: "/blog/react-server-components-1769158672859.jpg"
+author: Emily Chen
+coverImage: /blog/react-server-components-complete-guide-for-startup.jpg
 tags:
   - react
   - server components

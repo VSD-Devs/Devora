@@ -1,10 +1,13 @@
 ---
-title: "Web Performance Monitoring – Complete Guide for Startups in 2026"
+title: Web Performance Monitoring – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for web performance monitoring. Learn how to implement performance monitoring effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for web performance
+  monitoring. Learn how to implement performance monitoring effectively in your
+  startup's web development projects. Practical insights and actionable tips
+  from industry professionals.
 date: '2026-01-31'
-author: "Sarah Mitchell"
-coverImage: "/blog/web-performance-monitoring-1769158719667.jpg"
+author: Sarah Mitchell
+coverImage: /blog/web-performance-monitoring-complete-guide-for-star.jpg
 tags:
   - performance monitoring
   - apm

@@ -1,10 +1,12 @@
 ---
-title: "CSS Grid and Flexbox – Complete Guide for Startups in 2026"
+title: CSS Grid and Flexbox – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for css grid and flexbox. Learn how to implement css effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for css grid and flexbox.
+  Learn how to implement css effectively in your startup's web development
+  projects. Practical insights and actionable tips from industry professionals.
 date: '2026-01-04'
-author: "Sophie Williams"
-coverImage: "/blog/css-grid-and-flexbox-1769158682099.jpg"
+author: Sophie Williams
+coverImage: /blog/css-grid-and-flexbox-complete-guide-for-startups-i.jpg
 tags:
   - css
   - grid

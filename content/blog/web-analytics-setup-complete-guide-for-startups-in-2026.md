@@ -1,10 +1,12 @@
 ---
-title: "Web Analytics Setup – Complete Guide for Startups in 2026"
+title: Web Analytics Setup – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for web analytics setup. Learn how to implement analytics effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for web analytics setup.
+  Learn how to implement analytics effectively in your startup's web development
+  projects. Practical insights and actionable tips from industry professionals.
 date: '2026-01-29'
-author: "Sarah Mitchell"
-coverImage: "/blog/web-analytics-setup-1769158716499.jpg"
+author: Sarah Mitchell
+coverImage: /blog/web-analytics-setup-complete-guide-for-startups-in.jpg
 tags:
   - analytics
   - google analytics

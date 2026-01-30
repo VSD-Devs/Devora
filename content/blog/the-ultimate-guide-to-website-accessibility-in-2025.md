@@ -1,10 +1,12 @@
 ---
 title: Website Accessibility in 2025 – Building Inclusive Digital Experiences
 excerpt: >-
-  Create websites that work for everyone. Learn the essential accessibility standards, implementation strategies, and legal requirements that will make your site accessible to users with disabilities in 2025.
+  Create websites that work for everyone. Learn the essential accessibility
+  standards, implementation strategies, and legal requirements that will make
+  your site accessible to users with disabilities in 2025.
 date: '2025-10-29'
 author: Devora team
-coverImage: /blog/the-ultimate-guide-to-website-accessibility-in-2.jpg
+coverImage: /blog/the-ultimate-guide-to-website-accessibility-in-202.jpg
 tags:
   - devora insights
   - web accessibility

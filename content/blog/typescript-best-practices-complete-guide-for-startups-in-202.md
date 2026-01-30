@@ -1,10 +1,13 @@
 ---
-title: "TypeScript Best Practices – Complete Guide for Startups in 2026"
+title: TypeScript Best Practices – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for typescript best practices. Learn how to implement typescript effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for typescript best
+  practices. Learn how to implement typescript effectively in your startup's web
+  development projects. Practical insights and actionable tips from industry
+  professionals.
 date: '2026-01-02'
-author: "Sarah Mitchell"
-coverImage: "/blog/typescript-best-practices-1769158679027.jpg"
+author: Sarah Mitchell
+coverImage: /blog/typescript-best-practices-complete-guide-for-start.jpg
 tags:
   - typescript
   - web development

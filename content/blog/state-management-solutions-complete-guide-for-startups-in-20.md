@@ -1,10 +1,13 @@
 ---
-title: "State Management Solutions – Complete Guide for Startups in 2026"
+title: State Management Solutions – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for state management solutions. Learn how to implement state management effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for state management
+  solutions. Learn how to implement state management effectively in your
+  startup's web development projects. Practical insights and actionable tips
+  from industry professionals.
 date: '2026-01-18'
-author: "Sophie Williams"
-coverImage: "/blog/state-management-solutions-1769158701818.jpg"
+author: Sophie Williams
+coverImage: /blog/state-management-solutions-complete-guide-for-star.jpg
 tags:
   - state management
   - redux

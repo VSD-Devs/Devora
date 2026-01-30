@@ -1,10 +1,13 @@
 ---
-title: "Web Scraping Ethics – Complete Guide for Startups in 2026"
+title: Web Scraping Ethics – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for web scraping ethics. Learn how to implement web scraping effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for web scraping ethics.
+  Learn how to implement web scraping effectively in your startup's web
+  development projects. Practical insights and actionable tips from industry
+  professionals.
 date: '2026-01-27'
-author: "James Thompson"
-coverImage: "/blog/web-scraping-ethics-1769158713697.jpg"
+author: James Thompson
+coverImage: /blog/web-scraping-ethics-complete-guide-for-startups-in.jpg
 tags:
   - web scraping
   - data collection

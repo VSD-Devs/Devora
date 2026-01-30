@@ -1,10 +1,12 @@
 ---
-title: "Dark Mode Implementation – Complete Guide for Startups in 2026"
+title: Dark Mode Implementation – Complete Guide for Startups in 2026
 excerpt: >-
-  Discover essential strategies and best practices for dark mode implementation. Learn how to implement dark mode effectively in your startup's web development projects. Practical insights and actionable tips from industry professionals.
+  Discover essential strategies and best practices for dark mode implementation.
+  Learn how to implement dark mode effectively in your startup's web development
+  projects. Practical insights and actionable tips from industry professionals.
 date: '2026-01-11'
-author: "Emily Chen"
-coverImage: "/blog/dark-mode-implementation-1769158692635.jpg"
+author: Emily Chen
+coverImage: /blog/dark-mode-implementation-complete-guide-for-startu.jpg
 tags:
   - dark mode
   - ui design
