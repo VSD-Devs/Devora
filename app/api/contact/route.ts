@@ -5,9 +5,76 @@ import { Resend } from 'resend';
 // In production, consider using Redis or a database
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
 
-// Rate limiting: max 3 submissions per IP per 15 minutes
-const RATE_LIMIT_MAX = 3;
+// Rate limiting: max 2 submissions per IP per 15 minutes (tighter)
+const RATE_LIMIT_MAX = 2;
 const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes in milliseconds
+
+// Minimum time between form load and submission (in milliseconds)
+const MIN_FORM_TIME = 3000; // 3 seconds
+const MIN_INTERACTION_TIME = 2000; // 2 seconds after first interaction
+
+// Common spam patterns to detect
+const SPAM_PATTERNS = [
+  /(?:click here|visit now|buy now|limited time|act now)/i,
+  /(?:http|https|www\.)\S+/gi, // Multiple URLs
+  /(?:viagra|cialis|casino|poker|loan|debt|free money)/i,
+  /(?:dear sir|dear madam|hello friend)/i,
+  /(?:guaranteed|risk-free|100%|no risk)/i,
+];
+
+// Backlink/SEO spam patterns (common spam enquiries)
+const BACKLINK_SPAM_PATTERNS = [
+  /(?:backlink|backlinks|back link|back links)/i,
+  /(?:link building|linkbuilding)/i,
+  /(?:guest post|guestpost|guest posting|guestposting)/i,
+  /(?:dofollow|do-follow|nofollow|no-follow)/i,
+  /(?:domain authority|domain rating|da\s*[0-9]+|dr\s*[0-9]+)/i,
+  /(?:permanent link|permanent backlink)/i,
+  /(?:high quality link|quality backlink|premium link)/i,
+  /(?:seo service|seo package|seo link)/i,
+  /(?:increase.*rank|improve.*rank|boost.*rank)/i,
+  /(?:organic traffic|organic ranking)/i,
+  /(?:link placement|link insertion)/i,
+  /(?:pbn|private blog network)/i,
+  /(?:link exchange|link swap)/i,
+  /(?:we can.*link|we offer.*link|we provide.*link)/i,
+  /(?:interested.*link|looking.*link|need.*link)/i,
+];
+
+// Suspicious email domains commonly used for spam
+const SUSPICIOUS_EMAIL_DOMAINS = [
+  /@(?:gmail|yahoo|hotmail|outlook|aol|protonmail|mail)\.(?:com|co\.uk|net|org)$/i,
+  // Note: We'll only flag these if combined with spam content, not block legitimate users
+];
+
+// Function to detect backlink spam
+function detectBacklinkSpam(message: string, email?: string, company?: string): boolean {
+  const combinedText = `${message} ${email || ''} ${company || ''}`.toLowerCase();
+  
+  // Check for backlink spam patterns
+  const backlinkMatches = BACKLINK_SPAM_PATTERNS.reduce((count, pattern) => {
+    const matches = combinedText.match(pattern);
+    return count + (matches ? matches.length : 0);
+  }, 0);
+  
+  // If 2+ backlink spam patterns found, it's likely spam
+  if (backlinkMatches >= 2) {
+    return true;
+  }
+  
+  // If message contains backlink-related terms AND sales language, it's spam
+  if (backlinkMatches >= 1 && (
+    combinedText.includes('offer') || 
+    combinedText.includes('service') || 
+    combinedText.includes('package') ||
+    combinedText.includes('price') ||
+    combinedText.includes('cost')
+  )) {
+    return true;
+  }
+  
+  return false;
+}
 
 function getClientIP(request: Request): string {
   // Try to get IP from various headers (for Vercel/proxies)
@@ -67,7 +134,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { firstName, lastName, email, company, phone, message, website } = await request.json();
+    const { firstName, lastName, email, company, phone, message, website, formLoadTime, interactionTime, submitTime } = await request.json();
 
     // Honeypot check - if website field is present and filled, it's a bot
     if (website && website.trim()) {
@@ -76,6 +143,30 @@ export async function POST(request: Request) {
         { error: 'Invalid submission detected' },
         { status: 400 }
       );
+    }
+
+    // Time-based validation - check if submission happened too quickly
+    if (formLoadTime && submitTime) {
+      const timeSinceLoad = submitTime - formLoadTime;
+      if (timeSinceLoad < MIN_FORM_TIME) {
+        console.log(`Bot detected via time validation: ${timeSinceLoad}ms since form load`);
+        return NextResponse.json(
+          { error: 'Invalid submission detected' },
+          { status: 400 }
+        );
+      }
+    }
+
+    // Check time since first interaction
+    if (interactionTime && submitTime) {
+      const timeSinceInteraction = submitTime - interactionTime;
+      if (timeSinceInteraction < MIN_INTERACTION_TIME) {
+        console.log(`Bot detected via interaction time: ${timeSinceInteraction}ms since interaction`);
+        return NextResponse.json(
+          { error: 'Invalid submission detected' },
+          { status: 400 }
+        );
+      }
     }
 
     // Basic validation for required fields
@@ -106,6 +197,41 @@ export async function POST(request: Request) {
     if (message.trim().length > 2000) {
       return NextResponse.json(
         { error: 'Message is too long (maximum 2000 characters)' },
+        { status: 400 }
+      );
+    }
+
+    // Content-based spam detection
+    const messageLower = message.toLowerCase();
+    const spamScore = SPAM_PATTERNS.reduce((score, pattern) => {
+      const matches = messageLower.match(pattern);
+      return score + (matches ? matches.length : 0);
+    }, 0);
+
+    // Check for multiple URLs (common spam pattern)
+    const urlMatches = message.match(/(?:http|https|www\.)\S+/gi);
+    if (urlMatches && urlMatches.length > 2) {
+      console.log(`Spam detected: Multiple URLs found (${urlMatches.length})`);
+      return NextResponse.json(
+        { error: 'Invalid submission detected' },
+        { status: 400 }
+      );
+    }
+
+    // Check for backlink/SEO spam (common spam enquiry type)
+    if (detectBacklinkSpam(message, email, company)) {
+      console.log('Spam detected: Backlink/SEO spam enquiry');
+      return NextResponse.json(
+        { error: 'Invalid submission detected' },
+        { status: 400 }
+      );
+    }
+
+    // If spam score is too high, reject
+    if (spamScore >= 3) {
+      console.log(`Spam detected: High spam score (${spamScore})`);
+      return NextResponse.json(
+        { error: 'Invalid submission detected' },
         { status: 400 }
       );
     }

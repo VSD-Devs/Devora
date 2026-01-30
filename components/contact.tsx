@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Mail, MapPin, Loader2 } from "lucide-react"
@@ -18,8 +18,25 @@ export function Contact() {
     website: "", // Honeypot field - bots will fill this
   })
   const [isLoading, setIsLoading] = useState(false)
+  const formLoadTime = useRef<number>(Date.now())
+  const firstInteractionTime = useRef<number | null>(null)
+  const hasInteracted = useRef<boolean>(false)
+
+  // Track when form component mounts
+  useEffect(() => {
+    formLoadTime.current = Date.now()
+  }, [])
+
+  // Track first user interaction with form fields
+  const handleInteraction = () => {
+    if (!hasInteracted.current) {
+      firstInteractionTime.current = Date.now()
+      hasInteracted.current = true
+    }
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    handleInteraction()
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
@@ -48,6 +65,32 @@ export function Contact() {
       return
     }
 
+    // Time-based validation - reject submissions that happen too quickly
+    const now = Date.now()
+    const timeSinceLoad = now - formLoadTime.current
+    const minTimeToSubmit = 3000 // Minimum 3 seconds from form load
+    
+    // If user hasn't interacted yet, or submission is too fast, it's suspicious
+    if (!hasInteracted.current || timeSinceLoad < minTimeToSubmit) {
+      console.log('Bot detected via time validation', { timeSinceLoad, hasInteracted: hasInteracted.current })
+      toast.error('Please take your time filling out the form.', {
+        duration: 5000,
+      })
+      return
+    }
+
+    // Check time since first interaction (should be at least 2 seconds)
+    if (firstInteractionTime.current) {
+      const timeSinceInteraction = now - firstInteractionTime.current
+      if (timeSinceInteraction < 2000) {
+        console.log('Bot detected via interaction time validation', { timeSinceInteraction })
+        toast.error('Please take your time filling out the form.', {
+          duration: 5000,
+        })
+        return
+      }
+    }
+
     // Basic validation
     if (!formData.message || formData.message.trim().length < 10) {
       toast.error('Please provide a more detailed message (at least 10 characters).', {
@@ -63,25 +106,28 @@ export function Contact() {
       return
     }
 
-    console.log('Starting form submission...')
-    setIsLoading(true)
+      console.log('Starting form submission...')
+      setIsLoading(true)
 
-    try {
-      console.log('Sending request to /api/contact')
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          company: formData.company,
-          phone: formData.phone,
-          message: formData.message,
-        }),
-      })
+      try {
+        console.log('Sending request to /api/contact')
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            company: formData.company,
+            phone: formData.phone,
+            message: formData.message,
+            formLoadTime: formLoadTime.current,
+            interactionTime: firstInteractionTime.current,
+            submitTime: Date.now(),
+          }),
+        })
       
       console.log('Response received:', { status: response.status, ok: response.ok })
 
@@ -216,6 +262,7 @@ export function Contact() {
                       placeholder="John"
                       value={formData.firstName}
                       onChange={handleChange}
+                      onFocus={handleInteraction}
                       className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours"
                       required
                       autoComplete="given-name"
@@ -232,6 +279,7 @@ export function Contact() {
                       placeholder="Doe"
                       value={formData.lastName}
                       onChange={handleChange}
+                      onFocus={handleInteraction}
                       className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours"
                       required
                       autoComplete="family-name"
@@ -251,6 +299,7 @@ export function Contact() {
                       placeholder="your@email.com"
                       value={formData.email}
                       onChange={handleChange}
+                      onFocus={handleInteraction}
                       className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours"
                       required
                       autoComplete="email"
@@ -268,6 +317,7 @@ export function Contact() {
                       placeholder="+44 (0)123 456 7890"
                       value={formData.phone}
                       onChange={handleChange}
+                      onFocus={handleInteraction}
                       className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours"
                       autoComplete="tel"
                       inputMode="tel"
@@ -279,16 +329,17 @@ export function Contact() {
                   <label htmlFor="company" className="block text-xs md:text-sm font-medium mb-1.5 md:mb-2">
                     Company Name (Optional)
                   </label>
-                  <input
-                    id="company"
-                    name="company"
-                    type="text"
-                    placeholder="Your company name"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours"
-                    autoComplete="organization"
-                  />
+                    <input
+                      id="company"
+                      name="company"
+                      type="text"
+                      placeholder="Your company name"
+                      value={formData.company}
+                      onChange={handleChange}
+                      onFocus={handleInteraction}
+                      className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours"
+                      autoComplete="organization"
+                    />
                 </div>
 
                 <div>
@@ -301,6 +352,7 @@ export function Contact() {
                     placeholder="What's your vision?"
                     value={formData.message}
                     onChange={handleChange}
+                    onFocus={handleInteraction}
                     rows={3}
                     className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours resize-none"
                     required

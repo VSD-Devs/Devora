@@ -5,9 +5,61 @@ import { Resend } from 'resend';
 // In production, consider using Redis or a database
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
 
-// Rate limiting: max 3 submissions per IP per 15 minutes
-const RATE_LIMIT_MAX = 3;
+// Rate limiting: max 2 submissions per IP per 15 minutes (tighter)
+const RATE_LIMIT_MAX = 2;
 const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes in milliseconds
+
+// Minimum time between form load and submission (in milliseconds)
+const MIN_FORM_TIME = 3000; // 3 seconds
+const MIN_INTERACTION_TIME = 2000; // 2 seconds after first interaction
+
+// Backlink/SEO spam patterns (common spam enquiries)
+const BACKLINK_SPAM_PATTERNS = [
+  /(?:backlink|backlinks|back link|back links)/i,
+  /(?:link building|linkbuilding)/i,
+  /(?:guest post|guestpost|guest posting|guestposting)/i,
+  /(?:dofollow|do-follow|nofollow|no-follow)/i,
+  /(?:domain authority|domain rating|da\s*[0-9]+|dr\s*[0-9]+)/i,
+  /(?:permanent link|permanent backlink)/i,
+  /(?:high quality link|quality backlink|premium link)/i,
+  /(?:seo service|seo package|seo link)/i,
+  /(?:increase.*rank|improve.*rank|boost.*rank)/i,
+  /(?:organic traffic|organic ranking)/i,
+  /(?:link placement|link insertion)/i,
+  /(?:pbn|private blog network)/i,
+  /(?:link exchange|link swap)/i,
+  /(?:we can.*link|we offer.*link|we provide.*link)/i,
+  /(?:interested.*link|looking.*link|need.*link)/i,
+];
+
+// Function to detect backlink spam
+function detectBacklinkSpam(email?: string, company?: string, websiteUrl?: string): boolean {
+  const combinedText = `${email || ''} ${company || ''} ${websiteUrl || ''}`.toLowerCase();
+  
+  // Check for backlink spam patterns
+  const backlinkMatches = BACKLINK_SPAM_PATTERNS.reduce((count, pattern) => {
+    const matches = combinedText.match(pattern);
+    return count + (matches ? matches.length : 0);
+  }, 0);
+  
+  // If 2+ backlink spam patterns found, it's likely spam
+  if (backlinkMatches >= 2) {
+    return true;
+  }
+  
+  // If contains backlink-related terms AND sales language, it's spam
+  if (backlinkMatches >= 1 && (
+    combinedText.includes('offer') || 
+    combinedText.includes('service') || 
+    combinedText.includes('package') ||
+    combinedText.includes('price') ||
+    combinedText.includes('cost')
+  )) {
+    return true;
+  }
+  
+  return false;
+}
 
 function getClientIP(request: Request): string {
   // Try to get IP from various headers (for Vercel/proxies)
@@ -65,7 +117,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { email, websiteUrl, company, website } = await request.json();
+    const { email, websiteUrl, company, website, formLoadTime, interactionTime, submitTime } = await request.json();
 
     // Honeypot check - if website field is present and filled, it's a bot
     if (website && website.trim()) {
@@ -74,6 +126,30 @@ export async function POST(request: Request) {
         { error: 'Invalid submission detected' },
         { status: 400 }
       );
+    }
+
+    // Time-based validation - check if submission happened too quickly
+    if (formLoadTime && submitTime) {
+      const timeSinceLoad = submitTime - formLoadTime;
+      if (timeSinceLoad < MIN_FORM_TIME) {
+        console.log(`Bot detected via time validation: ${timeSinceLoad}ms since form load`);
+        return NextResponse.json(
+          { error: 'Invalid submission detected' },
+          { status: 400 }
+        );
+      }
+    }
+
+    // Check time since first interaction
+    if (interactionTime && submitTime) {
+      const timeSinceInteraction = submitTime - interactionTime;
+      if (timeSinceInteraction < MIN_INTERACTION_TIME) {
+        console.log(`Bot detected via interaction time: ${timeSinceInteraction}ms since interaction`);
+        return NextResponse.json(
+          { error: 'Invalid submission detected' },
+          { status: 400 }
+        );
+      }
     }
 
     // Basic validation for required fields
@@ -102,6 +178,15 @@ export async function POST(request: Request) {
     } catch (urlError) {
       return NextResponse.json(
         { error: 'Please provide a valid website URL (including http:// or https://)' },
+        { status: 400 }
+      );
+    }
+
+    // Check for backlink/SEO spam (common spam enquiry type)
+    if (detectBacklinkSpam(email, company, websiteUrl)) {
+      console.log('Spam detected: Backlink/SEO spam enquiry');
+      return NextResponse.json(
+        { error: 'Invalid submission detected' },
         { status: 400 }
       );
     }

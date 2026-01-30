@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -34,8 +34,25 @@ function AuditFormContent({ onFormSubmit, router }: { onFormSubmit: () => void; 
   })
   const [isLoading, setIsLoading] = useState(false)
   const [isFeaturesOpen, setIsFeaturesOpen] = useState(false)
+  const formLoadTime = useRef<number>(Date.now())
+  const firstInteractionTime = useRef<number | null>(null)
+  const hasInteracted = useRef<boolean>(false)
+
+  // Track when form component mounts
+  useEffect(() => {
+    formLoadTime.current = Date.now()
+  }, [])
+
+  // Track first user interaction with form fields
+  const handleInteraction = () => {
+    if (!hasInteracted.current) {
+      firstInteractionTime.current = Date.now()
+      hasInteracted.current = true
+    }
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleInteraction()
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
@@ -59,6 +76,32 @@ function AuditFormContent({ onFormSubmit, router }: { onFormSubmit: () => void; 
         duration: 5000,
       })
       return
+    }
+
+    // Time-based validation - reject submissions that happen too quickly
+    const now = Date.now()
+    const timeSinceLoad = now - formLoadTime.current
+    const minTimeToSubmit = 3000 // Minimum 3 seconds from form load
+    
+    // If user hasn't interacted yet, or submission is too fast, it's suspicious
+    if (!hasInteracted.current || timeSinceLoad < minTimeToSubmit) {
+      console.log('Bot detected via time validation', { timeSinceLoad, hasInteracted: hasInteracted.current })
+      toast.error('Please take your time filling out the form.', {
+        duration: 5000,
+      })
+      return
+    }
+
+    // Check time since first interaction (should be at least 2 seconds)
+    if (firstInteractionTime.current) {
+      const timeSinceInteraction = now - firstInteractionTime.current
+      if (timeSinceInteraction < 2000) {
+        console.log('Bot detected via interaction time validation', { timeSinceInteraction })
+        toast.error('Please take your time filling out the form.', {
+          duration: 5000,
+        })
+        return
+      }
     }
 
     // Basic validation
@@ -90,6 +133,9 @@ function AuditFormContent({ onFormSubmit, router }: { onFormSubmit: () => void; 
           email: formData.email,
           websiteUrl: formData.websiteUrl,
           company: formData.company,
+          formLoadTime: formLoadTime.current,
+          interactionTime: firstInteractionTime.current,
+          submitTime: Date.now(),
         }),
       })
 
@@ -217,6 +263,7 @@ function AuditFormContent({ onFormSubmit, router }: { onFormSubmit: () => void; 
               name="websiteUrl"
               value={formData.websiteUrl}
               onChange={handleChange}
+              onFocus={handleInteraction}
               placeholder="https://yourwebsite.com"
               className="h-10 sm:h-11 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-white focus:ring-0 text-sm"
               required
@@ -234,6 +281,7 @@ function AuditFormContent({ onFormSubmit, router }: { onFormSubmit: () => void; 
               name="email"
               value={formData.email}
               onChange={handleChange}
+              onFocus={handleInteraction}
               placeholder="you@company.com"
               className="h-10 sm:h-11 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-white focus:ring-0 text-sm"
               required
@@ -251,6 +299,7 @@ function AuditFormContent({ onFormSubmit, router }: { onFormSubmit: () => void; 
               name="company"
               value={formData.company}
               onChange={handleChange}
+              onFocus={handleInteraction}
               placeholder="Your Company"
               className="h-10 sm:h-11 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-white focus:ring-0 text-sm"
               autoComplete="organization"
