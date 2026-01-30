@@ -1,18 +1,111 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+// Simple in-memory rate limiting store
+// In production, consider using Redis or a database
+const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
 
+// Rate limiting: max 3 submissions per IP per 15 minutes
+const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes in milliseconds
+
+function getClientIP(request: Request): string {
+  // Try to get IP from various headers (for Vercel/proxies)
+  const forwarded = request.headers.get('x-forwarded-for');
+  if (forwarded) {
+    return forwarded.split(',')[0].trim();
+  }
+  const realIP = request.headers.get('x-real-ip');
+  if (realIP) {
+    return realIP;
+  }
+  // Fallback (won't work in production but useful for local dev)
+  return 'unknown';
+}
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const record = rateLimitStore.get(ip);
+
+  if (!record || now > record.resetTime) {
+    // No record or window expired, create new record
+    rateLimitStore.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
+    return true;
+  }
+
+  if (record.count >= RATE_LIMIT_MAX) {
+    return false; // Rate limit exceeded
+  }
+
+  // Increment count
+  record.count++;
+  rateLimitStore.set(ip, record);
+  return true;
+}
+
+// Clean up old entries periodically (every hour)
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, record] of rateLimitStore.entries()) {
+    if (now > record.resetTime) {
+      rateLimitStore.delete(ip);
+    }
+  }
+}, 60 * 60 * 1000);
 
 export async function POST(request: Request) {
   try {
     console.log('Received contact form submission');
 
-    const { firstName, lastName, email, company, phone, message } = await request.json();
+    // Rate limiting check
+    const clientIP = getClientIP(request);
+    if (!checkRateLimit(clientIP)) {
+      console.log(`Rate limit exceeded for IP: ${clientIP}`);
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
+    const { firstName, lastName, email, company, phone, message, website } = await request.json();
+
+    // Honeypot check - if website field is present and filled, it's a bot
+    if (website && website.trim()) {
+      console.log('Bot detected via honeypot field');
+      return NextResponse.json(
+        { error: 'Invalid submission detected' },
+        { status: 400 }
+      );
+    }
 
     // Basic validation for required fields
     if (!firstName?.trim() || !lastName?.trim() || !message?.trim()) {
       return NextResponse.json(
         { error: 'Name and message are required' },
+        { status: 400 }
+      );
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email && !emailRegex.test(email.trim())) {
+      return NextResponse.json(
+        { error: 'Please provide a valid email address' },
+        { status: 400 }
+      );
+    }
+
+    // Message length validation
+    if (message.trim().length < 10) {
+      return NextResponse.json(
+        { error: 'Message must be at least 10 characters long' },
+        { status: 400 }
+      );
+    }
+
+    if (message.trim().length > 2000) {
+      return NextResponse.json(
+        { error: 'Message is too long (maximum 2000 characters)' },
         { status: 400 }
       );
     }

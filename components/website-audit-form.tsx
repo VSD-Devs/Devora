@@ -30,6 +30,7 @@ function AuditFormContent({ onFormSubmit, router }: { onFormSubmit: () => void; 
     email: "",
     websiteUrl: "",
     company: "",
+    website: "", // Honeypot field - bots will fill this
   })
   const [isLoading, setIsLoading] = useState(false)
   const [isFeaturesOpen, setIsFeaturesOpen] = useState(false)
@@ -44,6 +45,39 @@ function AuditFormContent({ onFormSubmit, router }: { onFormSubmit: () => void; 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    e.stopPropagation()
+    
+    // Prevent double submission
+    if (isLoading) {
+      return
+    }
+    
+    // Honeypot check - if website field is filled, it's likely a bot
+    if (formData.website) {
+      console.log('Bot detected via honeypot')
+      toast.error('Invalid submission detected. Please try again.', {
+        duration: 5000,
+      })
+      return
+    }
+
+    // Basic validation
+    if (!formData.email?.trim() || !formData.websiteUrl?.trim()) {
+      toast.error('Please fill in all required fields.', {
+        duration: 5000,
+      })
+      return
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email.trim())) {
+      toast.error('Please provide a valid email address.', {
+        duration: 5000,
+      })
+      return
+    }
+
     setIsLoading(true)
 
     try {
@@ -52,26 +86,66 @@ function AuditFormContent({ onFormSubmit, router }: { onFormSubmit: () => void; 
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          email: formData.email,
+          websiteUrl: formData.websiteUrl,
+          company: formData.company,
+        }),
       })
 
-      const data = await response.json()
+      let data
+      try {
+        data = await response.json()
+      } catch (jsonError) {
+        // If response is not JSON, check status
+        if (!response.ok) {
+          throw new Error(`Server error: ${response.status}`)
+        }
+        data = {}
+      }
 
       if (!response.ok) {
         throw new Error(data.error || 'Something went wrong')
       }
 
+      // Show success message
+      toast.success('Audit request submitted successfully! Redirecting...', {
+        duration: 2000,
+      })
+
+      // Clear form data on success (only after successful response)
+      setFormData({
+        email: "",
+        websiteUrl: "",
+        company: "",
+        website: "",
+      })
+
       // Close dialog if open
       onFormSubmit()
 
-      // Redirect to thank you page for Google Ads conversion tracking
-      router.push('/thank-you')
+      // Small delay to ensure form state is cleared before navigation
+      setTimeout(() => {
+        // Redirect to thank you page for Google Ads conversion tracking
+        router.push('/thank-you')
+      }, 500)
     } catch (error) {
       console.error('Form submission error:', error)
-      toast.error('Failed to submit audit request. Please try again.', {
-        duration: 5000,
-      })
+      
+      // Handle network errors specifically
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        toast.error('Network error. Please check your connection and try again.', {
+          duration: 5000,
+        })
+      } else {
+        const errorMessage = error instanceof Error ? error.message : 'Failed to submit audit request. Please try again.'
+        toast.error(errorMessage, {
+          duration: 5000,
+        })
+      }
+      
       setIsLoading(false)
+      // Don't reset form on error - keep user's data
     }
   }
 
@@ -113,7 +187,26 @@ function AuditFormContent({ onFormSubmit, router }: { onFormSubmit: () => void; 
       </Collapsible>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 px-2 sm:px-0">
+      <form 
+        onSubmit={handleSubmit} 
+        className="space-y-3 sm:space-y-4 px-2 sm:px-0"
+        noValidate
+        onKeyDown={(e) => {
+          // Prevent form submission on Enter key if loading
+          if (e.key === 'Enter' && isLoading) {
+            e.preventDefault()
+            e.stopPropagation()
+          }
+        }}
+        onClick={(e) => {
+          // Prevent accidental form submission on mobile
+          const target = e.target as HTMLElement
+          if (target.type === 'submit' && isLoading) {
+            e.preventDefault()
+            e.stopPropagation()
+          }
+        }}
+      >
         <div className="space-y-3 sm:space-y-4">
           <div>
             <label className="block text-xs text-gray-300 mb-1 font-light">
@@ -163,22 +256,50 @@ function AuditFormContent({ onFormSubmit, router }: { onFormSubmit: () => void; 
               autoComplete="organization"
             />
           </div>
+
+          {/* Honeypot field - hidden from users but visible to bots */}
+          <input
+            type="text"
+            name="website"
+            value={formData.website}
+            onChange={handleChange}
+            tabIndex={-1}
+            autoComplete="off"
+            style={{
+              position: 'absolute',
+              left: '-9999px',
+              width: '1px',
+              height: '1px',
+              opacity: 0,
+              pointerEvents: 'none'
+            }}
+            aria-hidden="true"
+          />
         </div>
 
         <Button
           type="submit"
-          className="w-full h-10 sm:h-11 bg-white text-gray-900 hover:bg-gray-200 font-light transition-all duration-200 text-sm"
+          className="w-full h-10 sm:h-11 bg-white text-gray-900 hover:bg-gray-200 font-light transition-all duration-200 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={isLoading}
+          onClick={(e) => {
+            // Prevent double clicks/taps on mobile
+            if (isLoading) {
+              e.preventDefault()
+              e.stopPropagation()
+              return
+            }
+          }}
+          aria-busy={isLoading}
         >
           {isLoading ? (
             <>
-              <Loader2 className="w-4 h-4 animate-spin mr-2" />
-              Submitting...
+              <Loader2 className="w-4 h-4 animate-spin mr-2" aria-hidden="true" />
+              <span>Submitting...</span>
             </>
           ) : (
             <>
-              Get My Free Audit
-              <ArrowRight className="w-4 h-4 ml-2" />
+              <span>Get My Free Audit</span>
+              <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
             </>
           )}
         </Button>

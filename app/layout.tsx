@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter, Playfair_Display } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { CookieBanner } from "@/components/cookie-banner"
+import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
@@ -133,6 +134,8 @@ export default function RootLayout({
         <Analytics />
         {/* Cookie banner loads after content */}
         <CookieBanner />
+        {/* Toast notifications */}
+        <Toaster position="top-center" />
       </body>
     </html>
   )

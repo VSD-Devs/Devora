@@ -15,6 +15,7 @@ export function Contact() {
     company: "",
     phone: "",
     message: "",
+    website: "", // Honeypot field - bots will fill this
   })
   const [isLoading, setIsLoading] = useState(false)
 
@@ -28,32 +29,115 @@ export function Contact() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    e.stopPropagation()
+    
+    console.log('Form submit triggered', { isLoading, formData })
+    
+    // Prevent double submission
+    if (isLoading) {
+      console.log('Already loading, preventing double submission')
+      return
+    }
+    
+    // Honeypot check - if website field is filled, it's likely a bot
+    if (formData.website) {
+      console.log('Bot detected via honeypot')
+      toast.error('Invalid submission detected. Please try again.', {
+        duration: 5000,
+      })
+      return
+    }
+
+    // Basic validation
+    if (!formData.message || formData.message.trim().length < 10) {
+      toast.error('Please provide a more detailed message (at least 10 characters).', {
+        duration: 5000,
+      })
+      return
+    }
+
+    if (formData.message.length > 2000) {
+      toast.error('Message is too long. Please keep it under 2000 characters.', {
+        duration: 5000,
+      })
+      return
+    }
+
+    console.log('Starting form submission...')
     setIsLoading(true)
 
     try {
+      console.log('Sending request to /api/contact')
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          message: formData.message,
+        }),
       })
+      
+      console.log('Response received:', { status: response.status, ok: response.ok })
 
-      const data = await response.json()
+      let data
+      try {
+        data = await response.json()
+      } catch (jsonError) {
+        // If response is not JSON, check status
+        if (!response.ok) {
+          throw new Error(`Server error: ${response.status}`)
+        }
+        data = {}
+      }
 
       if (!response.ok) {
         throw new Error(data.error || 'Something went wrong')
       }
 
-      // Redirect to thank you page for Google Ads conversion tracking
-      router.push('/thank-you')
+      // Show success message
+      toast.success('Message sent successfully! Redirecting...', {
+        duration: 2000,
+      })
+
+      // Clear form data on success (only after successful response)
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        phone: "",
+        message: "",
+        website: "",
+      })
+
+      // Small delay to ensure form state is cleared before navigation
+      setTimeout(() => {
+        // Redirect to thank you page for Google Ads conversion tracking
+        router.push('/thank-you')
+      }, 500)
     } catch (error) {
       console.error('Form submission error:', error)
-      const errorMessage = error instanceof Error ? error.message : 'Failed to send message. Please try again.'
-      toast.error(errorMessage, {
-        duration: 5000,
-      })
+      
+      // Handle network errors specifically
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        toast.error('Network error. Please check your connection and try again.', {
+          duration: 5000,
+        })
+      } else {
+        const errorMessage = error instanceof Error ? error.message : 'Failed to send message. Please try again.'
+        toast.error(errorMessage, {
+          duration: 5000,
+        })
+      }
+      
       setIsLoading(false)
+      // Don't reset form on error - keep user's data
     }
   }
 
@@ -100,7 +184,26 @@ export function Contact() {
 
             {/* Contact Form */}
             <div className="md:col-span-2 bg-card border border-border rounded-2xl p-5 md:p-8">
-              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+              <form 
+                onSubmit={handleSubmit} 
+                className="space-y-4 md:space-y-6"
+                noValidate
+                onKeyDown={(e) => {
+                  // Prevent form submission on Enter key if loading
+                  if (e.key === 'Enter' && isLoading) {
+                    e.preventDefault()
+                    e.stopPropagation()
+                  }
+                }}
+                onClick={(e) => {
+                  // Prevent accidental form submission on mobile
+                  const target = e.target as HTMLElement
+                  if (target.type === 'submit' && isLoading) {
+                    e.preventDefault()
+                    e.stopPropagation()
+                  }
+                }}
+              >
                 <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                   <div>
                     <label htmlFor="firstName" className="block text-xs md:text-sm font-medium mb-1.5 md:mb-2">
@@ -201,24 +304,54 @@ export function Contact() {
                     rows={3}
                     className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours resize-none"
                     required
+                    minLength={10}
+                    maxLength={2000}
                   />
                 </div>
+
+                {/* Honeypot field - hidden from users but visible to bots */}
+                <input
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  style={{
+                    position: 'absolute',
+                    left: '-9999px',
+                    width: '1px',
+                    height: '1px',
+                    opacity: 0,
+                    pointerEvents: 'none'
+                  }}
+                  aria-hidden="true"
+                />
 
                 <Button
                   type="submit"
                   size="lg"
-                  className="rounded-full gap-2 w-full md:w-auto text-sm md:text-base"
+                  className="rounded-full gap-2 w-full md:w-auto text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={isLoading}
+                  onClick={(e) => {
+                    // Prevent double clicks/taps on mobile
+                    if (isLoading) {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      return
+                    }
+                  }}
+                  aria-busy={isLoading}
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      Sending...
+                      <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
+                      <span>Sending...</span>
                     </>
                   ) : (
                     <>
-                      Send Message
-                      <ArrowRight className="w-4 h-4" />
+                      <span>Send Message</span>
+                      <ArrowRight className="w-4 h-4" aria-hidden="true" />
                     </>
                   )}
                 </Button>
