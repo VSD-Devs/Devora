@@ -98,18 +98,18 @@ export function Footer() {
           <nav aria-label="Social media navigation">
             <ul className="flex gap-6">
               <li>
-                <Link href="https://linkedin.com/company/devora" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity" aria-label="Follow Devora on LinkedIn">
-                  LinkedIn
+                <Link href="https://www.facebook.com/share/14UKFzshvcq/?mibextid=wwXIfr" target="_blank" rel="me noopener noreferrer" className="hover:opacity-100 transition-opacity" aria-label="Follow Devora on Facebook">
+                  Facebook
                 </Link>
               </li>
               <li>
-                <Link href="https://twitter.com/devora" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity" aria-label="Follow Devora on Twitter">
-                  Twitter
-                </Link>
-              </li>
-              <li>
-                <Link href="https://instagram.com/devora" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity" aria-label="Follow Devora on Instagram">
+                <Link href="https://www.instagram.com/devoraltd?igsh=MTBvNGQxbmhrb28xaA==" target="_blank" rel="me noopener noreferrer" className="hover:opacity-100 transition-opacity" aria-label="Follow Devora on Instagram">
                   Instagram
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.linkedin.com/company/devora-web-design-development/" target="_blank" rel="me noopener noreferrer" className="hover:opacity-100 transition-opacity" aria-label="Follow Devora on LinkedIn">
+                  LinkedIn
                 </Link>
               </li>
             </ul>

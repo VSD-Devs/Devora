@@ -65,6 +65,10 @@ export const metadata: Metadata = {
     images: ["/devora-office.png"],
     creator: "@devora",
   },
+  other: {
+    "facebook:page": "https://www.facebook.com/share/14UKFzshvcq/?mibextid=wwXIfr",
+    "instagram:site": "devoraltd",
+  },
   robots: {
     index: true,
     follow: true,

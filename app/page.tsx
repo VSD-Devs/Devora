@@ -66,9 +66,9 @@ export default function Home() {
         "logo": "https://www.devora.co.uk/devora-bw.png",
         "description": "Award-winning web design and development agency specialising in custom digital solutions for start-ups.",
         "sameAs": [
-          "https://www.linkedin.com/company/devora",
-          "https://twitter.com/devora",
-          "https://instagram.com/devora"
+          "https://www.facebook.com/share/14UKFzshvcq/?mibextid=wwXIfr",
+          "https://www.instagram.com/devoraltd?igsh=MTBvNGQxbmhrb28xaA==",
+          "https://www.linkedin.com/company/devora-web-design-development/"
         ],
         "address": {
           "@type": "PostalAddress",
