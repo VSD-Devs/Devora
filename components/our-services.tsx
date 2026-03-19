@@ -116,7 +116,7 @@ export function OurServices() {
         </article>
 
         {/* Bento-style grid - asymmetric layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-start">
           {services.map((service, i) => {
             const Icon = service.icon
             const isWide = i === 1 || i === 3
@@ -133,17 +133,17 @@ export function OurServices() {
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     sizes={isWide ? "(max-width: 640px) 100vw, 50vw" : "(max-width: 640px) 100vw, 25vw"}
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/20" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 pt-12 bg-black/90 backdrop-blur-sm [text-shadow:0_1px_2px_rgba(0,0,0,1),0_2px_8px_rgba(0,0,0,0.9)]">
                     <div className="flex items-center gap-2 mb-2">
-                      <Icon className="w-4 h-4 text-primary-foreground/90" strokeWidth={2} aria-hidden="true" />
-                      <h3 className="text-lg md:text-xl font-bold text-primary-foreground">{service.title}</h3>
+                      <Icon className="w-4 h-4 text-white" strokeWidth={2} aria-hidden="true" />
+                      <h3 className="text-lg md:text-xl font-bold text-white">{service.title}</h3>
                     </div>
-                    <p className="text-sm text-primary-foreground/85 leading-relaxed line-clamp-2">{service.description}</p>
+                    <p className="text-sm text-white/95 leading-relaxed line-clamp-2">{service.description}</p>
                   </div>
                 </div>
               </article>
