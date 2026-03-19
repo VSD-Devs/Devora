@@ -81,9 +81,9 @@ const allProjects = [
     name: "Sandalwood Memorials",
     slug: "sandalwood-memorials",
     description:
-      "A premium memorial and headstone design service with an elegant product showcase and intuitive quote system. Our design captures the dignity and professionalism of their service whilst providing an intuitive browsing experience for grieving families.",
+      "Hybrid headless platform combining Next.js for speed and SSR, WordPress/WooCommerce for product management, Three.js for 3D memorial rendering, and GraphQL for seamless data flow. A compassionate, performant storefront that gives the sales team full control.",
     image: "/case-studies/sandalwood-memorials.png",
-    tags: ["E-commerce", "Product Showcase", "Web Design"],
+    tags: ["Headless Commerce", "Three.js", "GraphQL"],
   },
   {
     name: "Sandalwood Memories",

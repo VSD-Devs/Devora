@@ -22,7 +22,7 @@ export function WhyUs() {
   ]
 
   return (
-    <section id="services" className="py-16 md:py-32 px-4 md:px-6 bg-foreground text-background" aria-labelledby="services-heading">
+    <section id="why-us" className="py-16 md:py-32 px-4 md:px-6 bg-foreground text-background" aria-labelledby="services-heading">
       <div className="container mx-auto">
         <div className="text-center mb-12 md:mb-20">
           <div className="inline-block bg-background text-foreground px-3 md:px-4 py-1 rounded-full text-xs font-semibold mb-4 md:mb-6" role="banner">

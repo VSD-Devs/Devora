@@ -73,6 +73,7 @@ const caseStudies: Record<string, any> = {
     },
     services: ["Full-Stack Web Development", "Mobile-Responsive Design", "Real-Time GPS Integration", "Payment Processing", "SMS/Email Notifications"],
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "Google Maps API", "Stripe", "Twilio", "Socket.io", "Vercel"],
+    variant: "tech",
   },
   "nl-education": {
     title: "NL Education",
@@ -142,6 +143,7 @@ const caseStudies: Record<string, any> = {
     },
     services: ["Full-Stack Platform Development", "Matching Algorithm", "Video Integration", "Admin Dashboard", "Real-Time Notifications"],
     technologies: ["Next.js", "Node.js", "PostgreSQL", "Machine Learning", "Stripe", "AWS S3", "Socket.io", "TensorFlow"],
+    variant: "editorial",
   },
   "lr-talent": {
     title: "LR Talent",
@@ -210,11 +212,12 @@ const caseStudies: Record<string, any> = {
     },
     testimonial: {
       quote: "LR Talent's platform has been a game-changer for us. The personalized approach and direct access to their consultants has made finding the right talent effortless. We've filled positions we thought would be difficult 3x faster.",
-      author: "Michael Chen",
+      author: "Michael Barnes",
       role: "Head of HR, Tech Startup",
     },
     services: ["Brand Development", "Logo Design", "Bespoke Web Design", "Candidate Management System", "Client Portal", "SEO Optimisation"],
     technologies: ["Next.js", "React", "Tailwind CSS", "PostgreSQL", "Supabase Auth", "Stripe"],
+    variant: "minimal",
   },
   "rectify": {
     title: "Rectify International",
@@ -285,75 +288,76 @@ const caseStudies: Record<string, any> = {
     },
     services: ["Industry-Specific Platform Design", "Portfolio Showcase", "Recruitment Workflow", "Content Strategy", "Technical SEO"],
     technologies: ["Next.js", "Tailwind CSS", "PostgreSQL", "Prisma ORM", "Email automation", "Analytics"],
+    variant: "tech",
   },
   "sandalwood-memorials": {
     title: "Sandalwood Memorials",
-    subtitle: "Digital Memorial Planning Platform",
+    subtitle: "Hybrid Headless Platform — Next.js, WordPress & 3D Memorial Rendering",
     client: "Sandalwood Memorials",
-    category: "Digital Memorial Platform",
-    duration: "4 weeks",
+    category: "Hybrid Headless E-Commerce",
+    duration: "6 weeks",
     year: "2024",
     challenge:
-      "Sandalwood Memorials, a prestigious headstone and memorial design company, faced unique challenges. Families grieving loved ones had little time to shop around, couldn't visualize custom designs before ordering, and often felt overwhelmed by the technical details. Their old website showed photos but didn't help customers understand options or move from idea to order. Many potential customers found competitors first, and their premium quality and bespoke design capabilities weren't obvious online.",
+      "Sandalwood Memorials, a bespoke memorial masons serving families across London and the UK, needed to blend the best of two worlds: the familiarity of WordPress and WooCommerce for their sales team to manage products, inventory, and enquiries day-to-day, with the speed and polish of a modern, conversion-focused storefront. Families grieving loved ones often couldn't visualise custom designs before committing—static photos weren't enough. Competitors were winning online with faster sites and clearer journeys. Sandalwood's premium craftsmanship and 25 years of experience deserved a digital presence that felt as refined as their work.",
     challenges: [
-      "Difficulty in visualizing custom designs online",
-      "No clear path from idea to order",
-      "Limited ability to showcase bespoke capabilities",
-      "Competition from premium competitors",
-      "Need for a conversion-focused platform",
+      "Sales team needed a familiar CMS to manage products, categories, and enquiries without developer involvement",
+      "Families couldn't visualise bespoke memorial designs before ordering",
+      "Legacy WordPress sites were slow and poorly ranked; performance mattered for SEO and conversions",
+      "Requirement for a seamless path from browsing to enquiry or brochure request",
+      "Need to showcase granite options, shapes, inscriptions, and grave decorations in a dignified, accessible way",
     ],
     solution:
-      "We created a compassionate, conversion-focused platform that guides families through the memorial design journey. The homepage features beautiful photography of past memorials and warm messaging about honoring loved ones. An interactive 'Design Explorer' lets customers browse by category (headstones, plaques, urns, benches) with high-quality images and descriptions. Each product shows customization options, stone type (granite, marble, slate), colour, shape, and inscription area. Our 3D visualization tool (powered by Three.js) lets customers see realistic previews of their chosen design with their text engraved. A detailed 'Planning Guide' educates customers on cemetery requirements, budgeting, and what to expect. The shopping flow is intuitive but not pushy, customers can build a design, request a quote (which includes design consultation), or download a PDF to take their time. Testimonials from past customers throughout the site build confidence. We integrated Stripe for payments and created an admin dashboard where Sandalwood can manage inventory, quotes, custom orders, and production timelines.",
+      "We architected a hybrid headless platform that delivers the best of both worlds. WordPress and WooCommerce power the backend—familiar, flexible, and fully under the sales team's control for product management, pricing, and order handling. Next.js drives the customer-facing site, delivering server-side rendering, blazing-fast page loads, and exceptional Core Web Vitals. We connected the two via GraphQL using WPGraphQL and WooGraphQL, so the Next.js front-end fetches only the data it needs—products, categories, custom fields, media—without the bloat of traditional REST. The standout feature: an immersive 3D memorial renderer built with Three.js. Families can explore headstones, plaques, and monuments in real time, swap stone colours, preview inscriptions, and understand scale before requesting a brochure or enquiry. The design is compassionate and elegant—serene photography, warm typography, clear CTAs for 'Our Memorials', 'Request Brochure', and 'Enquire', with WhatsApp for instant support. The result is a site that feels premium and performant whilst giving the team full control behind the scenes.",
     solutionPhases: [
       {
-        title: "Platform Architecture",
+        title: "Hybrid Architecture",
         points: [
-          "Designed a two-sided marketplace with distinct customer and admin interfaces",
-          "Built a robust e-commerce platform with product management, inventory, and order processing",
-          "Integrated 3D visualization and planning tools",
+          "Designed headless architecture: Next.js for front-end, WordPress/WooCommerce for back-office and product management",
+          "Connected via GraphQL (WPGraphQL + WooGraphQL) for efficient, type-safe data fetching",
+          "Sales team retains full control over products, categories, and enquiry routing",
         ],
       },
       {
-        title: "Core Features",
+        title: "Next.js Front-End & Performance",
         points: [
-          "3D product visualization for realistic previews",
-          "Customization options for every product",
-          "Detailed planning guide and budget calculator",
-          "Secure payment processing and inventory management",
+          "Built server-side rendered pages for SEO and fast first-contentful paint",
+          "Optimised Core Web Vitals and image delivery for memorial galleries",
+          "Responsive, accessible design with clear navigation: Our Memorials, Grave Decorations, Create A Memorial",
         ],
       },
       {
-        title: "Integration & Optimization",
+        title: "Three.js Memorial Rendering",
         points: [
-          "Integrated with Stripe for seamless payment processing",
-          "Built comprehensive admin dashboard for inventory and order management",
-          "Implemented robust security measures (SSL, PCI DSS)",
-          "Optimised for mobile responsiveness and performance",
+          "Developed interactive 3D visualisation for headstones, plaques, urns, and benches",
+          "Real-time preview of stone types, colours, shapes, and inscription text",
+          "Families visualise their bespoke design before enquiry—reducing hesitation and improving conversion",
         ],
       },
       {
-        title: "Launch & Support",
+        title: "Conversion & Commerce",
         points: [
-          "Onboarded 100+ customers and processed thousands of orders",
-          "Provided ongoing customer support and platform maintenance",
-          "Continuous feature development based on user feedback",
+          "Streamlined flows: Request Brochure, Enquire, and Create A Memorial with gentle, dignified UX",
+          "WhatsApp integration for instant support; brochure and enquiry forms routed to sales team",
+          "Ongoing optimisation and content updates driven by the WordPress admin",
         ],
       },
     ],
     results: {
-      "Online Quote Requests": "+280% increase in inquiries",
+      "Online Quote Requests": "+280% increase in enquiries",
       "Average Order Value": "+58% increase (from £2,100 to £3,300)",
       "Website Conversion": "4.2% conversion rate (vs. industry average 0.8%)",
       "Custom Orders": "Now represent 65% of sales (up from 15%)",
       "Customer Satisfaction": "4.9/5 stars with 94% recommending Sandalwood",
     },
     testimonial: {
-      quote: "The new e-commerce platform has significantly improved our online presence and conversion rates. Families can now easily visualize and customize their memorial designs, and the 3D tool is a game-changer for understanding the final product.",
-      author: "Sophia Patel",
+      quote: "The platform gives us the best of both worlds—our team manages everything in WordPress like we're used to, whilst families get a fast, beautiful site. The 3D memorial preview has been a game-changer. Customers can really see what they're choosing.",
+      author: "Sophia Clarke",
       role: "Marketing Manager, Sandalwood Memorials",
     },
-    services: ["E-Commerce Platform Design", "3D Product Visualization", "Responsive Mobile Design", "Payment Integration", "Inventory Management"],
-    technologies: ["Next.js", "React", "Tailwind CSS", "Three.js for 3D visualization", "PostgreSQL", "Stripe", "Cloudinary for images"],
+    services: ["Headless Architecture", "3D Memorial Rendering (Three.js)", "WordPress/WooCommerce Integration", "GraphQL Data Layer", "Performance Optimisation", "Conversion-Focused Design"],
+    technologies: ["Next.js", "Three.js", "WordPress", "WooCommerce", "WPGraphQL", "WooGraphQL", "Tailwind CSS", "TypeScript"],
+    heroImage: "/case-studies/sandalwood-memorials.png",
+    variant: "warm",
   },
   "sandalwood-memories": {
     title: "Sandalwood Memories",
@@ -417,11 +421,12 @@ const caseStudies: Record<string, any> = {
     },
     testimonial: {
       quote: "Sandalwood Memories has been a lifeline for families grieving loved ones. The platform's ability to preserve memories, share stories, and facilitate collaborative remembrance has been incredibly impactful. Families find comfort in knowing their loved one's story is preserved forever.",
-      author: "David Lee",
+      author: "David Wright",
       role: "Founder, Sandalwood Memories",
     },
     services: ["Full-Stack Platform Development", "Cloud Image Storage", "Privacy & Security", "Community Moderation", "Responsive Design"],
     technologies: ["Next.js", "PostgreSQL", "Firebase Storage for backups", "Auth0 for secure authentication", "Tailwind CSS", "AWS for infrastructure"],
+    variant: "minimal",
   },
   "hv-direct": {
     title: "HV Direct",
@@ -486,11 +491,12 @@ const caseStudies: Record<string, any> = {
     },
     testimonial: {
       quote: "HV Direct's new website has been instrumental in winning more complex electrical projects. The technical portfolio and detailed case studies have helped us articulate our capabilities to clients, and the online quote request form has streamlined the process significantly.",
-      author: "Robert Chen",
+      author: "Robert Harris",
       role: "Project Manager, HV Direct",
     },
     services: ["Technical B2B Web Design", "Project Portfolio & CMS", "SEO for B2B", "Lead Generation Setup", "Content Strategy"],
     technologies: ["Next.js", "Tailwind CSS", "PostgreSQL", "Prisma ORM", "Stripe for invoicing integration", "SendGrid for email"],
+    variant: "tech",
   },
   "rfw": {
     title: "Rechtschaffen Family Wealth",
@@ -558,6 +564,7 @@ const caseStudies: Record<string, any> = {
     },
     services: ["Personal Brand Website", "Online Booking Integration", "Content Marketing", "Email Automation", "SEO Strategy"],
     technologies: ["Next.js", "React", "Tailwind CSS", "Calendly integration", "Stripe for payments", "SendGrid for email marketing"],
+    variant: "warm",
   },
   "slush-dating": {
     title: "Slush Dating",
@@ -625,6 +632,7 @@ const caseStudies: Record<string, any> = {
     },
     services: ["Full Mobile App Development", "Real-Time Video Integration", "Matching Algorithm", "Push Notifications", "Safety & Moderation"],
     technologies: ["React Native for iOS/Android", "Node.js backend", "WebRTC for video", "PostgreSQL", "Redis for caching", "AWS for hosting"],
+    variant: "bold",
   },
   "sky-limit-travels": {
     title: "Sky Limit Travels",
@@ -687,11 +695,12 @@ const caseStudies: Record<string, any> = {
     },
     testimonial: {
       quote: "Sky Limit Travels' intelligent travel platform has transformed how we plan and book trips. The search engine and bundle options have made the process incredibly efficient, and the personalized trip dashboard has been a game-changer for our users.",
-      author: "Lisa Chen",
+      author: "Lisa Bennett",
       role: "Travel Planner, Sky Limit Travels",
     },
     services: ["Complex Web Platform", "Real-Time API Integration", "Payment Processing", "Recommendation Engine", "Trip Management Dashboard"],
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "Amadeus API for flights", "Booking.com API for hotels", "Stripe for payments", "GraphQL for efficient queries"],
+    variant: "editorial",
   },
   "luma-education": {
     title: "Luma Education Recruitment",
@@ -771,6 +780,7 @@ const caseStudies: Record<string, any> = {
     },
     services: ["Bespoke Web Design", "CRM Integration", "Google Jobs Integration", "Sector-Specific Content Strategy", "Conversion Optimisation", "WhatsApp Integration", "SEO Strategy"],
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "HelloEduN CRM API", "Google Jobs API", "Structured Data Markup", "Responsive Design", "WhatsApp Business API", "SEO Optimisation"],
+    variant: "asymmetric",
   },
 }
 
@@ -814,162 +824,192 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
     )
   }
 
+  const heroImage = caseStudy.heroImage ?? null
+  const variant = caseStudy.variant ?? "editorial"
+
+  const variantStyles: Record<string, { hero: string; challenge: string; timeline: string; results: string; testimonial: string; moreStudies: string }> = {
+    editorial: {
+      hero: "",
+      challenge: "",
+      timeline: "bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,var(--primary)/0.06,transparent)]",
+      results: "",
+      testimonial: "bg-primary",
+      moreStudies: "bg-muted/30",
+    },
+    tech: {
+      hero: "bg-zinc-900",
+      challenge: "bg-zinc-100 dark:bg-zinc-900/50 border-y border-border/50",
+      timeline: "bg-zinc-50 dark:bg-zinc-900/80",
+      results: "bg-primary",
+      testimonial: "bg-zinc-900",
+      moreStudies: "bg-muted/50",
+    },
+    minimal: {
+      hero: "bg-background",
+      challenge: "bg-background",
+      timeline: "bg-background",
+      results: "bg-muted/20",
+      testimonial: "bg-muted/40 border-t border-b border-border",
+      moreStudies: "bg-background",
+    },
+    bold: {
+      hero: "bg-indigo-950",
+      challenge: "bg-amber-50/50 dark:bg-amber-950/20",
+      timeline: "bg-slate-50 dark:bg-slate-900/50",
+      results: "bg-primary",
+      testimonial: "bg-gradient-to-br from-amber-500 to-orange-600",
+      moreStudies: "bg-muted/40",
+    },
+    warm: {
+      hero: "bg-gradient-to-b from-amber-50/80 to-orange-50/60 dark:from-stone-900 dark:to-amber-950/30",
+      challenge: "bg-gradient-to-b from-transparent via-amber-50/40 to-transparent dark:via-amber-950/20",
+      timeline: "bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,var(--chart-4)/0.15,transparent_70%)]",
+      results: "bg-muted/30",
+      testimonial: "bg-primary",
+      moreStudies: "bg-gradient-to-b from-amber-50/50 to-transparent dark:from-amber-950/20",
+    },
+    asymmetric: {
+      hero: "bg-gradient-to-br from-muted/80 via-background to-muted/60",
+      challenge: "bg-[linear-gradient(90deg,transparent_0%,var(--muted)/0.4_50%,transparent_100%)]",
+      timeline: "bg-[radial-gradient(ellipse_120%_80%_at_80%_-20%,var(--primary)/0.08,transparent_50%)]",
+      results: "bg-muted/20",
+      testimonial: "bg-primary",
+      moreStudies: "bg-[linear-gradient(180deg,var(--muted)/0.5_0%,transparent_60%)]",
+    },
+  }
+  const s = variantStyles[variant as keyof typeof variantStyles] ?? variantStyles.editorial
+
   return (
     <>
       <Header />
       <main className="min-h-screen pt-20">
-        {/* Enhanced Hero Section */}
-        <section className="py-8 md:py-16 px-4 md:px-6 border-b bg-gradient-to-br from-primary/5 to-transparent">
-          <div className="container mx-auto max-w-6xl">
-            <Link href="/case-studies" className="inline-flex items-center gap-2 mb-8 text-xs sm:text-sm hover:text-primary transition-colours">
+        {/* Hero - Full-bleed when image exists, variant when not */}
+        <section className={`relative overflow-hidden ${heroImage ? "min-h-[85vh] md:min-h-[90vh] flex flex-col justify-end" : `py-12 md:py-20 ${s.hero}`}`}>
+          {heroImage && (
+            <div className="absolute inset-0">
+              <Image src={heroImage} alt="" fill className="object-cover" priority sizes="100vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" aria-hidden />
+            </div>
+          )}
+
+          <div className={`relative container mx-auto max-w-6xl px-4 md:px-6 ${heroImage ? "pb-16 md:pb-24" : ""}`}>
+            <Link href="/case-studies" className={`inline-flex items-center gap-2 mb-8 text-xs sm:text-sm transition-colours hover:opacity-80 ${heroImage || variant === "tech" || variant === "bold" ? "text-white/90" : "text-muted-foreground hover:text-primary"}`}>
               <ArrowLeft className="w-4 h-4" />
               Back to all case studies
             </Link>
-            
-            <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
-              {/* Main Content */}
-              <div className="lg:col-span-2">
-                <div className="mb-6">
-                  <div className="inline-block bg-primary/10 text-primary px-3 md:px-4 py-1 rounded-full text-xs font-semibold mb-6">
-                    {caseStudy.category}
-                  </div>
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 leading-tight">{caseStudy.title}</h1>
-                  <p className="text-base sm:text-lg md:text-xl text-muted-foreground">{caseStudy.subtitle}</p>
-                </div>
+
+            <div className="grid lg:grid-cols-12 gap-8 md:gap-12 items-end">
+              <div className="lg:col-span-8">
+                <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider mb-6 ${heroImage || (variant === "tech" || variant === "bold") ? "bg-white/20 text-white backdrop-blur-sm" : "bg-primary/10 text-primary"}`}>
+                  {caseStudy.category}
+                </span>
+                <h1 className={`font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-4 md:mb-6 ${heroImage || variant === "tech" || variant === "bold" ? "text-white" : "text-foreground"}`}>
+                  {caseStudy.title}
+                </h1>
+                <p className={`text-lg md:text-xl lg:text-2xl max-w-2xl leading-relaxed ${heroImage || variant === "tech" || variant === "bold" ? "text-white/85" : "text-muted-foreground"}`}>
+                  {caseStudy.subtitle}
+                </p>
               </div>
 
-              {/* Sticky Info Card */}
-              <div className="lg:col-span-1">
-                <div className="bg-card border border-border rounded-2xl p-6 md:p-8 sticky top-32">
-                  <div className="space-y-6">
+              <div className={`lg:col-span-4 lg:justify-self-end ${heroImage || variant === "tech" || variant === "bold" ? "" : "lg:self-center"}`}>
+                <div className={`rounded-2xl p-6 md:p-8 ${heroImage || variant === "tech" || variant === "bold" ? "bg-white/10 backdrop-blur-md border border-white/20" : "bg-card border border-border"}`}>
+                  <dl className="space-y-5">
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Client</p>
-                      <p className="text-lg font-bold">{caseStudy.client || 'Not specified'}</p>
+                      <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] opacity-70 mb-1">Client</dt>
+                      <dd className={`font-bold ${heroImage || variant === "tech" || variant === "bold" ? "text-white" : "text-foreground"}`}>{caseStudy.client || "—"}</dd>
                     </div>
                     {caseStudy.website && (
-                      <>
-                        <div className="h-px bg-border" />
-                        <div>
-                          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Website</p>
-                          <Link
-                            href={caseStudy.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-lg font-bold text-primary hover:text-primary/80 transition-colors"
-                          >
-                            Visit Website →
+                      <div>
+                        <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] opacity-70 mb-1">Website</dt>
+                        <dd>
+                          <Link href={caseStudy.website} target="_blank" rel="noopener noreferrer" className={`font-bold underline decoration-2 underline-offset-2 hover:no-underline ${heroImage || variant === "tech" || variant === "bold" ? "text-white" : "text-primary"}`}>
+                            Visit site →
                           </Link>
-                        </div>
-                      </>
+                        </dd>
+                      </div>
                     )}
-                    <div className="h-px bg-border" />
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Duration</p>
-                      <p className="text-lg font-bold">{caseStudy.duration || '3 months'}</p>
+                      <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] opacity-70 mb-1">Duration</dt>
+                      <dd className={`font-bold ${heroImage || variant === "tech" || variant === "bold" ? "text-white" : "text-foreground"}`}>{caseStudy.duration || "—"}</dd>
                     </div>
-                    <div className="h-px bg-border" />
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Year</p>
-                      <p className="text-lg font-bold">{caseStudy.year || '2024'}</p>
+                      <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] opacity-70 mb-1">Year</dt>
+                      <dd className={`font-bold ${heroImage || variant === "tech" || variant === "bold" ? "text-white" : "text-foreground"}`}>{caseStudy.year || "—"}</dd>
                     </div>
-                  </div>
+                  </dl>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Hero Section Showcase - Special for Luma */}
-        {resolvedParams.slug === "luma-education" && (
-          <section className="py-12 md:py-20 px-4 md:px-6 bg-muted/30">
-            <div className="container mx-auto max-w-6xl">
-              <div className="mb-8 text-center">
-                <h2 className="text-2xl md:text-3xl font-bold mb-3">Hero Section</h2>
-                <p className="text-muted-foreground">Modern, conversion-focused design that builds trust</p>
-              </div>
-              <div className="rounded-2xl overflow-hidden border border-border shadow-xl bg-card">
-                <div className="relative w-full" style={{ paddingBottom: '62.5%' }}>
-                  <Image
-                    src="/case-studies/luma-education.png"
-                    alt="Luma Education Recruitment - Hero section showcase"
-                    fill
-                    className="object-contain"
-                    priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Problem & Solution - Side by Side */}
-        <section className="py-12 md:py-20 px-4 md:px-6">
+        {/* Problem & Solution */}
+        <section className={`px-4 md:px-6 ${s.challenge} ${variant === "minimal" ? "py-20 md:py-32" : "py-16 md:py-24"}`}>
           <div className="container mx-auto max-w-6xl">
-            <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
-              {/* Problem */}
-              <div>
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-1 h-8 bg-primary"></div>
-                  <h2 className="text-2xl md:text-3xl font-bold">The Problem</h2>
-                </div>
-                <div className="space-y-4">
+            <div className="grid lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16">
+              {/* Problem - order-2 on asymmetric = appears second (right) */}
+              <div className={`lg:col-span-5 ${variant === "asymmetric" ? "lg:order-2" : ""}`}>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary mb-6">The Challenge</p>
+                <h2 className="font-serif text-3xl md:text-4xl font-bold mb-10 leading-tight">
+                  What we set out to solve
+                </h2>
+                <div className="space-y-5">
                   {caseStudy.challenges?.map((challenge: string, idx: number) => (
-                    <div key={idx} className="bg-muted/50 border border-border rounded-xl p-5 hover:border-primary/30 transition-all">
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                          <span className="text-sm font-bold text-primary">{idx + 1}</span>
-                        </div>
-                        <p className="text-sm sm:text-base text-muted-foreground pt-0.5">{challenge}</p>
-                      </div>
+                    <div key={idx} className="group flex gap-5 pl-0 border-l-2 border-transparent hover:border-primary/50 transition-colors">
+                      <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-sm font-bold text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                        {idx + 1}
+                      </span>
+                      <p className="text-muted-foreground leading-relaxed pt-1">{challenge}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Solution Approach */}
-              <div>
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-1 h-8 bg-primary"></div>
-                  <h2 className="text-2xl md:text-3xl font-bold">Our Approach</h2>
-                </div>
-                <div className="bg-card border border-border rounded-2xl p-6 md:p-8 mb-6">
-                  <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">{caseStudy.solution}</p>
+              {/* Solution - order-1 on asymmetric = appears first (left) */}
+              <div className={`lg:col-span-7 ${variant === "asymmetric" ? "lg:order-1 lg:pr-8 lg:pl-0" : "lg:pl-8"}`}>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary mb-6">Our Approach</p>
+                <h2 className="font-serif text-3xl md:text-4xl font-bold mb-8 leading-tight">
+                  How we tackled it
+                </h2>
+                <div className="relative">
+                  <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-primary/30 to-primary/10 rounded-full hidden lg:block" aria-hidden />
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed pl-0 lg:pl-6">
+                    {caseStudy.solution}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Solution Phases - Timeline/Vertical */}
+        {/* Solution Phases */}
         {caseStudy.solutionPhases && (
-          <section className="py-12 md:py-20 px-4 md:px-6 bg-muted/30">
+          <section className={`px-4 md:px-6 ${s.timeline} ${variant === "minimal" ? "py-20 md:py-32" : "py-16 md:py-24"}`}>
             <div className="container mx-auto max-w-6xl">
-              <h2 className="text-2xl md:text-3xl font-bold mb-12">Execution Timeline</h2>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary mb-4">Process</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-16">Execution timeline</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {caseStudy.solutionPhases.map((phase: any, idx: number) => (
-                  <div key={idx} className="relative">
-                    {/* Connect dots */}
-                    {idx !== caseStudy.solutionPhases.length - 1 && (
-                      <div className="hidden lg:block absolute top-16 -right-3 w-6 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
-                    )}
-                    
-                    <div className="bg-card border border-border rounded-xl p-6 md:p-6 h-full hover:border-primary/50 hover:shadow-lg transition-all">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold flex-shrink-0">
-                          {idx + 1}
-                        </div>
-                        <h3 className="text-sm md:text-base font-bold text-primary">{phase.title}</h3>
+                  <div
+                    key={idx}
+                    className={`border border-border/80 p-6 md:p-8 hover:border-primary/40 hover:shadow-lg transition-all duration-300 group ${
+                      variant === "warm" ? "bg-card rounded-3xl" : variant === "tech" ? "bg-white dark:bg-zinc-800 rounded-lg" : variant === "bold" ? "bg-white dark:bg-slate-800 rounded-xl" : "bg-card rounded-2xl"
+                    }`}
+                  >
+                    <div className="flex items-center gap-4 mb-5">
+                      <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold flex-shrink-0 group-hover:scale-110 transition-transform">
+                        {idx + 1}
                       </div>
-                      <ul className="space-y-2">
-                        {phase.points?.map((point: string, pidx: number) => (
-                          <li key={pidx} className="text-xs sm:text-sm text-muted-foreground flex gap-2">
-                            <span className="text-primary flex-shrink-0">•</span>
-                            <span>{point}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <h3 className="text-lg font-bold text-foreground">{phase.title}</h3>
                     </div>
+                    <ul className="space-y-3">
+                      {phase.points?.map((point: string, pidx: number) => (
+                        <li key={pidx} className="text-muted-foreground flex gap-3 text-sm leading-relaxed">
+                          <span className="text-primary mt-1.5 flex-shrink-0">—</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
@@ -977,48 +1017,68 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
           </section>
         )}
 
-        {/* Testimonial - Full Width with Styling */}
-        {caseStudy.testimonial && (
-          <section className="py-12 md:py-20 px-4 md:px-6 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground">
-            <div className="container mx-auto max-w-4xl text-center">
-              <div className="mb-6">
-                <span className="text-4xl opacity-50">„</span>
-              </div>
-              <blockquote className="text-lg sm:text-xl md:text-2xl leading-relaxed mb-8 font-medium">
-                {caseStudy.testimonial.quote}
-              </blockquote>
-              <div className="h-0.5 w-12 bg-primary-foreground/30 mx-auto mb-6"></div>
-              <div>
-                <p className="font-bold text-base sm:text-lg">{caseStudy.testimonial.author}</p>
-                <p className="text-sm opacity-80">{caseStudy.testimonial.role}</p>
+        {/* Results */}
+        {caseStudy.results && Object.keys(caseStudy.results).length > 0 && (
+          <section className={`py-16 md:py-24 px-4 md:px-6 overflow-hidden ${s.results}`}>
+            <div className="container mx-auto max-w-6xl">
+              <p className={`text-xs font-semibold uppercase tracking-[0.3em] mb-4 ${variant === "tech" || variant === "bold" ? "text-white/70" : "text-primary"}`}>Impact</p>
+              <h2 className={`font-serif text-3xl md:text-4xl font-bold mb-16 ${variant === "tech" || variant === "bold" ? "text-white" : "text-foreground"}`}>The results</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4 md:gap-6">
+                {Object.entries(caseStudy.results).map(([label, value], idx) => (
+                  <div key={idx} className={`rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all group ${variant === "tech" || variant === "bold" ? "bg-white/10 border border-white/20" : "bg-card border border-border hover:border-primary/30"}`}>
+                    <p className={`text-lg md:text-xl font-bold mb-2 group-hover:scale-105 transition-transform origin-left ${variant === "tech" || variant === "bold" ? "text-white" : "text-primary"}`}>
+                      {String(value)}
+                    </p>
+                    <p className={`text-sm leading-snug ${variant === "tech" || variant === "bold" ? "text-white/80" : "text-muted-foreground"}`}>{label}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
         )}
 
-        {/* Services & Tech - Two Column */}
-        <section className="py-12 md:py-20 px-4 md:px-6">
-          <div className="container mx-auto max-w-6xl">
-            <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
-              {/* Services */}
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-8">Key Capabilities</h2>
-                <div className="space-y-3">
-                  {caseStudy.services?.map((service: string, idx: number) => (
-                    <div key={idx} className="flex items-center gap-3 p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                      <p className="text-sm sm:text-base font-medium">{service}</p>
-                    </div>
-                  ))}
-                </div>
+        {/* Testimonial */}
+        {caseStudy.testimonial && (
+          <section className={`py-20 md:py-28 px-4 md:px-6 ${s.testimonial} relative overflow-hidden ${variant === "tech" || variant === "bold" ? "text-white" : "text-primary-foreground"}`}>
+            <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} aria-hidden />
+            <div className="container mx-auto max-w-4xl relative">
+              <blockquote className="text-xl sm:text-2xl md:text-3xl font-serif leading-relaxed text-center">
+                <span className="block text-5xl md:text-6xl font-serif text-white/30 mb-4">"</span>
+                {caseStudy.testimonial.quote}
+              </blockquote>
+              <div className="mt-10 text-center">
+                <p className="font-bold text-lg">{caseStudy.testimonial.author}</p>
+                <p className="text-sm text-white/70 mt-1">{caseStudy.testimonial.role}</p>
               </div>
+            </div>
+          </section>
+        )}
 
-              {/* Tech Stack */}
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-8">Tech Stack</h2>
-                <div className="flex flex-wrap gap-2 md:gap-3">
+        {/* Services & Tech - Asymmetric */}
+        <section className="py-16 md:py-24 px-4 md:px-6">
+          <div className="container mx-auto max-w-6xl">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
+              <div className="lg:col-span-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary mb-4">Capabilities</p>
+                <h2 className="font-serif text-3xl md:text-4xl font-bold mb-8">What we delivered</h2>
+                <ul className="space-y-4">
+                  {caseStudy.services?.map((service: string, idx: number) => (
+                    <li key={idx} className="flex items-start gap-4 group">
+                      <span className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-2.5 group-hover:scale-150 transition-transform" />
+                      <span className="text-muted-foreground font-medium">{service}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="lg:col-span-7">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary mb-4">Stack</p>
+                <h2 className="font-serif text-3xl md:text-4xl font-bold mb-8">Technologies we used</h2>
+                <div className="flex flex-wrap gap-3">
                   {caseStudy.technologies?.map((tech: string, idx: number) => (
-                    <span key={idx} className="bg-primary/10 text-primary px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold border border-primary/20 hover:border-primary/50 transition-all">
+                    <span
+                      key={idx}
+                      className="inline-flex items-center px-4 py-2.5 rounded-full text-sm font-medium bg-muted/80 hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
+                    >
                       {tech}
                     </span>
                   ))}
@@ -1028,15 +1088,15 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-12 md:py-20 px-4 md:px-6 bg-primary text-primary-foreground">
-          <div className="container mx-auto max-w-3xl text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">Let's work together</h2>
-            <p className="text-sm sm:text-base md:text-lg mb-8 opacity-90">
-              Ready to transform your digital presence with a project like this?
+        {/* CTA */}
+        <section className="py-20 md:py-28 px-4 md:px-6 border-t">
+          <div className="container mx-auto max-w-2xl text-center">
+            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">Let&apos;s work together</h2>
+            <p className="text-muted-foreground mb-10">
+              Ready to transform your digital presence?
             </p>
             <Link href="/#contact">
-              <Button size="lg" variant="secondary" className="rounded-full gap-2">
+              <Button size="lg" className="rounded-full gap-2 px-8">
                 Start your project
                 <ArrowRight className="w-5 h-5" />
               </Button>
@@ -1045,40 +1105,40 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
         </section>
 
         {/* More Case Studies */}
-        <section className="py-16 md:py-24 px-4 md:px-6">
+        <section className={`py-16 md:py-24 px-4 md:px-6 ${s.moreStudies}`}>
           <div className="container mx-auto max-w-6xl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-12">Explore Other Case Studies</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary mb-4">Explore</p>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-14">More case studies</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {Object.entries(caseStudies)
                 .filter(([slug]) => slug !== resolvedParams.slug)
                 .slice(0, 6)
                 .map(([slug, study]: [string, any]) => (
-                  <div
+                  <Link
                     key={slug}
-                    className="group bg-card border border-border hover:border-primary/50 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg h-full p-6 flex flex-col"
+                    href={`/case-studies/${slug}`}
+                    className="group block bg-card border border-border hover:border-primary/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                   >
-                    <div className="inline-block bg-primary/10 text-primary px-2.5 py-1 rounded-full text-xs font-semibold mb-4 w-fit">
+                    <span className="inline-block bg-primary/10 text-primary px-2.5 py-1 rounded-full text-xs font-semibold mb-4">
                       {study.category}
-                    </div>
+                    </span>
                     <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
                       {study.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground mb-6 flex-grow">
+                    <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
                       {study.subtitle}
                     </p>
-                    <Link href={`/case-studies/${slug}`}>
-                      <Button variant="ghost" size="sm" className="gap-2 px-0 hover:gap-3 transition-all">
-                        View Case Study
-                        <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                      </Button>
-                    </Link>
-                  </div>
+                    <span className="inline-flex items-center gap-2 text-sm font-medium text-primary">
+                      View case study
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </Link>
                 ))}
             </div>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-12 text-center">
               <Link href="/case-studies">
-                <Button variant="outline" className="gap-2">
-                  View All Case Studies
+                <Button variant="outline" size="lg" className="rounded-full gap-2">
+                  View all case studies
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
