@@ -21,7 +21,7 @@ export function Hero() {
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
-            <div className="hidden sm:inline-flex items-center gap-2.5 bg-transparent px-0 py-2 text-xs md:text-sm font-medium mb-6 md:mb-8" role="banner">
+            <div className="hidden sm:inline-flex items-center gap-2.5 bg-transparent px-0 py-2 text-sm md:text-base font-medium mb-6 md:mb-8" role="banner">
               <span aria-hidden="true" className="inline-block w-2 h-2 bg-primary-foreground rounded-[2px] flex-shrink-0" />
               <span className="whitespace-nowrap tracking-wider">SHEFFIELD-BASED • BUILT FOR START-UPS • FAIR PRICING</span>
             </div>
@@ -33,8 +33,8 @@ export function Hero() {
               {" "}<span className="font-serif italic font-normal text-4xl sm:text-5xl md:text-6xl">that makes you look good.</span>
             </h1>
 
-            <Link href="#contact" aria-label="Get started with professional web design" className="inline-block mt-3 md:mt-8">
-              <Button size="lg" className="rounded-full gap-2 w-full sm:w-auto justify-center md:justify-start px-8 md:px-10 py-3 md:py-4 text-lg md:text-xl bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300">
+            <Link href="#contact" aria-label="Get started with professional web design" className="inline-block mt-3 md:mt-8 w-full sm:w-auto">
+              <Button size="lg" className="rounded-full gap-2 w-full sm:w-auto justify-center md:justify-start min-h-[44px] md:min-h-0 px-8 md:px-10 py-3 md:py-4 text-lg md:text-xl bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300 touch-manipulation">
                 Enquire
                 <ArrowRight className="w-5 md:w-6 h-5 md:h-6" aria-hidden="true" />
               </Button>

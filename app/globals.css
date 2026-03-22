@@ -120,8 +120,13 @@
   }
   html {
     scroll-behavior: smooth;
+    /* Prevent iOS zoom on input focus - 16px base prevents auto-zoom */
+    font-size: 16px;
   }
   body {
     @apply bg-background text-foreground;
+    /* Improve text rendering on mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }

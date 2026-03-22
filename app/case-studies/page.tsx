@@ -43,7 +43,7 @@ const allProjects = [
     description:
       "A specialist education recruitment platform connecting bright talent with bright futures. We created a modern, conversion-focused website featuring seamless HelloEduN CRM integration for real-time vacancy display and Google Jobs integration to maximise visibility. The platform showcases expertise across eight educational sectors, addressing the specific challenges that keep school leaders up at night whilst building trust with both schools and educators.",
     image: "/case-studies/luma-education.png",
-    tags: ["Recruitment Platform", "Web Design", "Conversion Optimisation"],
+    tags: ["Recruitment Platform", "Web Design"],
   },
   {
     name: "EnviroTech Emergency Plumbing",
@@ -170,13 +170,6 @@ export default function AllCaseStudiesPage() {
                       />
                     </div>
                     <article className="p-6 flex flex-col h-full">
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {project.tags.map((tag, j) => (
-                          <span key={j} className="text-xs md:text-sm font-medium px-2.5 py-0.5 rounded-full bg-primary/10 text-primary">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
                       <h3 className="text-lg md:text-xl font-bold mb-2 group-hover:text-primary transition-colors">{project.name}</h3>
                       <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6 flex-grow">{project.description}</p>
                       <div className="flex items-center text-primary font-medium gap-2 group-hover:gap-3 transition-all">
@@ -191,9 +184,9 @@ export default function AllCaseStudiesPage() {
 
             {/* Back to Home */}
             <div className="flex justify-center pt-8">
-              <Link href="/#work">
-                <Button variant="outline" className="gap-2">
-                  <ArrowLeft className="w-4 h-4" />
+              <Link href="/#work" className="inline-block">
+                <Button variant="outline" className="gap-2 min-h-[44px] touch-manipulation w-full sm:w-auto justify-center">
+                  <ArrowLeft className="w-4 h-4" aria-hidden="true" />
                   Back to Home
                 </Button>
               </Link>

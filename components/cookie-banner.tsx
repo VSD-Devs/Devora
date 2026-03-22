@@ -47,10 +47,10 @@ export function CookieBanner() {
               <h3 className="text-lg font-semibold">Cookie Settings</h3>
               <button
                 onClick={() => setShowDetails(false)}
-                className="p-1 hover:bg-muted rounded-lg transition-colors"
-                aria-label="Close"
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center hover:bg-muted rounded-lg transition-colors touch-manipulation"
+                aria-label="Close cookie settings"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5" aria-hidden="true" />
               </button>
             </div>
 
@@ -121,11 +121,11 @@ export function CookieBanner() {
               <Button
                 variant="outline"
                 onClick={() => setShowDetails(false)}
-                className="flex-1"
+                className="flex-1 min-h-[44px] touch-manipulation"
               >
                 Back
               </Button>
-              <Button onClick={handleAcceptEssential} className="flex-1">
+              <Button onClick={handleAcceptEssential} className="flex-1 min-h-[44px] touch-manipulation">
                 Save Settings
               </Button>
             </div>
@@ -137,7 +137,7 @@ export function CookieBanner() {
               <h3 className="font-semibold mb-2">We use cookies</h3>
               <p className="text-sm text-muted-foreground">
                 We use cookies to enhance your experience, analyse site traffic, and serve targeted advertising. 
-                <Link href="/privacy" className="font-medium text-primary hover:underline ml-1">
+                <Link href="/privacy" className="font-medium text-primary hover:underline ml-1 inline-block py-2 touch-manipulation">
                   Learn more
                 </Link>
               </p>
@@ -147,20 +147,20 @@ export function CookieBanner() {
               <Button
                 variant="outline"
                 onClick={() => setShowDetails(true)}
-                className="whitespace-nowrap"
+                className="whitespace-nowrap min-h-[44px] touch-manipulation"
               >
                 Customize
               </Button>
               <Button
                 variant="outline"
                 onClick={handleRejectAll}
-                className="whitespace-nowrap"
+                className="whitespace-nowrap min-h-[44px] touch-manipulation"
               >
                 Reject All
               </Button>
               <Button
                 onClick={handleAcceptAll}
-                className="whitespace-nowrap"
+                className="whitespace-nowrap min-h-[44px] touch-manipulation"
               >
                 Accept All
               </Button>

@@ -126,21 +126,21 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - min 44x44px touch target (WCAG 2.5.5) */}
           <button
             onClick={(e) => {
               e.stopPropagation()
               setIsMenuOpen(!isMenuOpen)
             }}
-            className="md:hidden p-2 rounded-lg hover:bg-muted active:bg-muted transition-colors touch-manipulation z-50 relative"
+            className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg hover:bg-muted active:bg-muted transition-colors touch-manipulation z-50 relative"
             aria-label={isMenuOpen ? "Close mobile menu" : "Open mobile menu"}
             aria-expanded={isMenuOpen}
             type="button"
           >
             {isMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6" aria-hidden="true" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-6 h-6" aria-hidden="true" />
             )}
           </button>
         </div>
@@ -162,19 +162,19 @@ export function Header() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="block px-4 py-2 text-base font-medium text-foreground/80 hover:text-primary hover:bg-muted rounded-lg transition-colors duration-200"
+                className="block px-4 min-h-[44px] flex items-center text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-lg transition-colors duration-200 touch-manipulation"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
 
-            {/* Free Audit Button - Mobile Nav */}
+            {/* Free Audit Button - Mobile Nav (min 44px touch target) */}
             <div className="px-4 pt-2">
               <Dialog open={isAuditDialogOpen} onOpenChange={setIsAuditDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button variant="outline" className="rounded-full gap-2 w-full justify-center border-primary/20 hover:border-primary/40" onClick={() => setIsMenuOpen(false)}>
-                    <Globe className="w-4 h-4" />
+                  <Button variant="outline" className="rounded-full gap-2 w-full justify-center min-h-[44px] border-primary/20 hover:border-primary/40 touch-manipulation" onClick={() => setIsMenuOpen(false)}>
+                    <Globe className="w-4 h-4" aria-hidden="true" />
                     Free Website Audit
                   </Button>
                 </DialogTrigger>
@@ -190,10 +190,10 @@ export function Header() {
               </Dialog>
             </div>
 
-            {/* Get in Touch Button - Mobile Nav */}
+            {/* Get in Touch Button - Mobile Nav (min 44px touch target) */}
             <div className="px-4 pt-2">
-              <Link href={getNavHref("#contact")} aria-label="Contact Devora for web design services" onClick={() => setIsMenuOpen(false)}>
-                <Button className="rounded-full gap-2 w-full justify-center">
+              <Link href={getNavHref("#contact")} aria-label="Contact Devora for web design services" onClick={() => setIsMenuOpen(false)} className="block">
+                <Button className="rounded-full gap-2 w-full justify-center min-h-[44px] touch-manipulation">
                   Get in touch
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Button>

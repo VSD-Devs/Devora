@@ -15,7 +15,7 @@ export function OurWork() {
       description:
         "A specialist education recruitment platform connecting bright talent with bright futures. We created a modern, conversion-focused website featuring seamless HelloEduN CRM integration for real-time vacancy display and Google Jobs integration to maximise visibility.",
       image: "/case-studies/luma-education.png",
-      tags: ["Recruitment Platform", "Web Design", "Conversion Optimisation"],
+      tags: ["Recruitment Platform", "Web Design"],
       featured: true,
     },
     {
@@ -141,25 +141,15 @@ export function OurWork() {
                   sizes="100vw"
                   loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/20" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 lg:p-12">
-                  <div className="flex flex-wrap gap-2 mb-3 md:mb-4">
-                    {featuredProject.tags.map((tag, j) => (
-                      <span
-                        key={j}
-                        className="text-xs md:text-sm font-medium px-3 py-1 rounded-full bg-primary-foreground/90 text-primary"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-2 md:mb-3">
+                  <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] mb-2 md:mb-3">
                     {featuredProject.name}
                   </h3>
-                  <p className="text-primary-foreground/90 text-sm md:text-base lg:text-lg max-w-2xl line-clamp-2">
+                  <p className="text-white/95 text-sm md:text-base lg:text-lg max-w-2xl line-clamp-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                     {featuredProject.description}
                   </p>
-                  <span className="inline-flex items-center gap-2 mt-4 md:mt-6 text-primary-foreground font-medium group-hover:gap-3 transition-all">
+                  <span className="inline-flex items-center gap-2 mt-4 md:mt-6 text-white font-medium group-hover:gap-3 transition-all drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                     View case study
                     <ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </span>
@@ -180,22 +170,22 @@ export function OurWork() {
               ))}
             </div>
           </div>
-          <div className="flex items-center justify-center gap-2 mt-6">
+          <div className="flex items-center justify-center gap-4 mt-6">
             <button
               onClick={() => emblaApi?.scrollPrev()}
               disabled={!prevBtnEnabled}
-              className="p-2.5 rounded-full bg-primary/10 hover:bg-primary/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full bg-primary/10 hover:bg-primary/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors touch-manipulation"
               aria-label="Previous project"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-5 h-5" aria-hidden="true" />
             </button>
             <button
               onClick={() => emblaApi?.scrollNext()}
               disabled={!nextBtnEnabled}
-              className="p-2.5 rounded-full bg-primary/10 hover:bg-primary/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full bg-primary/10 hover:bg-primary/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors touch-manipulation"
               aria-label="Next project"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-5 h-5" aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -248,16 +238,6 @@ function ProjectCard({
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
         <div className={`flex flex-col flex-1 p-5 ${compact ? "md:p-6" : "p-6"}`}>
-          <div className="flex flex-wrap gap-2 mb-3">
-            {project.tags.slice(0, 2).map((tag, j) => (
-              <span
-                key={j}
-                className={`font-medium px-2.5 py-0.5 rounded-full bg-primary/10 text-primary ${compact ? "text-xs" : "text-sm"}`}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
           <h3 className={`font-bold mb-2 group-hover:text-primary transition-colors ${compact ? "text-lg" : "text-xl"}`}>
             {project.name}
           </h3>

@@ -893,8 +893,8 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
           )}
 
           <div className={`relative container mx-auto max-w-6xl px-4 md:px-6 ${heroImage ? "pb-16 md:pb-24" : ""}`}>
-            <Link href="/case-studies" className={`inline-flex items-center gap-2 mb-8 text-xs sm:text-sm transition-colours hover:opacity-80 ${heroImage || variant === "tech" || variant === "bold" ? "text-white/90" : "text-muted-foreground hover:text-primary"}`}>
-              <ArrowLeft className="w-4 h-4" />
+            <Link href="/case-studies" className={`inline-flex items-center gap-2 min-h-[44px] py-2 mb-8 text-sm transition-colours hover:opacity-80 touch-manipulation ${heroImage || variant === "tech" || variant === "bold" ? "text-white/90" : "text-muted-foreground hover:text-primary"}`}>
+              <ArrowLeft className="w-4 h-4" aria-hidden="true" />
               Back to all case studies
             </Link>
 
@@ -922,7 +922,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                       <div>
                         <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] opacity-70 mb-1">Website</dt>
                         <dd>
-                          <Link href={caseStudy.website} target="_blank" rel="noopener noreferrer" className={`font-bold underline decoration-2 underline-offset-2 hover:no-underline ${heroImage || variant === "tech" || variant === "bold" ? "text-white" : "text-primary"}`}>
+                          <Link href={caseStudy.website} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center min-h-[44px] font-bold underline decoration-2 underline-offset-2 hover:no-underline touch-manipulation ${heroImage || variant === "tech" || variant === "bold" ? "text-white" : "text-primary"}`}>
                             Visit site →
                           </Link>
                         </dd>
@@ -1095,10 +1095,10 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
             <p className="text-muted-foreground mb-10">
               Ready to transform your digital presence?
             </p>
-            <Link href="/#contact">
-              <Button size="lg" className="rounded-full gap-2 px-8">
+            <Link href="/#contact" className="inline-block">
+              <Button size="lg" className="rounded-full gap-2 px-8 min-h-[44px] touch-manipulation w-full sm:w-auto justify-center">
                 Start your project
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </Button>
             </Link>
           </div>
@@ -1136,10 +1136,10 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                 ))}
             </div>
             <div className="mt-12 text-center">
-              <Link href="/case-studies">
-                <Button variant="outline" size="lg" className="rounded-full gap-2">
+              <Link href="/case-studies" className="inline-block">
+                <Button variant="outline" size="lg" className="rounded-full gap-2 min-h-[44px] touch-manipulation w-full sm:w-auto justify-center">
                   View all case studies
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Button>
               </Link>
             </div>
