@@ -84,7 +84,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-3" aria-label="Devora - Home">
             <Image 
               src="/devora-bw.png" 
-              alt="Devora logo - Affordable web design and development agency" 
+              alt="Devora logo - Affordable web design and development business" 
               width={48} 
               height={48} 
               className="h-10 w-10 rounded-md"

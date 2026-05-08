@@ -33,7 +33,7 @@ export function Hero() {
   return (
     <section
       className="relative isolate overflow-hidden bg-background pt-20 sm:pt-24 md:min-h-[92vh] md:pt-32"
-      aria-label="Hero section - Sheffield web agency"
+      aria-label="Hero section - Sheffield web development business"
     >
       <div className="absolute inset-0 premium-grid opacity-55 md:opacity-75" aria-hidden="true" />
       <div className="absolute inset-x-0 top-0 hidden h-64 bg-white/85 md:block" aria-hidden="true" />
@@ -86,7 +86,7 @@ export function Hero() {
           <div className="relative z-10 max-w-4xl pt-5 md:pt-16">
             <div className="mb-4 inline-flex max-w-full items-center gap-2 border border-black/20 bg-card px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-foreground shadow-sm sm:mb-5 sm:text-xs sm:tracking-[0.2em]">
               <MapPin className="h-4 w-4 text-accent" aria-hidden="true" />
-              Web agency in Sheffield
+              Web development business
             </div>
 
             <h1 className="max-w-3xl text-[2.65rem] font-black leading-[0.95] tracking-[-0.025em] text-foreground sm:text-6xl md:text-7xl md:tracking-[-0.04em] lg:text-[6.9rem]">

@@ -11,8 +11,8 @@ export function WhyUs() {
       devora: "Design, copy, SEO structure, performance, and conversion thinking moving together.",
     },
     {
-      tired: "Agency theatre: long decks, hidden costs, and unclear ownership.",
-      devora: "Clear scope, plain English, clean handover, and support that continues after launch.",
+      tired: "Outsourced production, hidden costs, and unclear ownership.",
+      devora: "Clear scope, plain English, in-house delivery, and support that continues after launch.",
     },
     {
       tired: "A website that looks finished but does not make people act.",
@@ -31,7 +31,7 @@ export function WhyUs() {
             </h2>
           </div>
           <p className="max-w-2xl text-lg leading-8 text-background/82">
-            A Sheffield web agency should bring more than production. We bring taste, urgency, local market awareness, and the technical judgement to make ambitious ideas feel effortless online.
+            A Sheffield web development business should bring more than production. We bring taste, urgency, local market awareness, and the technical judgement to make ambitious ideas feel effortless online.
           </p>
         </div>
 

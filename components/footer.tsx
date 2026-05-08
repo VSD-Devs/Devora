@@ -11,7 +11,7 @@ export function Footer() {
               <Image src="/devora-bw.png" alt="Devora logo" width={36} height={36} className="h-9 w-9" />
               <span className="text-xl font-black tracking-[-0.03em]">Devora</span>
             </div>
-            <p className="max-w-xs text-sm leading-6 text-muted-foreground"><strong>Sheffield web agency</strong> designing and developing bespoke business websites from the ground up.</p>
+            <p className="max-w-xs text-sm leading-6 text-muted-foreground"><strong>Sheffield web development business</strong> designing and developing bespoke business websites from the ground up.</p>
           </div>
 
           <nav aria-label="Services navigation">

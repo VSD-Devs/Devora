@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Devora - Business Website Design & Development',
     short_name: 'Devora',
-    description: 'Business web design and website development agency building bespoke websites from the ground up',
+    description: 'Business web design and website development business building bespoke websites from the ground up',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

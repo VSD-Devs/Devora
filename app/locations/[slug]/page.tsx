@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
       `website designer ${location.name}`,
       `custom website development ${location.name}`,
       `SEO web design ${location.name}`,
-      `web agency ${location.name}`,
+      `web development business ${location.name}`,
       `build a website from scratch ${location.name}`,
       `bespoke website ${location.region}`,
     ],
@@ -129,7 +129,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
         "name": "Devora",
         "url": "https://www.devora.co.uk",
         "logo": "https://www.devora.co.uk/devora-bw.png",
-        "description": "Business website design and development agency building bespoke websites from the ground up.",
+        "description": "Business website design and development business building bespoke websites from the ground up.",
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+44-1234-567890",

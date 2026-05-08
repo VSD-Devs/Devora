@@ -13,18 +13,18 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Business Website Design & Development in Sheffield and the UK | Devora",
-  description: "Sheffield-based web design and development agency building bespoke business websites from the ground up. Strategy, design, development, SEO, launch, and ongoing support across the UK.",
+  description: "Sheffield-based web design and development business building bespoke business websites from the ground up. Strategy, design, development, SEO, launch, and ongoing support across the UK.",
   keywords: [
     "web design Sheffield",
     "web development Sheffield",
-    "web agency Sheffield",
+    "web development business Sheffield",
     "business website design Sheffield",
     "website development for businesses",
     "build a website from scratch UK",
     "bespoke website development UK",
     "web design South Yorkshire",
     "web design UK",
-    "digital agency Sheffield",
+    "website development business Sheffield",
     "website design near me",
     "Sheffield web developers",
     "SEO website design UK",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
         url: "/devora-office.png",
         width: 1200,
         height: 630,
-        alt: "Devora - business web design and website development agency",
+        alt: "Devora - business web design and website development business",
       },
     ],
   },
@@ -67,7 +67,7 @@ export default function Home() {
         "name": "Devora",
         "url": "https://www.devora.co.uk",
         "logo": "https://www.devora.co.uk/devora-bw.png",
-        "description": "Business website design and development agency building bespoke websites from the ground up.",
+        "description": "Business website design and development business building bespoke websites from the ground up.",
         "sameAs": [
           "https://www.facebook.com/share/14UKFzshvcq/?mibextid=wwXIfr",
           "https://www.instagram.com/devoraltd?igsh=MTBvNGQxbmhrb28xaA==",
@@ -94,7 +94,7 @@ export default function Home() {
         "@id": "https://www.devora.co.uk/#website",
         "url": "https://www.devora.co.uk",
         "name": "Devora - Business Website Design & Development",
-        "description": "Bespoke business website design and development agency serving Sheffield and the UK.",
+        "description": "Bespoke business website design and development business serving Sheffield and the UK.",
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
@@ -139,7 +139,7 @@ export default function Home() {
         "@id": "https://www.devora.co.uk/#localbusiness",
         "name": "Devora",
         "image": "https://www.devora.co.uk/devora-office.png",
-        "description": "Award-winning web design and development agency",
+        "description": "Award-winning web design and development business",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Sheffield",

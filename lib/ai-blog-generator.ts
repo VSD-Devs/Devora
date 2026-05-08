@@ -339,7 +339,7 @@ async function generateContentWithAI(topic: string): Promise<BlogPostData> {
         },
         method: "POST",
         body: JSON.stringify({
-          inputs: `Write a comprehensive blog post about ${topic} for a web development agency. Include practical business advice, clear headings, and actionable tips. Write in British English with a professional but friendly tone.`,
+          inputs: `Write a comprehensive blog post about ${topic} for a web development business. Include practical business advice, clear headings, and actionable tips. Write in British English with a professional but friendly tone.`,
           parameters: {
             max_new_tokens: 800,
             temperature: 0.7,
