@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Menu, X, Globe } from "lucide-react"
+import { ArrowRight, Menu, X, ScanSearch } from "lucide-react"
 import { useState, useEffect } from "react"
 import {
   Dialog,
@@ -26,6 +26,14 @@ export function Header() {
   useEffect(() => {
     setIsMenuOpen(false)
   }, [pathname])
+
+  useEffect(() => {
+    document.body.classList.toggle("mobile-nav-open", isMenuOpen)
+
+    return () => {
+      document.body.classList.remove("mobile-nav-open")
+    }
+  }, [isMenuOpen])
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -63,34 +71,38 @@ export function Header() {
     { href: getNavHref("#about"), label: "About" },
     { href: "/case-studies", label: "Portfolio" },
     { href: "/blog", label: "Blog", ariaLabel: "Web design and development blog" },
-    { href: "/locations", label: "Locations", ariaLabel: "Web development services by location" },
+    { href: "/areas-we-cover", label: "Areas We Cover", ariaLabel: "Web design and website development areas covered" },
     { href: getNavHref("#services"), label: "Services" },
   ]
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border shadow-sm" role="banner">
-      <div className="container mx-auto px-4 md:px-6 py-3">
-        <div className="flex items-center justify-between">
+    <Dialog open={isAuditDialogOpen} onOpenChange={setIsAuditDialogOpen}>
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-black/15 bg-card/95 shadow-sm backdrop-blur-xl supports-[backdrop-filter]:bg-card/82" role="banner">
+        <div className="mx-auto max-w-7xl px-4 py-2.5 md:px-6 md:py-3">
+          <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2" aria-label="Devora - Home">
+          <Link href="/" className="flex items-center gap-3" aria-label="Devora - Home">
             <Image 
               src="/devora-bw.png" 
               alt="Devora logo - Affordable web design and development agency" 
               width={48} 
               height={48} 
-              className="w-12 h-12"
+              className="h-10 w-10 rounded-md"
               priority={true}
             />
-            <span className="text-lg font-bold hidden sm:inline">Devora</span>
+            <span className="hidden sm:flex flex-col leading-none">
+              <span className="text-base font-black tracking-[-0.03em]">Devora</span>
+              <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">Sheffield web studio</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
+          <nav className="hidden md:flex items-center gap-7" aria-label="Main navigation">
             {navLinks.map((link) => (
               <Link 
                 key={link.label}
                 href={link.href} 
-                className="text-base font-medium text-foreground/80 hover:text-primary transition-colors duration-200"
+                className="text-sm font-semibold text-foreground/76 hover:text-foreground transition-colors duration-200"
                 aria-label={link.ariaLabel}
               >
                 {link.label}
@@ -100,26 +112,15 @@ export function Header() {
 
           {/* Desktop Action Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Dialog open={isAuditDialogOpen} onOpenChange={setIsAuditDialogOpen}>
-              <DialogTrigger asChild>
-                <Button variant="outline" className="rounded-full gap-2 border-primary/20 hover:border-primary/40">
-                  <Globe className="w-4 h-4" />
-                  Free Audit
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[500px] bg-background border-border p-0">
-                <DialogHeader className="sr-only">
-                  <DialogTitle>Free Website Audit</DialogTitle>
-                  <DialogDescription>
-                    Request a free comprehensive audit of your website
-                  </DialogDescription>
-                </DialogHeader>
-                <WebsiteAuditForm variant="inline" />
-              </DialogContent>
-            </Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" className="h-10 rounded-full gap-2 border-black/25 bg-card px-4 text-sm font-semibold hover:border-accent hover:text-accent-foreground">
+                <ScanSearch className="w-4 h-4" />
+                Free Audit
+              </Button>
+            </DialogTrigger>
             
             <Link href={getNavHref("#contact")} aria-label="Contact Devora for web design services">
-              <Button className="rounded-full gap-2">
+              <Button className="h-10 rounded-full gap-2 bg-foreground px-5 text-sm font-semibold text-background hover:bg-accent">
                 Get in touch
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Button>
@@ -132,7 +133,7 @@ export function Header() {
               e.stopPropagation()
               setIsMenuOpen(!isMenuOpen)
             }}
-            className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg hover:bg-muted active:bg-muted transition-colors touch-manipulation z-50 relative"
+            className="relative z-50 flex min-h-12 min-w-12 items-center justify-center rounded-full border border-black/10 bg-background/80 shadow-sm transition-colors hover:bg-muted active:bg-muted md:hidden"
             aria-label={isMenuOpen ? "Close mobile menu" : "Open mobile menu"}
             aria-expanded={isMenuOpen}
             type="button"
@@ -143,12 +144,12 @@ export function Header() {
               <Menu className="w-6 h-6" aria-hidden="true" />
             )}
           </button>
-        </div>
+          </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
+          {/* Mobile Menu */}
+          {isMenuOpen && (
           <nav 
-            className="md:hidden mt-4 pb-4 space-y-3 border-t border-border pt-4 animate-in slide-in-from-top-2 duration-200" 
+            className="fixed inset-x-0 top-[65px] z-40 max-h-[calc(100dvh-65px)] overflow-y-auto border-b border-black/15 bg-card/98 px-4 pb-[calc(6rem+env(safe-area-inset-bottom))] pt-4 shadow-2xl backdrop-blur-xl animate-in slide-in-from-top-2 duration-200 md:hidden" 
             aria-label="Mobile navigation"
             onClick={(e) => {
               // Close menu when clicking on nav links
@@ -158,50 +159,65 @@ export function Header() {
               }
             }}
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="block px-4 min-h-[44px] flex items-center text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-lg transition-colors duration-200 touch-manipulation"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-
-            {/* Free Audit Button - Mobile Nav (min 44px touch target) */}
-            <div className="px-4 pt-2">
-              <Dialog open={isAuditDialogOpen} onOpenChange={setIsAuditDialogOpen}>
-                <DialogTrigger asChild>
-                  <Button variant="outline" className="rounded-full gap-2 w-full justify-center min-h-[44px] border-primary/20 hover:border-primary/40 touch-manipulation" onClick={() => setIsMenuOpen(false)}>
-                    <Globe className="w-4 h-4" aria-hidden="true" />
-                    Free Website Audit
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[500px] bg-background border-border p-0">
-                  <DialogHeader className="sr-only">
-                    <DialogTitle>Free Website Audit</DialogTitle>
-                    <DialogDescription>
-                      Request a free comprehensive audit of your website
-                    </DialogDescription>
-                  </DialogHeader>
-                  <WebsiteAuditForm variant="inline" />
-                </DialogContent>
-              </Dialog>
+            <div className="space-y-2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="flex min-h-14 items-center justify-between border border-black/10 bg-background px-4 text-lg font-black tracking-[-0.02em] text-foreground shadow-sm transition-colors duration-200 hover:text-primary active:bg-muted"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                  <ArrowRight className="h-4 w-4 text-accent" aria-hidden="true" />
+                </Link>
+              ))}
             </div>
 
-            {/* Get in Touch Button - Mobile Nav (min 44px touch target) */}
-            <div className="px-4 pt-2">
+            <div className="mt-5 grid grid-cols-2 gap-3">
+              <DialogTrigger asChild>
+                <Button variant="outline" className="h-12 rounded-full gap-2 w-full justify-center border-black/15 text-sm font-bold hover:border-accent hover:text-accent-foreground" onClick={() => setIsMenuOpen(false)}>
+                  <ScanSearch className="w-4 h-4" aria-hidden="true" />
+                  Free audit
+                </Button>
+              </DialogTrigger>
+
               <Link href={getNavHref("#contact")} aria-label="Contact Devora for web design services" onClick={() => setIsMenuOpen(false)} className="block">
-                <Button className="rounded-full gap-2 w-full justify-center min-h-[44px] touch-manipulation">
-                  Get in touch
+                <Button className="h-12 rounded-full gap-2 w-full justify-center bg-foreground text-sm font-bold text-background hover:bg-accent">
+                  Contact
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Button>
               </Link>
             </div>
           </nav>
-        )}
+          )}
+        </div>
+      </header>
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-black/15 bg-card/95 px-4 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 shadow-[0_-18px_50px_rgba(15,23,42,0.12)] backdrop-blur-xl md:hidden">
+        <div className="mx-auto grid max-w-md grid-cols-[0.9fr_1.1fr] gap-3">
+          <DialogTrigger asChild>
+            <Button variant="outline" className="h-12 rounded-full gap-2 border-black/20 bg-card text-sm font-bold hover:border-accent hover:text-accent-foreground">
+              <ScanSearch className="h-4 w-4" aria-hidden="true" />
+              Audit
+            </Button>
+          </DialogTrigger>
+
+          <Link href={getNavHref("#contact")} aria-label="Contact Devora for web design services">
+            <Button className="h-12 w-full rounded-full gap-2 bg-foreground text-sm font-bold text-background hover:bg-accent">
+              Get in touch
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Button>
+          </Link>
+        </div>
       </div>
-    </header>
+      <DialogContent className="max-h-[calc(100dvh-2rem)] overflow-y-auto bg-background p-0 sm:max-w-[500px]">
+        <DialogHeader className="sr-only">
+          <DialogTitle>Free Website Audit</DialogTitle>
+          <DialogDescription>
+            Request a free comprehensive audit of your website
+          </DialogDescription>
+        </DialogHeader>
+        <WebsiteAuditForm variant="inline" />
+      </DialogContent>
+    </Dialog>
   )
 }

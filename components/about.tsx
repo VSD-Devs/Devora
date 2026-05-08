@@ -1,44 +1,80 @@
 import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight, Building2, Gauge, PenTool } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
 
 export function About() {
+  const points = [
+    {
+      icon: PenTool,
+      title: "Brand-led web design",
+      copy: "Distinctive layouts, crisp copy, and visual systems that make your business feel established from the first scroll.",
+    },
+    {
+      icon: Gauge,
+      title: "Performance-first builds",
+      copy: "Next.js, clean architecture, fast pages, and SEO foundations that help you compete in Sheffield and beyond.",
+    },
+    {
+      icon: Building2,
+      title: "Local commercial instinct",
+      copy: "We understand the gap between looking good and winning enquiries from real businesses in South Yorkshire.",
+    },
+  ]
+
   return (
-    <section id="about" className="py-16 md:py-24 px-4 md:px-6" aria-labelledby="about-heading">
-      <div className="container mx-auto">
-        <article className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
-          <div>
-            <div className="inline-block bg-transparent px-0 py-1 text-sm md:text-base font-medium mb-4 md:mb-6" role="banner">
-              <span aria-hidden="true" className="inline-block w-2 h-2 bg-primary mr-2.5 rounded-[2px]" /> ABOUT US
-            </div>
-
-            <h2 id="about-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-8 text-balance leading-tight">
-              We <span className="font-serif italic font-normal">are</span> start-up builders, <span className="font-serif italic font-normal">experts</span> in design and development.
+    <section id="about" className="bg-card px-4 py-20 md:px-6 md:py-28" aria-labelledby="about-heading">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <div className="lg:sticky lg:top-28">
+            <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-accent">Not another agency clone</p>
+            <h2 id="about-heading" className="max-w-2xl text-4xl font-black leading-[0.98] tracking-[-0.045em] md:text-6xl">
+              Built in Sheffield. Designed to look expensive. Engineered to earn.
             </h2>
-
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6 md:mb-8">
-              We partner with ambitious start-ups to create <strong>exceptional digital solutions</strong> that drive growth. Our team adapts to your needs, whether you're bootstrapped or funded, delivering professional web design and development that makes an impact.
+            <p className="mt-6 max-w-xl text-lg leading-8 text-foreground/76">
+              Devora is a web design and development studio for businesses that cannot afford to blend in. We turn early ideas, tired websites, and underperforming digital presences into premium web experiences with a clear route to enquiry.
             </p>
-
             <Link href="#contact" aria-label="Get started with Devora web design services">
-              <Button className="rounded-full gap-2 w-full md:w-auto px-8 py-6 text-lg" size="lg">
-                Get started
-                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              <Button className="mt-8 rounded-full bg-foreground px-7 font-bold text-background hover:bg-accent" size="lg">
+                Get a sharper website
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Button>
             </Link>
           </div>
 
-          <div className="relative h-80 md:h-96 lg:h-[500px] rounded-2xl overflow-hidden mt-8 lg:mt-0">
-            <img 
-              src="/devora-office.png" 
-              alt="Devora web design and development team collaborating in modern office space" 
-              className="w-full h-full object-cover"
-              loading="lazy"
-              width="800"
-              height="500"
-            />
+          <div>
+            <div className="relative mb-5 overflow-hidden border border-black/20 shadow-sm">
+              <Image
+                src="/modern-office-collaboration.png"
+                alt="Devora web design team collaborating on a premium website project"
+                width={1000}
+                height={720}
+                className="aspect-[4/3] w-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute bottom-0 left-0 right-0 grid grid-cols-3 border-t border-black/20 bg-card/95 backdrop-blur">
+                {["Strategy", "Design", "Development"].map((label) => (
+                  <div key={label} className="border-r border-black/15 px-4 py-4 text-sm font-black uppercase tracking-[0.14em] last:border-r-0">
+                    {label}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid gap-px overflow-hidden border border-black/15 bg-black/15 md:grid-cols-3">
+              {points.map((point) => {
+                const Icon = point.icon
+                return (
+                  <article key={point.title} className="bg-card p-6">
+                    <Icon className="mb-7 h-6 w-6 text-accent" strokeWidth={1.75} aria-hidden="true" />
+                    <h3 className="text-xl font-black tracking-[-0.02em]">{point.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-foreground/72">{point.copy}</p>
+                  </article>
+                )
+              })}
+            </div>
           </div>
-        </article>
+        </div>
       </div>
     </section>
   )

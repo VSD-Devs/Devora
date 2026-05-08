@@ -1,7 +1,7 @@
 // lib/seo.ts - Comprehensive SEO utilities
 export const siteConfig = {
   name: "Devora",
-  description: "Award-winning web design and development agency for start-ups",
+  description: "Business web design and website development agency building bespoke websites from the ground up",
   url: "https://www.devora.co.uk",
   ogImage: "/devora-office.png",
   links: {
@@ -69,7 +69,7 @@ export const schemaOrganization = {
   name: "Devora",
   url: "https://www.devora.co.uk",
   logo: "https://www.devora.co.uk/devora-bw.png",
-  description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups.",
+  description: "Business web design and website development agency building bespoke websites from the ground up.",
   foundingDate: "2020",
   areaServed: "GB",
   sameAs: [
@@ -104,7 +104,7 @@ export const schemaWebsite = {
   "@id": "https://www.devora.co.uk/#website",
   url: "https://www.devora.co.uk",
   name: "Devora",
-  description: "Award-winning web design and development agency for start-ups",
+  description: "Business web design and website development agency building bespoke websites from the ground up",
   publisher: {
     "@id": "https://www.devora.co.uk/#organization",
   },

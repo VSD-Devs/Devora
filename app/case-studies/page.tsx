@@ -8,12 +8,12 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Case Studies | Devora - Web Design & Development Portfolio",
-  description: "Explore our portfolio of successful web design and development projects. From start-ups to established brands, see how we've transformed businesses with custom digital solutions.",
+  description: "Explore our portfolio of successful web design and development projects. See how we've transformed businesses with bespoke websites, custom platforms, and digital solutions.",
   keywords: [
     "case studies",
     "web design portfolio",
     "web development examples",
-    "startup projects",
+    "business website projects",
     "digital transformation",
     "successful web projects",
   ],
@@ -65,9 +65,9 @@ const allProjects = [
     name: "LR Talent",
     slug: "lr-talent",
     description:
-      "A startup recruitment platform for HR and executive support professionals. We developed a complete brand identity including logo design, plus a professional website with dedicated sections for candidates and employers, enabling streamlined talent matching and relationship-driven recruitment.",
+      "A recruitment platform for HR and executive support professionals. We developed a complete brand identity including logo design, plus a professional website with dedicated sections for candidates and employers, enabling streamlined talent matching and relationship-driven recruitment.",
     image: "/case-studies/lr-talent.png",
-    tags: ["Startup Website", "Brand Development", "Recruitment"],
+    tags: ["Business Website", "Brand Development", "Recruitment"],
   },
   {
     name: "Rectify International",
@@ -143,7 +143,7 @@ export default function AllCaseStudiesPage() {
                 <span className="font-serif italic font-normal">Case Studies</span>
               </h1>
               <p className="text-sm md:text-base lg:text-lg text-muted-foreground max-w-2xl">
-                Explore our complete portfolio of successful projects. From start-ups to established brands, we've helped businesses transform their digital presence with thoughtful design and powerful development.
+                Explore our complete portfolio of successful projects. From growing businesses to established brands, we've helped clients transform their digital presence with thoughtful design and powerful development.
               </p>
             </div>
 

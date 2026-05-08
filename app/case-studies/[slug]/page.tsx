@@ -149,13 +149,13 @@ const caseStudies: Record<string, any> = {
     title: "LR Talent",
     subtitle: "Executive & HR Recruitment",
     client: "LR Talent",
-    category: "Startup Recruitment Platform",
+    category: "Recruitment Platform",
     duration: "1 month",
     year: "2024",
     challenge:
-      "LR Talent, a newly-launched startup recruitment agency, was competing against larger established firms with bigger marketing budgets. They needed to establish their brand and online presence from the ground up. Their website was static and didn't reflect their personalized, founder-led approach. Candidates couldn't understand the difference between them and generic job boards, employers didn't realize the value of their deep industry relationships and careful vetting process. They were losing opportunities to online platforms and couldn't showcase their track record effectively.",
+      "LR Talent, a newly launched recruitment agency, was competing against larger established firms with bigger marketing budgets. They needed to establish their brand and online presence from the ground up. Their website was static and didn't reflect their personalized, founder-led approach. Candidates couldn't understand the difference between them and generic job boards, employers didn't realize the value of their deep industry relationships and careful vetting process. They were losing opportunities to online platforms and couldn't showcase their track record effectively.",
     challenges: [
-      "Establishing brand identity for a new startup",
+      "Establishing brand identity for a new recruitment business",
       "Static website not reflecting personalised approach",
       "Inability to differentiate from generic job boards",
       "Hidden track record of successful placements",
@@ -168,7 +168,7 @@ const caseStudies: Record<string, any> = {
       {
         title: "Brand Development",
         points: [
-          "Logo design establishing startup identity and professionalism",
+          "Logo design establishing business identity and professionalism",
           "Brand guidelines and visual identity system",
           "Developed narrative around founder-led, relationship-focused recruitment",
           "Created distinct messaging for candidates vs employers",
@@ -213,7 +213,7 @@ const caseStudies: Record<string, any> = {
     testimonial: {
       quote: "LR Talent's platform has been a game-changer for us. The personalized approach and direct access to their consultants has made finding the right talent effortless. We've filled positions we thought would be difficult 3x faster.",
       author: "Michael Barnes",
-      role: "Head of HR, Tech Startup",
+      role: "Head of HR, Tech Company",
     },
     services: ["Brand Development", "Logo Design", "Bespoke Web Design", "Candidate Management System", "Client Portal", "SEO Optimisation"],
     technologies: ["Next.js", "React", "Tailwind CSS", "PostgreSQL", "Supabase Auth", "Stripe"],

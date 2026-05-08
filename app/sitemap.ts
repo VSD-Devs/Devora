@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { ukLocations } from '@/lib/locations'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.devora.co.uk'
@@ -57,112 +58,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/locations`,
+      url: `${baseUrl}/areas-we-cover`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8, // Location pages are important for local SEO
+      priority: 0.95, // Areas page is important for UK local SEO
     },
   ]
 
   // Location pages for local SEO
-  const locationPages: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/locations/sheffield`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9, // Home location gets higher priority
-    },
-    {
-      url: `${baseUrl}/locations/leeds`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/locations/manchester`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/locations/birmingham`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/locations/nottingham`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/locations/derby`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/hull`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/newcastle`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/liverpool`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/bradford`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/chesterfield`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/doncaster`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/rotherham`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/barnsley`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/wakefield`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/huddersfield`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-  ]
+  const locationPages: MetadataRoute.Sitemap = ukLocations.map((location) => ({
+    url: `${baseUrl}/locations/${location.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: location.priority === 'primary' ? 0.9 : location.priority === 'major' ? 0.82 : 0.72,
+  }))
 
   // Get blog posts dynamically
   const blogPosts: MetadataRoute.Sitemap = []
@@ -254,4 +163,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...staticPages, ...locationPages, ...blogPosts, ...caseStudies]
 }
-

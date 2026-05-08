@@ -9,7 +9,7 @@ tags:
   - devora insights
   - web design
   - digital strategy
-  - startup advice
+  - business advice
   - business growth
   - content marketing
 ---

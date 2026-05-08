@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Mail, MapPin, Loader2 } from "lucide-react"
+import { ArrowRight, Loader2, Mail, MapPin, Sparkles } from "lucide-react"
 import { toast } from "sonner"
 
 export function Contact() {
@@ -189,47 +189,54 @@ export function Contact() {
 
   return (
     <>
-      <section id="contact" className="py-12 md:py-24 px-4 md:px-6 bg-muted/50">
-        <div className="container mx-auto">
-          <div className="mb-8 md:mb-16">
-            <div className="inline-block bg-primary text-primary-foreground px-3 md:px-4 py-1 rounded-full text-xs font-semibold mb-3 md:mb-6">
-              ★ GET IN TOUCH
+      <section id="contact" className="bg-card px-4 py-20 md:px-6 md:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 grid gap-8 md:grid-cols-[1fr_0.7fr] md:items-end">
+            <div>
+              <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-accent">Get in touch</p>
+              <h2 className="max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.045em] md:text-7xl">
+                Ready to stop looking ordinary?
+              </h2>
             </div>
-
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-balance max-w-2xl">
-              Interested? Let's <span className="font-serif italic font-normal">discuss.</span>
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground mt-3 md:mt-4 max-w-2xl">
-              Let's discuss how we can help your start-up grow with expert web design and development solutions.
+            <p className="text-lg leading-8 text-foreground/76">
+              Tell us what you are building, what is not working, and what you want the site to make happen next.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-5xl">
+          <div className="grid gap-px overflow-hidden border border-black/15 bg-black/15 md:grid-cols-3">
             {/* Contact Information */}
-            <div className="md:col-span-1 space-y-6 md:space-y-8">
-              <div className="flex gap-3 md:gap-4">
-                <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+            <div className="space-y-8 bg-foreground p-6 text-background md:col-span-1 md:p-8">
+              <div>
+                <Sparkles className="mb-8 h-7 w-7 text-accent" aria-hidden="true" />
+                <h3 className="text-3xl font-black leading-none tracking-[-0.035em]">Brief us like you mean it.</h3>
+                <p className="mt-4 text-sm leading-6 text-background/82">
+                  We reply with the next sensible step, not a sales script.
+                </p>
+              </div>
+
+              <div className="flex gap-4 border-t border-white/15 pt-8">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-white/15">
+                  <Mail className="h-5 w-5 text-accent" />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="font-semibold text-sm md:text-base mb-0.5 md:mb-1">Email</h3>
-                  <p className="text-muted-foreground text-xs md:text-sm break-all">hello@devora.co.uk</p>
+                  <h3 className="mb-1 text-sm font-black">Email</h3>
+                  <p className="break-all text-sm text-background/82">hello@devora.co.uk</p>
                 </div>
               </div>
 
-              <div className="flex gap-3 md:gap-4">
-                <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+              <div className="flex gap-4">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-white/15">
+                  <MapPin className="h-5 w-5 text-accent" />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="font-semibold text-sm md:text-base mb-0.5 md:mb-1">Location</h3>
-                  <p className="text-muted-foreground text-xs md:text-sm">Sheffield, South Yorkshire</p>
+                  <h3 className="mb-1 text-sm font-black">Location</h3>
+                  <p className="text-sm text-background/82">Sheffield, South Yorkshire</p>
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div className="md:col-span-2 bg-card border border-border rounded-2xl p-5 md:p-8">
+            <div className="bg-card p-5 md:col-span-2 md:p-8">
               <form 
                 onSubmit={handleSubmit} 
                 className="space-y-4 md:space-y-6"
@@ -244,7 +251,7 @@ export function Contact() {
                 onClick={(e) => {
                   // Prevent accidental form submission on mobile
                   const target = e.target as HTMLElement
-                  if (target.type === 'submit' && isLoading) {
+                  if (target instanceof HTMLButtonElement && target.type === 'submit' && isLoading) {
                     e.preventDefault()
                     e.stopPropagation()
                   }
@@ -263,7 +270,7 @@ export function Contact() {
                       value={formData.firstName}
                       onChange={handleChange}
                       onFocus={handleInteraction}
-                      className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours"
+                      className="min-h-12 w-full rounded-none border border-input bg-background px-3 py-3 text-base text-foreground placeholder:text-foreground/48 hover:border-accent/70 focus:border-accent focus:outline-none focus:ring-2 focus:ring-ring/25 md:px-4"
                       required
                       autoComplete="given-name"
                     />
@@ -280,7 +287,7 @@ export function Contact() {
                       value={formData.lastName}
                       onChange={handleChange}
                       onFocus={handleInteraction}
-                      className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours"
+                      className="min-h-12 w-full rounded-none border border-input bg-background px-3 py-3 text-base text-foreground placeholder:text-foreground/48 hover:border-accent/70 focus:border-accent focus:outline-none focus:ring-2 focus:ring-ring/25 md:px-4"
                       required
                       autoComplete="family-name"
                     />
@@ -300,7 +307,7 @@ export function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       onFocus={handleInteraction}
-                      className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours"
+                      className="min-h-12 w-full rounded-none border border-input bg-background px-3 py-3 text-base text-foreground placeholder:text-foreground/48 hover:border-accent/70 focus:border-accent focus:outline-none focus:ring-2 focus:ring-ring/25 md:px-4"
                       required
                       autoComplete="email"
                       inputMode="email"
@@ -318,7 +325,7 @@ export function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       onFocus={handleInteraction}
-                      className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours"
+                      className="min-h-12 w-full rounded-none border border-input bg-background px-3 py-3 text-base text-foreground placeholder:text-foreground/48 hover:border-accent/70 focus:border-accent focus:outline-none focus:ring-2 focus:ring-ring/25 md:px-4"
                       autoComplete="tel"
                       inputMode="tel"
                     />
@@ -337,7 +344,7 @@ export function Contact() {
                       value={formData.company}
                       onChange={handleChange}
                       onFocus={handleInteraction}
-                      className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours"
+                      className="min-h-12 w-full rounded-none border border-input bg-background px-3 py-3 text-base text-foreground placeholder:text-foreground/48 hover:border-accent/70 focus:border-accent focus:outline-none focus:ring-2 focus:ring-ring/25 md:px-4"
                       autoComplete="organization"
                     />
                 </div>
@@ -353,8 +360,8 @@ export function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     onFocus={handleInteraction}
-                    rows={3}
-                    className="w-full px-3 md:px-4 py-2 text-sm rounded-lg border border-input bg-background hover:border-primary/50 focus:border-primary focus:outline-none transition-colours resize-none"
+                    rows={4}
+                    className="w-full resize-y rounded-none border border-input bg-background px-3 py-3 text-base text-foreground placeholder:text-foreground/48 hover:border-accent/70 focus:border-accent focus:outline-none focus:ring-2 focus:ring-ring/25 md:px-4"
                     required
                     minLength={10}
                     maxLength={2000}
@@ -383,7 +390,7 @@ export function Contact() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="rounded-full gap-2 w-full md:w-auto text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="h-12 w-full rounded-full bg-foreground text-base font-bold text-background hover:bg-accent md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={isLoading}
                   onClick={(e) => {
                     // Prevent double clicks/taps on mobile

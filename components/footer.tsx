@@ -3,23 +3,23 @@ import Image from "next/image"
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground py-16 px-6" role="contentinfo">
-      <div className="container mx-auto">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+    <footer className="border-t border-black/10 bg-background px-6 py-14 text-foreground" role="contentinfo">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-12 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr] mb-12">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Image src="/devora-logo-white.png" alt="Devora logo" width={32} height={32} className="w-8 h-8" />
-              <span className="text-xl font-semibold">Devora</span>
+              <Image src="/devora-bw.png" alt="Devora logo" width={36} height={36} className="h-9 w-9" />
+              <span className="text-xl font-black tracking-[-0.03em]">Devora</span>
             </div>
-            <p className="text-sm opacity-90 md:opacity-80"><strong>Start-up specialists</strong> building expert <strong>web design</strong> and <strong>development solutions</strong>.</p>
+            <p className="max-w-xs text-sm leading-6 text-muted-foreground"><strong>Sheffield web agency</strong> designing and developing bespoke business websites from the ground up.</p>
           </div>
 
           <nav aria-label="Services navigation">
             <h3 className="font-semibold mb-4">Services</h3>
-            <ul className="space-y-2 text-sm opacity-90 md:opacity-80">
+            <ul className="space-y-1 text-sm text-muted-foreground">
               <li>
                 <Link href="#services" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
-                  Web Design
+                  Premium Web Design
                 </Link>
               </li>
               <li>
@@ -34,7 +34,12 @@ export function Footer() {
               </li>
               <li>
                 <Link href="#services" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
-                  Digital Marketing
+                  Local SEO
+                </Link>
+              </li>
+              <li>
+                <Link href="/areas-we-cover" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
+                  Areas We Cover
                 </Link>
               </li>
             </ul>
@@ -42,7 +47,7 @@ export function Footer() {
 
           <nav aria-label="Company navigation">
             <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-2 text-sm opacity-90 md:opacity-80">
+            <ul className="space-y-1 text-sm text-muted-foreground">
               <li>
                 <Link href="#about" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
                   About Us
@@ -78,7 +83,7 @@ export function Footer() {
 
           <nav aria-label="Legal navigation">
             <h3 className="font-semibold mb-4">Legal</h3>
-            <ul className="space-y-2 text-sm opacity-90 md:opacity-80">
+            <ul className="space-y-1 text-sm text-muted-foreground">
               <li>
                 <Link href="/privacy" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
                   Privacy Policy
@@ -93,8 +98,8 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="border-t border-primary-foreground/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm opacity-80">
-          <p>© 2026 Devora. All rights reserved. <span className="sr-only">Affordable web design and development for start-ups in Sheffield, South Yorkshire, and across the UK.</span></p>
+        <div className="border-t border-black/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+          <p>© 2026 Devora. All rights reserved. <span className="sr-only">Bespoke web design and website development for businesses in Sheffield, South Yorkshire, and across the UK.</span></p>
           <nav aria-label="Social media navigation">
             <ul className="flex flex-wrap gap-4 md:gap-6">
               <li>

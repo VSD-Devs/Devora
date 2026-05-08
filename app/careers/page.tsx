@@ -6,7 +6,7 @@ import Link from "next/link"
 
 export const metadata = {
   title: "Careers - Devora | Web Agency Jobs in Sheffield",
-  description: "Join our Sheffield-based team and help start-ups transform their digital presence. Web agency jobs in South Yorkshire.",
+  description: "Join our Sheffield-based team and help businesses transform their digital presence. Web agency jobs in South Yorkshire.",
 }
 
 export default function CareersPage() {
@@ -15,7 +15,7 @@ export default function CareersPage() {
       title: "Senior Full-Stack Developer",
       type: "Full-time",
       location: "Remote",
-      description: "Build scalable web applications for start-ups with modern tech stack.",
+      description: "Build scalable web applications for businesses with a modern tech stack.",
     },
     {
       title: "UI/UX Designer",
@@ -42,7 +42,7 @@ export default function CareersPage() {
               Join the <span className="font-serif italic font-normal">Devora</span> team
             </h1>
             <p className="text-lg opacity-90">
-              We're always looking for talented individuals passionate about helping start-ups succeed. Check back soon for opportunities.
+              We're always looking for talented individuals passionate about helping businesses succeed online. Check back soon for opportunities.
             </p>
           </div>
         </section>

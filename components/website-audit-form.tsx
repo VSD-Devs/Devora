@@ -247,7 +247,7 @@ function AuditFormContent({ onFormSubmit, router }: { onFormSubmit: () => void; 
         onClick={(e) => {
           // Prevent accidental form submission on mobile
           const target = e.target as HTMLElement
-          if (target.type === 'submit' && isLoading) {
+          if (target instanceof HTMLButtonElement && target.type === 'submit' && isLoading) {
             e.preventDefault()
             e.stopPropagation()
           }

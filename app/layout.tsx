@@ -12,23 +12,25 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif"
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.devora.co.uk'),
   title: {
-    default: "Web Design & Development for Start-ups in Sheffield | Devora",
+    default: "Business Website Design & Development in Sheffield and the UK | Devora",
     template: "%s | Devora"
   },
-  description: "Sheffield-based web design & development agency for start-ups. Custom digital solutions with rapid deployment, 80+ launches, and ongoing support. Serving Sheffield, South Yorkshire & Yorkshire.",
+  description: "Sheffield-based web design and website development agency building bespoke business websites from the ground up. Serving Sheffield, South Yorkshire, and the UK.",
   keywords: [
     "web design Sheffield",
     "web development Sheffield",
     "web agency Sheffield",
-    "startup web design Sheffield",
+    "business website design Sheffield",
+    "website development for businesses",
+    "build a website from scratch UK",
     "web design South Yorkshire",
     "web agency Yorkshire",
     "digital agency Sheffield",
     "website design near me Sheffield",
     "Sheffield web developers",
-    "affordable web design Sheffield",
-    "web development for start-ups",
-    "start-up website design",
+    "SEO website design UK",
+    "web development for businesses",
+    "business website design",
     "custom web development",
     "responsive web design",
     "ecommerce development Sheffield",
@@ -47,8 +49,8 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: "https://www.devora.co.uk",
     siteName: "Devora",
-    title: "Web Design & Development for Start-ups",
-    description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups. Expert design, rapid deployment, and ongoing support.",
+    title: "Business Website Design & Development",
+    description: "Bespoke website design and development for UK businesses, built from the ground up with SEO, performance, and conversion in mind.",
     images: [
       {
         url: "/devora-office.png",
@@ -60,8 +62,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Web Design & Development for Start-ups",
-    description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups.",
+    title: "Business Website Design & Development",
+    description: "Bespoke website design and development for UK businesses, built from the ground up.",
     images: ["/devora-office.png"],
     creator: "@devora",
   },
@@ -114,6 +116,10 @@ export default function RootLayout({
   return (
     <html lang="en-GB" dir="ltr">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="Devora" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://cdn.vercel-insights.com" />

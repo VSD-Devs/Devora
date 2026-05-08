@@ -1,76 +1,148 @@
 "use client"
 
 import Link from "next/link"
+import { ArrowRight, CheckCircle2, MapPin, MousePointer2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Star } from "lucide-react"
-import Image from "next/image"
 
 export function Hero() {
-  const teamMembers = [
-    { src: "/face-1.png", alt: "Devora team member - Web Designer" },
-    { src: "/face-2.png", alt: "Devora team member - Web Developer" },
-    { src: "/face-3.png", alt: "Devora team member - UX Designer" },
-    { src: "/face-4.png", alt: "Devora team member - Project Manager" },
+  const proof = ["Built from scratch", "Sheffield based", "UK-wide SEO"]
+  const visualCards = [
+    {
+      className: "left-[8%] top-[12%] w-[58%] animate-hero-card-a",
+      label: "Search demand",
+      title: "Qualified visitors",
+      metric: "+68%",
+      bars: ["w-[88%]", "w-[64%]", "w-[74%]"],
+    },
+    {
+      className: "right-[2%] top-[30%] w-[54%] animate-hero-card-b",
+      label: "Conversion path",
+      title: "Enquiry flow",
+      metric: "2.4x",
+      bars: ["w-[70%]", "w-[92%]", "w-[58%]"],
+    },
+    {
+      className: "bottom-[10%] left-[20%] w-[48%] animate-hero-card-c",
+      label: "Build health",
+      title: "Core Web Vitals",
+      metric: "99",
+      bars: ["w-[96%]", "w-[82%]", "w-[88%]"],
+    },
   ]
 
   return (
     <section
-      className="relative bg-primary text-primary-foreground pt-32 pb-12 md:pt-32 md:pb-20 px-4 md:px-6"
-      aria-label="Hero section - Web design and development for start-ups"
+      className="relative isolate overflow-hidden bg-background pt-20 sm:pt-24 md:min-h-[92vh] md:pt-32"
+      aria-label="Hero section - Sheffield web agency"
     >
-      <div className="container mx-auto">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div>
-            <div className="hidden sm:inline-flex items-center gap-2.5 bg-transparent px-0 py-2 text-sm md:text-base font-medium mb-6 md:mb-8" role="banner">
-              <span aria-hidden="true" className="inline-block w-2 h-2 bg-primary-foreground rounded-[2px] flex-shrink-0" />
-              <span className="whitespace-nowrap tracking-wider">SHEFFIELD-BASED • BUILT FOR START-UPS • FAIR PRICING</span>
+      <div className="absolute inset-0 premium-grid opacity-55 md:opacity-75" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-0 hidden h-64 bg-white/85 md:block" aria-hidden="true" />
+      <div className="absolute inset-y-0 left-0 hidden w-[66%] bg-gradient-to-r from-background via-background/96 to-background/35 md:block" aria-hidden="true" />
+
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
+        <div className="relative pb-10 md:min-h-[calc(92vh-7rem)] md:pb-16">
+          <div className="absolute right-[-1.5rem] top-12 hidden h-[76%] w-[48%] md:block lg:right-0" aria-hidden="true">
+            <div className="relative h-full overflow-hidden border border-black/20 bg-card shadow-[0_30px_110px_rgba(15,23,42,0.14)]">
+              <div className="absolute inset-0 premium-grid opacity-80" />
+              <div className="absolute inset-x-0 top-0 flex h-12 items-center justify-between border-b border-black/15 bg-foreground px-5 text-background">
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-accent" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-background/35" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-background/35" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-[0.22em] text-background/70">Live site engine</span>
+              </div>
+
+              <div className="absolute inset-x-12 top-28 h-px bg-foreground/20" />
+              <div className="absolute bottom-24 left-12 right-12 h-px bg-foreground/20" />
+              <div className="absolute bottom-24 left-12 top-28 w-px bg-foreground/20" />
+              <div className="absolute bottom-24 right-12 top-28 w-px bg-foreground/20" />
+              <div className="absolute left-[14%] top-[24%] h-3 w-3 rounded-full bg-accent shadow-[0_0_0_8px_rgba(200,54,28,0.1)] animate-hero-pulse" />
+              <div className="absolute right-[18%] top-[52%] h-3 w-3 rounded-full bg-foreground shadow-[0_0_0_8px_rgba(15,23,42,0.1)] animate-hero-pulse-delayed" />
+              <div className="absolute bottom-[22%] left-[46%] h-3 w-3 rounded-full bg-accent shadow-[0_0_0_8px_rgba(200,54,28,0.1)] animate-hero-pulse" />
+              <div className="absolute left-0 top-16 h-24 w-full bg-gradient-to-b from-accent/18 via-transparent to-transparent animate-hero-scan" />
+
+              {visualCards.map((card) => (
+                <div key={card.title} className={`absolute border border-black/20 bg-card p-5 shadow-[0_18px_60px_rgba(15,23,42,0.16)] ${card.className}`}>
+                  <div className="mb-5 flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent">{card.label}</p>
+                      <p className="mt-2 text-xl font-black leading-none tracking-[-0.03em] text-foreground">{card.title}</p>
+                    </div>
+                    <span className="font-serif text-4xl italic leading-none text-foreground">{card.metric}</span>
+                  </div>
+                  <div className="space-y-2">
+                    {card.bars.map((bar, index) => (
+                      <span key={index} className="block h-2 bg-muted">
+                        <span className={`block h-full bg-foreground ${bar}`} />
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-8 text-balance leading-tight md:leading-tight">
-              <span className="sr-only">Web Design and Development for Start-ups - </span>
-              Web design and development
-              <br className="hidden sm:block" />
-              {" "}<span className="font-serif italic font-normal text-4xl sm:text-5xl md:text-6xl">that makes you look good.</span>
-            </h1>
-
-            <Link href="#contact" aria-label="Get started with professional web design" className="inline-block mt-3 md:mt-8 w-full sm:w-auto">
-              <Button size="lg" className="rounded-full gap-2 w-full sm:w-auto justify-center md:justify-start min-h-[44px] md:min-h-0 px-8 md:px-10 py-3 md:py-4 text-lg md:text-xl bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300 touch-manipulation">
-                Enquire
-                <ArrowRight className="w-5 md:w-6 h-5 md:h-6" aria-hidden="true" />
-              </Button>
-            </Link>
           </div>
 
-          <div className="space-y-3 mt-2 sm:mt-4 lg:mt-0">
-            <p className="text-base md:text-lg leading-relaxed">
-              We help start-ups launch and grow with professional web design and custom development. Bespoke solutions tailored to your needs, with transparent communication and swift delivery.
-            </p>
+          <div className="relative z-10 max-w-4xl pt-5 md:pt-16">
+            <div className="mb-4 inline-flex max-w-full items-center gap-2 border border-black/20 bg-card px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-foreground shadow-sm sm:mb-5 sm:text-xs sm:tracking-[0.2em]">
+              <MapPin className="h-4 w-4 text-accent" aria-hidden="true" />
+              Web agency in Sheffield
+            </div>
 
-            <div className="flex flex-row items-center gap-2 sm:gap-4 pt-2 md:pt-4" role="group" aria-label="Client testimonials and ratings">
-              <div className="hidden sm:flex -space-x-2" aria-label="Team members">
-                {teamMembers.map((member, index) => (
-                  <div key={index} className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-primary-foreground/20 border-2 border-primary flex-shrink-0">
-                    <Image
-                      src={member.src}
-                      alt={member.alt}
-                      width={40}
-                      height={40}
-                      className="rounded-full w-full h-full"
-                      loading="eager"
-                      priority={true}
-                    />
+            <h1 className="max-w-3xl text-[2.65rem] font-black leading-[0.95] tracking-[-0.025em] text-foreground sm:text-6xl md:text-7xl md:tracking-[-0.04em] lg:text-[6.9rem]">
+              Websites
+              <span className="mt-1 block max-w-[8.2em] font-serif text-[2.4rem] font-normal italic leading-[0.92] tracking-[-0.035em] text-accent sm:max-w-none sm:text-[inherit]">with commercial bite.</span>
+            </h1>
+
+            <div className="mt-5 grid gap-5 md:mt-8 md:max-w-3xl md:grid-cols-[minmax(0,34rem)_auto] md:items-end">
+              <p className="max-w-xl text-base leading-[1.72] text-foreground/78 md:text-xl md:leading-8">
+                Devora designs and develops distinctive, fast, conversion-led websites from the ground up for ambitious Sheffield and UK businesses that need to look sharper than everyone else in the search results.
+              </p>
+
+              <div className="flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">
+                <Link href="#contact" aria-label="Start a project with Devora">
+                  <Button size="lg" className="h-12 w-full rounded-full bg-foreground px-7 text-base font-bold text-background hover:bg-accent sm:w-auto md:h-13">
+                    Start a project
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Button>
+                </Link>
+                <Link href="#work" aria-label="View Devora case studies">
+                  <Button size="lg" variant="outline" className="h-12 w-full rounded-full border-black/25 bg-card px-7 text-base font-bold shadow-sm hover:border-accent hover:text-accent-foreground sm:w-auto md:h-13">
+                    See the work
+                    <MousePointer2 className="h-4 w-4" aria-hidden="true" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-2 pb-1 md:mt-9 md:pb-0">
+              {proof.map((item) => (
+                <span key={item} className="inline-flex shrink-0 items-center gap-2 border border-black/20 bg-card px-3 py-2 text-sm font-semibold text-foreground shadow-sm">
+                  <CheckCircle2 className="h-4 w-4 text-accent" aria-hidden="true" />
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative z-10 mt-8 overflow-hidden border border-black/20 bg-card p-3 shadow-sm md:hidden" aria-hidden="true">
+            <div className="premium-grid absolute inset-0 opacity-80" />
+            <div className="relative flex items-center justify-between border-b border-black/15 pb-4">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/70">Live site engine</span>
+              <span className="h-2.5 w-2.5 rounded-full bg-accent animate-hero-pulse" />
+            </div>
+            <div className="relative mt-3 grid gap-2">
+              {visualCards.map((card) => (
+                <div key={card.title} className="border border-black/15 bg-card p-3 shadow-sm">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-accent">{card.label}</p>
+                      <p className="mt-2 text-lg font-black leading-none tracking-[-0.03em]">{card.title}</p>
+                    </div>
+                    <span className="font-serif text-3xl italic leading-none">{card.metric}</span>
                   </div>
-                ))}
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-1 mb-1" role="img" aria-label="5 out of 5 star rating">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-current flex-shrink-0" aria-hidden="true" />
-                  ))}
-                  <span className="ml-2 font-semibold text-xs sm:text-base">5/5</span>
                 </div>
-                <p className="text-xs sm:text-sm opacity-90">80+ Start-ups supported</p>
-              </div>
+              ))}
             </div>
           </div>
         </div>

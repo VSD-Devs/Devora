@@ -6,11 +6,11 @@ import sharp from 'sharp';
 // Blog topics relevant to web development and Devora's expertise
 const BLOG_TOPICS = [
   'web development trends',
-  'startup website essentials',
+  'business website essentials',
   'react performance tips',
   'next.js best practices',
   'website optimization',
-  'seo for startups',
+  'seo for business websites',
   'responsive design principles',
   'ui/ux improvements',
   'web accessibility',
@@ -171,11 +171,11 @@ async function tryPexelsImage(topic: string, outputPath: string): Promise<boolea
 export function getPexelsSearchQuery(topic: string): string {
   const topicMappings: Record<string, string> = {
     'web development trends': 'technology computer programming',
-    'startup website essentials': 'startup business team',
+    'business website essentials': 'business team website planning',
     'react performance tips': 'coding development computer',
     'next.js best practices': 'web development programming',
     'website optimization': 'speed technology performance',
-    'seo for startups': 'marketing business growth',
+    'seo for business websites': 'marketing business growth',
     'responsive design principles': 'mobile design technology',
     'ui/ux improvements': 'design interface user experience',
     'web accessibility': 'accessibility technology inclusive',
@@ -240,11 +240,11 @@ async function generateEnhancedSVGImage(title: string, topic: string, outputPath
 function getColorForTopic(topic: string): string {
   const topicColors: Record<string, string> = {
     'web development trends': '#4F46E5',
-    'startup website essentials': '#EF4444',
+    'business website essentials': '#EF4444',
     'react performance tips': '#10B981',
     'next.js best practices': '#06B6D4',
     'website optimization': '#8B5CF6',
-    'seo for startups': '#F59E0B',
+    'seo for business websites': '#F59E0B',
     'responsive design principles': '#3B82F6',
     'ui/ux improvements': '#EC4899',
     'web accessibility': '#059669',
@@ -301,11 +301,11 @@ function getAccentColorForTopic(topic: string): string {
 function getSubtitleForTopic(topic: string): string {
   const subtitles: Record<string, string> = {
     'web development trends': 'Latest Industry Insights',
-    'startup website essentials': 'Building Your Digital Foundation',
+    'business website essentials': 'Building Your Digital Foundation',
     'react performance tips': 'Optimisation Strategies',
     'next.js best practices': 'Framework Mastery',
     'website optimization': 'Performance & Speed',
-    'seo for startups': 'Search Visibility Guide',
+    'seo for business websites': 'Search Visibility Guide',
     'responsive design principles': 'Multi-Device Excellence',
     'ui/ux improvements': 'User Experience Focus',
     'web accessibility': 'Inclusive Design Practices',
@@ -428,8 +428,8 @@ function generateTagsForTopic(topic: string): string[] {
 
   const topicTags: string[] = [];
 
-  if (lowerTopic.includes('startup') || lowerTopic.includes('business')) {
-    topicTags.push('startup advice', 'business strategy');
+  if (lowerTopic.includes('business')) {
+    topicTags.push('business strategy', 'website planning');
   }
 
   if (lowerTopic.includes('performance') || lowerTopic.includes('optimization') || lowerTopic.includes('optimisation')) {

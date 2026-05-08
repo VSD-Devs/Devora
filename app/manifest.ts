@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Devora - Web Design & Development for Start-ups',
+    name: 'Devora - Business Website Design & Development',
     short_name: 'Devora',
-    description: 'Award-winning web design and development agency specialising in custom digital solutions for start-ups',
+    description: 'Business web design and website development agency building bespoke websites from the ground up',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
@@ -29,4 +29,3 @@ export default function manifest(): MetadataRoute.Manifest {
     dir: 'ltr',
   }
 }
-

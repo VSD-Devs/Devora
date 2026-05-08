@@ -12,26 +12,29 @@ import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Web Design & Development for Start-ups in Sheffield | Devora",
-  description: "Sheffield-based web design and development agency specialising in custom digital solutions for start-ups. Expert design, rapid deployment, and ongoing support. Serving Sheffield, South Yorkshire & Yorkshire.",
+  title: "Business Website Design & Development in Sheffield and the UK | Devora",
+  description: "Sheffield-based web design and development agency building bespoke business websites from the ground up. Strategy, design, development, SEO, launch, and ongoing support across the UK.",
   keywords: [
     "web design Sheffield",
     "web development Sheffield",
     "web agency Sheffield",
-    "startup web design Sheffield",
+    "business website design Sheffield",
+    "website development for businesses",
+    "build a website from scratch UK",
+    "bespoke website development UK",
     "web design South Yorkshire",
-    "web agency Yorkshire",
+    "web design UK",
     "digital agency Sheffield",
     "website design near me",
     "Sheffield web developers",
-    "affordable web design Sheffield",
+    "SEO website design UK",
   ],
   alternates: {
     canonical: "https://www.devora.co.uk",
   },
   openGraph: {
-    title: "Web Design & Development for Start-ups in Sheffield | Devora",
-    description: "Sheffield-based web design and development agency for start-ups. Expert design, rapid deployment, and ongoing support. Serving Sheffield, South Yorkshire & Yorkshire.",
+    title: "Business Website Design & Development in Sheffield and the UK | Devora",
+    description: "Bespoke business websites built from the ground up with strategy, design, development, SEO, launch, and support.",
     url: "https://www.devora.co.uk",
     type: "website",
     locale: "en_GB",
@@ -40,14 +43,14 @@ export const metadata: Metadata = {
         url: "/devora-office.png",
         width: 1200,
         height: 630,
-        alt: "Devora - Award-winning Web Design & Development Agency for Start-ups",
+        alt: "Devora - business web design and website development agency",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Web Design & Development for Start-ups | Devora",
-    description: "Award-winning web design and development agency specialising in custom digital solutions for start-ups.",
+    title: "Business Website Design & Development | Devora",
+    description: "Bespoke websites built from the ground up for ambitious UK businesses.",
     images: ["/devora-office.png"],
     creator: "@devora",
   },
@@ -64,7 +67,7 @@ export default function Home() {
         "name": "Devora",
         "url": "https://www.devora.co.uk",
         "logo": "https://www.devora.co.uk/devora-bw.png",
-        "description": "Award-winning web design and development agency specialising in custom digital solutions for start-ups.",
+        "description": "Business website design and development agency building bespoke websites from the ground up.",
         "sameAs": [
           "https://www.facebook.com/share/14UKFzshvcq/?mibextid=wwXIfr",
           "https://www.instagram.com/devoraltd?igsh=MTBvNGQxbmhrb28xaA==",
@@ -90,8 +93,8 @@ export default function Home() {
         "@type": "WebSite",
         "@id": "https://www.devora.co.uk/#website",
         "url": "https://www.devora.co.uk",
-        "name": "Devora - Web Design & Development for Start-ups",
-        "description": "Award-winning web design and development agency specialising in custom digital solutions for start-ups.",
+        "name": "Devora - Business Website Design & Development",
+        "description": "Bespoke business website design and development agency serving Sheffield and the UK.",
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
@@ -117,7 +120,7 @@ export default function Home() {
           { "@type": "AdministrativeArea", "name": "Yorkshire" },
           { "@type": "Country", "name": "United Kingdom" }
         ],
-        "serviceType": ["Web Design", "Web Development", "Branding", "Digital Marketing"]
+        "serviceType": ["Web Design", "Website Development", "Custom Website Builds", "Local SEO", "Branding"]
       },
       {
         "@type": "BreadcrumbList",
@@ -153,7 +156,8 @@ export default function Home() {
         "areaServed": [
           { "@type": "City", "name": "Sheffield" },
           { "@type": "AdministrativeArea", "name": "South Yorkshire" },
-          { "@type": "AdministrativeArea", "name": "Yorkshire" }
+          { "@type": "AdministrativeArea", "name": "Yorkshire" },
+          { "@type": "Country", "name": "United Kingdom" }
         ],
         "url": "https://www.devora.co.uk",
         "telephone": "+44-1234-567890",
@@ -168,7 +172,7 @@ export default function Home() {
             "name": "What services does Devora offer?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Devora specializes in web design, web development, branding, and digital marketing solutions for start-ups."
+              "text": "Devora specialises in bespoke web design, website development, branding, local SEO, and digital strategy for businesses."
             }
           },
           {

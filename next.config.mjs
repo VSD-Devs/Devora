@@ -4,6 +4,41 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const legacyBusinessBlogSlugs = [
+  'api-design-principles-complete-guide-for-startups-in-2026',
+  'blaze-ai-social-media-management-complete-guide-for-startups-in-2026',
+  'cicd-pipeline-setup-complete-guide-for-startups-in-2026',
+  'component-library-design-complete-guide-for-startups-in-2026',
+  'css-grid-and-flexbox-complete-guide-for-startups-in-2026',
+  'dark-mode-implementation-complete-guide-for-startups-in-2026',
+  'database-optimisation-complete-guide-for-startups-in-2026',
+  'email-template-design-complete-guide-for-startups-in-2026',
+  'error-handling-strategies-complete-guide-for-startups-in-202',
+  'graphql-vs-rest-complete-guide-for-startups-in-2026',
+  'headless-cms-solutions-complete-guide-for-startups-in-2026',
+  'image-optimisation-techniques-complete-guide-for-startups-in',
+  'internationalisation-i18n-complete-guide-for-startups-in-202',
+  'microservices-architecture-complete-guide-for-startups-in-20',
+  'payment-integration-complete-guide-for-startups-in-2026',
+  'progressive-web-apps-complete-guide-for-startups-in-2026',
+  'react-server-components-complete-guide-for-startups-in-2026',
+  'serverless-architecture-complete-guide-for-startups-in-2026',
+  'social-media-integration-complete-guide-for-startups-in-2026',
+  'state-management-solutions-complete-guide-for-startups-in-20',
+  'testing-web-applications-complete-guide-for-startups-in-2026',
+  'the-ultimate-guide-to-seo-strategies-for-startups-in-2025',
+  'typescript-best-practices-complete-guide-for-startups-in-202',
+  'user-authentication-complete-guide-for-startups-in-2026',
+  'web-accessibility-standards-complete-guide-for-startups-in-2',
+  'web-analytics-setup-complete-guide-for-startups-in-2026',
+  'web-animation-techniques-complete-guide-for-startups-in-2026',
+  'web-performance-monitoring-complete-guide-for-startups-in-20',
+  'web-scraping-ethics-complete-guide-for-startups-in-2026',
+  'web-security-best-practices-complete-guide-for-startups-in-2',
+  'web3-and-blockchain-complete-guide-for-startups-in-2026',
+  'websocket-realtime-communication-complete-guide-for-startups',
+]
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
@@ -73,6 +108,20 @@ const nextConfig = {
           },
         ],
       },
+    ]
+  },
+  async redirects() {
+    return [
+      {
+        source: '/locations',
+        destination: '/areas-we-cover',
+        permanent: true,
+      },
+      ...legacyBusinessBlogSlugs.map((slug) => ({
+        source: `/blog/${slug}`,
+        destination: `/blog/${slug.replaceAll('startups', 'businesses').replaceAll('startup', 'business')}`,
+        permanent: true,
+      })),
     ]
   },
 }

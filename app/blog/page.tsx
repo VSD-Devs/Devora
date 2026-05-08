@@ -8,9 +8,9 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "Blog | Devora - Web Development Insights from Sheffield",
-  description: "Explore the latest web development trends, tips, and strategies from our Sheffield-based team. Expert insights to help your startup grow online.",
-  keywords: ["web development blog", "startup tips", "Sheffield web design tips", "Yorkshire startup advice", "react development", "next.js tutorials", "SEO strategies Sheffield", "web design tips Yorkshire"],
+  title: "Blog | Devora - Business Website Design & Development Insights",
+  description: "Explore website design, development, SEO, and growth insights from our Sheffield-based team. Practical guidance for UK businesses building better websites.",
+  keywords: ["web development blog", "business website tips", "Sheffield web design tips", "UK website design advice", "react development", "next.js tutorials", "SEO strategies UK", "web design tips Yorkshire"],
 }
 
 export default async function BlogPage() {
@@ -139,7 +139,7 @@ export default async function BlogPage() {
               Interested? Let's have a discussion.
             </h2>
             <p className="text-lg text-primary-foreground/90 font-light leading-relaxed max-w-2xl mx-auto mb-8">
-              Let's discuss how we can help your startup grow with expert web design and development solutions.
+              Let's discuss how we can help your business grow with a ground-up website design and development project.
             </p>
 
             <Link href="/#contact">

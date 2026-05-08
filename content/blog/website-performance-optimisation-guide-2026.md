@@ -5,7 +5,7 @@ title: >-
 excerpt: >-
   Learn how to optimise your website's performance and improve Core Web Vitals
   scores. Discover proven techniques for faster load times, better user
-  experience, and higher search rankings. Essential strategies for startups
+  experience, and higher search rankings. Essential strategies for businesses
   looking to dominate search results.
 date: '2026-01-23'
 author: Sarah Mitchell
@@ -16,14 +16,14 @@ tags:
   - speed optimisation
   - web development
   - seo optimisation
-  - startup growth
+  - business growth
 ---
 
 # Website Performance Optimisation Guide – Boost Speed and Core Web Vitals in 2026
 
 Website performance isn't just about speed – it's about user experience, search rankings, and business growth. In 2026, Google's Core Web Vitals directly impact your search visibility, and studies show that a one-second delay in page load time can reduce conversions by 7%.
 
-At Devora, we've helped startups improve their Core Web Vitals scores by an average of 40%, resulting in higher search rankings and increased organic traffic. This comprehensive guide covers everything you need to know about website performance optimisation, from technical implementation to measurable results.
+At Devora, we've helped businesses improve their Core Web Vitals scores by an average of 40%, resulting in higher search rankings and increased organic traffic. This comprehensive guide covers everything you need to know about website performance optimisation, from technical implementation to measurable results.
 
 ## Why Website Performance Matters in 2026
 
@@ -506,4 +506,4 @@ Remember: performance optimisation is about creating better experiences for your
 
 Start with the quick wins, measure your progress, and gradually implement more advanced optimisations. Every improvement counts, and the cumulative effect of multiple optimisations can transform your website's performance.
 
-At Devora, we specialise in helping startups achieve exceptional website performance. If you're ready to improve your Core Web Vitals scores and boost your search rankings, get in touch to discuss how we can help optimise your website for speed and success.
+At Devora, we specialise in helping businesses achieve exceptional website performance. If you're ready to improve your Core Web Vitals scores and boost your search rankings, get in touch to discuss how we can help optimise your website for speed and success.

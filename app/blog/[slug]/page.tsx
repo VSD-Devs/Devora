@@ -205,7 +205,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 Written by {post.author}
               </h3>
               <p className="text-muted-foreground font-light leading-relaxed mb-6 max-w-2xl mx-auto">
-                Professional web developer at Devora specialising in building high-performance websites for startups and growing businesses.
+                Professional web developer at Devora specialising in building high-performance websites for established, growing, and ambitious businesses.
               </p>
             </div>
           </div>
@@ -276,7 +276,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 Ready to work together?
               </h2>
               <p className="text-lg text-primary-foreground/90 font-light leading-relaxed max-w-2xl mx-auto">
-                Let's discuss how we can help your startup grow with expert web design and development solutions.
+                Let's discuss how we can help your business grow with a ground-up website design and development project.
               </p>
             </div>
             
