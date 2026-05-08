@@ -91,7 +91,7 @@ export function Hero() {
 
             <h1 className="max-w-3xl text-[2.65rem] font-black leading-[0.95] tracking-[-0.025em] text-foreground sm:text-6xl md:text-7xl md:tracking-[-0.04em] lg:text-[6.9rem]">
               Websites
-              <span className="mt-1 block max-w-[8.2em] font-serif text-[2.4rem] font-normal italic leading-[0.92] tracking-[-0.035em] text-accent sm:max-w-none sm:text-[inherit]">with commercial bite.</span>
+              <span className="mt-1 block max-w-[8.2em] font-serif text-[2.4rem] font-normal italic leading-[0.92] tracking-[-0.035em] text-[#c8361c] sm:max-w-none sm:text-[inherit]">with commercial bite.</span>
             </h1>
 
             <div className="mt-5 grid gap-5 md:mt-8 md:max-w-3xl md:grid-cols-[minmax(0,34rem)_auto] md:items-end">
