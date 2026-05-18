@@ -12,10 +12,10 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif"
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.devora.co.uk'),
   title: {
-    default: "Business Website Design & Development in Sheffield and the UK | Devora",
+    default: "Web Design & Development in Sheffield | Devora",
     template: "%s | Devora"
   },
-  description: "Sheffield-based web design and website development business building bespoke business websites from the ground up. Serving Sheffield, South Yorkshire, and the UK.",
+  description: "Sheffield-based web design and development studio building bespoke, fast and conversion-led websites for South Yorkshire and UK businesses.",
   keywords: [
     "web design Sheffield",
     "web development Sheffield",
@@ -49,21 +49,21 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: "https://www.devora.co.uk",
     siteName: "Devora",
-    title: "Business Website Design & Development",
-    description: "Bespoke website design and development for UK businesses, built from the ground up with SEO, performance, and conversion in mind.",
+    title: "Web Design & Development in Sheffield",
+    description: "Bespoke website design and development for UK businesses, built for SEO, speed and enquiries.",
     images: [
       {
         url: "/devora-office.png",
         width: 1200,
         height: 630,
-        alt: "Devora - Web Design & Development Business",
+        alt: "Devora Sheffield web design and development studio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Business Website Design & Development",
-    description: "Bespoke website design and development for UK businesses, built from the ground up.",
+    title: "Web Design & Development in Sheffield",
+    description: "Bespoke websites for Sheffield and UK businesses.",
     images: ["/devora-office.png"],
     creator: "@devora",
   },
@@ -84,10 +84,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.devora.co.uk",
-  },
-  verification: {
-    google: "google-site-verification-code",
-    yandex: "yandex-verification-code",
   },
   category: "technology",
   icons: {

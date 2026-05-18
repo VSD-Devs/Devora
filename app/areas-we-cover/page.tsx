@@ -4,7 +4,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { getLocationsByCountry, ukLocations, ukRegionGroups } from "@/lib/locations"
+import { areaPages } from "@/lib/area-pages"
 
 export const metadata: Metadata = {
   title: "Areas We Cover | UK Web Design & Website Development | Devora",
@@ -41,8 +41,9 @@ export const metadata: Metadata = {
 }
 
 export default function AreasWeCoverPage() {
-  const groupedLocations = getLocationsByCountry()
-  const featuredLocations = ukLocations.filter((location) => location.priority)
+  const featuredLocations = areaPages.filter((location) =>
+    ["sheffield", "leeds", "manchester", "yorkshire"].includes(location.slug),
+  )
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -65,11 +66,11 @@ export default function AreasWeCoverPage() {
         "provider": {
           "@id": "https://www.devora.co.uk/#organization"
         },
-        "areaServed": ukLocations.map((location) => ({
+        "areaServed": areaPages.map((location) => ({
           "@type": "City",
           "name": location.name,
           "addressRegion": location.region,
-          "addressCountry": location.country === "England" ? "GB-ENG" : location.country === "Scotland" ? "GB-SCT" : location.country === "Wales" ? "GB-WLS" : "GB-NIR"
+          "addressCountry": "GB"
         })),
       },
       {
@@ -124,7 +125,7 @@ export default function AreasWeCoverPage() {
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </Button>
                   </Link>
-                  <Link href="/locations/sheffield">
+                  <Link href="/areas-we-cover/sheffield">
                     <Button size="lg" variant="outline" className="w-full rounded-full border-black/15 bg-white px-7 font-bold hover:border-accent hover:text-accent-foreground sm:w-auto">
                       Sheffield web design
                       <MapPin className="h-4 w-4" aria-hidden="true" />
@@ -138,7 +139,7 @@ export default function AreasWeCoverPage() {
               {[
                 { icon: Building2, label: "Built from scratch", copy: "Custom strategy, design, development, copy structure, and launch planning." },
                 { icon: Search, label: "Local SEO structure", copy: "Location-led metadata, internal links, schema, and service content." },
-                { icon: Globe2, label: "UK coverage", copy: `${ukLocations.length} major UK cities and service areas indexed through the sitemap.` },
+                { icon: Globe2, label: "UK coverage", copy: `${areaPages.length} priority local, regional and UK service areas indexed through the sitemap.` },
               ].map((item) => {
                 const Icon = item.icon
                 return (
@@ -166,7 +167,7 @@ export default function AreasWeCoverPage() {
               {featuredLocations.map((location) => (
                 <Link
                   key={location.slug}
-                  href={`/locations/${location.slug}`}
+                  href={`/areas-we-cover/${location.slug}`}
                   className="group bg-white p-6 transition-colors hover:bg-foreground"
                 >
                   <div className="mb-8 flex items-center justify-between">
@@ -198,7 +199,7 @@ export default function AreasWeCoverPage() {
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-2">
-                  {ukRegionGroups.map((region) => (
+                  {["South Yorkshire", "Yorkshire", "Greater Manchester", "United Kingdom"].map((region) => (
                     <span key={region} className="border border-black/10 bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
                       {region}
                     </span>
@@ -207,14 +208,14 @@ export default function AreasWeCoverPage() {
               </div>
 
               <div className="space-y-8">
-                {Object.entries(groupedLocations).map(([country, locations]) => (
+                {[["Priority areas", areaPages] as const].map(([country, locations]) => (
                   <div key={country}>
                     <h3 className="mb-3 border-b border-black/10 pb-3 text-xl font-black tracking-[-0.02em]">{country}</h3>
                     <div className="grid grid-cols-2 gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-3">
                       {locations.map((location) => (
                         <Link
                           key={location.slug}
-                          href={`/locations/${location.slug}`}
+                          href={`/areas-we-cover/${location.slug}`}
                           className="bg-white px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                         >
                           {location.name}

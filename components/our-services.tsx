@@ -10,30 +10,35 @@ export function OurServices() {
     {
       icon: Paintbrush,
       title: "Premium website design",
+      href: "/services/web-design",
       description: "Positioning, page structure, UI direction, and polished responsive layouts that feel bespoke from the first interaction.",
       image: "/design-ux.jpg",
     },
     {
       icon: Braces,
       title: "Next.js development",
+      href: "/services/nextjs-development",
       description: "Fast, robust websites and web apps built with modern code, maintainable components, and clean deployment workflows.",
       image: "/development.jpg",
     },
     {
       icon: Search,
       title: "UK local SEO foundations",
+      href: "/services/local-seo",
       description: "Location-led content architecture, metadata, technical hygiene, and pages built for discoverability across major UK areas.",
       image: "/web-dev.png",
     },
     {
       icon: Layers3,
       title: "Brand systems",
+      href: "/services/branding",
       description: "Visual identity, typography, colour, content patterns, and reusable design systems for teams that need consistency.",
       image: "/strategy-planning.jpg",
     },
     {
       icon: ChartNoAxesCombined,
       title: "Conversion refinement",
+      href: "/services/website-redesign",
       description: "Sharper offers, stronger calls to action, analytics visibility, landing pages, and post-launch iteration.",
       image: "/growth.jpg",
     },
@@ -92,8 +97,16 @@ export function OurServices() {
                     <Icon className="h-6 w-6 text-accent" strokeWidth={1.75} aria-hidden="true" />
                     <span className="font-serif text-4xl italic text-stroke-soft">0{index + 1}</span>
                   </div>
-                  <h3 className="text-2xl font-black leading-tight tracking-[-0.03em]">{service.title}</h3>
+                  <h3 className="text-2xl font-black leading-tight tracking-[-0.03em]">
+                    <Link href={service.href} className="hover:text-accent">
+                      {service.title}
+                    </Link>
+                  </h3>
                   <p className="mt-4 text-sm leading-6 text-foreground/72">{service.description}</p>
+                  <Link href={service.href} className="mt-6 inline-flex items-center gap-2 text-sm font-black text-accent">
+                    View service
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
                 </div>
               </article>
             )

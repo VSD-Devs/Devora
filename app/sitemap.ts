@@ -2,7 +2,8 @@ import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { ukLocations } from '@/lib/locations'
+import { areaPages } from '@/lib/area-pages'
+import { industryPages, servicePages } from '@/lib/seo-pages'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.devora.co.uk'
@@ -20,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/industries`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.86,
     },
     {
       url: `${baseUrl}/blog`,
@@ -65,12 +72,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Location pages for local SEO
-  const locationPages: MetadataRoute.Sitemap = ukLocations.map((location) => ({
-    url: `${baseUrl}/locations/${location.slug}`,
+  const serviceEntries: MetadataRoute.Sitemap = servicePages.map((service) => ({
+    url: `${baseUrl}/services/${service.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
-    priority: location.priority === 'primary' ? 0.9 : location.priority === 'major' ? 0.82 : 0.72,
+    priority: service.slug === 'web-design' || service.slug === 'web-development' || service.slug === 'local-seo' ? 0.92 : 0.84,
+  }))
+
+  const industryEntries: MetadataRoute.Sitemap = industryPages.map((industry) => ({
+    url: `${baseUrl}/industries/${industry.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.78,
+  }))
+
+  // Canonical area pages for local SEO
+  const areaEntries: MetadataRoute.Sitemap = areaPages.map((area) => ({
+    url: `${baseUrl}/areas-we-cover/${area.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: area.slug === 'sheffield' ? 0.92 : area.slug === 'yorkshire' || area.slug === 'uk' ? 0.86 : 0.8,
   }))
 
   // Get blog posts dynamically
@@ -100,66 +121,78 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Case studies with comprehensive list
   const caseStudies: MetadataRoute.Sitemap = [
     {
+      url: `${baseUrl}/case-studies/teachers-surgery`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/case-studies/luma-education`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
       url: `${baseUrl}/case-studies/envirotech-plumbing`,
       lastModified: new Date(),
-      changeFrequency: 'quarterly',
+      changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/case-studies/nl-education`,
       lastModified: new Date(),
-      changeFrequency: 'quarterly',
+      changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/case-studies/lr-talent`,
       lastModified: new Date(),
-      changeFrequency: 'quarterly',
+      changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/case-studies/rectify`,
       lastModified: new Date(),
-      changeFrequency: 'quarterly',
+      changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/case-studies/sandalwood-memorials`,
       lastModified: new Date(),
-      changeFrequency: 'quarterly',
+      changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/case-studies/sandalwood-memories`,
       lastModified: new Date(),
-      changeFrequency: 'quarterly',
+      changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/case-studies/hv-direct`,
       lastModified: new Date(),
-      changeFrequency: 'quarterly',
+      changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/case-studies/rfw`,
       lastModified: new Date(),
-      changeFrequency: 'quarterly',
+      changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/case-studies/slush-dating`,
       lastModified: new Date(),
-      changeFrequency: 'quarterly',
+      changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/case-studies/sky-limit-travels`,
       lastModified: new Date(),
-      changeFrequency: 'quarterly',
+      changeFrequency: 'monthly',
       priority: 0.85,
     },
   ]
 
-  return [...staticPages, ...locationPages, ...blogPosts, ...caseStudies]
+  return [...staticPages, ...serviceEntries, ...industryEntries, ...areaEntries, ...blogPosts, ...caseStudies]
 }

@@ -11,35 +11,40 @@ export function Footer() {
               <Image src="/devora-bw.png" alt="Devora logo" width={36} height={36} className="h-9 w-9" />
               <span className="text-xl font-black tracking-[-0.03em]">Devora</span>
             </div>
-            <p className="max-w-xs text-sm leading-6 text-muted-foreground"><strong>Sheffield web development business</strong> designing and developing bespoke business websites from the ground up.</p>
+            <p className="max-w-xs text-sm leading-6 text-muted-foreground"><strong>Sheffield web design and development studio</strong> building bespoke, fast and conversion-led websites for businesses across South Yorkshire and the UK.</p>
           </div>
 
           <nav aria-label="Services navigation">
             <h3 className="font-semibold mb-4">Services</h3>
             <ul className="space-y-1 text-sm text-muted-foreground">
               <li>
-                <Link href="#services" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
-                  Premium Web Design
+                <Link href="/services/web-design" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
+                  Web Design Sheffield
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
+                <Link href="/services/web-development" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
                   Web Development
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
+                <Link href="/services/branding" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
                   Branding
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
+                <Link href="/services/local-seo" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
                   Local SEO
                 </Link>
               </li>
               <li>
                 <Link href="/areas-we-cover" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
                   Areas We Cover
+                </Link>
+              </li>
+              <li>
+                <Link href="/industries" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
+                  Industries
                 </Link>
               </li>
             </ul>
@@ -49,13 +54,13 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Company</h3>
             <ul className="space-y-1 text-sm text-muted-foreground">
               <li>
-                <Link href="#about" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
+                <Link href="/#about" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="#work" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
-                  Portfolio
+                <Link href="/case-studies" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
+                  Case Studies
                 </Link>
               </li>
               <li>
@@ -74,7 +79,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
+                <Link href="/#contact" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
                   Contact
                 </Link>
               </li>

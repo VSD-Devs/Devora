@@ -5,6 +5,9 @@ import { ArrowRight, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import React from "react"
+import { JsonLd } from "@/components/JsonLd"
+import { absoluteUrl, breadcrumbSchema, graphSchema, webPageSchema } from "@/lib/schema"
+import { SITE_URL } from "@/lib/seo-pages"
 
 const caseStudies: Record<string, any> = {
   "envirotech-plumbing": {
@@ -782,6 +785,80 @@ const caseStudies: Record<string, any> = {
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "HelloEduN CRM API", "Google Jobs API", "Structured Data Markup", "Responsive Design", "WhatsApp Business API", "SEO Optimisation"],
     variant: "asymmetric",
   },
+  "teachers-surgery": {
+    title: "The Teacher's Surgery",
+    subtitle: "Charitable Community Platform for Educators and Families",
+    client: "The Teacher's Surgery",
+    website: "https://www.theteachersurgery.com/",
+    category: "Charitable Platform",
+    duration: "1 month",
+    year: "2026",
+    heroImage: "/case-studies/teachers-surgery-landing.png",
+    heroImageClass: "object-cover object-top",
+    challenge:
+      "The Teacher's Surgery needed a digital home that matched the warmth and purpose of their work — empowering educators, supporting families, and growing a community built on trust. Their previous presence did not reflect the scale of their impact, made it hard for visitors to find support quickly, or showcase their video content and services. As a charitable organisation, every click needed to feel welcoming whilst guiding teachers, parents, and partners toward meaningful action without feeling corporate or cold.",
+    challenges: [
+      "Outdated digital presence that did not reflect community scale or mission",
+      "Unclear pathways for teachers and parents seeking support",
+      "Need to showcase services, video content, and community impact in one place",
+      "Conversion-focused journeys for support requests and engagement",
+      "Warm, accessible brand expression across typography, colour, and layout",
+      "Fast delivery on a charitable budget without compromising quality",
+    ],
+    solution:
+      "We designed and built a full Next.js landing experience in one month at theteachersurgery.com. A warm hero introduces their mission — empowering educators and supporting families — with prominent Get Support and Videos pathways. Alternating light and charcoal sections guide visitors through bridging home and school, a Watch & Learn video gallery, education and mentoring services, and a community hub covering parent groups, student mentoring, staff development, and public-sector programmes. Orange script accents, serif headlines, and rounded cards keep the charitable tone approachable without sacrificing clarity. Navigation spans Services, The Team, Videos, Community, and Podcast, with conversion-focused CTAs repeated through the page so teachers, parents, and partners can act quickly on any device.",
+    solutionPhases: [
+      {
+        title: "Discovery & Positioning",
+        points: [
+          "Stakeholder workshops to align on mission, audiences, and priority journeys",
+          "Content audit mapping services, video library, and community proof points",
+          "Conversion mapping for support requests and community sign-up flows",
+        ],
+      },
+      {
+        title: "Brand-Led Design",
+        points: [
+          "Warm visual system with serif headlines, script accents, and accessible contrast",
+          "Hero and stat-card patterns that communicate scale without clutter",
+          "Rounded UI components and photography-led layouts for approachability",
+        ],
+      },
+      {
+        title: "Next.js Development",
+        points: [
+          "Full landing page built with Next.js and TypeScript",
+          "Watch & Learn video gallery and Podcast discovery sections",
+          "Community programme grid with join and support pathways",
+          "Optimised imagery, accessible contrast, and mobile-first layouts",
+        ],
+      },
+      {
+        title: "Launch & Growth",
+        points: [
+          "One-month delivery from brief to live site",
+          "Post-launch refinements to strengthen conversion paths",
+          "Foundation for ongoing community and content growth",
+        ],
+      },
+    ],
+    results: {
+      "Community Reach": "7,000+ community members surfaced with growing engagement",
+      "Content Library": "Video gallery and podcast content with clear discovery paths",
+      "Conversion": "Strong uptake on support and service pathways from launch",
+      "Brand Trust": "Warmer, more credible first impression aligned with charitable mission",
+      "Delivery": "Full platform live within one month",
+      "User Experience": "Clear navigation for teachers, parents, and partners on any device",
+    },
+    testimonial: {
+      quote: "Devora understood our mission from day one. The new site feels like us — warm, clear, and built for the people we serve. Support enquiries are up, and our community finally has a home online that reflects the work we do every day.",
+      author: "The Teacher's Surgery Team",
+      role: "The Teacher's Surgery",
+    },
+    services: ["Bespoke Web Design", "Next.js Development", "Conversion Optimisation", "Charitable Sector UX", "Content Architecture", "Accessibility"],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Responsive Design", "Performance Optimisation", "Accessible UI"],
+    variant: "warm",
+  },
 }
 
 export async function generateStaticParams() {
@@ -793,9 +870,38 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const study = caseStudies[slug]
+  if (!study) {
+    return {
+      title: "Case Study Not Found",
+      description: "The requested Devora case study could not be found.",
+    }
+  }
+
+  const title =
+    slug === "sandalwood-memorials"
+      ? "Sandalwood Memorials: Headless WooCommerce & Next.js Website"
+      : `${study.title}: ${study.subtitle}`
+  const description = `${study.client || study.title} case study covering the problem, strategy, design approach, development stack and outcome.`
+
   return {
-    title: `${study?.title} Case Study - Devora`,
-    description: study?.challenge,
+    title,
+    description,
+    alternates: {
+      canonical: absoluteUrl(`/case-studies/${slug}`),
+    },
+    openGraph: {
+      title,
+      description,
+      url: absoluteUrl(`/case-studies/${slug}`),
+      type: "article",
+      images: [{ url: study.heroImage || `/case-studies/${slug}.png`, width: 1200, height: 630, alt: `${study.title} case study` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [study.heroImage || `/case-studies/${slug}.png`],
+    },
   }
 }
 
@@ -826,6 +932,31 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
 
   const heroImage = caseStudy.heroImage ?? null
   const variant = caseStudy.variant ?? "editorial"
+  const caseStudyUrl = absoluteUrl(`/case-studies/${resolvedParams.slug}`)
+  const structuredData = graphSchema([
+    webPageSchema({
+      path: `/case-studies/${resolvedParams.slug}`,
+      name: `${caseStudy.title}: ${caseStudy.subtitle}`,
+      description: caseStudy.challenge,
+    }),
+    {
+      "@type": "CreativeWork",
+      "@id": `${caseStudyUrl}#creativework`,
+      name: `${caseStudy.title}: ${caseStudy.subtitle}`,
+      headline: `${caseStudy.title}: ${caseStudy.subtitle}`,
+      description: caseStudy.challenge,
+      datePublished: `${caseStudy.year || "2024"}-01-01`,
+      creator: { "@id": `${SITE_URL}/#organization` },
+      about: caseStudy.services,
+      mentions: caseStudy.technologies?.map((technology: string) => ({ "@type": "Thing", name: technology })),
+      mainEntityOfPage: { "@id": `${caseStudyUrl}#webpage` },
+    },
+    breadcrumbSchema([
+      { name: "Home", url: SITE_URL },
+      { name: "Case Studies", url: `${SITE_URL}/case-studies` },
+      { name: caseStudy.title, url: caseStudyUrl },
+    ]),
+  ])
 
   const variantStyles: Record<string, { hero: string; challenge: string; timeline: string; results: string; testimonial: string; moreStudies: string }> = {
     editorial: {
@@ -887,7 +1018,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
         <section className={`relative overflow-hidden ${heroImage ? "min-h-[85vh] md:min-h-[90vh] flex flex-col justify-end" : `py-12 md:py-20 ${s.hero}`}`}>
           {heroImage && (
             <div className="absolute inset-0">
-              <Image src={heroImage} alt="" fill className="object-cover" priority sizes="100vw" />
+              <Image src={heroImage} alt="" fill className={caseStudy.heroImageClass ?? "object-cover"} priority sizes="100vw" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" aria-hidden />
             </div>
           )}
@@ -1146,6 +1277,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
           </div>
         </section>
       </main>
+      <JsonLd data={structuredData} />
       <Footer />
     </>
   )

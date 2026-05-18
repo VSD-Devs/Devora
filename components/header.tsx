@@ -68,11 +68,11 @@ export function Header() {
   }
 
   const navLinks = [
-    { href: getNavHref("#about"), label: "About" },
-    { href: "/case-studies", label: "Portfolio" },
+    { href: "/services", label: "Services" },
+    { href: "/areas-we-cover/sheffield", label: "Sheffield" },
+    { href: "/industries", label: "Industries" },
+    { href: "/case-studies", label: "Case Studies" },
     { href: "/blog", label: "Blog", ariaLabel: "Web design and development blog" },
-    { href: "/areas-we-cover", label: "Areas We Cover", ariaLabel: "Web design and website development areas covered" },
-    { href: getNavHref("#services"), label: "Services" },
   ]
 
   return (
@@ -84,7 +84,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-3" aria-label="Devora - Home">
             <Image 
               src="/devora-bw.png" 
-              alt="Devora logo - Affordable web design and development business" 
+              alt="Devora logo - Sheffield web design and development studio" 
               width={48} 
               height={48} 
               className="h-10 w-10 rounded-md"

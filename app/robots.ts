@@ -6,20 +6,19 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/*.json', '/.next/', '/node_modules/', '/admin/', '/login/', '/logout/'],
+        disallow: ['/api/', '/*.json', '/.next/', '/node_modules/', '/admin/', '/login/', '/logout/', '/thank-you'],
       },
       {
         userAgent: 'Googlebot',
         allow: '/',
-        disallow: ['/api/', '/.next/'],
+        disallow: ['/api/', '/.next/', '/thank-you'],
       },
       {
         userAgent: 'Bingbot',
         allow: '/',
-        disallow: ['/api/', '/.next/'],
+        disallow: ['/api/', '/.next/', '/thank-you'],
       },
     ],
     sitemap: 'https://www.devora.co.uk/sitemap.xml',
   }
 }
-

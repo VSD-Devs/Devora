@@ -7,11 +7,14 @@ import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { JsonLd } from '@/components/JsonLd';
+import { absoluteUrl, breadcrumbSchema, graphSchema, webPageSchema } from '@/lib/schema';
+import { SITE_URL } from '@/lib/seo-pages';
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Generate metadata for each blog post
@@ -27,21 +30,27 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
   
   return {
-    title: `${post.title} | Devora Blog`,
+    title: post.title,
     description: post.excerpt,
     keywords: post.tags,
+    alternates: {
+      canonical: absoluteUrl(`/blog/${post.slug}`),
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url: absoluteUrl(`/blog/${post.slug}`),
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
       tags: post.tags,
+      images: [{ url: post.coverImage, width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
+      images: [post.coverImage],
     },
   };
 }
@@ -70,6 +79,29 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) {
     notFound();
   }
+
+  const articleUrl = absoluteUrl(`/blog/${post.slug}`)
+  const structuredData = graphSchema([
+    webPageSchema({ path: `/blog/${post.slug}`, name: post.title, description: post.excerpt }),
+    {
+      "@type": "BlogPosting",
+      "@id": `${articleUrl}#blogposting`,
+      headline: post.title,
+      description: post.excerpt,
+      image: absoluteUrl(post.coverImage),
+      datePublished: post.date,
+      dateModified: post.date,
+      author: { "@type": "Organization", name: "Devora", url: SITE_URL },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      mainEntityOfPage: { "@id": `${articleUrl}#webpage` },
+      keywords: post.tags,
+    },
+    breadcrumbSchema([
+      { name: "Home", url: SITE_URL },
+      { name: "Blog", url: `${SITE_URL}/blog` },
+      { name: post.title, url: articleUrl },
+    ]),
+  ])
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -288,6 +320,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </section>
       </main>
+      <JsonLd data={structuredData} />
       
       <Footer />
     </div>

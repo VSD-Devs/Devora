@@ -38,6 +38,14 @@ export const metadata: Metadata = {
 
 const allProjects = [
   {
+    name: "The Teacher's Surgery",
+    slug: "teachers-surgery",
+    description:
+      "A charitable community platform empowering educators and supporting families. Built with Next.js in one month at theteachersurgery.com, the full landing experience combines warm branding with video, podcast, and community sections — driving strong conversion and steady growth beyond 7,000 members.",
+    image: "/case-studies/teachers-surgery-landing.png",
+    tags: ["Next.js", "Charitable", "Community"],
+  },
+  {
     name: "Luma Education Recruitment",
     slug: "luma-education",
     description:
@@ -164,7 +172,7 @@ export default function AllCaseStudiesPage() {
                         src={project.image || "/placeholder.svg"}
                         alt={`${project.name} - Web design and development case study showcase`}
                         fill
-                        className={`${project.slug === 'sky-limit-travels' ? 'object-cover object-top' : 'object-contain'} group-hover:scale-105 transition-transform duration-500`}
+                        className={`${project.slug === 'sky-limit-travels' || project.slug === 'teachers-surgery' ? 'object-cover object-top' : 'object-contain'} group-hover:scale-105 transition-transform duration-500`}
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />

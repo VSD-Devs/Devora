@@ -48,7 +48,7 @@ const nextConfig = {
     root: __dirname,
   },
   images: {
-    unoptimized: true,
+    formats: ['image/avif', 'image/webp'],
   },
   // Enable compression
   compress: true,
@@ -63,7 +63,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: '/_next/static/:path*',
         headers: [
           {
             key: 'Cache-Control',
@@ -72,7 +72,7 @@ const nextConfig = {
         ],
       },
       {
-        source: '/blog/:path*',
+        source: '/images/:path*',
         headers: [
           {
             key: 'Cache-Control',
@@ -85,22 +85,21 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=3600, stale-while-revalidate=86400',
           },
         ],
       },
       {
-        source: '/locations/:path*',
+        source: '/blog/:path*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=3600, stale-while-revalidate=86400',
           },
         ],
       },
-      // Exclude Next.js dev files from caching for HMR
       {
-        source: '/_next/:path*',
+        source: '/:path*',
         headers: [
           {
             key: 'Cache-Control',
@@ -112,6 +111,17 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'devora.co.uk' }],
+        destination: 'https://www.devora.co.uk/:path*',
+        permanent: true,
+      },
+      {
+        source: '/locations/:slug',
+        destination: '/areas-we-cover/:slug',
+        permanent: true,
+      },
       {
         source: '/locations',
         destination: '/areas-we-cover',

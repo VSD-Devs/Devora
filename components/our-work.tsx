@@ -8,6 +8,14 @@ import { Button } from "@/components/ui/button"
 export function OurWork() {
   const projects = [
     {
+      name: "The Teacher's Surgery",
+      slug: "teachers-surgery",
+      description: "A warm, conversion-focused Next.js platform helping a charitable education community connect teachers, parents, and families.",
+      image: "/case-studies/teachers-surgery-landing.png",
+      sector: "Charitable education",
+      result: "Growing community",
+    },
+    {
       name: "Luma Education Recruitment",
       slug: "luma-education",
       description: "A polished recruitment platform with CRM-connected vacancies, Google Jobs integration, and a brighter market position.",
@@ -52,7 +60,7 @@ export function OurWork() {
             </h2>
           </div>
           <p className="max-w-2xl text-lg leading-8 text-foreground/76">
-            Recent projects span recruitment, commerce, wellbeing, and specialist B2B. Different sectors, same standard: clear proposition, premium interface, fast build.
+            Recent projects span charitable education, recruitment, commerce, wellbeing, and specialist B2B. Different sectors, same standard: clear proposition, premium interface, fast build.
           </p>
         </div>
 
