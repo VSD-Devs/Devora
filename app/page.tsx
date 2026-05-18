@@ -23,7 +23,7 @@ import {
 } from "@/lib/schema"
 
 export const metadata: Metadata = {
-  title: "Web Design & Development in Sheffield | Devora",
+  title: "Web Design & Development in Sheffield & the UK | Devora",
   description: "Devora builds bespoke, fast and conversion-led websites for Sheffield and UK businesses that need to look sharper, rank better and generate more enquiries.",
   keywords: [
     "web design Sheffield",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     canonical: "https://www.devora.co.uk",
   },
   openGraph: {
-    title: "Web Design & Development in Sheffield | Devora",
+    title: "Web Design & Development in Sheffield & the UK | Devora",
     description: "Bespoke, fast and conversion-led websites for Sheffield and UK businesses.",
     url: "https://www.devora.co.uk",
     type: "website",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Web Design & Development in Sheffield | Devora",
+    title: "Web Design & Development in Sheffield & the UK | Devora",
     description: "Bespoke websites built to win trust, rank better and generate enquiries.",
     images: ["/devora-office.png"],
     creator: "@devora",
@@ -90,7 +90,7 @@ export default function Home() {
           websiteSchema(),
           webPageSchema({
             path: "/",
-            name: "Web Design & Development in Sheffield",
+            name: "Web Design & Development in Sheffield & the UK",
             description:
               "Devora builds bespoke, fast and conversion-led websites for Sheffield and UK businesses.",
           }),
